@@ -1,0 +1,7 @@
+/* !!!! MOBILE DEVELOPMENT FIRST!!!!! */
+
+body {
+    width: 100svw;
+    min-height: 100svh;
+    background-color: red;
+}
