@@ -1,5 +1,11 @@
 /* !!!! MOBILE DEVELOPMENT FIRST!!!!! */
 
+
+:root {
+    font-size: 14px;
+    --dark-blue:
+}
+
 body {
     width: 100svw;
     min-height: 100svh;
