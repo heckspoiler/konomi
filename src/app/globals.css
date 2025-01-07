@@ -3,11 +3,46 @@
 
 :root {
     font-size: 14px;
-    --dark-blue:
+
+    /* colors */
+    --dark-blue: #0064D4;
+
+
+    /* typefaces */
+    --title-font: "fractul-variable", sans-serif;
+    --title-weight: "wght" 800;
+    --subtitle-weight: "wght" 400;
+    --text-font:
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     width: 100svw;
     min-height: 100svh;
-    background-color: red;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--title-font);
+}
+
+h1,
+h2 {
+    font-variation-settings: var(--title-weight);
+}
+
+p {
+    font-family: "futura-pt", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
