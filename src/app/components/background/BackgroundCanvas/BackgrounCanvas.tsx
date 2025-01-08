@@ -54,6 +54,7 @@ export default function BackgroundCanvas() {
 
     const shaderUniforms = {
       u_texture: { value: texture },
+      u_scrollHeight: { value: scrollHeight },
     };
 
     const planeGeometry = new PlaneGeometry(2 * aspectRatio, 2);
