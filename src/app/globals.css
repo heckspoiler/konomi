@@ -2,15 +2,18 @@
 
 
 :root {
+
+    /* general */
     font-size: 14px;
 
     /* paddings */
-
     --main-container-padding: 0.7rem;
 
     /* colors */
     --dark-blue: #0064D4;
     --light-blue: #D5E9FF;
+    --red: rgba(188, 0, 45, 0.2);
+
     /* typefaces */
     --title-font: "fractul-variable", sans-serif;
     --title-weight: "wght" 600;
@@ -18,7 +21,6 @@
     --japanese-subtitle-weight: "wght" 300;
     --gradient: linear-gradient(45deg, var(--light-blue), white);
     --text-font: "futura-pt", sans-serif;
-
 }
 
 * {
@@ -30,6 +32,9 @@
 body {
     width: 100svw;
     min-height: 100svh;
+    background-image: url("../../public/images/background-mobile.png");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 h1,
@@ -52,12 +57,12 @@ h2 {
     font-variation-settings: var(--title-weight);
 }
 
-h4
-
 /* japanese subtitles */
-    {
+h4 {
     font-variation-settings: var(--japanese-subtitle-weight);
 }
+
+/* are h4 */
 
 p {
     font-family: var(--text-font);
