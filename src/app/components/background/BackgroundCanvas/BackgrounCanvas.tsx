@@ -8,6 +8,7 @@ import {
   PlaneGeometry,
   ShaderMaterial,
   TextureLoader,
+  BufferAttribute,
   Mesh,
 } from 'three';
 
@@ -20,25 +21,32 @@ import getScrollPercentage from '../../../../../helpers/getScrollPercentage';
 
 export default function BackgroundCanvas() {
   const mountRef = useRef<HTMLDivElement | null>(null);
+  const materialRef = useRef<ShaderMaterial | null>(null);
   const [background, setBackground] = useState<string>(mobileBackground.src);
   const [scrollHeight, setScrollHeight] = useState<number>(0);
 
+  // Scroll handler effect
   useEffect(() => {
     const handleScroll = () => {
-      setScrollHeight(getScrollPercentage());
+      const newScrollHeight = getScrollPercentage() / 100; // Convert to 0-1 range
+      setScrollHeight(newScrollHeight);
+
+      // Update the uniform if material exists
+      if (materialRef.current) {
+        materialRef.current.uniforms.u_scrollHeight.value = newScrollHeight;
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scene setup effect
   useEffect(() => {
     if (!mountRef.current) return;
 
     const scene = new Scene();
     const aspectRatio = window.innerWidth / window.innerHeight;
-
     const camera = new OrthographicCamera(
       -aspectRatio,
       aspectRatio,
@@ -51,18 +59,35 @@ export default function BackgroundCanvas() {
 
     const loader = new TextureLoader();
     const texture = loader.load(background);
+    const planeGeometry = new PlaneGeometry(2 * aspectRatio, 2, 50, 50);
+    const randomDirections = new Float32Array(
+      planeGeometry.attributes.position.count * 3
+    );
+
+    for (let i = 0; i < planeGeometry.attributes.position.count; i++) {
+      randomDirections[i * 3] = (Math.random() - 0.8) * 2; // x
+      randomDirections[i * 3 + 1] = (Math.random() - 0.8) * 2; // y
+      randomDirections[i * 3 + 2] = (Math.random() - 0.8) * 2; // z
+    }
+
+    planeGeometry.setAttribute(
+      'randomDirection',
+      new BufferAttribute(randomDirections, 3)
+    );
 
     const shaderUniforms = {
       u_texture: { value: texture },
       u_scrollHeight: { value: scrollHeight },
     };
 
-    const planeGeometry = new PlaneGeometry(2 * aspectRatio, 2);
     const planeMaterial = new ShaderMaterial({
       vertexShader,
       fragmentShader,
       uniforms: shaderUniforms,
     });
+
+    // Store reference to material
+    materialRef.current = planeMaterial;
 
     const planeMesh = new Mesh(planeGeometry, planeMaterial);
     scene.add(planeMesh);
@@ -97,14 +122,13 @@ export default function BackgroundCanvas() {
 
     return () => {
       window.removeEventListener('resize', onWindowResize);
-      mountRef.current?.removeChild(renderer.domElement);
+      if (mountRef.current) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
       renderer.dispose();
+      materialRef.current = null;
     };
-  }, []);
-
-  window.addEventListener('scroll', () => {
-    console.log(scrollHeight);
-  });
+  }, [background]); // Only re-run if background changes
 
   return <div ref={mountRef} style={{ width: '100vw', height: '100vh' }} />;
 }
