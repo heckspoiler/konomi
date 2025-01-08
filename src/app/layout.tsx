@@ -2,6 +2,8 @@ import { PrismicPreview } from '@prismicio/next';
 import { repositoryName } from '@/prismicio';
 import Script from 'next/script';
 
+import Background from './components/background/Background';
+
 import './globals.css';
 
 export default function RootLayout({
@@ -12,6 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Background />
         {children}
         <PrismicPreview repositoryName={repositoryName} />
         <Script id="typekit" strategy="afterInteractive">
