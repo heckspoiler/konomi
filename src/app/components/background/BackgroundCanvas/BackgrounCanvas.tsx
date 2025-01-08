@@ -13,13 +13,25 @@ import {
 
 import mobileBackground from '/public/images/background-mobile.png';
 
-// Import shaders as raw text
 import vertexShader from './shaders/background.vert';
 import fragmentShader from './shaders/background.frag';
+
+import getScrollPercentage from '../../../../../helpers/getScrollPercentage';
 
 export default function BackgroundCanvas() {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const [background, setBackground] = useState<string>(mobileBackground.src);
+  const [scrollHeight, setScrollHeight] = useState<number>(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollHeight(getScrollPercentage());
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -88,6 +100,10 @@ export default function BackgroundCanvas() {
       renderer.dispose();
     };
   }, []);
+
+  window.addEventListener('scroll', () => {
+    console.log(scrollHeight);
+  });
 
   return <div ref={mountRef} style={{ width: '100vw', height: '100vh' }} />;
 }
