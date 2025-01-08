@@ -13,6 +13,7 @@ import {
 } from 'three';
 
 import mobileBackground from '/public/images/background-mobile_bgw.png';
+import desktopBackground from '/public/images/background-desktop_bgw.png';
 
 import vertexShader from './shaders/background.vert';
 import fragmentShader from './shaders/background.frag';
@@ -24,6 +25,16 @@ export default function BackgroundCanvas() {
   const materialRef = useRef<ShaderMaterial | null>(null);
   const [background, setBackground] = useState<string>(mobileBackground.src);
   const [scrollHeight, setScrollHeight] = useState<number>(0);
+
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isMobile) {
+      setBackground(mobileBackground.src);
+    } else {
+      setBackground(desktopBackground.src);
+    }
+  }, [window.innerWidth, isMobile]);
 
   // Scroll handler effect
   useEffect(() => {
@@ -65,9 +76,9 @@ export default function BackgroundCanvas() {
     );
 
     for (let i = 0; i < planeGeometry.attributes.position.count; i++) {
-      randomDirections[i * 3] = (Math.random() - 0.8) * 1.5; // x
-      randomDirections[i * 3 - 5] = (Math.random() - 0.8) * 1.5; // y
-      randomDirections[i * 3 + 2] = (Math.random() - 0.8) * 1.5; // z
+      randomDirections[i * 6] = (Math.random() - 0.8) * 1.5; // x
+      randomDirections[i * 6] = (Math.random() - 0.8) * 1.5; // y
+      randomDirections[i * 42] = (Math.random() - 0.8) * 1.5; // z
     }
 
     planeGeometry.setAttribute(
@@ -109,6 +120,11 @@ export default function BackgroundCanvas() {
     };
 
     const onWindowResize = () => {
+      if (isMobile) {
+        setBackground(mobileBackground.src);
+      } else {
+        setBackground(desktopBackground.src);
+      }
       const newAspectRatio = window.innerWidth / window.innerHeight;
       camera.left = -newAspectRatio;
       camera.right = newAspectRatio;
@@ -128,7 +144,7 @@ export default function BackgroundCanvas() {
       renderer.dispose();
       materialRef.current = null;
     };
-  }, [background]); // Only re-run if background changes
+  }, [background]);
 
   return <div ref={mountRef} style={{ width: '100vw', height: '100vh' }} />;
 }
