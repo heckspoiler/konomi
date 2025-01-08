@@ -12,7 +12,7 @@ import {
   Mesh,
 } from 'three';
 
-import mobileBackground from '/public/images/background-mobile.png';
+import mobileBackground from '/public/images/background-mobile_bgw.png';
 
 import vertexShader from './shaders/background.vert';
 import fragmentShader from './shaders/background.frag';
@@ -65,9 +65,9 @@ export default function BackgroundCanvas() {
     );
 
     for (let i = 0; i < planeGeometry.attributes.position.count; i++) {
-      randomDirections[i * 3] = (Math.random() - 0.8) * 2; // x
-      randomDirections[i * 3 + 1] = (Math.random() - 0.8) * 2; // y
-      randomDirections[i * 3 + 2] = (Math.random() - 0.8) * 2; // z
+      randomDirections[i * 3] = (Math.random() - 0.8) * 1.5; // x
+      randomDirections[i * 3 - 5] = (Math.random() - 0.8) * 1.5; // y
+      randomDirections[i * 3 + 2] = (Math.random() - 0.8) * 1.5; // z
     }
 
     planeGeometry.setAttribute(

@@ -6,9 +6,9 @@
         void main() {
           vUv = uv;
           
-          // Use the pre-calculated random direction for this vertex
-          vec3 pos = position + (randomDirection * u_scrollHeight / 0.5);
+ 
+          vec3 pos = position + (randomDirection * u_scrollHeight / 4.0);
           
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+          gl_Position = projectionMatrix * 5.0 * modelViewMatrix * vec4(pos, 1.0);
         }
       
