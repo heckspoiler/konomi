@@ -37,7 +37,7 @@ export default async function Index() {
       <p>Konomi Text Bla bla bla bla</p>
       <button>Click me</button>
       <h4>
-        食べる [ta|be|ru] <br /> -- dt.: "essen"
+        食べる \[ta\|be\|ru\] <br /> -- dt.: \"essen\"
       </h4>
       <section className="card">
         <h3>KONOMI</h3>
