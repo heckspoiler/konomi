@@ -1,1 +1,11 @@
 /* !!!! MOBILE DEVELOPMENT FIRST!!!!! */
+
+.header {
+    border-bottom: 4px solid var(--dark-blue);
+    position: fixed;
+    width: 100svw;
+    height: fit-content;
+    padding: 0.7rem;
+    background-color: white;
+    z-index: 10;
+}

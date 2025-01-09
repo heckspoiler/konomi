@@ -4,6 +4,8 @@ import Script from 'next/script';
 
 import Background from './components/background/Background';
 
+import Header from './components/header/Header';
+
 import './globals.css';
 
 export default function RootLayout({
@@ -15,6 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Background />
+        <Header />
         {children}
         <PrismicPreview repositoryName={repositoryName} />
         <Script id="typekit" strategy="afterInteractive">

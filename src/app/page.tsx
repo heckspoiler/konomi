@@ -31,17 +31,5 @@ export default async function Index() {
   const client = createClient();
   const home = await client.getByUID('page', 'home');
 
-  return (
-    <>
-      <h1>KONOMI</h1>
-      <p>Konomi Text Bla bla bla bla</p>
-      <button>Click me</button>
-      <h4>
-        食べる [ta|be|ru] <br /> -- dt.: &quot;essen&quot;
-      </h4>{' '}
-      <section className="card">
-        <h3>KONOMI</h3>
-      </section>
-    </>
-  );
+  return <></>;
 }
