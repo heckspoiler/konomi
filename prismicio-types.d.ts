@@ -65,7 +65,154 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = PageDocument;
+/**
+ * Item in *Settings → Navigation Items*
+ */
+export interface SettingsDocumentDataNavigationItemsItem {
+  /**
+   * Navigation Item field in *Settings → Navigation Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_items[].navigation_item
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  navigation_item: prismic.LinkField;
+
+  /**
+   * Navigation Active Image field in *Settings → Navigation Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_items[].navigation_active_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  navigation_active_image: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *Settings → Navigation Social Icons*
+ */
+export interface SettingsDocumentDataNavigationSocialIconsItem {
+  /**
+   * Socials Link field in *Settings → Navigation Social Icons*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_social_icons[].socials_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  socials_link: prismic.LinkField;
+
+  /**
+   * Socials Icon field in *Settings → Navigation Social Icons*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_social_icons[].socials_icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  socials_icon: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *Settings → Navigation Address*
+ */
+export interface SettingsDocumentDataNavigationAddressItem {
+  /**
+   * Address Line field in *Settings → Navigation Address*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_address[].address_line
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  address_line: prismic.RichTextField;
+}
+
+/**
+ * Content for Settings documents
+ */
+interface SettingsDocumentData {
+  /**
+   * Page Title field in *Settings*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Konomi
+   * - **API ID Path**: settings.page_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  page_title: prismic.RichTextField;
+
+  /**
+   * Page Subtitle Date field in *Settings*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: 30.3 - 5.4.2025
+   * - **API ID Path**: settings.page_subtitle_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  page_subtitle_date: prismic.RichTextField;
+
+  /**
+   * Navigation Items field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navigation_items: prismic.GroupField<
+    Simplify<SettingsDocumentDataNavigationItemsItem>
+  >;
+
+  /**
+   * Navigation Social Icons field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_social_icons[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navigation_social_icons: prismic.GroupField<
+    Simplify<SettingsDocumentDataNavigationSocialIconsItem>
+  >;
+
+  /**
+   * Navigation Address field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation_address[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navigation_address: prismic.GroupField<
+    Simplify<SettingsDocumentDataNavigationAddressItem>
+  >;
+}
+
+/**
+ * Settings document from Prismic
+ *
+ * - **API ID**: `settings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SettingsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SettingsDocumentData>,
+    "settings",
+    Lang
+  >;
+
+export type AllDocumentTypes = PageDocument | SettingsDocument;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -136,6 +283,11 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      SettingsDocument,
+      SettingsDocumentData,
+      SettingsDocumentDataNavigationItemsItem,
+      SettingsDocumentDataNavigationSocialIconsItem,
+      SettingsDocumentDataNavigationAddressItem,
       AllDocumentTypes,
       RichTextSlice,
       RichTextSliceDefaultPrimary,

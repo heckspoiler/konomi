@@ -1,0 +1,103 @@
+{
+  "format": "custom",
+  "id": "settings",
+  "label": "Settings",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "page_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Page Title",
+          "placeholder": "Konomi",
+          "allowTargetBlank": true,
+          "multi": "heading1"
+        }
+      },
+      "page_subtitle_date": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Page Subtitle Date",
+          "placeholder": "30.3 - 5.4.2025",
+          "allowTargetBlank": true,
+          "multi": "heading3"
+        }
+      },
+      "navigation_items": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation Items",
+          "repeat": true,
+          "fields": {
+            "navigation_item": {
+              "type": "Link",
+              "config": {
+                "label": "Navigation Item",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": false,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "navigation_active_image": {
+              "type": "Image",
+              "config": {
+                "label": "Navigation Active Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "navigation_social_icons": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation Social Icons",
+          "repeat": true,
+          "fields": {
+            "socials_link": {
+              "type": "Link",
+              "config": {
+                "label": "Socials Link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "socials_icon": {
+              "type": "Image",
+              "config": {
+                "label": "Socials Icon",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "navigation_address": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation Address",
+          "repeat": true,
+          "fields": {
+            "address_line": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Address Line",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -99,12 +99,11 @@ export default function BackgroundCanvas() {
     );
 
     for (let i = 0; i < planeGeometry.attributes.position.count; i++) {
-      randomDirections[i * (directionsMultiplier ?? 42)] =
+      randomDirections[i * (directionsMultiplier ?? 1)] =
         (Math.random() - 0.9) * 5; // x
-      randomDirections[i * (directionsMultiplier ?? 42)] =
-        (Math.random() - 0.8) * 1.5; // y
-      randomDirections[i * (directionsMultiplier ?? 42)] =
-        (Math.random() - 0.8) * 1.5; // z
+      randomDirections[i * (directionsMultiplier ?? 1)] =
+        (Math.random() - 0.1) * 1.5; // y
+      randomDirections[i * (directionsMultiplier ?? 1)] = Math.random() * 1.5; // z
     }
 
     planeGeometry.setAttribute(
