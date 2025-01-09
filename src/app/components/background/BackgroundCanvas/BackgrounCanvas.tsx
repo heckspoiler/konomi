@@ -20,21 +20,22 @@ import fragmentShader from './shaders/background.frag';
 
 import getScrollPercentage from '../../../../../helpers/getScrollPercentage';
 
+const MOBILE_BREAKPOINT = 768;
+const MOBILE_MULTIPLIER = 2;
+const DESKTOP_MULTIPLIER = 2;
+
 export default function BackgroundCanvas() {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const materialRef = useRef<ShaderMaterial | null>(null);
   const [background, setBackground] = useState<string>(mobileBackground.src);
   const [scrollHeight, setScrollHeight] = useState<number>(0);
+  const [directionsMultiplier, setDirectionsMultiplier] = useState<number>(1);
 
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (isMobile) {
-      setBackground(mobileBackground.src);
-    } else {
-      setBackground(desktopBackground.src);
-    }
-  }, [window.innerWidth, isMobile]);
+  const [isMobile, setIsMobile] = useState<boolean>(
+    typeof window !== 'undefined'
+      ? window.innerWidth <= MOBILE_BREAKPOINT
+      : false
+  );
 
   // Scroll handler effect
   useEffect(() => {
@@ -51,6 +52,28 @@ export default function BackgroundCanvas() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Update background based on screen size
+    const updateBackground = () => {
+      if (window.innerWidth < 1020) {
+        setBackground(mobileBackground.src);
+      } else {
+        setBackground(desktopBackground.src);
+      }
+    };
+
+    updateBackground();
+    window.addEventListener('resize', updateBackground);
+
+    return () => {
+      window.removeEventListener('resize', updateBackground);
+    };
+  }, []);
+
+  useEffect(() => {
+    isMobile ? setDirectionsMultiplier(2) : setDirectionsMultiplier(42);
+  }, [isMobile]);
 
   // Scene setup effect
   useEffect(() => {
@@ -76,9 +99,12 @@ export default function BackgroundCanvas() {
     );
 
     for (let i = 0; i < planeGeometry.attributes.position.count; i++) {
-      randomDirections[i * 6] = (Math.random() - 0.8) * 1.5; // x
-      randomDirections[i * 6] = (Math.random() - 0.8) * 1.5; // y
-      randomDirections[i * 42] = (Math.random() - 0.8) * 1.5; // z
+      randomDirections[i * (directionsMultiplier ?? 42)] =
+        (Math.random() - 0.9) * 5; // x
+      randomDirections[i * (directionsMultiplier ?? 42)] =
+        (Math.random() - 0.8) * 1.5; // y
+      randomDirections[i * (directionsMultiplier ?? 42)] =
+        (Math.random() - 0.8) * 1.5; // z
     }
 
     planeGeometry.setAttribute(
@@ -120,11 +146,6 @@ export default function BackgroundCanvas() {
     };
 
     const onWindowResize = () => {
-      if (isMobile) {
-        setBackground(mobileBackground.src);
-      } else {
-        setBackground(desktopBackground.src);
-      }
       const newAspectRatio = window.innerWidth / window.innerHeight;
       camera.left = -newAspectRatio;
       camera.right = newAspectRatio;
