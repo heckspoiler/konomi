@@ -1,0 +1,28 @@
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.hamburger div {
+    height: 0.28rem;
+    width: 2.28rem;
+    background-color: var(--dark-blue);
+    transition: opacity 0.2s cubic-bezier(0.47, 0, 0.745, 0.715), transform 0.2s cubic-bezier(0.47, 0, 0.745, 0.715);
+    transform-origin: center;
+}
+
+.hamburger:hover div:nth-of-type(2) {
+    opacity: 0;
+}
+
+
+.hamburger:hover div:nth-of-type(1) {
+    transform: rotate(45deg) translateY(0.78rem);
+}
+
+
+.hamburger:hover div:nth-of-type(3) {
+    transform: rotate(-45deg) translateY(-0.78rem);
+}

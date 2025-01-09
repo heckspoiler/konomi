@@ -4,7 +4,7 @@ import Script from 'next/script';
 
 import Background from './components/background/Background';
 
-import Header from './components/header/Header';
+import Header from './components/Header/Header';
 
 import './globals.css';
 
