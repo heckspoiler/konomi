@@ -6,7 +6,7 @@
     /* general */
     font-size: 14px;
     --bezier: cubic-bezier(0.645, 0.045, 0.355, 1.000);
-    --border-small: 0.4rem solid var(--dark-blue);
+    --border-small: 0.2rem solid var(--dark-blue);
 
     /* paddings */
     --main-container-padding: 0.7rem;

@@ -1,0 +1,9 @@
+.logoContainer {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.logo img {
+    border: 1px solid black;
+}

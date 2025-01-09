@@ -7,6 +7,7 @@ import Background from './components/background/Background';
 import Header from './components/Header/Header';
 
 import './globals.css';
+import Logo from './components/Logo/Logo';
 
 export default function RootLayout({
   children,
@@ -18,7 +19,9 @@ export default function RootLayout({
       <body>
         <Background />
         <Header />
+        <Logo />
         {children}
+
         <PrismicPreview repositoryName={repositoryName} />
         <Script id="typekit" strategy="afterInteractive">
           {`

@@ -14,8 +14,6 @@ export default function Navbar({
   content: any;
   menuIsOpen: boolean;
 }) {
-  console.log(content.navigation_items.navigation_item);
-
   return (
     <nav className={`${styles.navbar} ${menuIsOpen ? styles.open : ''}`}>
       <div className={styles.list}>
@@ -39,7 +37,9 @@ export default function Navbar({
       </div>
       <div className={styles.address}>
         {content.navigation_address.map((item: any, index: number) => (
-          <PrismicRichText field={item.address_line} />
+          <div key={index}>
+            <PrismicRichText field={item.address_line} />
+          </div>
         ))}
       </div>
     </nav>

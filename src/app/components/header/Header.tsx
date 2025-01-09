@@ -1,7 +1,5 @@
 import React from 'react';
 
-import * as prismic from '@prismicio/client';
-
 import { createClient } from '@/prismicio';
 
 import HeaderContent from './HeaderContent/HeaderContent';
@@ -12,7 +10,6 @@ export default async function Header() {
   const client = createClient();
   const settings = await client.getSingle('settings');
   const content = settings.data;
-  console.log(content);
 
   return (
     <header className={styles.header}>
