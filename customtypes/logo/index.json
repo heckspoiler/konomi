@@ -1,0 +1,19 @@
+{
+  "format": "custom",
+  "id": "logo",
+  "label": "Logo",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo_image": {
+        "type": "Image",
+        "config": {
+          "label": "Logo Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

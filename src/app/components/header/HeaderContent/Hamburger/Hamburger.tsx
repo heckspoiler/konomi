@@ -4,9 +4,18 @@ import React from 'react';
 
 import styles from './Hamburger.module.css';
 
-export default function Hamburger() {
+export default function Hamburger({
+  setMenuIsOpen,
+  menuIsOpen,
+}: {
+  setMenuIsOpen: (menuIsOpen: boolean) => void;
+  menuIsOpen: boolean;
+}) {
   return (
-    <div className={styles.hamburger}>
+    <div
+      className={`${styles.hamburger} ${menuIsOpen ? styles.open : ''}`}
+      onClick={() => setMenuIsOpen(!menuIsOpen)}
+    >
       <div></div>
       <div></div>
       <div></div>

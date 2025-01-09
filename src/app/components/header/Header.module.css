@@ -1,7 +1,7 @@
 /* !!!! MOBILE DEVELOPMENT FIRST!!!!! */
 
 .header {
-    border-bottom: 4px solid var(--dark-blue);
+    border-bottom: var(--border-small);
     position: fixed;
     width: 100svw;
     height: fit-content;

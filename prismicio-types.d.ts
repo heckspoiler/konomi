@@ -4,6 +4,34 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Content for Logo documents
+ */
+interface LogoDocumentData {
+  /**
+   * Logo Image field in *Logo*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logo.logo_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo_image: prismic.ImageField<never>;
+}
+
+/**
+ * Logo document from Prismic
+ *
+ * - **API ID**: `logo`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LogoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<LogoDocumentData>, "logo", Lang>;
+
 type PageDocumentDataSlicesSlice = never;
 
 /**
@@ -212,7 +240,7 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = PageDocument | SettingsDocument;
+export type AllDocumentTypes = LogoDocument | PageDocument | SettingsDocument;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -280,6 +308,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      LogoDocument,
+      LogoDocumentData,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,

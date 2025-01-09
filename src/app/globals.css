@@ -5,6 +5,8 @@
 
     /* general */
     font-size: 14px;
+    --bezier: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    --border-small: 0.4rem solid var(--dark-blue);
 
     /* paddings */
     --main-container-padding: 0.7rem;
@@ -19,6 +21,7 @@
     --title-weight: "wght" 600;
     --subtitle-weight: "wght" 400;
     --japanese-subtitle-weight: "wght" 300;
+    --ultrathin: "wght" 100;
     --gradient: linear-gradient(45deg, var(--light-blue), white);
     --text-font: "futura-pt", sans-serif;
 }
@@ -50,7 +53,6 @@ h1 {
     font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: -0.2rem;
-
 }
 
 h1,
@@ -70,6 +72,11 @@ h4 {
 }
 
 
+h5 {
+    font-variation-settings: var(--ultrathin);
+}
+
+
 
 /* are h4 */
 
@@ -79,10 +86,21 @@ p {
     font-size: 1rem;
 }
 
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
 nav,
 nav li,
-nav a {
+nav a,
+nav h5 {
     text-transform: uppercase;
+    font-variation-settings: var(--japanese-subtitle-weight);
+    font-size: 2rem;
 }
 
 button {
