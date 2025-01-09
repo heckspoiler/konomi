@@ -49,6 +49,8 @@ a {
 h1 {
     font-size: 3rem;
     text-transform: uppercase;
+    letter-spacing: -0.2rem;
+
 }
 
 h1,
@@ -56,14 +58,18 @@ h2 {
     font-variation-settings: var(--title-weight);
 }
 
+h3 {
+    font-variation-settings: var(--subtitle-weight);
+    font-size: 0.9rem;
+    letter-spacing: -0.25px;
+}
+
 /* japanese subtitles */
 h4 {
     font-variation-settings: var(--japanese-subtitle-weight);
 }
 
-h3 {
-    font-variation-settings: var(--subtitle-weight);
-}
+
 
 /* are h4 */
 
