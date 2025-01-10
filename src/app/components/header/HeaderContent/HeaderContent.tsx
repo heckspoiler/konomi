@@ -9,7 +9,7 @@ import Hamburger from './Hamburger/Hamburger';
 import Navbar from './Navbar/Navbar';
 
 export default function HeaderContent({ content }: { content: any }) {
-  const [menuIsOpen, setMenuIsOpen] = useState(true);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   return (
     <div className={styles.main}>

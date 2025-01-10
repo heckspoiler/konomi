@@ -9,9 +9,7 @@
     cursor: pointer;
     position: relative;
     width: 2.28rem;
-    /* Set fixed width to match lines */
     height: 2rem;
-    /* Set a fixed height to contain lines */
 }
 
 .hamburgerLine {
@@ -26,7 +24,6 @@
 /* Position lines with absolute positioning */
 .hamburgerLine:nth-of-type(1) {
     transform: translateY(-0.53rem);
-    /* (0.28rem + 0.25rem) × -1 */
 }
 
 .hamburgerLine:nth-of-type(2) {
@@ -35,7 +32,6 @@
 
 .hamburgerLine:nth-of-type(3) {
     transform: translateY(0.53rem);
-    /* 0.28rem + 0.25rem */
 }
 
 /* Open state transforms */
