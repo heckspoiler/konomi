@@ -4,6 +4,166 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type EventDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Event documents
+ */
+interface EventDocumentData {
+  /**
+   * Event Title field in *Event*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.event_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_title: prismic.RichTextField;
+
+  /**
+   * Event Start Date field in *Event*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.event_start_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  event_start_date: prismic.DateField;
+
+  /**
+   * Event End Date field in *Event*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.event_end_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  event_end_date: prismic.DateField;
+
+  /**
+   * Eventfrog Link field in *Event*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: TICKETS
+   * - **API ID Path**: event.eventfrog_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  eventfrog_link: prismic.LinkField;
+
+  /**
+   * Event Image field in *Event*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.event_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  event_image: prismic.ImageField<never>;
+
+  /**
+   * Event Location field in *Event*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Miake Izakaya
+   * - **API ID Path**: event.event_location
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_location: prismic.RichTextField;
+
+  /**
+   * Event Street field in *Event*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Sempacherstrasse 153
+   * - **API ID Path**: event.event_street
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_street: prismic.RichTextField;
+
+  /**
+   * Event Postcode and City field in *Event*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: CH - 4053 Basel
+   * - **API ID Path**: event.event_postcode_and_city
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_postcode_and_city: prismic.RichTextField;
+
+  /**
+   * Event Description field in *Event*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Japanische Kulinarik kennt viele Aromen und Geschmäcker. Eine davon ist jedoch so präsent
+   * - **API ID Path**: event.event_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  event_description: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Event*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<EventDocumentDataSlicesSlice> /**
+   * Meta Title field in *Event*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: event.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Event*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: event.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Event*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Event document from Prismic
+ *
+ * - **API ID**: `event`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type EventDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<EventDocumentData>, "event", Lang>;
+
 /**
  * Content for Logo documents
  */
@@ -240,7 +400,11 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = LogoDocument | PageDocument | SettingsDocument;
+export type AllDocumentTypes =
+  | EventDocument
+  | LogoDocument
+  | PageDocument
+  | SettingsDocument;
 
 /**
  * Item in *BasicSlice → Schedule → Primary → Event*
@@ -636,6 +800,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      EventDocument,
+      EventDocumentData,
+      EventDocumentDataSlicesSlice,
       LogoDocument,
       LogoDocumentData,
       PageDocument,

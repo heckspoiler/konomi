@@ -10,6 +10,12 @@
     gap: 2rem;
 }
 
+.upperContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 .headingContainer {
     display: flex;
     align-items: center;
@@ -45,5 +51,9 @@
 
     .subtitleContainer h4 {
         font-size: 0.7rem;
+    }
+
+    .sliceContainer p {
+        max-width: 80%;
     }
 }

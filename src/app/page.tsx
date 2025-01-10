@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import { SliceZone } from '@prismicio/react';
+import { PrismicRichText, SliceZone } from '@prismicio/react';
 import * as prismic from '@prismicio/client';
 
 import { createClient } from '@/prismicio';
@@ -33,10 +33,29 @@ export default async function Index() {
   const client = createClient();
   const home = await client.getByUID('page', 'home');
 
+  const events = await client.getAllByType('event');
+
+  const defaultVariationSlice = home.data.slices.filter((slice) => {
+    return slice.variation === 'default';
+  });
+
+  const scheduleSlice = home.data.slices.filter((slice) => {
+    return slice.variation === 'schedule';
+  });
+
+  console.log(defaultVariationSlice);
+
   return (
     <section className={styles.main}>
       <div className={styles.container}>
-        <SliceZone slices={home.data.slices} components={components} />;
+        <SliceZone slices={defaultVariationSlice} components={components} />;
+        <SliceZone slices={scheduleSlice} components={components} />;
+        {events.map((event) => (
+          <div key={event.id}>
+            <PrismicRichText field={event.data.event_title} />
+            <p>{event.data.event_start_date}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

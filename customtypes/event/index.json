@@ -1,0 +1,127 @@
+{
+  "format": "page",
+  "id": "event",
+  "label": "Event",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "event_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading2"
+        }
+      },
+      "event_start_date": {
+        "type": "Date",
+        "config": {
+          "label": "Event Start Date",
+          "placeholder": ""
+        }
+      },
+      "event_end_date": {
+        "type": "Date",
+        "config": {
+          "label": "Event End Date",
+          "placeholder": ""
+        }
+      },
+      "eventfrog_link": {
+        "type": "Link",
+        "config": {
+          "label": "Eventfrog Link",
+          "placeholder": "TICKETS",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "event_image": {
+        "type": "Image",
+        "config": {
+          "label": "Event Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "event_location": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Location",
+          "placeholder": "Miake Izakaya",
+          "allowTargetBlank": true,
+          "multi": "heading5"
+        }
+      },
+      "event_street": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Street",
+          "placeholder": "Sempacherstrasse 153",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "event_postcode_and_city": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Postcode and City",
+          "placeholder": "CH - 4053 Basel",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "event_description": {
+        "type": "Text",
+        "config": {
+          "label": "Event Description",
+          "placeholder": "Japanische Kulinarik kennt viele Aromen und Geschmäcker. Eine davon ist jedoch so präsent"
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    }
+  }
+}
