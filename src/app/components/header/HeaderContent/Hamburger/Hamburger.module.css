@@ -3,11 +3,19 @@
 .hamburger {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 0.25rem;
     cursor: pointer;
+    position: relative;
+    width: 2.28rem;
+    /* Set fixed width to match lines */
+    height: 2rem;
+    /* Set a fixed height to contain lines */
 }
 
-.hamburger div {
+.hamburgerLine {
+    position: absolute;
     height: 0.28rem;
     width: 2.28rem;
     background-color: var(--dark-blue);
@@ -15,36 +23,77 @@
     transform-origin: center;
 }
 
-.open div:nth-of-type(2) {
+/* Position lines with absolute positioning */
+.hamburgerLine:nth-of-type(1) {
+    transform: translateY(-0.53rem);
+    /* (0.28rem + 0.25rem) × -1 */
+}
+
+.hamburgerLine:nth-of-type(2) {
+    transform: translateY(0);
+}
+
+.hamburgerLine:nth-of-type(3) {
+    transform: translateY(0.53rem);
+    /* 0.28rem + 0.25rem */
+}
+
+/* Open state transforms */
+.open .hamburgerLine:nth-of-type(2) {
     opacity: 0;
 }
 
-
-.open div:nth-of-type(1) {
-    transform: rotate(45deg) translateY(0.78rem);
+.open .hamburgerLine:nth-of-type(1) {
+    transform: rotate(45deg);
 }
 
-
-.open div:nth-of-type(3) {
-    transform: rotate(-45deg) translateY(-0.78rem);
+.open .hamburgerLine:nth-of-type(3) {
+    transform: rotate(-45deg);
 }
 
+.backgroundCircle {
+    background-color: var(--red-lowopa);
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -1;
+}
 
 @media screen and (min-width: 1080px) {
-    .hamburger div {
+    .hamburger {
+        width: 2rem;
+    }
+
+    .hamburgerLine {
         height: 0.2rem;
         width: 2rem;
-        background-color: var(--dark-blue);
-        transition: opacity 0.4s var(--bezier), transform 0.4s var(--bezier);
-        transform-origin: center;
     }
 
-    .open div:nth-of-type(1) {
-        transform: rotate(45deg) translateY(0.68rem);
+    /* Adjust line positions for desktop */
+    .hamburgerLine:nth-of-type(1) {
+        transform: translateY(-0.45rem);
+        /* (0.2rem + 0.25rem) × -1 */
     }
 
+    .hamburgerLine:nth-of-type(2) {
+        transform: translateY(0);
+    }
 
-    .open div:nth-of-type(3) {
-        transform: rotate(-45deg) translateY(-0.68rem);
+    .hamburgerLine:nth-of-type(3) {
+        transform: translateY(0.45rem);
+        /* 0.2rem + 0.25rem */
+    }
+
+    /* Open state transforms for desktop */
+    .open .hamburgerLine:nth-of-type(1) {
+        transform: rotate(45deg);
+    }
+
+    .open .hamburgerLine:nth-of-type(3) {
+        transform: rotate(-45deg);
     }
 }

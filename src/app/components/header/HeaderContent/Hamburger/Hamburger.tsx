@@ -16,9 +16,10 @@ export default function Hamburger({
       className={`${styles.hamburger} ${menuIsOpen ? styles.open : ''}`}
       onClick={() => setMenuIsOpen(!menuIsOpen)}
     >
-      <div></div>
-      <div></div>
-      <div></div>
+      <div className={styles.hamburgerLine}></div>
+      <div className={styles.hamburgerLine}></div>
+      <div className={styles.hamburgerLine}></div>
+      <div className={styles.backgroundCircle}></div>
     </div>
   );
 }

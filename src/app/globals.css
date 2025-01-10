@@ -14,7 +14,9 @@
     /* colors */
     --dark-blue: #0064D4;
     --light-blue: #D5E9FF;
-    --red: rgba(188, 0, 45, 0.2);
+    --red-lowopa: rgba(188, 0, 45, 0.2);
+    --red: rgba(188, 0, 45, 1);
+
 
     /* typefaces */
     --title-font: "fractul-variable", sans-serif;
@@ -50,7 +52,7 @@ a {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     text-transform: uppercase;
 }
 

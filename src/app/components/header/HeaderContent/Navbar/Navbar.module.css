@@ -5,7 +5,7 @@
     flex-direction: column;
     border-right: var(--border-small);
     gap: 4rem;
-    padding-top: 25svh
+    padding-top: 25svh;
 }
 
 .clickables {
@@ -25,9 +25,8 @@
     display: flex;
     align-items: center;
     position: relative;
-    overflow: hidden;
     padding-left: 2rem;
-    max-width: 80%;
+    width: fit-content;
 }
 
 .item a h5 {
@@ -39,11 +38,11 @@
     transition: transform 0.2s var(--bezier), font-variation-settings 0.2s var(--bezier);
 }
 
-.item:hover a {
+.item a:hover a {
     font-variation-settings: var(--subtitle-weight);
 }
 
-.item:hover h5 {
+.item a:hover h5 {
     transform: translateX(3.2rem);
     font-variation-settings: var(--title-weight);
 }
