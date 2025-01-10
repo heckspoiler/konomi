@@ -5,7 +5,13 @@
     flex-direction: column;
     border-right: var(--border-small);
     gap: 4rem;
-    padding-top: 10rem;
+    padding-top: 25svh
+}
+
+.clickables {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
 }
 
 .list {
@@ -26,7 +32,7 @@
 
 .item a h5 {
     z-index: 2;
-    font-variation-settings: var(--subtitle-weight);
+    font-variation-settings: var(--japanese-subtitle-weight);
     text-align: center;
     padding: 1rem 0;
     background-color: white;
@@ -63,6 +69,7 @@
 .address * {
     font-family: var(--title-font);
     color: var(--dark-blue);
+    font-size: 0.8rem;
 }
 
 .address div {
