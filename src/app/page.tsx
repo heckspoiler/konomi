@@ -6,6 +6,8 @@ import * as prismic from '@prismicio/client';
 import { createClient } from '@/prismicio';
 import { components } from '@/slices';
 
+import styles from './page.module.css';
+
 // This component renders your homepage.
 //
 // Use Next's generateMetadata function to render page metadata.
@@ -31,5 +33,11 @@ export default async function Index() {
   const client = createClient();
   const home = await client.getByUID('page', 'home');
 
-  return <></>;
+  return (
+    <section className={styles.main}>
+      <div className={styles.container}>
+        <SliceZone slices={home.data.slices} components={components} />;
+      </div>
+    </section>
+  );
 }

@@ -12,15 +12,18 @@
 .logoContainer {
     display: flex;
     flex-direction: column;
-    z-index: 12;
+    z-index: 14;
 }
 
 .logoContainer h3 {
     transform: translateY(-0.3rem);
+    background-color: var(--dark-blue);
+    color: white;
+    width: fit-content;
 }
 
 .hamburgerContainer {
-    z-index: 12;
+    z-index: 14;
 }
 
 .navbarContainer {
@@ -32,6 +35,7 @@
     transform: translateX(-100%);
     transition: transform 0.4s var(--bezier);
     background-color: white;
+    z-index: 1;
 }
 
 .open {

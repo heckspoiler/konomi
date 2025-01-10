@@ -1,0 +1,263 @@
+{
+  "id": "basic_slice",
+  "type": "SharedSlice",
+  "name": "BasicSlice",
+  "description": "BasicSlice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "japanese_subtitle_first": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Japanese Subtitle First",
+            "placeholder": "好み [ko|noː|mi] -- ",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
+        "japanese_subtitles_second": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Japanese Subtitles Second",
+            "placeholder": "dt.: \"Geschmack\"",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "placeholder": "Konomi ist das Festival japanischen Geschmacks in Basel.",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "schedule",
+      "name": "Schedule",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "japanese_subtitles_first": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Japanese Subtitles First",
+            "placeholder": "食べる [ta|be|ru] -- ",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
+        "japanese_subtitle_second": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Japanese Subtitle Second",
+            "placeholder": "dt.: \"essen\"",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "placeholder": "Konomi ist das Festival japanischen Geschmacks in Basel.",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "program_heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Program Heading",
+            "placeholder": "Programm",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "program_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Program text",
+            "placeholder": "In unserem Programm findest du genaue Details über Veranstaltungen",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "event": {
+          "type": "Group",
+          "config": {
+            "label": "Event",
+            "repeat": true,
+            "fields": {
+              "event_name": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Event Name",
+                  "placeholder": "Sake Trinken",
+                  "allowTargetBlank": true,
+                  "multi": "heading5"
+                }
+              },
+              "event_date": {
+                "type": "Date",
+                "config": {
+                  "label": "Event Date",
+                  "placeholder": ""
+                }
+              },
+              "eventfrog_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Eventfrog Link",
+                  "placeholder": "Mehr",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        },
+        "more_events_link": {
+          "type": "Link",
+          "config": {
+            "label": "More Events Link",
+            "placeholder": "Mehr Events",
+            "select": null,
+            "allowTargetBlank": false,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "whoIsKonomi",
+      "name": "Who is Konomi",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "japanese_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Japanese Subtitle",
+            "placeholder": "好み [ko|noː|mi] -- dt.: \"Geschmack\"",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "placeholder": "Konomi ist das Festival japanischen Geschmacks in Basel.",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "memberpage_link": {
+          "type": "Link",
+          "config": {
+            "label": "Memberpage Link",
+            "placeholder": "Erfahren Sie mehr über die Mitglieder",
+            "select": null,
+            "allowTargetBlank": false,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "whyKonomi",
+      "name": "Why Konomi",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "japanese_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Japanese Subtitle",
+            "placeholder": "好み [ko|noː|mi] -- dt.: \"Geschmack\"",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "placeholder": "Konomi ist das Festival japanischen Geschmacks in Basel.",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "last_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Last title",
+            "placeholder": "好み [ko|noː|mi] -- dt.: \"Geschmack\"",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -30,7 +30,7 @@
 }
 
 .item a h5 {
-    z-index: 2;
+    z-index: 1;
     font-variation-settings: var(--japanese-subtitle-weight);
     text-align: center;
     padding: 1rem 0;

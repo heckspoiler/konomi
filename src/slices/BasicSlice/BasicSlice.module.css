@@ -1,0 +1,21 @@
+.basicSlice {
+    padding: 3.8rem 0.7rem;
+    border-bottom: var(--border-small);
+
+}
+
+.sliceContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.headingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subtitleContainer h4 {
+    font-size: 0.7rem;
+}
