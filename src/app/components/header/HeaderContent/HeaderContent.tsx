@@ -14,12 +14,12 @@ export default function HeaderContent({ content }: { content: any }) {
 
   return (
     <div className={styles.main}>
-      <Link href="/">
-        <div className={styles.logoContainer}>
+      <div className={styles.logoContainer}>
+        <Link href="/">
           <PrismicRichText field={content.page_title} />
           <PrismicRichText field={content.page_subtitle_date} />
-        </div>
-      </Link>
+        </Link>
+      </div>
       <div className={styles.hamburgerContainer}>
         <Hamburger menuIsOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
       </div>

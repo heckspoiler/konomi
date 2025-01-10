@@ -36,7 +36,7 @@ const BasicSlice = ({ slice }: BasicSliceProps): JSX.Element => {
         </div>
       )}
       {slice.variation === 'schedule' && (
-        <div className={styles.SliceContainer}>
+        <div className={styles.sliceContainer}>
           <div className={styles.headingContainer}>
             <PrismicRichText field={slice.primary.heading} />
             <div className={styles.subtitleContainer}>
@@ -44,6 +44,7 @@ const BasicSlice = ({ slice }: BasicSliceProps): JSX.Element => {
               <PrismicRichText field={slice.primary.japanese_subtitle_second} />
             </div>
           </div>
+          <PrismicRichText field={slice.primary.text} />
         </div>
       )}
     </section>

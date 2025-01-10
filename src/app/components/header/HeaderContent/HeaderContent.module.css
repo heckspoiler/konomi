@@ -13,12 +13,23 @@
     display: flex;
     flex-direction: column;
     z-index: 14;
+    background-color: var(--dark-blue);
+    transition: scale 0.1s var(--bezier), box-shadow 0.1s var(--bezier);
+}
+
+.logoContainer * {
+    color: white;
+    padding: 0.1rem;
+
+}
+
+.logoContainer:hover {
+    scale: 1.03;
+    box-shadow: 2px 2px 1px var(--dark-blue)
 }
 
 .logoContainer h3 {
     transform: translateY(-0.3rem);
-    background-color: var(--dark-blue);
-    color: white;
     width: fit-content;
 }
 

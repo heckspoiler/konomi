@@ -1,6 +1,6 @@
 .basicSlice {
     padding: 3.8rem 0.7rem;
-    border-bottom: var(--border-small);
+    /* border-bottom: var(--border-small); */
 
 }
 
@@ -18,4 +18,32 @@
 
 .subtitleContainer h4 {
     font-size: 0.7rem;
+}
+
+/* !!!! DESKTOP !!!!! */
+
+@media screen and (min-width: 1080px) {
+    .basicSlice {
+        padding: 3.8rem 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sliceContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 50vw;
+    }
+
+    .headingContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .subtitleContainer h4 {
+        font-size: 0.7rem;
+    }
 }
