@@ -17,8 +17,12 @@
     height: 0.28rem;
     width: 2.28rem;
     background-color: var(--dark-blue);
-    transition: opacity 0.4s var(--bezier), transform 0.4s var(--bezier);
+    transition: opacity 0.4s var(--bezier), transform 0.4s var(--bezier), background-color 0.4s var(--bezier);
     transform-origin: center;
+}
+
+.open .hamburgerLine {
+    background-color: white;
 }
 
 /* Position lines with absolute positioning */
@@ -57,6 +61,12 @@
     transform: translate(-50%, -50%);
     border-radius: 50%;
     z-index: -1;
+    transition: background-color 0.4s var(--bezier)
+}
+
+.open .backgroundCircle {
+    background-color: var(--red);
+
 }
 
 @media screen and (min-width: 1080px) {
@@ -67,6 +77,10 @@
     .hamburgerLine {
         height: 0.3rem;
         width: 2rem;
+    }
+
+    .open .hamburgerLine {
+        background-color: var(--dark-blue);
     }
 
     /* Adjust line positions for desktop */
