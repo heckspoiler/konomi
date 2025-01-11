@@ -79,6 +79,7 @@ h4 {
 
 h5 {
     font-variation-settings: var(--ultrathin);
+    color: var(--dark-blue);
 }
 
 
@@ -113,6 +114,10 @@ label {
     color: var(--dark-blue);
     font-variation-settings: var(--subtitle-weight);
     font-size: 0.75rem;
+}
+
+input {
+    border-radius: none;
 }
 
 button {

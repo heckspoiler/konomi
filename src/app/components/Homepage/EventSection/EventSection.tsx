@@ -5,6 +5,7 @@ import SectionContainer from '../SectionContainer/SectionContainer';
 import styles from './EventSection.module.css';
 
 import { PrismicRichText, SliceZone } from '@prismicio/react';
+import Events from './Events';
 export default function EventSection({
   scheduleSlice,
   components,
@@ -17,13 +18,10 @@ export default function EventSection({
   return (
     <SectionContainer>
       <SliceZone slices={scheduleSlice} components={components} />
-      <div className={styles.scheduleContainer}>
-        {events.map((event: any) => (
-          <div key={event.id}>
-            <PrismicRichText field={event.data.event_title} />
-            <p>{event.data.event_start_date}</p>
-          </div>
-        ))}
+      <div className={styles.programContainer}>
+        <PrismicRichText field={scheduleSlice[0].primary.program_heading} />
+        <PrismicRichText field={scheduleSlice[0].primary.program_text} />
+        <Events events={events} />
       </div>
     </SectionContainer>
   );

@@ -29,8 +29,9 @@
     display: flex;
     align-items: center;
     position: relative;
-    padding-left: 2rem;
+    margin-left: 2rem;
     width: fit-content;
+
 }
 
 .item a h5 {

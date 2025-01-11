@@ -22,6 +22,7 @@
     padding: 0.7rem;
     color: var(--dark-blue);
     font-variation-settings: var(--subtitle-weight);
+    border-radius: none;
 }
 
 .form input[type="text"]:focus,
@@ -33,6 +34,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 65%;
 }
 
 .nameContainer {
@@ -53,10 +55,4 @@
 
 /* !!!! DESKTOP !!!!! */
 
-@media screen and (min-width: 1080px) {
-    .form {}
-
-
-
-
-}
+@media screen and (min-width: 1080px) {}

@@ -65,7 +65,7 @@
 }
 
 .open .backgroundCircle {
-    background-color: var(--red);
+    background-color: rgba(245, 255, 62, 0.5);
 
 }
 

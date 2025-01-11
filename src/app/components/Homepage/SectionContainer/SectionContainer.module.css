@@ -4,7 +4,7 @@
     /* border-bottom: var(--border-small); */
     flex-direction: column;
     gap: 4.2rem;
-    border-top: var(--border-small)
+    border-top: var(--border-small);
 }
 
 
@@ -12,8 +12,7 @@
     .container {
         padding: 3.8rem 0.7rem;
         width: 50vw;
-        gap: 2rem;
-
+        gap: 4.2rem;
     }
 
 

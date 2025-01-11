@@ -1,0 +1,33 @@
+.scheduleContainer {
+    padding: 1rem 0;
+}
+
+.event {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0.35rem 0;
+    border-bottom: 2px solid var(--dark-blue);
+}
+
+.event>* {
+    font-size: 1rem;
+    width: 100%;
+
+}
+
+.event a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.event h4 {
+    text-align: center;
+}
+
+.event a h5 {
+    font-variation-settings: var(--title-weight);
+    font-family: var(--title-font);
+    text-transform: uppercase;
+}
