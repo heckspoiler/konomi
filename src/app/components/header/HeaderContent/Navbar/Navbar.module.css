@@ -3,9 +3,13 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    border-right: var(--border-small);
     gap: 4rem;
     padding-top: 25svh;
+    background-color: var(--dark-blue);
+}
+
+.navbar * {
+    color: white;
 }
 
 .clickables {
@@ -34,7 +38,8 @@
     font-variation-settings: var(--japanese-subtitle-weight);
     text-align: center;
     padding: 1rem 0;
-    background-color: white;
+    color: white;
+    background-color: var(--dark-blue);
     transition: transform 0.2s var(--bezier), font-variation-settings 0.2s var(--bezier);
 }
 
@@ -67,7 +72,7 @@
 
 .address * {
     font-family: var(--title-font);
-    color: var(--dark-blue);
+    color: white;
     font-size: 0.8rem;
 }
 
