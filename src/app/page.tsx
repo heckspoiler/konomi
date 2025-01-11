@@ -6,7 +6,11 @@ import * as prismic from '@prismicio/client';
 import { createClient } from '@/prismicio';
 import { components } from '@/slices';
 
+import SectionContainer from './components/Homepage/SectionContainer/SectionContainer';
+
 import styles from './page.module.css';
+import AboutSection from './components/Homepage/AboutSection/AboutSection';
+import EventSection from './components/Homepage/EventSection/EventSection';
 
 // This component renders your homepage.
 //
@@ -47,16 +51,15 @@ export default async function Index() {
 
   return (
     <section className={styles.main}>
-      <div className={styles.container}>
-        <SliceZone slices={defaultVariationSlice} components={components} />;
-        <SliceZone slices={scheduleSlice} components={components} />;
-        {events.map((event) => (
-          <div key={event.id}>
-            <PrismicRichText field={event.data.event_title} />
-            <p>{event.data.event_start_date}</p>
-          </div>
-        ))}
-      </div>
+      <AboutSection
+        defaultVariationSlice={defaultVariationSlice}
+        components={components}
+      />
+      <EventSection
+        scheduleSlice={scheduleSlice}
+        components={components}
+        events={events}
+      />
     </section>
   );
 }

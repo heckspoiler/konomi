@@ -108,6 +108,13 @@ nav h5 {
     font-size: 2rem;
 }
 
+label {
+    font-family: var(--title-font);
+    color: var(--dark-blue);
+    font-variation-settings: var(--subtitle-weight);
+    font-size: 0.75rem;
+}
+
 button {
     background-color: var(--dark-blue);
     color: white;
@@ -161,7 +168,7 @@ button:hover {
 
 @media screen and (min-width: 1080px) {
     :root {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     p {

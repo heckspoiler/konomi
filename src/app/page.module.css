@@ -1,7 +1,7 @@
 .main {
     min-height: 100svh;
-}
-
-.container {
     margin-top: 100svh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }

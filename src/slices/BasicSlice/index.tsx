@@ -21,7 +21,6 @@ const BasicSlice = ({ slice }: BasicSliceProps): JSX.Element => {
         <section
           data-slice-type={slice.slice_type}
           data-slice-variation={slice.variation}
-          className={styles.basicSlice}
         >
           <div className={styles.sliceContainer}>
             <div className={styles.upperContainer}>
@@ -47,7 +46,6 @@ const BasicSlice = ({ slice }: BasicSliceProps): JSX.Element => {
         <section
           data-slice-type={slice.slice_type}
           data-slice-variation={slice.variation}
-          className={styles.basicSlice}
         >
           <div className={styles.sliceContainer}>
             <div className={styles.upperContainer}>
