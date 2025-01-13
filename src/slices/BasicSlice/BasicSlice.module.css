@@ -64,6 +64,8 @@
     }
 
     .sliceContainer p {
-        max-width: 80%;
+        width: 80%;
+        hyphens: auto;
+        text-align: justify;
     }
 }

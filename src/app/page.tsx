@@ -6,15 +6,7 @@ import * as prismic from '@prismicio/client';
 import { createClient } from '@/prismicio';
 import { components } from '@/slices';
 
-import SectionContainer from './components/Homepage/SectionContainer/SectionContainer';
-
-import styles from './page.module.css';
-import AboutSection from './components/Homepage/AboutSection/AboutSection';
-import EventSection from './components/Homepage/EventSection/EventSection';
-import WhySection from './components/Homepage/WhySection/WhySection';
-import KonomiSection from './components/Homepage/KonomiSection/KonomiSection';
-
-import ProgressIndicator from './components/header/HeaderContent/ProgressIndicator/ProgressIndicator';
+import HomepageContent from './components/Homepage/HomepageContent/HomepageContent';
 
 // This component renders your homepage.
 //
@@ -60,27 +52,13 @@ export default async function Index() {
   });
 
   return (
-    <section className={styles.main}>
-      <div id="about">
-        <AboutSection
-          defaultVariationSlice={defaultVariationSlice}
-          components={components}
-        />
-      </div>
-      <div id="events">
-        <EventSection
-          scheduleSlice={scheduleSlice}
-          components={components}
-          events={events}
-        />
-      </div>
-      <div id="konomi">
-        <KonomiSection konomiSlice={konomiSlice} components={components} />
-      </div>
-      <div id="why">
-        <WhySection whySlice={whySlice} components={components} />
-      </div>
-      <ProgressIndicator />
-    </section>
+    <HomepageContent
+      events={events}
+      defaultVariationSlice={defaultVariationSlice}
+      scheduleSlice={scheduleSlice}
+      konomiSlice={konomiSlice}
+      whySlice={whySlice}
+      components={components}
+    />
   );
 }
