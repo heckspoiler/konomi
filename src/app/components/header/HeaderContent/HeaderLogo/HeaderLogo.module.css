@@ -5,6 +5,7 @@
     z-index: 14;
     background-color: var(--dark-blue);
     transition: scale 0.1s var(--bezier), box-shadow 0.1s var(--bezier);
+    padding: 0.35rem;
 }
 
 .logoContainer * {
