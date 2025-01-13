@@ -34,6 +34,11 @@
     box-sizing: border-box;
 }
 
+*::selection {
+    color: white;
+    background-color: var(--dark-blue);
+}
+
 body {
     width: 100svw;
     min-height: 100svh;
