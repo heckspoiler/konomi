@@ -5,7 +5,7 @@
     z-index: 14;
     background-color: var(--dark-blue);
     transition: scale 0.1s var(--bezier), box-shadow 0.1s var(--bezier);
-    padding: 0.35rem;
+    padding: 0.2rem;
     transform-origin: top left;
 }
 
@@ -29,4 +29,5 @@
     /* transition: font-size 0.2s ease-in; */
     transform: translateY(-0.2rem);
     width: fit-content;
+    font-size: 0.8rem;
 }

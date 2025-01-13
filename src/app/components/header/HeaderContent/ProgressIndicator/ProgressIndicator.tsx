@@ -9,8 +9,6 @@ export default function ProgressIndicator({
 }: {
   activeSection: string;
 }) {
-  console.log('Active section in render:', activeSection);
-
   return (
     <div className={styles.container}>
       <div
