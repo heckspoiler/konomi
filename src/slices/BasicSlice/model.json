@@ -47,6 +47,15 @@
             "allowTargetBlank": true,
             "multi": "paragraph"
           }
+        },
+        "lower_titile": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Lower Titile",
+            "placeholder": "好み... heisst \"Geschmack\"!",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
         }
       },
       "items": {}

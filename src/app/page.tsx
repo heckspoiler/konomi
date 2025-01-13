@@ -11,7 +11,7 @@ import SectionContainer from './components/Homepage/SectionContainer/SectionCont
 import styles from './page.module.css';
 import AboutSection from './components/Homepage/AboutSection/AboutSection';
 import EventSection from './components/Homepage/EventSection/EventSection';
-
+import WhySection from './components/Homepage/WhySection/WhySection';
 import KonomiSection from './components/Homepage/KonomiSection/KonomiSection';
 
 import ProgressIndicator from './components/header/HeaderContent/ProgressIndicator/ProgressIndicator';
@@ -55,6 +55,10 @@ export default async function Index() {
     return slice.variation === 'whoIsKonomi';
   });
 
+  const whySlice = home.data.slices.filter((slice) => {
+    return slice.variation === 'whyKonomi';
+  });
+
   return (
     <section className={styles.main}>
       <div id="about">
@@ -70,8 +74,11 @@ export default async function Index() {
           events={events}
         />
       </div>
-      <div id="#konomi">
+      <div id="konomi">
         <KonomiSection konomiSlice={konomiSlice} components={components} />
+      </div>
+      <div id="why">
+        <WhySection whySlice={whySlice} components={components} />
       </div>
       <ProgressIndicator />
     </section>

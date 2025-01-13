@@ -6,24 +6,27 @@
     background-color: var(--dark-blue);
     transition: scale 0.1s var(--bezier), box-shadow 0.1s var(--bezier);
     padding: 0.35rem;
+    transform-origin: top left;
 }
 
 .logoContainer * {
     color: white;
     padding: 0.1rem;
-
 }
 
 .logoContainer:hover {
-    scale: 1.03;
-    box-shadow: 2px 2px 1px var(--dark-blue)
+    scale: 1.02;
 }
 
 .logoContainer h1 {
-    transform: translateY(0.3rem)
+    /* transition: font-size 0.2s ease-in; */
+    transform: translateY(0.3rem);
 }
 
+
+
 .logoContainer h3 {
+    /* transition: font-size 0.2s ease-in; */
     transform: translateY(-0.2rem);
     width: fit-content;
 }

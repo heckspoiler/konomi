@@ -484,6 +484,16 @@ export interface BasicSliceSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   text: prismic.RichTextField;
+
+  /**
+   * Lower Titile field in *BasicSlice → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: 好み... heisst "Geschmack"!
+   * - **API ID Path**: basic_slice.default.primary.lower_titile
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  lower_titile: prismic.RichTextField;
 }
 
 /**

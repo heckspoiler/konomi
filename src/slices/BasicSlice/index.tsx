@@ -96,6 +96,31 @@ const BasicSlice = ({ slice }: BasicSliceProps): JSX.Element => {
           </div>
         </section>
       )}
+
+      {slice.variation === 'whyKonomi' && (
+        <section
+          data-slice-type={slice.slice_type}
+          data-slice-variation={slice.variation}
+        >
+          <div className={styles.sliceContainer}>
+            <div className={styles.upperContainer}>
+              <div className={styles.headingContainer}>
+                <PrismicRichText field={slice.primary.heading} />
+                <div className={styles.subtitleContainer}>
+                  <PrismicRichText
+                    field={slice.primary.japanese_subtitle_first}
+                  />
+                  <PrismicRichText
+                    field={slice.primary.japanese_subtitles_second}
+                  />
+                </div>
+              </div>
+              <PrismicRichText field={slice.primary.text} />
+              <PrismicRichText field={slice.primary.last_title} />
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 };
