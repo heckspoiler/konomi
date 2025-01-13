@@ -196,17 +196,6 @@
 					}
 				]
 			},
-			"japanese_subtitle": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading4",
-						"content": {
-							"text": "Letter"
-						}
-					}
-				]
-			},
 			"text": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -226,6 +215,28 @@
 					"url": "http://twitter.com",
 					"text": "queen"
 				}
+			},
+			"japanese_subtitles_first": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Somehow"
+						}
+					}
+				]
+			},
+			"japanese_subtitles_second": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Manner"
+						}
+					}
+				]
 			}
 		},
 		"items": [
@@ -250,17 +261,6 @@
 					}
 				]
 			},
-			"japanese_subtitle": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading4",
-						"content": {
-							"text": "Winter"
-						}
-					}
-				]
-			},
 			"text": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -279,6 +279,28 @@
 						"type": "heading2",
 						"content": {
 							"text": "Month"
+						}
+					}
+				]
+			},
+			"japanese_subtitle_first": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Buffalo"
+						}
+					}
+				]
+			},
+			"japanese_subtitles_second": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Troops"
 						}
 					}
 				]

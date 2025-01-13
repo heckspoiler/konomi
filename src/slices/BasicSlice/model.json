@@ -180,11 +180,20 @@
             "multi": "heading2"
           }
         },
-        "japanese_subtitle": {
+        "japanese_subtitles_first": {
           "type": "StructuredText",
           "config": {
-            "label": "Japanese Subtitle",
-            "placeholder": "好み [ko|noː|mi] -- dt.: \"Geschmack\"",
+            "label": "Japanese Subtitles First",
+            "placeholder": "チーム [chi|mu] --",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
+        "japanese_subtitles_second": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Japanese Subtitles Second",
+            "placeholder": "dt.: \"Team\"",
             "allowTargetBlank": true,
             "multi": "heading4"
           }
@@ -229,11 +238,11 @@
             "multi": "heading2"
           }
         },
-        "japanese_subtitle": {
+        "japanese_subtitle_first": {
           "type": "StructuredText",
           "config": {
-            "label": "Japanese Subtitle",
-            "placeholder": "好み [ko|noː|mi] -- dt.: \"Geschmack\"",
+            "label": "Japanese Subtitle First",
+            "placeholder": "好み [ko|noː|mi] -- ",
             "allowTargetBlank": true,
             "multi": "heading4"
           }
@@ -254,6 +263,15 @@
             "placeholder": "好み [ko|noː|mi] -- dt.: \"Geschmack\"",
             "allowTargetBlank": true,
             "multi": "heading2"
+          }
+        },
+        "japanese_subtitles_second": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Japanese Subtitles Second",
+            "placeholder": "dt.: \"Geschmack\"",
+            "allowTargetBlank": true,
+            "multi": "heading4"
           }
         }
       },

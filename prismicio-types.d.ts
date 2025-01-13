@@ -612,14 +612,24 @@ export interface BasicSliceSliceWhoIsKonomiPrimary {
   heading: prismic.RichTextField;
 
   /**
-   * Japanese Subtitle field in *BasicSlice → Who is Konomi → Primary*
+   * Japanese Subtitles First field in *BasicSlice → Who is Konomi → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: 好み [ko|noː|mi] -- dt.: "Geschmack"
-   * - **API ID Path**: basic_slice.whoIsKonomi.primary.japanese_subtitle
+   * - **Placeholder**: チーム [chi|mu] --
+   * - **API ID Path**: basic_slice.whoIsKonomi.primary.japanese_subtitles_first
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  japanese_subtitle: prismic.RichTextField;
+  japanese_subtitles_first: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles Second field in *BasicSlice → Who is Konomi → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: dt.: "Team"
+   * - **API ID Path**: basic_slice.whoIsKonomi.primary.japanese_subtitles_second
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtitles_second: prismic.RichTextField;
 
   /**
    * Text field in *BasicSlice → Who is Konomi → Primary*
@@ -670,14 +680,14 @@ export interface BasicSliceSliceWhyKonomiPrimary {
   heading: prismic.RichTextField;
 
   /**
-   * Japanese Subtitle field in *BasicSlice → Why Konomi → Primary*
+   * Japanese Subtitle First field in *BasicSlice → Why Konomi → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: 好み [ko|noː|mi] -- dt.: "Geschmack"
-   * - **API ID Path**: basic_slice.whyKonomi.primary.japanese_subtitle
+   * - **Placeholder**: 好み [ko|noː|mi] --
+   * - **API ID Path**: basic_slice.whyKonomi.primary.japanese_subtitle_first
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  japanese_subtitle: prismic.RichTextField;
+  japanese_subtitle_first: prismic.RichTextField;
 
   /**
    * Text field in *BasicSlice → Why Konomi → Primary*
@@ -698,6 +708,16 @@ export interface BasicSliceSliceWhyKonomiPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   last_title: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles Second field in *BasicSlice → Why Konomi → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: dt.: "Geschmack"
+   * - **API ID Path**: basic_slice.whyKonomi.primary.japanese_subtitles_second
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtitles_second: prismic.RichTextField;
 }
 
 /**

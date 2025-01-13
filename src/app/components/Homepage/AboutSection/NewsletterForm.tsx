@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 
 import styles from './NewsletterForm.module.css';
 
+import Arrow from '../../arrow/Arrow';
+
 export default function NewsletterForm() {
   const [formData, setFormData] = useState({
     email: '',
@@ -86,7 +88,12 @@ export default function NewsletterForm() {
         </label>
       </div>
       <div className={styles.buttonContainer}>
-        <button type="submit">ANMELDEN</button>
+        <button type="submit" className={styles.submitButton}>
+          <span>ANMELDEN</span>
+          <span>
+            <Arrow fill={'white'} />
+          </span>
+        </button>
       </div>
     </form>
   );

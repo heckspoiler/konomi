@@ -53,6 +53,16 @@
     gap: 1rem;
 }
 
+.submitButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.submitButton span {
+    transform: translateY(1px)
+}
+
 /* !!!! DESKTOP !!!!! */
 
 @media screen and (min-width: 1080px) {}

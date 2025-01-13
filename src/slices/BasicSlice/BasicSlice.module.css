@@ -20,6 +20,23 @@
     font-size: 0.7rem;
 }
 
+
+.writtenlinkContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+.writtenlinkContainer a {
+    font-variation-settings: var(--title-weight);
+    text-transform: uppercase;
+}
+
+.writtenlinkContainer svg {
+    transform: translateY(-2px)
+}
+
 /* !!!! DESKTOP !!!!! */
 
 @media screen and (min-width: 1080px) {

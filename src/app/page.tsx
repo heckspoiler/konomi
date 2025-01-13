@@ -12,6 +12,8 @@ import styles from './page.module.css';
 import AboutSection from './components/Homepage/AboutSection/AboutSection';
 import EventSection from './components/Homepage/EventSection/EventSection';
 
+import KonomiSection from './components/Homepage/KonomiSection/KonomiSection';
+
 // This component renders your homepage.
 //
 // Use Next's generateMetadata function to render page metadata.
@@ -47,19 +49,30 @@ export default async function Index() {
     return slice.variation === 'schedule';
   });
 
+  const konomiSlice = home.data.slices.filter((slice) => {
+    return slice.variation === 'whoIsKonomi';
+  });
+
   console.log(defaultVariationSlice);
 
   return (
     <section className={styles.main}>
-      <AboutSection
-        defaultVariationSlice={defaultVariationSlice}
-        components={components}
-      />
-      <EventSection
-        scheduleSlice={scheduleSlice}
-        components={components}
-        events={events}
-      />
+      <div id="about">
+        <AboutSection
+          defaultVariationSlice={defaultVariationSlice}
+          components={components}
+        />
+      </div>
+      <div id="events">
+        <EventSection
+          scheduleSlice={scheduleSlice}
+          components={components}
+          events={events}
+        />
+      </div>
+      <div id="#konomi">
+        <KonomiSection konomiSlice={konomiSlice} components={components} />
+      </div>
     </section>
   );
 }
