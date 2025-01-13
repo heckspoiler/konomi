@@ -47,7 +47,6 @@ export default function HeaderContent({ content }: { content: any }) {
   return (
     <div ref={headerRef} className={styles.main}>
       <HeaderLogo content={content} />
-      <ProgressIndicator />
       <div className={styles.hamburgerContainer}>
         <Hamburger menuIsOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
       </div>
