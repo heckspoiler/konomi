@@ -1,15 +1,8 @@
+// page.tsx
 import { Metadata } from 'next';
-
 import { createClient } from '@/prismicio';
-import { components } from '@/slices';
 
 import HomepageContent from './components/Homepage/HomepageContent/HomepageContent';
-
-// This component renders your homepage.
-//
-// Use Next's generateMetadata function to render page metadata.
-//
-// Use the SliceZone to render the content of the page.
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
@@ -30,34 +23,29 @@ export default async function Index() {
   const home = await client.getByUID('page', 'home');
   const events = await client.getAllByType('event');
 
-  const defaultVariationSlice = home.data.slices.filter((slice) => {
-    return slice.variation === 'default';
-  });
+  const defaultVariationSlice = home.data.slices.filter(
+    (slice) => slice.variation === 'default'
+  );
 
-  const scheduleSlice = home.data.slices.filter((slice) => {
-    return slice.variation === 'schedule';
-  });
+  const scheduleSlice = home.data.slices.filter(
+    (slice) => slice.variation === 'schedule'
+  );
 
-  const konomiSlice = home.data.slices.filter((slice) => {
-    return slice.variation === 'whoIsKonomi';
-  });
+  const konomiSlice = home.data.slices.filter(
+    (slice) => slice.variation === 'whoIsKonomi'
+  );
 
-  const whySlice = home.data.slices.filter((slice) => {
-    return slice.variation === 'whyKonomi';
-  });
+  const whySlice = home.data.slices.filter(
+    (slice) => slice.variation === 'whyKonomi'
+  );
 
-  // Create a server component to render the slices
   return (
-    <>
-      {/* Render your slices here in a server component */}
-      <HomepageContent
-        events={events}
-        defaultVariationSlice={defaultVariationSlice}
-        scheduleSlice={scheduleSlice}
-        konomiSlice={konomiSlice}
-        whySlice={whySlice}
-        components={components}
-      />
-    </>
+    <HomepageContent
+      events={events}
+      defaultVariationSlice={defaultVariationSlice}
+      scheduleSlice={scheduleSlice}
+      konomiSlice={konomiSlice}
+      whySlice={whySlice}
+    />
   );
 }

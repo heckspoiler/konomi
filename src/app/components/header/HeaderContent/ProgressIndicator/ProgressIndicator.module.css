@@ -13,8 +13,17 @@
     gap: 0.5rem;
 }
 
+.active {
+    background-color: var(--red);
+}
 
-.container div {
+
+.active a {
+    color: white;
+}
+
+
+.link {
     position: relative;
     display: flex;
     border: 1px solid var(--dark-blue);
@@ -23,7 +32,7 @@
     transition: background-color 0.2s var(--bezier)
 }
 
-.container>div>a {
+.link>a {
     height: 100%;
     width: 100%;
     padding: 0.4rem 0.2rem;
@@ -36,16 +45,14 @@
     transition: color 0.2s var(--bezier);
 }
 
-.isActive {
+
+
+
+.link:hover {
     background-color: var(--dark-blue);
 }
 
-
-.container div:hover {
-    background-color: var(--dark-blue);
-}
-
-.container div:hover a {
+.link:hover a {
     color: white;
 }
 
@@ -70,6 +77,10 @@
         font-size: 0.7rem;
         text-transform: uppercase;
         font-variation-settings: var(--title-weight);
+    }
+
+    .active {
+        background-color: var(--dark-blue);
     }
 
 }

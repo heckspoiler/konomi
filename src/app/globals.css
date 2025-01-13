@@ -39,6 +39,10 @@
     background-color: var(--dark-blue);
 }
 
+* {
+    scroll-behavior: smooth;
+}
+
 body {
     width: 100svw;
     min-height: 100svh;
