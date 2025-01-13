@@ -26,10 +26,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Index() {
-  // The client queries content from the Prismic API
   const client = createClient();
   const home = await client.getByUID('page', 'home');
-
   const events = await client.getAllByType('event');
 
   const defaultVariationSlice = home.data.slices.filter((slice) => {
@@ -48,14 +46,18 @@ export default async function Index() {
     return slice.variation === 'whyKonomi';
   });
 
+  // Create a server component to render the slices
   return (
-    <HomepageContent
-      events={events}
-      defaultVariationSlice={defaultVariationSlice}
-      scheduleSlice={scheduleSlice}
-      konomiSlice={konomiSlice}
-      whySlice={whySlice}
-      components={components}
-    />
+    <>
+      {/* Render your slices here in a server component */}
+      <HomepageContent
+        events={events}
+        defaultVariationSlice={defaultVariationSlice}
+        scheduleSlice={scheduleSlice}
+        konomiSlice={konomiSlice}
+        whySlice={whySlice}
+        components={components}
+      />
+    </>
   );
 }
