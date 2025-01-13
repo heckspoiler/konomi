@@ -9,8 +9,12 @@ import Hamburger from './Hamburger/Hamburger';
 import Navbar from './Navbar/Navbar';
 import Link from 'next/link';
 
+import { useMobile } from '../../../../../contexts/MobileContext';
+import ClickOverlay from './ClickOverlay';
+
 export default function HeaderContent({ content }: { content: any }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const { isMobile } = useMobile();
 
   return (
     <div className={styles.main}>
@@ -28,6 +32,11 @@ export default function HeaderContent({ content }: { content: any }) {
       >
         <Navbar menuIsOpen={menuIsOpen} content={content} />
       </div>
+      <ClickOverlay
+        isMobile={isMobile}
+        menuIsOpen={menuIsOpen}
+        setMenuIsOpen={setMenuIsOpen}
+      />
     </div>
   );
 }

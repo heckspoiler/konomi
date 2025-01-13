@@ -12,6 +12,8 @@ import {
   Mesh,
 } from 'three';
 
+import { useMobile } from '../../../../../contexts/MobileContext';
+
 import mobileBackground from '/public/images/background-mobile_bgw.png';
 import desktopBackground from '/public/images/background-desktop_bgw.png';
 
@@ -31,11 +33,13 @@ export default function BackgroundCanvas() {
   const [scrollHeight, setScrollHeight] = useState<number>(0);
   const [directionsMultiplier, setDirectionsMultiplier] = useState<number>(1);
 
-  const [isMobile, setIsMobile] = useState<boolean>(
-    typeof window !== 'undefined'
-      ? window.innerWidth <= MOBILE_BREAKPOINT
-      : false
-  );
+  const { isMobile } = useMobile();
+
+  // const [isMobile, setIsMobile] = useState<boolean>(
+  //   typeof window !== 'undefined'
+  //     ? window.innerWidth <= MOBILE_BREAKPOINT
+  //     : false
+  // );
 
   // Scroll handler effect
   useEffect(() => {

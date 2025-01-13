@@ -1,0 +1,13 @@
+.clickOverlay {
+    position: fixed;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    height: 100svh;
+    width: 100svw;
+    display: none;
+}
+
+.isVisible {
+    display: block;
+}

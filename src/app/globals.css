@@ -4,7 +4,7 @@
 :root {
 
     /* general */
-    font-size: 14px;
+    font-size: calc(100vw / 375 * 14);
     --bezier: cubic-bezier(0.645, 0.045, 0.355, 1.000);
     --border-small: 0.2rem solid var(--dark-blue);
 
@@ -37,7 +37,8 @@
 body {
     width: 100svw;
     min-height: 100svh;
-    height: 200svh;
+    height: fit-content;
+    overflow-x: hidden;
 }
 
 h1,
@@ -173,7 +174,7 @@ button:hover {
 
 @media screen and (min-width: 1080px) {
     :root {
-        font-size: 18px;
+        font-size: calc(100vw / 1920 * 20);
     }
 
     p {
