@@ -34,8 +34,8 @@ export default function HomepageContent({
       <div id="events">
         <EventSection
           scheduleSlice={scheduleSlice}
-          components={components}
           events={events}
+          components={components}
         />
       </div>
       <div id="konomi">

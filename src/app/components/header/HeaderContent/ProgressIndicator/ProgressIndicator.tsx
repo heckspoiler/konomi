@@ -12,15 +12,15 @@ export default function ProgressIndicator() {
       </div>
 
       <div>
-        <Link href="#about">Wo ist Konomi?</Link>
+        <Link href="#events">Wo ist Konomi?</Link>
       </div>
 
       <div>
-        <Link href="#about">Wer ist Konomi?</Link>
+        <Link href="#konomi">Wer ist Konomi?</Link>
       </div>
 
       <div>
-        <Link href="#about">Warum ist Konomi?</Link>
+        <Link href="#why">Warum ist Konomi?</Link>
       </div>
     </div>
   );
