@@ -19,3 +19,7 @@
 .moreEventsLink svg {
     transform: translateY(-2px);
 }
+
+.programText {
+    width: 80%;
+}

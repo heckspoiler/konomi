@@ -14,6 +14,8 @@ import EventSection from './components/Homepage/EventSection/EventSection';
 
 import KonomiSection from './components/Homepage/KonomiSection/KonomiSection';
 
+import ProgressIndicator from './components/header/HeaderContent/ProgressIndicator/ProgressIndicator';
+
 // This component renders your homepage.
 //
 // Use Next's generateMetadata function to render page metadata.
@@ -53,8 +55,6 @@ export default async function Index() {
     return slice.variation === 'whoIsKonomi';
   });
 
-  console.log(defaultVariationSlice);
-
   return (
     <section className={styles.main}>
       <div id="about">
@@ -73,6 +73,7 @@ export default async function Index() {
       <div id="#konomi">
         <KonomiSection konomiSlice={konomiSlice} components={components} />
       </div>
+      <ProgressIndicator />
     </section>
   );
 }

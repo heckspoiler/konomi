@@ -1,0 +1,47 @@
+/* !!!! MOBILE DEVELOPMENT FIRST!!!!! */
+
+
+
+
+
+
+/* !!!! Desktop Development !!!! */
+
+@media screen and (min-width: 1080px) {
+    .container {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: space-evenly;
+        width: fit-content;
+        left: var(--main-container-padding);
+        top: calc(var(--header-height) + 2.1rem);
+        gap: 0.5rem;
+    }
+
+    .container div {
+        position: relative;
+        display: flex;
+        border: 1px solid var(--dark-blue);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container>div>a {
+        height: 100%;
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        font-variation-settings: var(--title-weight);
+        display: block;
+        text-align: center;
+        transition: background-color 0.2s var(--bezier), color 0.2s var(--bezier);
+    }
+
+    .container div:hover a {
+        background-color: var(--dark-blue);
+        color: white;
+    }
+}

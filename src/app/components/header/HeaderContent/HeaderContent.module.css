@@ -9,29 +9,6 @@
     align-items: center;
 }
 
-.logoContainer {
-    display: flex;
-    flex-direction: column;
-    z-index: 14;
-    background-color: var(--dark-blue);
-    transition: scale 0.1s var(--bezier), box-shadow 0.1s var(--bezier);
-}
-
-.logoContainer * {
-    color: white;
-    padding: 0.1rem;
-
-}
-
-.logoContainer:hover {
-    scale: 1.03;
-    box-shadow: 2px 2px 1px var(--dark-blue)
-}
-
-.logoContainer h3 {
-    transform: translateY(-0.3rem);
-    width: fit-content;
-}
 
 .hamburgerContainer {
     z-index: 14;
@@ -55,6 +32,13 @@
 }
 
 @media screen and (min-width: 1080px) {
+
+
+    .hamburgerContainer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
 
     .navbarContainer {
         position: fixed;

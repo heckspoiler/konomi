@@ -23,7 +23,9 @@ export default function EventSection({
       <SliceZone slices={scheduleSlice} components={components} />
       <div className={styles.programContainer}>
         <PrismicRichText field={scheduleSlice[0].primary.program_heading} />
-        <PrismicRichText field={scheduleSlice[0].primary.program_text} />
+        <div className={styles.programText}>
+          <PrismicRichText field={scheduleSlice[0].primary.program_text} />
+        </div>
         <Events events={events} />
         <div className={styles.moreEventsLink}>
           <PrismicNextLink field={scheduleSlice[0].primary.more_events_link} />
