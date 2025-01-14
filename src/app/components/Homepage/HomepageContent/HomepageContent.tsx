@@ -11,6 +11,8 @@ import ProgressIndicator from '../../header/HeaderContent/ProgressIndicator/Prog
 
 import { components } from '@/slices';
 
+import { useMobile } from '../../../../../contexts/MobileContext';
+
 interface HomepageContentProps {
   defaultVariationSlice: any;
   events: any;
@@ -33,6 +35,17 @@ export default function HomepageContent({
   const eventsRef = useRef<HTMLDivElement>(null);
   const konomiRef = useRef<HTMLDivElement>(null);
   const whyRef = useRef<HTMLDivElement>(null);
+  const [threshold, setThreshold] = useState<number>(0.1);
+
+  const { isMobile } = useMobile();
+
+  useEffect(() => {
+    if (isMobile) {
+      setThreshold(0.5);
+    } else {
+      setThreshold(0.1);
+    }
+  }, [isMobile]);
 
   useEffect(() => {
     const sectionRefs = {
@@ -44,8 +57,8 @@ export default function HomepageContent({
 
     const options = {
       root: null,
-      rootMargin: '-45% 0px -45% 0px', // Adjusts the intersection area to be more centered
-      threshold: 0.1, // Trigger when at least 10% of the target is visible
+      rootMargin: '-40% 0px -40% 0px',
+      threshold: threshold,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -72,7 +85,7 @@ export default function HomepageContent({
         }
       });
     };
-  }, []); // Empty dependency array since refs are stable
+  }, []);
 
   return (
     <section className={styles.main}>

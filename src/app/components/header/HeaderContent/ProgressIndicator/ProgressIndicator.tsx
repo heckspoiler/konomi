@@ -4,11 +4,17 @@ import React from 'react';
 import styles from './ProgressIndicator.module.css';
 import Link from 'next/link';
 
+import { useMobile } from '../../../../../../contexts/MobileContext';
+
 export default function ProgressIndicator({
   activeSection,
 }: {
   activeSection: string;
 }) {
+  console.log('activeSection:', activeSection);
+
+  const { isMobile } = useMobile();
+
   return (
     <div className={styles.container}>
       <div
