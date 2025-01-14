@@ -1,0 +1,34 @@
+.event {
+    border: 1px solid black;
+    background-color: var(--light-blue);
+}
+
+.imageContainer {
+    height: 10rem;
+    width: fit-content;
+    border: 1px solid black;
+}
+
+.imageContainer img {
+    height: 100%;
+    width: auto;
+}
+
+
+
+/* !!!! DESKTOP !!!!! */
+
+@media screen and (min-width: 1080px) {
+    .container {
+
+        width: 55vw;
+
+    }
+
+    .mainHeadingContainer {
+
+        width: 55vw;
+
+        padding-right: 0;
+    }
+}

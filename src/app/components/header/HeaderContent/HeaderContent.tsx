@@ -1,13 +1,10 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react'; // Add useRef
-import { PrismicRichText } from '@prismicio/react';
 import styles from './HeaderContent.module.css';
 import Hamburger from './Hamburger/Hamburger';
 import Navbar from './Navbar/Navbar';
-import Link from 'next/link';
 import { useMobile } from '../../../../../contexts/MobileContext';
 import ClickOverlay from './ClickOverlay';
-import ProgressIndicator from './ProgressIndicator/ProgressIndicator';
 import HeaderLogo from './HeaderLogo/HeaderLogo';
 
 export default function HeaderContent({ content }: { content: any }) {

@@ -11,8 +11,6 @@ export default function ProgressIndicator({
 }: {
   activeSection: string;
 }) {
-  console.log('activeSection:', activeSection);
-
   const { isMobile } = useMobile();
 
   return (

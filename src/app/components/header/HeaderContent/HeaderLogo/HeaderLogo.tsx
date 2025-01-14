@@ -1,28 +1,39 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { PrismicRichText } from '@prismicio/react';
 import styles from './HeaderLogo.module.css';
 import { usePathname } from 'next/navigation';
 
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(useGSAP);
+
 const pathnames = ['/about', '/events'];
 
 export default function HeaderLogo({ content }: { content: any }) {
   const pathname = usePathname();
-  const [isHome, setIsHome] = useState(true);
+  const titleRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const isNotHomePage = pathnames.some((path) => pathname.includes(path));
-    setTimeout(() => {
-      setIsHome(!isNotHomePage);
-    }, 500);
+  const isNotHomePage = pathnames.some((path) => pathname.includes(path));
+
+  useGSAP(() => {
+    const titleElement = titleRef.current;
+
+    if (titleElement) {
+      gsap.to(titleElement, {
+        scale: isNotHomePage ? '0.7' : '1',
+        rotateX: isNotHomePage ? 360 : 0,
+        duration: 0.4,
+        ease: 'power2.inOut',
+      });
+    }
   }, [pathname]);
 
   return (
-    <div
-      className={`${styles.logoContainer} ${!isHome ? styles.smallHeader : ''}`}
-    >
+    <div className={styles.logoContainer} ref={titleRef}>
       <Link href="/">
         <PrismicRichText field={content.page_title} />
         <PrismicRichText field={content.page_subtitle_date} />

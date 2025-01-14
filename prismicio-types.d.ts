@@ -22,28 +22,6 @@ interface EventDocumentData {
   event_title: prismic.RichTextField;
 
   /**
-   * Event Start Date field in *Event*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: *None*
-   * - **API ID Path**: event.event_start_date
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#date
-   */
-  event_start_date: prismic.DateField;
-
-  /**
-   * Event End Date field in *Event*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: *None*
-   * - **API ID Path**: event.event_end_date
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#date
-   */
-  event_end_date: prismic.DateField;
-
-  /**
    * Eventfrog Link field in *Event*
    *
    * - **Field Type**: Link
@@ -64,6 +42,28 @@ interface EventDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   event_image: prismic.ImageField<never>;
+
+  /**
+   * Event Start Date field in *Event*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.event_start_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#timestamp
+   */
+  event_start_date: prismic.TimestampField;
+
+  /**
+   * Event End Date field in *Event*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.event_end_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#timestamp
+   */
+  event_end_date: prismic.TimestampField;
 
   /**
    * Event Location field in *Event*
@@ -240,6 +240,28 @@ interface EventsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   page_title: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles First field in *Events*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: イベント [I|ben|to] --
+   * - **API ID Path**: events.japanese_subtitles_first
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtitles_first: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles Second field in *Events*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: eng.: "Event"
+   * - **API ID Path**: events.japanese_subtitles_second
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtitles_second: prismic.RichTextField;
 
   /**
    * Slice Zone field in *Events*

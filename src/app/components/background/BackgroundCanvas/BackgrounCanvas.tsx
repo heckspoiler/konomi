@@ -14,6 +14,8 @@ import {
 
 import { useMobile } from '../../../../../contexts/MobileContext';
 
+import { usePathname } from 'next/navigation';
+
 import mobileBackground from '/public/images/background-mobile_bgw.png';
 import desktopBackground from '/public/images/background-desktop_bgw.png';
 
@@ -32,14 +34,17 @@ export default function BackgroundCanvas() {
   const [background, setBackground] = useState<string>(mobileBackground.src);
   const [scrollHeight, setScrollHeight] = useState<number>(0);
   const [directionsMultiplier, setDirectionsMultiplier] = useState<number>(1);
+  const pathname = usePathname();
 
   const { isMobile } = useMobile();
 
-  // const [isMobile, setIsMobile] = useState<boolean>(
-  //   typeof window !== 'undefined'
-  //     ? window.innerWidth <= MOBILE_BREAKPOINT
-  //     : false
-  // );
+  useEffect(() => {
+    setScrollHeight(0);
+
+    if (materialRef.current) {
+      materialRef.current.uniforms.u_scrollHeight.value = 0;
+    }
+  }, [pathname]);
 
   // Scroll handler effect
   useEffect(() => {

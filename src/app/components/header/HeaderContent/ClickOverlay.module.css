@@ -5,9 +5,9 @@
     left: 0;
     height: 100svh;
     width: 100svw;
-    display: none;
+    transform: translateY(-100%)
 }
 
 .isVisible {
-    display: block;
+    transform: translateY(0);
 }

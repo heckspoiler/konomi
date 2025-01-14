@@ -5,6 +5,8 @@ import { createClient } from '@/prismicio';
 import { components } from '@/slices';
 
 import styles from './page.module.css';
+import { PrismicNextImage } from '@prismicio/next';
+import EventsContent from './components/EventsContent';
 
 export default async function Page() {
   const client = createClient();
@@ -12,23 +14,9 @@ export default async function Page() {
 
   const events = await client.getAllByType('event');
 
-  console.log(events);
-
   return (
     <div className={styles.main}>
-      <div className={styles.eventContainer}>
-        <PrismicRichText field={page.data.page_title} />
-        {events.map((event, index) => {
-          return (
-            <div key={index} className={styles.event}>
-              <div className={styles.leftContainer}></div>
-              <div className={styles.rightContainer}>
-                <PrismicRichText field={event.data.event_title} />
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <EventsContent events={events} page={page} />
     </div>
   );
 }

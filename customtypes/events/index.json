@@ -22,6 +22,24 @@
           "multi": "heading2"
         }
       },
+      "japanese_subtitles_first": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Japanese Subtitles First",
+          "placeholder": "イベント [I|ben|to] --",
+          "allowTargetBlank": true,
+          "multi": "heading4"
+        }
+      },
+      "japanese_subtitles_second": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Japanese Subtitles Second",
+          "placeholder": "eng.: \"Event\"",
+          "allowTargetBlank": true,
+          "multi": "heading4"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

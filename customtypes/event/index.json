@@ -21,20 +21,6 @@
           "multi": "heading2"
         }
       },
-      "event_start_date": {
-        "type": "Date",
-        "config": {
-          "label": "Event Start Date",
-          "placeholder": ""
-        }
-      },
-      "event_end_date": {
-        "type": "Date",
-        "config": {
-          "label": "Event End Date",
-          "placeholder": ""
-        }
-      },
       "eventfrog_link": {
         "type": "Link",
         "config": {
@@ -52,6 +38,20 @@
           "label": "Event Image",
           "constraint": {},
           "thumbnails": []
+        }
+      },
+      "event_start_date": {
+        "type": "Timestamp",
+        "config": {
+          "label": "Event Start Date",
+          "placeholder": ""
+        }
+      },
+      "event_end_date": {
+        "type": "Timestamp",
+        "config": {
+          "label": "Event End Date",
+          "placeholder": ""
         }
       },
       "event_location": {

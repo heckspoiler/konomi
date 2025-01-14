@@ -8,6 +8,7 @@
     --bezier: cubic-bezier(0.645, 0.045, 0.355, 1.000);
     --border-small: 0.2rem solid var(--dark-blue);
 
+
     /* paddings */
     --main-container-padding: 0.7rem;
 
@@ -61,10 +62,6 @@ a {
     color: var(--dark-blue);
 }
 
-h1 {
-    font-size: 2.3rem;
-    text-transform: uppercase;
-}
 
 h1,
 h2 {
@@ -183,7 +180,7 @@ button:hover {
 
 @media screen and (min-width: 1080px) {
     :root {
-        font-size: calc(100vw / 1920 * 20);
+        font-size: 18px;
     }
 
     p {

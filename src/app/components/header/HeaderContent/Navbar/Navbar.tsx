@@ -17,10 +17,6 @@ export default function Navbar({
   setMenuIsOpen: (menuIsOpen: boolean) => void;
 }) {
   const clickFunction = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
     setMenuIsOpen(false);
   };
 
