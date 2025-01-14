@@ -53,7 +53,11 @@ export default function HeaderContent({ content }: { content: any }) {
       <div
         className={`${styles.navbarContainer} ${menuIsOpen ? styles.open : ''}`}
       >
-        <Navbar menuIsOpen={menuIsOpen} content={content} />
+        <Navbar
+          menuIsOpen={menuIsOpen}
+          content={content}
+          setMenuIsOpen={setMenuIsOpen}
+        />
       </div>
 
       <ClickOverlay

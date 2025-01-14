@@ -10,20 +10,36 @@ import { PrismicRichText } from '@prismicio/react';
 export default function Navbar({
   content,
   menuIsOpen,
+  setMenuIsOpen,
 }: {
   content: any;
   menuIsOpen: boolean;
+  setMenuIsOpen: (menuIsOpen: boolean) => void;
 }) {
+  const clickFunction = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    setMenuIsOpen(false);
+  };
+
   return (
     <nav className={`${styles.navbar} ${menuIsOpen ? styles.open : ''}`}>
       <div className={styles.clickables}>
         <div className={styles.list}>
           {content.navigation_items.map((item: any, index: number) => (
-            <li key={index} className={styles.item}>
-              <Link href={item.navigation_item.url ?? ''}>
-                <h5>{item.navigation_item.text}</h5>
+            <li
+              key={index}
+              className={styles.item}
+              onClick={() => {
+                clickFunction();
+              }}
+            >
+              <div className={styles.itemContent}>
+                <PrismicNextLink field={item.navigation_item} />
                 <PrismicNextImage field={item.navigation_active_image} />
-              </Link>
+              </div>
             </li>
           ))}
         </div>

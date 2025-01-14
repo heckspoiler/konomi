@@ -25,35 +25,37 @@
     padding-left: 2.5rem;
 }
 
-.item a {
+.itemContent {
     display: flex;
     align-items: center;
     position: relative;
     margin-left: 2rem;
     width: fit-content;
-
+    pointer-events: none;
 }
 
-.item a h5 {
+.itemContent a {
     z-index: 1;
     font-variation-settings: var(--japanese-subtitle-weight);
     text-align: center;
     padding: 1rem 0;
     color: white;
     background-color: var(--dark-blue);
+    pointer-events: all;
+
     transition: transform 0.2s var(--bezier), font-variation-settings 0.2s var(--bezier);
 }
 
-.item a:hover a {
+.item div:hover a {
     font-variation-settings: var(--subtitle-weight);
 }
 
-.item a:hover h5 {
+.item:hover .itemContent a {
     transform: translateX(3.2rem);
     font-variation-settings: var(--title-weight);
 }
 
-.item a img {
+.item div img {
     position: absolute;
     height: 1.8rem;
     width: auto;

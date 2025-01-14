@@ -88,6 +88,51 @@
           "placeholder": "Japanische Kulinarik kennt viele Aromen und Geschmäcker. Eine davon ist jedoch so präsent"
         }
       },
+      "is_food": {
+        "type": "Boolean",
+        "config": {
+          "label": "Is Food",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "is_drinks": {
+        "type": "Boolean",
+        "config": {
+          "label": "Is Drinks",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "is_music": {
+        "type": "Boolean",
+        "config": {
+          "label": "Is Music",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "is_lecture": {
+        "type": "Boolean",
+        "config": {
+          "label": "Is Lecture",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "is_crafting": {
+        "type": "Boolean",
+        "config": {
+          "label": "Is Crafting",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

@@ -1,0 +1,29 @@
+/* !!!! MOBILE DEVELOPMENT FIRST!!!!! */
+
+.main {
+
+    min-height: 100svh;
+    padding: var(--header-height) var(--main-container-padding);
+    display: flex;
+    justify-content: center;
+
+}
+
+.eventContainer {
+
+    height: fit-content;
+    background-color: white;
+    padding-top: 4rem;
+}
+
+
+
+
+/* !!!! DESKTOP !!!!! */
+
+@media screen and (min-width: 1080px) {
+    .eventContainer {
+        width: 55vw;
+
+    }
+}

@@ -1,3 +1,29 @@
+/* !!!! MOBILE DEVELOPMENT FIRST!!!!! */
+
+@keyframes shrinkTitle {
+    from {
+        font-size: 2rem;
+        transform: translateY(0.3rem);
+    }
+
+    to {
+        font-size: 1.5rem;
+        transform: translateY(0.3rem);
+    }
+}
+
+@keyframes shrinkSubtitle {
+    from {
+        font-size: 0.8rem;
+        transform: translateY(-0.2rem);
+    }
+
+    to {
+        font-size: 0.7rem;
+        transform: translateY(-0.1rem);
+    }
+}
+
 .logoContainer {
     display: flex;
     flex-direction: column;
@@ -19,15 +45,39 @@
 }
 
 .logoContainer h1 {
-    /* transition: font-size 0.2s ease-in; */
+    font-size: 2rem;
     transform: translateY(0.3rem);
 }
 
-
-
 .logoContainer h3 {
-    /* transition: font-size 0.2s ease-in; */
+    font-size: 0.8rem;
     transform: translateY(-0.2rem);
     width: fit-content;
-    font-size: 0.8rem;
+}
+
+.smallHeader h1 {
+    animation: shrinkTitle 0.3s var(--bezier) forwards;
+}
+
+.smallHeader h3 {
+    animation: shrinkSubtitle 0.3s var(--bezier) forwards;
+}
+
+/* !!!! DESKTOP !!!!! */
+@media (min-width: 768px) {
+    .logoContainer h1 {
+        font-size: 2.5rem;
+    }
+
+    @keyframes shrinkTitle {
+        from {
+            font-size: 2.5rem;
+            transform: translateY(0.3rem);
+        }
+
+        to {
+            font-size: 2rem;
+            transform: translateY(0.3rem);
+        }
+    }
 }

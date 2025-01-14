@@ -110,6 +110,66 @@ interface EventDocumentData {
   event_description: prismic.KeyTextField;
 
   /**
+   * Is Food field in *Event*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: event.is_food
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_food: prismic.BooleanField;
+
+  /**
+   * Is Drinks field in *Event*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: event.is_drinks
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_drinks: prismic.BooleanField;
+
+  /**
+   * Is Music field in *Event*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: event.is_music
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_music: prismic.BooleanField;
+
+  /**
+   * Is Lecture field in *Event*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: event.is_lecture
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_lecture: prismic.BooleanField;
+
+  /**
+   * Is Crafting field in *Event*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: event.is_crafting
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_crafting: prismic.BooleanField;
+
+  /**
    * Slice Zone field in *Event*
    *
    * - **Field Type**: Slice Zone
@@ -163,6 +223,78 @@ interface EventDocumentData {
  */
 export type EventDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<EventDocumentData>, "event", Lang>;
+
+type EventsDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Events documents
+ */
+interface EventsDocumentData {
+  /**
+   * Page Title field in *Events*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Events
+   * - **API ID Path**: events.page_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  page_title: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Events*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<EventsDocumentDataSlicesSlice> /**
+   * Meta Title field in *Events*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: events.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Events*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: events.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Events*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Events document from Prismic
+ *
+ * - **API ID**: `events`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type EventsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<EventsDocumentData>, "events", Lang>;
 
 /**
  * Content for Logo documents
@@ -402,6 +534,7 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | EventDocument
+  | EventsDocument
   | LogoDocument
   | PageDocument
   | SettingsDocument;
@@ -833,6 +966,9 @@ declare module "@prismicio/client" {
       EventDocument,
       EventDocumentData,
       EventDocumentDataSlicesSlice,
+      EventsDocument,
+      EventsDocumentData,
+      EventsDocumentDataSlicesSlice,
       LogoDocument,
       LogoDocumentData,
       PageDocument,
