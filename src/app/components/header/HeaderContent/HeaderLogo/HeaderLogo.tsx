@@ -26,8 +26,9 @@ export default function HeaderLogo({ content }: { content: any }) {
       gsap.to(titleElement, {
         scale: isNotHomePage ? '0.7' : '1',
         rotateX: isNotHomePage ? 360 : 0,
+        backfaceVisibility: 'visible',
         duration: 0.4,
-        ease: 'power2.inOut',
+        ease: 'power1.inOut',
       });
     }
   }, [pathname]);

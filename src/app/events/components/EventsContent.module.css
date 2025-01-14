@@ -4,6 +4,7 @@
     height: 200vh;
     display: flex;
     flex-direction: column;
+
 }
 
 .mainHeadingContainer {
@@ -19,6 +20,14 @@
     font-size: 2.3rem;
 }
 
+.eventsContainer {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--header-height) / 2);
+}
+
+
 
 /* !!!! DESKTOP !!!!! */
 
@@ -30,5 +39,12 @@
     .mainHeadingContainer {
         width: 55vw;
         padding-right: 0;
+    }
+
+    .eventsContainer {
+        padding: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--header-height));
     }
 }

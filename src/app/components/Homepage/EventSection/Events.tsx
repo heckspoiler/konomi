@@ -38,7 +38,7 @@ export default function Events({ events }: { events: any }) {
       {events.map((event: any, index: number) => (
         <div key={index} className={styles.event}>
           <h2>
-            {truncateText(event.data.event_title[0].text, isMobile ? 12 : 15)}
+            {truncateText(event.data.event_title[0].text, isMobile ? 10 : 15)}
           </h2>
           <h4>{formatDate(event.data.event_start_date)}</h4>
           <Link href={`/events/${event.uid}`}>

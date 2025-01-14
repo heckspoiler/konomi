@@ -133,6 +133,22 @@
           "default_value": false
         }
       },
+      "location_icon": {
+        "type": "Image",
+        "config": {
+          "label": "Location Icon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "date_icon": {
+        "type": "Image",
+        "config": {
+          "label": "Date Icon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

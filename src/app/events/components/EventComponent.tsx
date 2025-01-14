@@ -2,9 +2,14 @@ import React from 'react';
 import styles from './EventComponent.module.css';
 import { PrismicRichText } from '@prismicio/react';
 import { PrismicNextImage } from '@prismicio/next';
+import Link from 'next/link';
+
+import { formatDateTime } from '../../../../helpers/formateDateTime';
 
 interface EventProps {
   event: {
+    uid: string;
+    url: string;
     data: {
       event_title: any;
       event_street: any;
@@ -12,19 +17,49 @@ interface EventProps {
       event_end_date: string;
       event_image: any;
       event_description: string;
+      event_location: any;
+      event_link: any;
+      event_postcode_and_city: any;
+      location_icon: any;
+      date_icon: any;
     };
   };
 }
 
 export default function EventComponent({ event }: EventProps) {
+  const startDateTime = formatDateTime(event.data.event_start_date);
+  const endDateTime = formatDateTime(event.data.event_end_date);
   return (
     <div className={styles.event}>
       <div className={styles.leftContainer}></div>
       <div className={styles.rightContainer}>
         <PrismicRichText field={event.data.event_title} />
-        <PrismicRichText field={event.data.event_street} />
-        <p>{event.data.event_start_date}</p>
-        <p>{event.data.event_end_date}</p>
+        <div className={styles.addressContainer}>
+          <div>
+            <PrismicNextImage field={event.data.location_icon} />
+          </div>
+          <div>
+            <PrismicRichText field={event.data.event_location} />
+            <PrismicRichText field={event.data.event_street} />
+            <PrismicRichText field={event.data.event_postcode_and_city} />
+          </div>
+        </div>
+        <div className={styles.lowerRightContainer}>
+          <div className={styles.dateContainer}>
+            <div className={styles.iconContainer}>
+              <PrismicNextImage field={event.data.date_icon} />
+            </div>
+            <div>
+              <p className={styles.date}>{startDateTime.dayOnly}</p>
+              <p className={styles.time}>
+                {startDateTime.timeOnly} - {endDateTime.timeOnly}
+              </p>
+            </div>
+          </div>
+          <div className={styles.linkContainer}>
+            <Link href={event.url}>Zum Event</Link>
+          </div>
+        </div>
       </div>
     </div>
   );

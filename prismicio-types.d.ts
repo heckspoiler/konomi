@@ -170,6 +170,28 @@ interface EventDocumentData {
   is_crafting: prismic.BooleanField;
 
   /**
+   * Location Icon field in *Event*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.location_icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  location_icon: prismic.ImageField<never>;
+
+  /**
+   * Date Icon field in *Event*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.date_icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  date_icon: prismic.ImageField<never>;
+
+  /**
    * Slice Zone field in *Event*
    *
    * - **Field Type**: Slice Zone
