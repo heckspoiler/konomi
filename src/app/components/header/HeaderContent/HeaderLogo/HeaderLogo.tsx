@@ -46,7 +46,7 @@ export default function HeaderLogo({
       className={styles.logoContainer}
       ref={titleRef}
       onClick={() => {
-        closeMenu({ setMenuIsOpen, time: 500 });
+        closeMenu({ setMenuIsOpen });
       }}
     >
       <Link href="/">

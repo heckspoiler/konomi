@@ -47,7 +47,7 @@ export default function Navbar({
               key={index}
               className={`${styles.item} ${isActiveItem === item ? styles.active : ''}`}
               onClick={() => {
-                closeMenu({ setMenuIsOpen, time: 500 });
+                closeMenu({ setMenuIsOpen });
               }}
             >
               <div className={styles.itemContent}>

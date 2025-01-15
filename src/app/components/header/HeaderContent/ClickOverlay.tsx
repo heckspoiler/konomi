@@ -17,7 +17,7 @@ export default function ClickOverlay({
     <div
       className={`${styles.clickOverlay} ${menuIsOpen && !isMobile ? styles.isVisible : ''}`}
       onClick={() => {
-        closeMenu({ setMenuIsOpen, time: 500 });
+        closeMenu({ setMenuIsOpen });
       }}
     ></div>
   );
