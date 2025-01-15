@@ -32,9 +32,8 @@ export default function EventComponent({ event }: EventProps) {
   const endDateTime = formatDateTime(event.data.event_end_date);
   return (
     <div className={styles.event}>
-      <LeftContainer event={event} />
-      <div className={styles.rightContainer}>
-        <PrismicRichText field={event.data.event_title} />
+      <PrismicRichText field={event.data.event_title} />
+      <div className={styles.middleContainer}>
         <div className={styles.addressContainer}>
           <div>
             <PrismicNextImage field={event.data.location_icon} />
@@ -57,11 +56,9 @@ export default function EventComponent({ event }: EventProps) {
               </p>
             </div>
           </div>
-          <div className={styles.linkContainer}>
-            <Link href={event.url}>Zum Event</Link>
-          </div>
         </div>
       </div>
+      <LeftContainer event={event} />
     </div>
   );
 }

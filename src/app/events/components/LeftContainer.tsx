@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Vinyl from '../../../../public/svg/vinyl.svg';
 import Drink from '../../../../public/svg/drink.svg';
 import Food from '../../../../public/svg/food.svg';
+import Link from 'next/link';
 
 function renderIcon(property: string, value: boolean) {
   if (!value) return null;
@@ -34,17 +35,22 @@ export default function LeftContainer({ event }: { event: any }) {
   ];
 
   return (
-    <div className={styles.container}>
-      {iconProperties.map((prop, index) => {
-        const icon = renderIcon(prop.key, prop.value);
-        return (
-          icon && (
-            <div key={index} className={styles.icon}>
-              {icon}
-            </div>
-          )
-        );
-      })}
+    <div className={styles.leftContainer}>
+      <div className={styles.iconContainer}>
+        {iconProperties.map((prop, index) => {
+          const icon = renderIcon(prop.key, prop.value);
+          return (
+            icon && (
+              <div key={index} className={styles.icon}>
+                {icon}
+              </div>
+            )
+          );
+        })}
+      </div>
+      <div className={styles.linkContainer}>
+        <Link href={event.url}>Zum Event</Link>
+      </div>
     </div>
   );
 }

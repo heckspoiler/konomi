@@ -1,0 +1,30 @@
+/* EventContent.module.css */
+.container {
+    position: relative;
+    margin-top: calc(var(--header-height) + 2rem);
+    display: flex;
+    flex-direction: column;
+    height: 200vh;
+    width: 100%;
+}
+
+.eventContainer {
+    padding-top: calc(var(--header-height) /2);
+    width: 100%;
+}
+
+
+
+
+
+/* Desktop styles */
+@media screen and (min-width: 1080px) {
+    .container {
+        width: 55vw;
+    }
+
+    .eventContainer {
+        padding-top: var(--header-height);
+
+    }
+}

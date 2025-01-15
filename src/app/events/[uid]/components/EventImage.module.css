@@ -1,0 +1,11 @@
+.imageContainer {
+    border: 2px solid var(--dark-blue);
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+}
+
+.imageContainer img {
+    height: auto;
+    width: 100%;
+}

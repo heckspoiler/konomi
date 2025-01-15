@@ -1,14 +1,14 @@
-.container {
+.leftContainer {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    border-right: 2px solid var(--dark-blue);
-    background: var(--light-blue);
+    justify-content: space-between;
+    height: fit-content;
+    /* border-right: 2px solid var(--dark-blue); */
+    /* background: var(--light-blue); */
     position: relative;
 }
 
-.container::before {
+/* .container::before {
     content: "";
     background-color: transparent;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
@@ -20,6 +20,32 @@
     position: absolute;
     width: 100%;
     height: 100%;
+} */
+
+.linkContainer {}
+
+.linkContainer a {
+    background-color: var(--dark-blue);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-variation-settings: var(--subtitle-weight);
+    color: white;
+    border: 1px solid var(--dark-blue);
+    transition: all 0.2s var(--bezier)
+}
+
+.linkContainer a:hover {
+    background-color: white;
+    color: var(--dark-blue)
+}
+
+
+.iconContainer {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: flex-start;
+    width: 60%;
 }
 
 .icon {
@@ -41,6 +67,10 @@
 @media screen and (min-width: 1080px) {
 
 
+    .iconContainer {
+        width: 80%;
+    }
+
     .icon {
         height: 2rem;
         width: 2rem;
@@ -50,5 +80,10 @@
         height: 100%;
         width: auto;
         max-width: 2rem;
+    }
+
+    .linkContainer a {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
     }
 }

@@ -12,9 +12,8 @@ export default function EventsContent({
 }) {
   return (
     <div className={styles.container}>
-      <div className={styles.mainHeadingContainer}>
-        <MainHeading page={page} />
-      </div>
+      <MainHeading page={page} />
+
       <div className={styles.eventsContainer}>
         {events &&
           events.map((event: any, index: number) => (
