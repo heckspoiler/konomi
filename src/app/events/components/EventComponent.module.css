@@ -1,6 +1,5 @@
 .event {
     border: 2px solid var(--dark-blue);
-    background-color: var(--light-blue);
     display: grid;
     grid-template-columns: 0.6fr 2fr;
     min-height: 11.5rem;

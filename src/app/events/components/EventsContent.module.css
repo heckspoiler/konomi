@@ -1,7 +1,7 @@
 .container {
     position: relative;
     margin-top: calc(var(--header-height) + 2rem);
-    height: 200vh;
+    height: fit-content;
     display: flex;
     flex-direction: column;
 
@@ -13,6 +13,7 @@
     padding-right: var(--main-container-padding);
     width: 100%;
     background-color: white;
+    z-index: 10;
 }
 
 .mainHeading h2 {
