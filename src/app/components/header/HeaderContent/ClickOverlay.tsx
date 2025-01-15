@@ -2,6 +2,8 @@ import React from 'react';
 
 import styles from './ClickOverlay.module.css';
 
+import { closeMenu } from '../../../../../helpers/closeMenu';
+
 export default function ClickOverlay({
   isMobile,
   menuIsOpen,
@@ -14,7 +16,9 @@ export default function ClickOverlay({
   return (
     <div
       className={`${styles.clickOverlay} ${menuIsOpen && !isMobile ? styles.isVisible : ''}`}
-      onClick={() => setMenuIsOpen(false)}
+      onClick={() => {
+        closeMenu({ setMenuIsOpen, time: 500 });
+      }}
     ></div>
   );
 }

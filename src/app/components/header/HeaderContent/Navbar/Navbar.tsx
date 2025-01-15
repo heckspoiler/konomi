@@ -1,8 +1,15 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect, use } from 'react';
 
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
 
 import Link from 'next/link';
+
+import { closeMenu } from '../../../../../../helpers/closeMenu';
+import { CloseMenuProps } from '../../../../../../helpers/closeMenu';
+
+import { usePathname } from 'next/navigation';
 
 import styles from './Navbar.module.css';
 import { PrismicRichText } from '@prismicio/react';
@@ -14,11 +21,22 @@ export default function Navbar({
 }: {
   content: any;
   menuIsOpen: boolean;
-  setMenuIsOpen: (menuIsOpen: boolean) => void;
+  setMenuIsOpen: () => void;
 }) {
-  const clickFunction = () => {
-    setMenuIsOpen(false);
-  };
+  const [isActiveItem, setIsActiveItem] = useState();
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    content.navigation_items.forEach((item: any) => {
+      if (
+        item.navigation_item.url &&
+        pathname.startsWith(item.navigation_item.url)
+      ) {
+        setIsActiveItem(item);
+      }
+    });
+  }, [pathname]);
 
   return (
     <nav className={`${styles.navbar} ${menuIsOpen ? styles.open : ''}`}>
@@ -27,9 +45,9 @@ export default function Navbar({
           {content.navigation_items.map((item: any, index: number) => (
             <li
               key={index}
-              className={styles.item}
+              className={`${styles.item} ${isActiveItem === item ? styles.active : ''}`}
               onClick={() => {
-                clickFunction();
+                closeMenu({ setMenuIsOpen, time: 500 });
               }}
             >
               <div className={styles.itemContent}>

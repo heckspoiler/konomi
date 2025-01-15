@@ -43,7 +43,11 @@ export default function HeaderContent({ content }: { content: any }) {
 
   return (
     <div ref={headerRef} className={styles.main}>
-      <HeaderLogo content={content} />
+      <HeaderLogo
+        content={content}
+        menuIsOpen={menuIsOpen}
+        setMenuIsOpen={setMenuIsOpen}
+      />
       <div className={styles.hamburgerContainer}>
         <Hamburger menuIsOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
       </div>

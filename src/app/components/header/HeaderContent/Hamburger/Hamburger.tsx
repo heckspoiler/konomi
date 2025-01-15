@@ -14,7 +14,7 @@ export default function Hamburger({
   return (
     <div
       className={`${styles.hamburger} ${menuIsOpen ? styles.open : ''}`}
-      onClick={() => setMenuIsOpen(!menuIsOpen)}
+      onClick={() => setTimeout(() => setMenuIsOpen(!menuIsOpen), 200)}
     >
       <div className={styles.hamburgerLine}></div>
       <div className={styles.hamburgerLine}></div>

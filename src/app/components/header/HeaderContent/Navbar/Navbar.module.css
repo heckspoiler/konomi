@@ -55,6 +55,11 @@
     font-variation-settings: var(--title-weight);
 }
 
+.active .itemContent a {
+    transform: translateX(3.2rem);
+    font-variation-settings: var(--title-weight);
+}
+
 .item div img {
     position: absolute;
     height: 1.8rem;

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { PrismicRichText } from '@prismicio/react';
 import styles from './HeaderLogo.module.css';
 import { usePathname } from 'next/navigation';
+import { closeMenu } from '../../../../../../helpers/closeMenu';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -13,10 +14,17 @@ gsap.registerPlugin(useGSAP);
 
 const pathnames = ['/about', '/events'];
 
-export default function HeaderLogo({ content }: { content: any }) {
+export default function HeaderLogo({
+  content,
+  menuIsOpen,
+  setMenuIsOpen,
+}: {
+  content: any;
+  menuIsOpen: boolean;
+  setMenuIsOpen: () => void;
+}) {
   const pathname = usePathname();
   const titleRef = useRef<HTMLDivElement>(null);
-
   const isNotHomePage = pathnames.some((path) => pathname.includes(path));
 
   useGSAP(() => {
@@ -34,7 +42,13 @@ export default function HeaderLogo({ content }: { content: any }) {
   }, [pathname]);
 
   return (
-    <div className={styles.logoContainer} ref={titleRef}>
+    <div
+      className={styles.logoContainer}
+      ref={titleRef}
+      onClick={() => {
+        closeMenu({ setMenuIsOpen, time: 500 });
+      }}
+    >
       <Link href="/">
         <PrismicRichText field={content.page_title} />
         <PrismicRichText field={content.page_subtitle_date} />
