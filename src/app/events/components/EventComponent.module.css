@@ -87,7 +87,8 @@
     font-size: 0.75rem;
     font-variation-settings: var(--subtitle-weight);
     color: white;
-    border: 1px solid var(--dark-blue)
+    border: 1px solid var(--dark-blue);
+    transition: all 0.2s var(--bezier)
 }
 
 .linkContainer a:hover {
@@ -101,7 +102,7 @@
 @media screen and (min-width: 1080px) {
     .event {
 
-        grid-template-columns: 0.5fr 2fr;
+        grid-template-columns: 0.75fr 2fr;
         min-height: 16rem;
 
     }
@@ -120,17 +121,7 @@
     }
 
 
-    .rightContainer {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background-color: white;
 
-    }
-
-    .leftContainer {
-        border-right: 2px solid var(--dark-blue)
-    }
 
     .addressContainer {
         display: flex;
@@ -148,24 +139,6 @@
 
     }
 
-    .lowerRightContainer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .dateContainer {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .date,
-    .time {
-        font-family: var(--title-font);
-    }
-
-
     .date {
         font-size: 1rem;
     }
@@ -174,15 +147,9 @@
         font-size: 0.9rem;
     }
 
-    .linkContainer {}
 
     .linkContainer a {
-        background-color: var(--dark-blue);
-        padding: 0.5rem;
         font-size: 1rem;
-        font-variation-settings: var(--subtitle-weight);
-        color: white;
-
     }
 
 
