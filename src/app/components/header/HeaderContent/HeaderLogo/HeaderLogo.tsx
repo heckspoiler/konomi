@@ -21,7 +21,7 @@ export default function HeaderLogo({
 }: {
   content: any;
   menuIsOpen: boolean;
-  setMenuIsOpen: () => void;
+  setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const pathname = usePathname();
   const titleRef = useRef<HTMLDivElement>(null);

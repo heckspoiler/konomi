@@ -8,7 +8,7 @@ import ClickOverlay from './ClickOverlay';
 import HeaderLogo from './HeaderLogo/HeaderLogo';
 
 export default function HeaderContent({ content }: { content: any }) {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const { isMobile } = useMobile();
   const headerRef = useRef<HTMLDivElement>(null);
 

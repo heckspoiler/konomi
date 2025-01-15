@@ -21,7 +21,7 @@ export default function Navbar({
 }: {
   content: any;
   menuIsOpen: boolean;
-  setMenuIsOpen: () => void;
+  setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [isActiveItem, setIsActiveItem] = useState();
 

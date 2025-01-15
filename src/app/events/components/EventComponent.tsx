@@ -5,6 +5,7 @@ import { PrismicNextImage } from '@prismicio/next';
 import Link from 'next/link';
 
 import { formatDateTime } from '../../../../helpers/formateDateTime';
+import LeftContainer from './LeftContainer';
 
 interface EventProps {
   event: {
@@ -31,7 +32,7 @@ export default function EventComponent({ event }: EventProps) {
   const endDateTime = formatDateTime(event.data.event_end_date);
   return (
     <div className={styles.event}>
-      <div className={styles.leftContainer}></div>
+      <LeftContainer event={event} />
       <div className={styles.rightContainer}>
         <PrismicRichText field={event.data.event_title} />
         <div className={styles.addressContainer}>
