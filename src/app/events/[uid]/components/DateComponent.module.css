@@ -1,0 +1,20 @@
+.dateContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+
+}
+
+.textContainer p {
+    color: var(--dark-blue);
+    font-family: var(--title-font);
+    font-variation-settings: var(--subtitle-weight);
+    font-size: 0.7rem;
+}
+
+.textContainer p span {
+
+    font-variation-settings: var(--title-weight);
+
+}

@@ -1,0 +1,17 @@
+.locationContainer {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.locationContainer h5 {
+    width: fit-content;
+    font-variation-settings: var(--title-weight);
+}
+
+.locationContainer p {
+    color: var(--dark-blue);
+    font-family: var(--title-font);
+    font-variation-settings: var(--subtitle-weight);
+    font-size: 0.6rem;
+}
