@@ -21,8 +21,8 @@
 
     /* typefaces */
     --title-font: "fractul-variable", sans-serif;
-    --title-weight: "wght" 600;
-    --subtitle-weight: "wght" 400;
+    --title-weight: "wght" 700;
+    --subtitle-weight: "wght" 500;
     --japanese-subtitle-weight: "wght" 300;
     --ultrathin: "wght" 100;
     --gradient: linear-gradient(45deg, var(--light-blue), white);
@@ -60,6 +60,9 @@ h6,
 a {
     font-family: var(--title-font);
     color: var(--dark-blue);
+    -webkit-font-smoothing: antialiased;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
 }
 
 
@@ -145,34 +148,6 @@ button:hover {
     background-color: white;
 }
 
-.card {
-    height: fit-content;
-    width: 320px;
-    padding: 24px;
-    background: var(--light-blue);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-}
-
-.card-content {
-    position: relative;
-    z-index: 1;
-}
-
-.card:before {
-    content: "";
-    background-color: transparent;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.45' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 182px;
-    opacity: 0.12;
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
 
 
 
