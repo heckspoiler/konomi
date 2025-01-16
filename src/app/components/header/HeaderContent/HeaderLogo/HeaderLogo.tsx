@@ -12,7 +12,7 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(useGSAP);
 
-const pathnames = ['/about', '/events'];
+const pathnames = ['/about', '/events', '/archive', '/contact'];
 
 export default function HeaderLogo({
   content,

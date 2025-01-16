@@ -7,7 +7,7 @@ export default function EventsContent({
   events,
   page,
 }: {
-  events: any;
+  events?: any;
   page: any;
 }) {
   return (

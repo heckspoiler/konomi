@@ -4,6 +4,104 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type ArchiveDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Archive documents
+ */
+interface ArchiveDocumentData {
+  /**
+   * Page Title field in *Archive*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Archiv
+   * - **API ID Path**: archive.page_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  page_title: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles First field in *Archive*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: archive.japanese_subtitles_first
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtitles_first: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles Second field in *Archive*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: archive.japanese_subtitles_second
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtitles_second: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Archive*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: archive.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ArchiveDocumentDataSlicesSlice> /**
+   * Meta Title field in *Archive*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: archive.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Archive*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: archive.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Archive*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: archive.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Archive document from Prismic
+ *
+ * - **API ID**: `archive`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ArchiveDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ArchiveDocumentData>,
+    "archive",
+    Lang
+  >;
+
 type EventDocumentDataSlicesSlice = never;
 
 /**
@@ -577,6 +675,7 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | ArchiveDocument
   | EventDocument
   | EventsDocument
   | LogoDocument
@@ -1007,6 +1106,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ArchiveDocument,
+      ArchiveDocumentData,
+      ArchiveDocumentDataSlicesSlice,
       EventDocument,
       EventDocumentData,
       EventDocumentDataSlicesSlice,
