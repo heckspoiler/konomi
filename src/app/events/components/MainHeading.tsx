@@ -12,11 +12,18 @@ export default function MainHeading({
   page?: any;
   title?: string;
 }) {
+  const buttonShow = page.tags.includes('archived');
+
+  console.log(page.tags, buttonShow);
+
   return (
     <div className={styles.mainHeadingContainer}>
       <div className={styles.mainHeading}>
         {title && title.length > 1 ? (
-          <h2>{title}</h2>
+          <div>
+            <h2>{title}</h2>
+            {buttonShow && <h3>ARCHIV</h3>}
+          </div>
         ) : (
           <PrismicRichText field={page.data.page_title} />
         )}
