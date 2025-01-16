@@ -8,14 +8,13 @@ import styles from './MainHeading.module.css';
 export default function MainHeading({
   page,
   title,
+  buttonShow,
 }: {
   page?: any;
   title?: string;
+  buttonShow?: any;
 }) {
-  const buttonShow = page.tags.includes('archived');
-
-  console.log(page.tags, buttonShow);
-
+  console.log(buttonShow);
   return (
     <div className={styles.mainHeadingContainer}>
       <div className={styles.mainHeading}>

@@ -40,6 +40,13 @@
     font-variation-settings: var(--subtitle-weight);
     text-transform: uppercase;
     width: fit-content;
+    border: 1px solid var(--dark-blue);
+    transition: all 0.2s var(--bezier)
+}
+
+.linkContainer a:hover {
+    color: var(--dark-blue);
+    background-color: white;
 }
 
 .eventContainer p {

@@ -29,7 +29,8 @@ export default function EventContent({
 
   return (
     <div className={styles.container}>
-      <MainHeading title={'Event'} page={events} />
+      <MainHeading title={'Event'} page={events} buttonShow={buttonShow} />
+
       <div className={styles.eventContainer}>
         <div className={styles.titleContainer}>
           <PrismicRichText field={data.event_title} />
