@@ -33,9 +33,15 @@ export default function Events({ events }: { events: any }) {
     };
   }, []);
 
+  console.log(events[1].tags);
+
+  const filteredEvents = events.filter((event: any) => {
+    return !event.tags.includes('archived');
+  });
+
   return (
     <div className={styles.scheduleContainer}>
-      {events.map((event: any, index: number) => (
+      {filteredEvents.map((event: any, index: number) => (
         <div key={index} className={styles.event}>
           <h2>
             {truncateText(event.data.event_title[0].text, isMobile ? 10 : 15)}
