@@ -1,11 +1,34 @@
 .imageContainer {
     border: 2px solid var(--dark-blue);
     height: fit-content;
-    width: fit-content;
+    width: 100%;
+    aspect-ratio: 16/9;
     position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
 }
 
 .imageContainer img {
-    height: auto;
+    height: 100%;
     width: 100%;
+    object-fit: cover;
+    display: block;
+    background-color: white;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background-color: var(--dark-blue);
+    mix-blend-mode: hue;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s var(--bezier)
+}
+
+.imageContainer:hover .overlay {
+    opacity: 0;
 }

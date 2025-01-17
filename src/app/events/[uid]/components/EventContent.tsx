@@ -1,4 +1,8 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
+
+import { usePathname } from 'next/navigation';
 
 import MainHeading from '../../components/MainHeading';
 
@@ -15,6 +19,7 @@ import IconComponent from '../../components/IconComponent';
 import LocationComponent from './LocationComponent';
 import DateComponent from './DateComponent';
 import Link from 'next/link';
+import BackToComponent from '../../components/BackToComponent';
 
 export default function EventContent({
   page,
@@ -26,6 +31,23 @@ export default function EventContent({
   const data = page.data;
 
   const buttonShow = page.tags.includes('archived');
+
+  const pathname = usePathname();
+  const [backComponent, setBackComponent] = useState<React.ReactNode>(null);
+
+  useEffect(() => {
+    if (pathname.startsWith('/events')) {
+      setBackComponent(
+        <div className={styles.backToContainer}>
+          <BackToComponent text="Zum Archiv" url="/archive" />
+        </div>
+      );
+    } else if (pathname.startsWith('/archive')) {
+      setBackComponent(
+        <BackToComponent text="Aktuelle Events" url="/events" />
+      );
+    }
+  }, [pathname]);
 
   return (
     <div className={styles.container}>
@@ -52,6 +74,7 @@ export default function EventContent({
           <p>{data.event_description}</p>
         </div>
       </div>
+      {backComponent}
     </div>
   );
 }
