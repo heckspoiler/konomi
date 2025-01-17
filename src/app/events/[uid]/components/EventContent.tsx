@@ -10,7 +10,7 @@ import styles from './EventContent.module.css';
 
 import { PrismicRichText } from '@prismicio/react';
 
-import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
+import { PrismicNextLink } from '@prismicio/next';
 
 import EventImage from './EventImage';
 
