@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+
 }
 
 
@@ -14,13 +15,15 @@
     flex-direction: column;
     gap: calc(var(--header-height) / 2);
     align-items: center;
+    height: 400vh;
 }
 
 
 .backLinkContainer {
-    position: fixed;
-    bottom: 0;
-    right: 0;
+    width: 100%;
+    position: sticky;
+    top: calc(var(--header-height) + 4rem);
+    z-index: 10;
 }
 
 
@@ -39,5 +42,14 @@
         flex-direction: column;
         gap: calc(var(--header-height) / 2);
     }
+
+    .backLinkContainer {
+        display: flex;
+
+        position: sticky;
+        top: calc(var(--header-height) + 4rem);
+        z-index: 10;
+    }
+
 
 }

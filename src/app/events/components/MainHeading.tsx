@@ -14,7 +14,6 @@ export default function MainHeading({
   title?: string;
   buttonShow?: any;
 }) {
-  console.log(buttonShow);
   return (
     <div className={styles.mainHeadingContainer}>
       <div className={styles.mainHeading}>

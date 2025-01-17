@@ -35,12 +35,13 @@ export default function EventsContent({
     <div className={styles.container}>
       <MainHeading page={page} />
       <div className={styles.eventsContainer}>
+        {' '}
+        <div className={styles.backLinkContainer}>{backComponent}</div>
         {events &&
           events.map((event: any, index: number) => (
             <EventComponent key={index} event={event} />
           ))}
       </div>
-      <div className={styles.backLinkContainer}>{backComponent}</div>
     </div>
   );
 }

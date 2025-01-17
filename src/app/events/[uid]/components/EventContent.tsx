@@ -43,7 +43,9 @@ export default function EventContent({
         </div>
       );
     } else if (buttonShow) {
-      setBackComponent(<BackToComponent text="Archiv" url="/archive" />);
+      setBackComponent(
+        <BackToComponent text="Zurück zum Archiv" url="/archive" />
+      );
     }
   }, [pathname]);
 

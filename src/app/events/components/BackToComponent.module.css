@@ -1,7 +1,8 @@
 .backToContainer {
     display: flex;
-    justify-content: flex-end;
     padding: 0.5rem 0;
+    width: 100%;
+    position: relative;
 }
 
 
@@ -14,10 +15,35 @@
     text-transform: uppercase;
     width: fit-content;
     border: 1px solid var(--dark-blue);
-    transition: all 0.2s var(--bezier)
+    transition: all 0.2s var(--bezier);
+    width: 100%;
+    text-align: center;
 }
 
 .backToContainer a:hover {
     color: var(--dark-blue);
     background-color: white;
+}
+
+/* !!!! DESKTOP !!!!! */
+
+@media screen and (min-width: 1080px) {
+
+    .backToContainer {
+
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+
+    .backToContainer a {
+
+        width: fit-content;
+
+    }
+
+    .backToContainer a:hover {
+        color: var(--dark-blue);
+        background-color: white;
+    }
 }
