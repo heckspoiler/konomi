@@ -36,16 +36,14 @@ export default function EventContent({
   const [backComponent, setBackComponent] = useState<React.ReactNode>(null);
 
   useEffect(() => {
-    if (pathname.startsWith('/events')) {
+    if (!buttonShow) {
       setBackComponent(
         <div className={styles.backToContainer}>
-          <BackToComponent text="Zum Archiv" url="/archive" />
+          <BackToComponent text="Mehr Events" url="/events" />
         </div>
       );
-    } else if (pathname.startsWith('/archive')) {
-      setBackComponent(
-        <BackToComponent text="Aktuelle Events" url="/events" />
-      );
+    } else if (buttonShow) {
+      setBackComponent(<BackToComponent text="Archiv" url="/archive" />);
     }
   }, [pathname]);
 
