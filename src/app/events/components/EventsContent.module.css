@@ -17,6 +17,13 @@
 }
 
 
+.backLinkContainer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+
 
 
 /* !!!! DESKTOP !!!!! */
@@ -24,9 +31,7 @@
 @media screen and (min-width: 1080px) {
     .container {
         width: 55vw;
-
     }
-
 
     .eventsContainer {
         padding: 2rem 0;
@@ -34,4 +39,5 @@
         flex-direction: column;
         gap: calc(var(--header-height) / 2);
     }
+
 }

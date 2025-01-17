@@ -63,7 +63,7 @@ export default function EventContent({
             {!buttonShow ? (
               <PrismicNextLink field={data.eventfrog_link} />
             ) : (
-              <Link href="/events">Aktuelle Events</Link>
+              <Link href="/events">Events</Link>
             )}
           </div>
         </div>

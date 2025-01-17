@@ -4,6 +4,139 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Item in *About → Konomi Member*
+ */
+export interface AboutDocumentDataKonomiMemberItem {
+  /**
+   * Konomi Member Link field in *About → Konomi Member*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Miake Izakaya
+   * - **API ID Path**: about.konomi_member[].konomi_member_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  konomi_member_link: prismic.LinkField;
+}
+
+type AboutDocumentDataSlicesSlice = never;
+
+/**
+ * Content for About documents
+ */
+interface AboutDocumentData {
+  /**
+   * Page Title field in *About*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Über Konomi
+   * - **API ID Path**: about.page_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  page_title: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles First field in *About*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: チーム [chi|mu] --
+   * - **API ID Path**: about.japanese_subtitles_first
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtitles_first: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles Second field in *About*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: dt.: "Team"
+   * - **API ID Path**: about.japanese_subtitles_second
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtitles_second: prismic.RichTextField;
+
+  /**
+   * About Description field in *About*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Yap Yap Yap
+   * - **API ID Path**: about.about_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  about_description: prismic.KeyTextField;
+
+  /**
+   * Konomi Member field in *About*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.konomi_member[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  konomi_member: prismic.GroupField<
+    Simplify<AboutDocumentDataKonomiMemberItem>
+  >;
+
+  /**
+   * Slice Zone field in *About*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AboutDocumentDataSlicesSlice> /**
+   * Meta Title field in *About*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: about.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *About*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: about.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *About*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * About document from Prismic
+ *
+ * - **API ID**: `about`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<AboutDocumentData>, "about", Lang>;
+
 type ArchiveDocumentDataSlicesSlice = never;
 
 /**
@@ -675,6 +808,7 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | AboutDocument
   | ArchiveDocument
   | EventDocument
   | EventsDocument
@@ -1106,6 +1240,10 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AboutDocument,
+      AboutDocumentData,
+      AboutDocumentDataKonomiMemberItem,
+      AboutDocumentDataSlicesSlice,
       ArchiveDocument,
       ArchiveDocumentData,
       ArchiveDocumentDataSlicesSlice,

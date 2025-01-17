@@ -40,7 +40,7 @@ export default function EventsContent({
             <EventComponent key={index} event={event} />
           ))}
       </div>
-      {backComponent}
+      <div className={styles.backLinkContainer}>{backComponent}</div>
     </div>
   );
 }
