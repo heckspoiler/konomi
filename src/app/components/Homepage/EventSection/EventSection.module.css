@@ -27,7 +27,6 @@
 @media screen and (min-width: 1080px) {
     .programText {
         width: 80%;
-        hyphens: auto;
-        text-align: justify;
+
     }
 }
