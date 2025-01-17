@@ -54,8 +54,53 @@
 
 }
 
+.overlayImageContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    height: 100svh;
+    width: 100svw;
+    z-index: 100;
+    display: none;
+}
 
+.isOpen {
+    display: block;
+}
 
+.cross {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    z-index: 101;
+    cursor: pointer;
+}
+
+.crossContainer {
+    position: relative;
+    width: 24px;
+    /* Adjust size as needed */
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crossContainer div {
+    position: absolute;
+    background-color: var(--dark-blue);
+    width: 100%;
+    height: 4px;
+}
+
+.crossContainer div:first-child {
+    transform: rotate(45deg);
+}
+
+.crossContainer div:last-child {
+    transform: rotate(-45deg);
+}
 
 
 /* Desktop styles */

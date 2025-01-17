@@ -20,6 +20,7 @@ import LocationComponent from './LocationComponent';
 import DateComponent from './DateComponent';
 import Link from 'next/link';
 import BackToComponent from '../../components/BackToComponent';
+import OverlayImage from './OverlayImage';
 
 export default function EventContent({
   page,
@@ -29,7 +30,7 @@ export default function EventContent({
   events: any;
 }) {
   const data = page.data;
-
+  const [overlayIsOpen, setOverlayIsOpen] = useState(false);
   const buttonShow = page.tags.includes('archived');
 
   const pathname = usePathname();
@@ -69,12 +70,25 @@ export default function EventContent({
             )}
           </div>
         </div>
-        <EventImage image={data.event_image} />
+        <div onClick={() => setOverlayIsOpen(true)}>
+          <EventImage image={data.event_image} />
+        </div>
         <div className={styles.descriptionContainer}>
           <p>{data.event_description}</p>
         </div>
       </div>
       {backComponent}
+      <div
+        className={`${styles.overlayImageContainer} ${overlayIsOpen ? styles.isOpen : ''}`}
+      >
+        <div onClick={() => setOverlayIsOpen(false)} className={styles.cross}>
+          <div className={styles.crossContainer}>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <OverlayImage image={data.event_image} />
+      </div>
     </div>
   );
 }
