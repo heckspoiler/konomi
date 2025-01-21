@@ -16,15 +16,23 @@
     flex-direction: column;
     gap: calc(var(--header-height) / 2);
     align-items: center;
-    height: 400vh;
+    height: fit-content;
+    background-color: white;
 }
 
-
-.backLinkContainer {
+.event {
     width: 100%;
-    position: sticky;
-    top: calc(var(--header-height) + 4rem);
-    z-index: 100;
+}
+
+.event h3 {
+    font-family: var(--title-font);
+    text-transform: uppercase;
+    font-variation-settings: var(--title-weight);
+    font-size: 1.5rem
+}
+
+.text {
+    padding-top: 1rem;
 }
 
 
@@ -37,15 +45,15 @@
         width: 55vw;
     }
 
-    .eventsContainer {
+    .contentContainer {
         padding: 2rem 0;
         display: flex;
         flex-direction: column;
         gap: calc(var(--header-height) / 2);
     }
 
-    .backLinkContainer {
-        display: flex;
-        z-index: 2;
+    .text {
+        width: 80%;
     }
+
 }

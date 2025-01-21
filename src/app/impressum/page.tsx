@@ -11,11 +11,11 @@ export default async function Page() {
   const client = createClient();
   const page = await client.getSingle('impressum');
 
-  const content = page.data;
+  const content = page;
 
   return (
     <div className={styles.main}>
-      <ImpressumContent content={content} />
+      <ImpressumContent page={page} />
     </div>
   );
 }

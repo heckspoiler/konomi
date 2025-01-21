@@ -571,6 +571,24 @@ interface EventsDocumentData {
 export type EventsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<EventsDocumentData>, "events", Lang>;
 
+interface FooterDocumentData {}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
 /**
  * Item in *Impressum → Impressum Content*
  */
@@ -937,6 +955,7 @@ export type AllDocumentTypes =
   | ArchiveDocument
   | EventDocument
   | EventsDocument
+  | FooterDocument
   | ImpressumDocument
   | LogoDocument
   | PageDocument
@@ -1379,6 +1398,8 @@ declare module "@prismicio/client" {
       EventsDocument,
       EventsDocumentData,
       EventsDocumentDataSlicesSlice,
+      FooterDocument,
+      FooterDocumentData,
       ImpressumDocument,
       ImpressumDocumentData,
       ImpressumDocumentDataImpressumContentItem,
