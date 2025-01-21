@@ -33,8 +33,6 @@ export default function Events({ events }: { events: any }) {
     };
   }, []);
 
-  console.log(events[1].tags);
-
   const filteredEvents = events.filter((event: any) => {
     return !event.tags.includes('archived');
   });

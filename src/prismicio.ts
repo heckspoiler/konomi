@@ -17,6 +17,7 @@ const routes: prismic.ClientConfig['routes'] = [
   { type: 'event', path: '/events/:uid' },
   { type: 'archive', path: '/archive', uid: 'archive' },
   { type: 'about', path: '/about', uid: 'about' },
+  { type: 'impressum', path: '/impressum', uid: 'impressum' },
 ];
 
 /**

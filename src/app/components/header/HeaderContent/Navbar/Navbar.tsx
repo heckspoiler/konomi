@@ -76,7 +76,12 @@ export default function Navbar({
             </div>
           ))}
         </div>
-        <div className={styles.impressum}>
+        <div
+          className={styles.impressum}
+          onClick={() => {
+            closeMenu({ setMenuIsOpen });
+          }}
+        >
           <PrismicNextLink field={content.impressum_link}>
             <p>{content.impressum_link.text}</p>
             <Arrow fill="white" height="10" width="9" />

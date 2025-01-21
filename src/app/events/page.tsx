@@ -14,8 +14,6 @@ export default async function Page() {
 
   const eventsFetch = await client.getAllByType('event');
 
-  console.log(eventsFetch[1].tags);
-
   const events = eventsFetch.filter((event: any) => {
     return !event.tags.includes('archived');
   });

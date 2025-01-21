@@ -23,7 +23,7 @@
     width: 100%;
     position: sticky;
     top: calc(var(--header-height) + 4rem);
-    padding-right: var(--main-container-padding);
+    z-index: 100;
 }
 
 

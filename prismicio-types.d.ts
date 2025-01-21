@@ -572,6 +572,120 @@ export type EventsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<EventsDocumentData>, "events", Lang>;
 
 /**
+ * Item in *Impressum → Impressum Content*
+ */
+export interface ImpressumDocumentDataImpressumContentItem {
+  /**
+   * Subtitle field in *Impressum → Impressum Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: impressum.impressum_content[].subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Text field in *Impressum → Impressum Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: impressum.impressum_content[].text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+type ImpressumDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Impressum documents
+ */
+interface ImpressumDocumentData {
+  /**
+   * Page Title field in *Impressum*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Impressum
+   * - **API ID Path**: impressum.page_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  page_title: prismic.RichTextField;
+
+  /**
+   * Impressum Content field in *Impressum*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: impressum.impressum_content[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  impressum_content: prismic.GroupField<
+    Simplify<ImpressumDocumentDataImpressumContentItem>
+  >;
+
+  /**
+   * Slice Zone field in *Impressum*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: impressum.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ImpressumDocumentDataSlicesSlice> /**
+   * Meta Title field in *Impressum*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: impressum.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Impressum*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: impressum.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Impressum*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: impressum.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Impressum document from Prismic
+ *
+ * - **API ID**: `impressum`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ImpressumDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ImpressumDocumentData>,
+    "impressum",
+    Lang
+  >;
+
+/**
  * Content for Logo documents
  */
 interface LogoDocumentData {
@@ -823,6 +937,7 @@ export type AllDocumentTypes =
   | ArchiveDocument
   | EventDocument
   | EventsDocument
+  | ImpressumDocument
   | LogoDocument
   | PageDocument
   | SettingsDocument;
@@ -1264,6 +1379,10 @@ declare module "@prismicio/client" {
       EventsDocument,
       EventsDocumentData,
       EventsDocumentDataSlicesSlice,
+      ImpressumDocument,
+      ImpressumDocumentData,
+      ImpressumDocumentDataImpressumContentItem,
+      ImpressumDocumentDataSlicesSlice,
       LogoDocument,
       LogoDocumentData,
       PageDocument,
