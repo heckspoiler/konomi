@@ -5,12 +5,19 @@ import { createClient } from '@/prismicio';
 import { components } from '@/slices';
 
 import styles from './page.module.css';
+import ImpressumContent from './components/ImpressumContent';
 
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle('impressum');
 
-  return <SliceZone slices={page.data.slices} components={components} />;
+  const content = page.data;
+
+  return (
+    <div className={styles.main}>
+      <ImpressumContent content={content} />
+    </div>
+  );
 }
 
 export async function generateMetadata(): Promise<Metadata> {
