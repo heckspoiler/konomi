@@ -571,7 +571,183 @@ interface EventsDocumentData {
 export type EventsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<EventsDocumentData>, "events", Lang>;
 
-interface FooterDocumentData {}
+/**
+ * Item in *Footer → Socials Links*
+ */
+export interface FooterDocumentDataSocialsLinksItem {
+  /**
+   * Socials Link field in *Footer → Socials Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.socials_links[].socials_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  socials_link: prismic.LinkField;
+
+  /**
+   * Socials Icon field in *Footer → Socials Links*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.socials_links[].socials_icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  socials_icon: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *Footer → Supporters*
+ */
+export interface FooterDocumentDataSupportersItem {
+  /**
+   * Supporters Link field in *Footer → Supporters*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.supporters[].supporters_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  supporters_link: prismic.LinkField;
+
+  /**
+   * Supporters Image field in *Footer → Supporters*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.supporters[].supporters_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  supporters_image: prismic.ImageField<never>;
+}
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Footer Title field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: KONOMI
+   * - **API ID Path**: footer.footer_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer_title: prismic.RichTextField;
+
+  /**
+   * Footer Subtitle field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Festival des japanischen Geschmacks
+   * - **API ID Path**: footer.footer_subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer_subtitle: prismic.RichTextField;
+
+  /**
+   * japanese Subtitle First field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.japanese_subtitle_first
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtitle_first: prismic.RichTextField;
+
+  /**
+   * Japanese Subtilte second field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.japanese_subtilte_second
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtilte_second: prismic.RichTextField;
+
+  /**
+   * Address Street field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.address_street
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  address_street: prismic.RichTextField;
+
+  /**
+   * Address Postcode field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.address_postcode
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  address_postcode: prismic.RichTextField;
+
+  /**
+   * Phone Number field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.phone_number
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  phone_number: prismic.RichTextField;
+
+  /**
+   * Socials Links field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.socials_links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  socials_links: prismic.GroupField<
+    Simplify<FooterDocumentDataSocialsLinksItem>
+  >;
+
+  /**
+   * Contact Link Email field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.contact_link_email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  contact_link_email: prismic.LinkField;
+
+  /**
+   * Supporters Subtitle field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.supporters_subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  supporters_subtitle: prismic.RichTextField;
+
+  /**
+   * Supporters field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.supporters[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  supporters: prismic.GroupField<Simplify<FooterDocumentDataSupportersItem>>;
+}
 
 /**
  * Footer document from Prismic
@@ -1400,6 +1576,8 @@ declare module "@prismicio/client" {
       EventsDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
+      FooterDocumentDataSocialsLinksItem,
+      FooterDocumentDataSupportersItem,
       ImpressumDocument,
       ImpressumDocumentData,
       ImpressumDocumentDataImpressumContentItem,

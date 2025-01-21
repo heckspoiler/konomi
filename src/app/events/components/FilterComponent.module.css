@@ -1,4 +1,4 @@
-.backToContainer {
+.filterContainer {
     display: flex;
     padding: 0.5rem 0;
     width: fit-content;
@@ -6,11 +6,10 @@
     z-index: 100;
 }
 
-
-.backToContainer a {
+.filterContainer p {
     color: white;
     background-color: var(--dark-blue);
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
     font-size: 0.75rem;
     font-variation-settings: var(--subtitle-weight);
     text-transform: uppercase;
@@ -19,33 +18,30 @@
     transition: all 0.2s var(--bezier);
     width: 100%;
     text-align: center;
-
+    text-transform: uppercase;
+    font-family: var(--title-font);
+    cursor: pointer;
 }
 
-.backToContainer a:hover {
+.filterContainer p:hover {
     color: var(--dark-blue);
     background-color: white;
 }
 
-/* !!!! DESKTOP !!!!! */
 
-@media screen and (min-width: 1080px) {
+.foldoutContainer {
+    position: absolute;
+    height: 20rem;
+    width: 20rem;
+    background-color: white;
+    transform: translate(-50%);
+    top: 80%;
+    left: -265%;
+    border: 2px solid var(--dark-blue);
+    transition: top 0.2s var(--bezier);
+    display: none;
+}
 
-    .backToContainer {
-
-        align-items: center;
-        justify-content: flex-end;
-    }
-
-
-    .backToContainer a {
-
-        width: fit-content;
-
-    }
-
-    .backToContainer a:hover {
-        color: var(--dark-blue);
-        background-color: white;
-    }
+.open {
+    display: block;
 }

@@ -6,6 +6,7 @@
     flex-direction: column;
     width: 100%;
 
+
 }
 
 
@@ -15,13 +16,17 @@
     flex-direction: column;
     gap: calc(var(--header-height) / 2);
     align-items: center;
-    height: 400vh;
+
+
 }
 
 
 .backLinkContainer {
     width: 100%;
     position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     top: calc(var(--header-height) + 4rem);
     z-index: 100;
 }

@@ -1,10 +1,150 @@
 {
   "format": "custom",
   "id": "footer",
-  "json": {
-    "Main": {}
-  },
   "label": "Footer",
   "repeatable": false,
-  "status": true
+  "status": true,
+  "json": {
+    "Main": {
+      "footer_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Footer Title",
+          "placeholder": "KONOMI",
+          "allowTargetBlank": true,
+          "multi": "heading2"
+        }
+      },
+      "footer_subtitle": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Footer Subtitle",
+          "placeholder": "Festival des japanischen Geschmacks",
+          "allowTargetBlank": true,
+          "multi": "heading4"
+        }
+      },
+      "japanese_subtitle_first": {
+        "type": "StructuredText",
+        "config": {
+          "label": "japanese Subtitle First",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading4"
+        }
+      },
+      "japanese_subtilte_second": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Japanese Subtilte second",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading4"
+        }
+      },
+      "address_street": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Address Street",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "address_postcode": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Address Postcode",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "phone_number": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Phone Number",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "socials_links": {
+        "type": "Group",
+        "config": {
+          "label": "Socials Links",
+          "repeat": true,
+          "fields": {
+            "socials_link": {
+              "type": "Link",
+              "config": {
+                "label": "Socials Link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "socials_icon": {
+              "type": "Image",
+              "config": {
+                "label": "Socials Icon",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "contact_link_email": {
+        "type": "Link",
+        "config": {
+          "label": "Contact Link Email",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "supporters_subtitle": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Supporters Subtitle",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading4"
+        }
+      },
+      "supporters": {
+        "type": "Group",
+        "config": {
+          "label": "Supporters",
+          "repeat": true,
+          "fields": {
+            "supporters_link": {
+              "type": "Link",
+              "config": {
+                "label": "Supporters Link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "supporters_image": {
+              "type": "Image",
+              "config": {
+                "label": "Supporters Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

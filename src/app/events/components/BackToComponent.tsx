@@ -12,7 +12,7 @@ export default function BackToComponent({
 }) {
   return (
     <div className={styles.backToContainer}>
-      <Link href={url}>{text}</Link>{' '}
+      <Link href={url}>{text}</Link>
     </div>
   );
 }

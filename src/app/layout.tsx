@@ -13,6 +13,8 @@ import Logo from './components/Logo/Logo';
 
 import typeface from '../../helpers/typeface';
 
+import Footer from './components/Footer/Footer';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,6 +33,7 @@ export default function RootLayout({
           <Script id="typekit" strategy="afterInteractive">
             {typeface}
           </Script>
+          <Footer />
         </Providers>
       </body>
     </html>
