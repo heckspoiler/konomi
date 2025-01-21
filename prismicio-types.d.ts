@@ -789,6 +789,17 @@ interface SettingsDocumentData {
   navigation_address: prismic.GroupField<
     Simplify<SettingsDocumentDataNavigationAddressItem>
   >;
+
+  /**
+   * Impressum Link field in *Settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Impressum
+   * - **API ID Path**: settings.impressum_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  impressum_link: prismic.LinkField;
 }
 
 /**

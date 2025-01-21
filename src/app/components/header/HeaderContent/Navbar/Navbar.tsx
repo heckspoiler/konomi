@@ -13,6 +13,7 @@ import { usePathname } from 'next/navigation';
 
 import styles from './Navbar.module.css';
 import { PrismicRichText } from '@prismicio/react';
+import Arrow from '@/app/components/arrow/Arrow';
 
 export default function Navbar({
   content,
@@ -67,12 +68,20 @@ export default function Navbar({
           ))}
         </div>
       </div>
-      <div className={styles.address}>
-        {content.navigation_address.map((item: any, index: number) => (
-          <div key={index}>
-            <PrismicRichText field={item.address_line} />
-          </div>
-        ))}
+      <div className={styles.lowerContainer}>
+        <div className={styles.address}>
+          {content.navigation_address.map((item: any, index: number) => (
+            <div key={index}>
+              <PrismicRichText field={item.address_line} />
+            </div>
+          ))}
+        </div>
+        <div className={styles.impressum}>
+          <PrismicNextLink field={content.impressum_link}>
+            <p>{content.impressum_link.text}</p>
+            <Arrow fill="white" height="10" width="9" />
+          </PrismicNextLink>
+        </div>
       </div>
     </nav>
   );

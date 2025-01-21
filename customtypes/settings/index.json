@@ -97,6 +97,17 @@
             }
           }
         }
+      },
+      "impressum_link": {
+        "type": "Link",
+        "config": {
+          "label": "Impressum Link",
+          "placeholder": "Impressum",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": true,
+          "repeat": false
+        }
       }
     }
   }
