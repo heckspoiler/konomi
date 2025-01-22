@@ -20,7 +20,7 @@ export default function FilterComponent({
           className={`${styles.filterItem} ${isFoldoutOpen ? styles.open : ''}`}
           onClick={() => setIsFoldoutOpen(!isFoldoutOpen)}
         >
-          <p>Filter</p>
+          <p>{!isFoldoutOpen ? 'Filter' : 'Schliessen'}</p>
         </div>
       </div>
       <div
