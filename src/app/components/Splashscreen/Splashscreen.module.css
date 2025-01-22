@@ -1,0 +1,65 @@
+.main {
+    height: 100svh;
+    width: 100svw;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    background-image: var(--hero-image);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: var(--main-container-padding);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    animation: slideUp 0.8s var(--bezier) forwards;
+    animation-delay: 2.5s;
+}
+
+.letterContainer {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.letter {
+    font-size: 8rem;
+    transform: translateX(-110%);
+    animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(1s + (var(--index) * 0.1s));
+    color: white;
+}
+
+@keyframes slideIn {
+    0% {
+
+        transform: translateX(-110%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(-100%);
+    }
+}
+
+
+@media screen and (min-width: 1080px) {
+
+    .letter {
+        color: var(--dark-blue);
+    }
+}

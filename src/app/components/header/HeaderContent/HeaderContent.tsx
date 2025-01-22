@@ -16,14 +16,21 @@ export default function HeaderContent({
   content: any;
   hero: any;
 }) {
-  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(true);
+  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const { isMobile } = useMobile();
   const headerRef = useRef<HTMLDivElement>(null);
 
-  document.documentElement.style.setProperty(
-    '--hero-image',
-    `url(${hero.data.hero_image.url})`
-  );
+  useEffect(() => {
+    if (hero?.data?.hero_image?.url) {
+      document.documentElement.style.setProperty(
+        '--hero-image',
+        `url(${hero.data.hero_image.url})`
+      );
+    }
+    return () => {
+      document.documentElement.style.removeProperty('--hero-image');
+    };
+  }, [hero?.data?.hero_image?.url]);
 
   useEffect(() => {
     const updateHeaderHeight = () => {

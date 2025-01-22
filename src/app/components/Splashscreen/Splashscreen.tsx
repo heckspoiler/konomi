@@ -1,9 +1,24 @@
 'use client';
 
 import React from 'react';
-
 import styles from './Splashscreen.module.css';
 
 export default function Splashscreen() {
-  return <div>Splashscreen</div>;
+  const letters = 'Konomi'.split('');
+
+  return (
+    <div className={styles.main}>
+      <div className={styles.letterContainer}>
+        {letters.map((letter, index) => (
+          <h1
+            key={index}
+            className={styles.letter}
+            style={{ '--index': index } as React.CSSProperties}
+          >
+            {letter}
+          </h1>
+        ))}
+      </div>
+    </div>
+  );
 }
