@@ -14,7 +14,7 @@ function EventsContentInner({ events, page }: { events?: any; page: any }) {
   const pathname = usePathname();
   const [backComponent, setBackComponent] = useState<React.ReactNode>(null);
   const { selectedDate, selectedLocation, selectedEventType } = useFilter();
-  const [isFoldoutOpen, setIsFoldoutOpen] = useState(true);
+  const [isFoldoutOpen, setIsFoldoutOpen] = useState(false);
   // Filter events based on selected criteria
   const filteredEvents = events?.filter((event: any) => {
     const matchesDate =

@@ -17,7 +17,7 @@ export default function FilterFoldout({
   isFoldoutOpen: any;
   setIsFoldoutOpen: any;
 }) {
-  const [fieldIsOpen, setIsFieldOpen] = useState('');
+  const [fieldIsOpen, setIsFieldOpen] = useState('event');
 
   const {
     selectedDate,
