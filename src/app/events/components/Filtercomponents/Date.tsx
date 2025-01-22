@@ -1,14 +1,11 @@
 import React from 'react';
-
 import styles from './LowerContent.module.css';
-
 import FiltermappingContainer from './FiltermappingContainer';
+import { formatDate } from '../../../../../helpers/formatDate';
 
 export default function Location({ events }: { events: any }) {
-  const eventsSorted = events
-    .map((event: any) => {
-      return event.data.event_location[0].text;
-    })
+  const datesSorted = events
+    .map((event: any) => formatDate(event.data.event_start_date))
     .filter(
       (date: string, index: number, self: string[]) =>
         self.indexOf(date) === index
@@ -19,10 +16,10 @@ export default function Location({ events }: { events: any }) {
 
   return (
     <FiltermappingContainer>
-      {eventsSorted.map((event: any, index: number) => {
+      {datesSorted.map((date: string, index: number) => {
         return (
           <div key={index} className={styles.eventType}>
-            <p>{event}</p>
+            <p>{date}</p>
           </div>
         );
       })}
