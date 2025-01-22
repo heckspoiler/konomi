@@ -14,12 +14,16 @@ import Logo from './components/Logo/Logo';
 import typeface from '../../helpers/typeface';
 
 import Footer from './components/Footer/Footer';
+import Splashscreen from './components/Splashscreen/Splashscreen';
+import { usePathname } from 'next/navigation';
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+
   return (
     <html lang="en">
       <body>

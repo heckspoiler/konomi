@@ -48,12 +48,12 @@
         top: 0;
         left: 0;
         height: 100svh;
-        width: fit-content;
+        width: 88vw;
         transform: translateX(-100%);
         transition: transform 0.4s var(--bezier);
         background-color: var(--dark-blue);
         display: flex;
-        gap: 10rem;
+        justify-content: space-between;
     }
 
     .open {
