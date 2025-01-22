@@ -21,7 +21,7 @@
     border-color: white;
 }
 
-.isActive {
+.open h5 {
     background-color: var(--dark-blue);
     color: white;
     border-color: white;

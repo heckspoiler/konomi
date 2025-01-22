@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 
 import styles from './LowerContent.module.css';
@@ -7,13 +5,13 @@ import styles from './LowerContent.module.css';
 import EventtypeArray from './EventtypeArray';
 import FiltermappingContainer from './FiltermappingContainer';
 
-export default function EventType() {
+export default function Location({ events }: { events: any }) {
   return (
     <FiltermappingContainer>
-      {EventtypeArray.map((event: any, index: number) => {
+      {events.map((event: any, index: number) => {
         return (
           <div key={index} className={styles.eventType}>
-            <p>{event}</p>
+            <p>{event.data.event_location[0].text}</p>
           </div>
         );
       })}

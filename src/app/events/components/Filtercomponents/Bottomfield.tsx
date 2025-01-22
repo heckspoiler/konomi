@@ -1,12 +1,23 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 
 import styles from './Bottomfield.module.css';
 import EventType from './EventType';
 
-export default function Bottomfield({ events }: { events: any }) {
+import Location from './Location';
+
+export default function Bottomfield({
+  events,
+  fieldIsOpen,
+}: {
+  events: any;
+  fieldIsOpen: string;
+}) {
   return (
     <div className={styles.container}>
-      <EventType />
+      {fieldIsOpen === 'event' && <EventType />}
+      {fieldIsOpen === 'location' && <Location events={events} />}
     </div>
   );
 }
