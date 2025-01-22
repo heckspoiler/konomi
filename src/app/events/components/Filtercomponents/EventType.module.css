@@ -1,0 +1,20 @@
+.eventType {
+    border: 1px solid var(--dark-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.eventType p {
+    background-color: white;
+    color: var(--dark-blue);
+    transition: all 0.2s var(--bezier);
+    width: 100%;
+    border: none;
+}
+
+.eventType p:hover {
+    background-color: var(--dark-blue);
+    color: white;
+}

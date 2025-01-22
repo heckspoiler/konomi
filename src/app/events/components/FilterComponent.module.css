@@ -34,11 +34,13 @@
     height: 20rem;
     width: 20rem;
     background-color: white;
-    transform: translate(-50%);
+    transform: translateX(-100%);
     border: 2px solid var(--dark-blue);
     transition: top 0.2s var(--bezier);
     display: none;
     top: 110%;
+    font-family: var(--title-font);
+    color: var(--dark-blue)
 }
 
 .open {
