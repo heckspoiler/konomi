@@ -3,3 +3,7 @@
     display: grid;
     grid-template-rows: 1fr 4fr;
 }
+
+.resetButton {
+    padding: 1rem 0;
+}

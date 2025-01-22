@@ -1,17 +1,18 @@
 import React from 'react';
-
 import styles from './LowerContent.module.css';
-
 import FiltermappingContainer from './FiltermappingContainer';
+import { useFilter } from '../../../../../contexts/FilterContext';
 
 export default function Location({ events }: { events: any }) {
+  const { selectedLocation, setSelectedLocation } = useFilter();
+
   const eventsSorted = events
     .map((event: any) => {
       return event.data.event_location[0].text;
     })
     .filter(
-      (date: string, index: number, self: string[]) =>
-        self.indexOf(date) === index
+      (location: string, index: number, self: string[]) =>
+        self.indexOf(location) === index
     )
     .sort((a: string, b: string) =>
       a.localeCompare(b, 'en', { sensitivity: 'base' })
@@ -19,10 +20,15 @@ export default function Location({ events }: { events: any }) {
 
   return (
     <FiltermappingContainer>
-      {eventsSorted.map((event: any, index: number) => {
+      {eventsSorted.map((location: string, index: number) => {
+        const isSelected = selectedLocation === location;
         return (
-          <div key={index} className={styles.eventType}>
-            <p>{event}</p>
+          <div
+            key={index}
+            className={`${styles.eventType} ${isSelected ? styles.selected : ''}`}
+            onClick={() => setSelectedLocation(isSelected ? '' : location)}
+          >
+            <p>{location}</p>
           </div>
         );
       })}
