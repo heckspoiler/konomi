@@ -766,6 +766,38 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 /**
+ * Content for Hero Image documents
+ */
+interface HeroImageDocumentData {
+  /**
+   * Hero Image field in *Hero Image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_image.hero_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_image: prismic.ImageField<never>;
+}
+
+/**
+ * Hero Image document from Prismic
+ *
+ * - **API ID**: `hero_image`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HeroImageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<HeroImageDocumentData>,
+    "hero_image",
+    Lang
+  >;
+
+/**
  * Item in *Impressum → Impressum Content*
  */
 export interface ImpressumDocumentDataImpressumContentItem {
@@ -1132,6 +1164,7 @@ export type AllDocumentTypes =
   | EventDocument
   | EventsDocument
   | FooterDocument
+  | HeroImageDocument
   | ImpressumDocument
   | LogoDocument
   | PageDocument
@@ -1578,6 +1611,8 @@ declare module "@prismicio/client" {
       FooterDocumentData,
       FooterDocumentDataSocialsLinksItem,
       FooterDocumentDataSupportersItem,
+      HeroImageDocument,
+      HeroImageDocumentData,
       ImpressumDocument,
       ImpressumDocumentData,
       ImpressumDocumentDataImpressumContentItem,

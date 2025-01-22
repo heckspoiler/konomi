@@ -1,0 +1,19 @@
+{
+  "format": "custom",
+  "id": "hero_image",
+  "label": "Hero Image",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "hero_image": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

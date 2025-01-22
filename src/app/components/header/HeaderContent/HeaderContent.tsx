@@ -7,10 +7,23 @@ import { useMobile } from '../../../../../contexts/MobileContext';
 import ClickOverlay from './ClickOverlay';
 import HeaderLogo from './HeaderLogo/HeaderLogo';
 
-export default function HeaderContent({ content }: { content: any }) {
-  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+import Image from 'next/image';
+
+export default function HeaderContent({
+  content,
+  hero,
+}: {
+  content: any;
+  hero: any;
+}) {
+  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(true);
   const { isMobile } = useMobile();
   const headerRef = useRef<HTMLDivElement>(null);
+
+  document.documentElement.style.setProperty(
+    '--hero-image',
+    `url(${hero.data.hero_image.url})`
+  );
 
   useEffect(() => {
     const updateHeaderHeight = () => {
@@ -58,7 +71,16 @@ export default function HeaderContent({ content }: { content: any }) {
           menuIsOpen={menuIsOpen}
           content={content}
           setMenuIsOpen={setMenuIsOpen}
+          hero={hero}
         />
+        <div className={styles.heroImage}>
+          <Image
+            src={hero.data.hero_image.url}
+            alt={hero.data.hero_image.alt}
+            width={4961 / 6}
+            height={7016 / 6}
+          />
+        </div>
       </div>
 
       <ClickOverlay

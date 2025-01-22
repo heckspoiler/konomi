@@ -10,7 +10,7 @@ import { closeMenu } from '../../../../../../helpers/closeMenu';
 import { CloseMenuProps } from '../../../../../../helpers/closeMenu';
 
 import { usePathname } from 'next/navigation';
-
+import Image from 'next/image';
 import styles from './Navbar.module.css';
 import { PrismicRichText } from '@prismicio/react';
 import Arrow from '@/app/components/arrow/Arrow';
@@ -19,10 +19,12 @@ export default function Navbar({
   content,
   menuIsOpen,
   setMenuIsOpen,
+  hero,
 }: {
   content: any;
   menuIsOpen: boolean;
   setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  hero: any;
 }) {
   const [isActiveItem, setIsActiveItem] = useState();
 
@@ -38,6 +40,8 @@ export default function Navbar({
       }
     });
   }, [pathname]);
+
+  console.log(hero.data.hero_image.url);
 
   return (
     <nav className={`${styles.navbar} ${menuIsOpen ? styles.open : ''}`}>

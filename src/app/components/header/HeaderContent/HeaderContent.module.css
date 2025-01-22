@@ -22,13 +22,16 @@
     width: 100svw;
     transform: translateX(-100%);
     transition: transform 0.4s var(--bezier);
-    background-color: white;
     z-index: 1;
 }
 
 .open {
     transform: translateX(0%);
 
+}
+
+.heroImage {
+    display: none;
 }
 
 @media screen and (min-width: 1080px) {
@@ -45,13 +48,21 @@
         top: 0;
         left: 0;
         height: 100svh;
-        width: 33svw;
+        width: fit-content;
         transform: translateX(-100%);
         transition: transform 0.4s var(--bezier);
-        background-color: white;
+        background-color: var(--dark-blue);
+        display: flex;
+        gap: 10rem;
     }
 
     .open {
         transform: translateX(0%);
+    }
+
+    .heroImage {
+        height: 100svh;
+        aspect-ratio: 5/7;
+        display: block;
     }
 }

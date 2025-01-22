@@ -7,6 +7,17 @@ const nextConfig = {
     });
     return config;
   },
+  images: {
+    domains: ['images.prismic.io'],
+    // If you need more control over image optimization:
+    // remotePatterns: [
+    //   {
+    //     protocol: 'https',
+    //     hostname: 'images.prismic.io',
+    //     pathname: '/konomi/**',
+    //   },
+    // ],
+  },
 };
 
 export default nextConfig;
