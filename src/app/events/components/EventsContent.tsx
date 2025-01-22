@@ -14,7 +14,7 @@ function EventsContentInner({ events, page }: { events?: any; page: any }) {
   const pathname = usePathname();
   const [backComponent, setBackComponent] = useState<React.ReactNode>(null);
   const { selectedDate, selectedLocation, selectedEventType } = useFilter();
-
+  const [isFoldoutOpen, setIsFoldoutOpen] = useState(true);
   // Filter events based on selected criteria
   const filteredEvents = events?.filter((event: any) => {
     const matchesDate =
@@ -56,9 +56,15 @@ function EventsContentInner({ events, page }: { events?: any; page: any }) {
       <div className={styles.eventsContainer}>
         <div className={styles.backLinkContainer}>
           {backComponent}
-          <div>
-            <FilterComponent events={events} />
-          </div>
+          {pathname.startsWith('/events') && (
+            <div className={`${isFoldoutOpen && styles.foldoutOpen}`}>
+              <FilterComponent
+                events={events}
+                isFoldoutOpen={isFoldoutOpen}
+                setIsFoldoutOpen={setIsFoldoutOpen}
+              />
+            </div>
+          )}
         </div>
         {filteredEvents &&
           filteredEvents.map((event: any, index: number) => (

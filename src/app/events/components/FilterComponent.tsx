@@ -4,14 +4,20 @@ import React, { useState } from 'react';
 import styles from './FilterComponent.module.css';
 import FilterFoldout from './Filtercomponents/FilterFoldout';
 
-export default function FilterComponent({ events }: { events: any }) {
-  const [isFoldoutOpen, setIsFoldoutOpen] = useState(true);
-
+export default function FilterComponent({
+  events,
+  setIsFoldoutOpen,
+  isFoldoutOpen,
+}: {
+  events: any;
+  isFoldoutOpen: any;
+  setIsFoldoutOpen: any;
+}) {
   return (
     <div className={styles.filterContainer}>
       <div className={styles.filterHeader}>
         <div
-          className={styles.filterItem}
+          className={`${styles.filterItem} ${isFoldoutOpen ? styles.open : ''}`}
           onClick={() => setIsFoldoutOpen(!isFoldoutOpen)}
         >
           <p>Filter</p>
@@ -20,7 +26,11 @@ export default function FilterComponent({ events }: { events: any }) {
       <div
         className={`${styles.foldoutContainer} ${isFoldoutOpen ? styles.open : ''}`}
       >
-        <FilterFoldout events={events} />
+        <FilterFoldout
+          events={events}
+          isFoldoutOpen={isFoldoutOpen}
+          setIsFoldoutOpen={setIsFoldoutOpen}
+        />
       </div>
     </div>
   );

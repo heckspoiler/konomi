@@ -8,7 +8,15 @@ import Topfield from './Topfield';
 import Bottomfield from './Bottomfield';
 import { useFilter } from '../../../../../contexts/FilterContext';
 
-export default function FilterFoldout({ events }: { events: any }) {
+export default function FilterFoldout({
+  events,
+  isFoldoutOpen,
+  setIsFoldoutOpen,
+}: {
+  events: any;
+  isFoldoutOpen: any;
+  setIsFoldoutOpen: any;
+}) {
   const [fieldIsOpen, setIsFieldOpen] = useState('');
 
   const {
@@ -29,13 +37,14 @@ export default function FilterFoldout({ events }: { events: any }) {
     setSelectedDate('');
     setSelectedLocation('');
     setSelectedEventType('');
+    setIsFoldoutOpen(false);
   };
   return (
     <div className={styles.foldout}>
       <Topfield fieldIsOpen={fieldIsOpen} setIsFieldOpen={setIsFieldOpen} />
       <Bottomfield events={events} fieldIsOpen={fieldIsOpen} />
       <button onClick={resetFilters} className={styles.resetButton}>
-        <span>Filter zurücksetzen</span>
+        <span>{hasActiveFilters ? 'Filter zurücksetzen' : 'Schliessen'}</span>
       </button>
     </div>
   );

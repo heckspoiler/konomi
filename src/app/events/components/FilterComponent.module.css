@@ -3,6 +3,7 @@
     width: fit-content;
     position: relative;
     z-index: 100;
+
 }
 
 
@@ -45,4 +46,11 @@
 
 .open {
     display: block;
+}
+
+.filterItem p {}
+
+.open p {
+    background-color: white;
+    color: var(--dark-blue)
 }
