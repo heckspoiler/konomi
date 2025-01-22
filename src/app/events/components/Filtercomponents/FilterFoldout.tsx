@@ -44,7 +44,11 @@ export default function FilterFoldout({
       <Topfield fieldIsOpen={fieldIsOpen} setIsFieldOpen={setIsFieldOpen} />
       <Bottomfield events={events} fieldIsOpen={fieldIsOpen} />
       <button onClick={resetFilters} className={styles.resetButton}>
-        <span>{hasActiveFilters ? 'Filter zurücksetzen' : 'Schliessen'}</span>
+        <span>
+          {isFoldoutOpen && hasActiveFilters
+            ? 'Filter zurücksetzen & Schliessen'
+            : 'Schliessen'}
+        </span>
       </button>
     </div>
   );
