@@ -26,6 +26,7 @@
     justify-content: center;
     flex-direction: column;
     padding-left: 2.5rem;
+    width: fit-content;
 }
 
 .itemContent {
@@ -51,6 +52,8 @@
     background-color: var(--dark-blue);
     height: 4rem;
     pointer-events: all;
+
+    width: fit-content;
     transition: transform 0.2s var(--bezier), font-variation-settings 0.2s var(--bezier);
 }
 
@@ -79,6 +82,7 @@
     display: flex;
     gap: 2rem;
     align-items: center;
+
 }
 
 .lowerContainer {
@@ -88,6 +92,7 @@
     padding: 0.8rem;
     flex-direction: column;
     gap: 1rem;
+
 }
 
 .lowerContainer * {
@@ -132,5 +137,23 @@
     .navbar {
         background-color: var(--dark-blue);
         background: none;
+    }
+}
+
+
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .navbar {
+        height: 100svh;
+        background-color: red;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 4rem;
+        padding-top: 25svh;
+        background-color: var(--dark-blue);
+        background: var(--hero-image);
+        background-size: auto 100%;
+        background-repeat: no-repeat;
     }
 }

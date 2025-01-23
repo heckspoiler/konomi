@@ -157,7 +157,7 @@ button:hover {
 
 /* !!!! DESKTOP !!!!! */
 
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 1280px) {
     :root {
         font-size: 18px;
     }
@@ -165,5 +165,30 @@ button:hover {
     p {
         font-size: 1.1rem;
         text-wrap: pretty;
+    }
+}
+
+
+
+/* !!!! TABLET !!!!! */
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    :root {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    nav,
+    nav li,
+    nav a,
+    nav h5 {
+        font-size: 1.5rem;
     }
 }
