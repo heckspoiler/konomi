@@ -25,7 +25,7 @@ export default function Events({ events }: { events: any }) {
   const sortedUpcomingEvents = events
     .filter((event: any) => {
       const eventDate = new Date(event.data.event_start_date);
-      const bufferDate = new Date(currentDate.getTime() - 60 * 60 * 1000); // 1 hour buffer
+      const bufferDate = new Date(currentDate.getTime() - 60 * 60 * 1000);
       return eventDate >= bufferDate && !event.tags.includes('archived');
     })
     .sort((a: any, b: any) => {
@@ -37,10 +37,10 @@ export default function Events({ events }: { events: any }) {
 
   return (
     <div className={styles.scheduleContainer}>
-      {sortedUpcomingEvents.map((event: any, index: number) => (
+      {sortedUpcomingEvents.slice(0, 10).map((event: any, index: number) => (
         <div key={index} className={styles.event}>
           <h2>
-            {truncateText(event.data.event_title[0].text, isMobile ? 10 : 15)}
+            {truncateText(event.data.event_title[0].text, isMobile ? 10 : 25)}
           </h2>
           <h4>{formatDate(event.data.event_start_date)}</h4>
           <Link href={`/events/${event.uid}`}>
