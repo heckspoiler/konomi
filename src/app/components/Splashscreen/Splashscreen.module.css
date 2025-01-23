@@ -22,10 +22,11 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    max-height: 100svh;
 }
 
 .letter {
-    font-size: 8rem;
+    font-size: calc(3rem + 6vh);
     transform: translateX(-110%);
     animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     animation-delay: calc(1s + (var(--index) * 0.1s));
@@ -52,7 +53,7 @@
 
     100% {
         opacity: 1;
-        transform: translateY(-100%);
+        transform: translateY(100%);
     }
 }
 
@@ -61,12 +62,10 @@
 
     .letter {
         color: var(--dark-blue);
+
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .letter {
-        font-size: 6rem;
-
-    }
+    .letter {}
 }
