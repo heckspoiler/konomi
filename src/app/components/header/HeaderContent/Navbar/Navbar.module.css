@@ -127,6 +127,11 @@
     font-variation-settings: var(--title-weight);
 }
 
+.impressum {
+    background-color: red;
+    width: fit-content;
+}
+
 .impressum svg {
     transform: translateY(-1px);
 }
