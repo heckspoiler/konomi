@@ -111,8 +111,6 @@
     font-variation-settings: var(--subtitle-weight)
 }
 
-.address {}
-
 .address * {
     font-family: var(--title-font);
     color: white;
