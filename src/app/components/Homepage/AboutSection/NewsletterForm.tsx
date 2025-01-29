@@ -7,6 +7,7 @@ import styles from './NewsletterForm.module.css';
 import Arrow from '../../arrow/Arrow';
 
 export default function NewsletterForm() {
+  const [isHovered, setIsHovered] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
@@ -123,10 +124,15 @@ export default function NewsletterForm() {
             </label>
           </div>
           <div className={styles.buttonContainer}>
-            <button type="submit" className={styles.submitButton}>
+            <button
+              type="submit"
+              className={styles.submitButton}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
               <span>ANMELDEN</span>
               <span>
-                <Arrow fill={'white'} />
+                <Arrow fill={!isHovered ? 'white' : 'var(--dark-blue)'} />
               </span>
             </button>
           </div>
