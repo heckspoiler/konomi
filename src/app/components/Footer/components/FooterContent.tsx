@@ -66,7 +66,7 @@ export default function FooterContent({ data }: { data: any }) {
                 </div>
               ))}
             </div>
-          </div>{' '}
+          </div>
         </div>
       </div>
     </>
