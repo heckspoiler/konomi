@@ -7,6 +7,8 @@ import styles from './NewsletterForm.module.css';
 import Arrow from '../../arrow/Arrow';
 
 export default function NewsletterForm() {
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -14,10 +16,37 @@ export default function NewsletterForm() {
     consent: false,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission logic here
+    setError('');
+
+    try {
+      const response = await fetch('/api/rapidmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong');
+      }
+
+      setIsSuccess(true);
+
+      setFormData({
+        email: '',
+        firstName: '',
+        lastName: '',
+        consent: false,
+      });
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'Failed to subscribe');
+      console.error('Newsletter signup failed:', error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,71 +59,86 @@ export default function NewsletterForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <h2>MELDE DICH FÜR UNSEREN NEWSLETTER AN!</h2>
+      <h2>
+        {!isSuccess
+          ? 'MELDE DICH FÜR UNSEREN NEWSLETTER AN!'
+          : 'GROSSARTIG, DU BIST ANGEMELDET!'}
+      </h2>
 
-      <div className={styles.textInputContainer}>
-        <div className={styles.emailContainer}>
-          <div>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="メールアドレス - Mailadresse"
-              required
-            />
+      {!isSuccess ? (
+        <>
+          <div className={styles.textInputContainer}>
+            <div className={styles.emailContainer}>
+              <div>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="メールアドレス - Mailadresse"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className={styles.nameContainer}>
+              <div>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  placeholder="名前 - Vorname"
+                  required
+                />
+              </div>
+
+              <div>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  placeholder="苗字 - Nachname"
+                  required
+                />
+              </div>
+            </div>
           </div>
+
+          <div className={styles.consentContainer}>
+            <label>
+              <input
+                type="checkbox"
+                name="consent"
+                checked={formData.consent}
+                onChange={handleChange}
+                required
+              />
+              Mit dem Absenden dieses Formulars stimme ich der Nutzung meiner
+              Daten zu Marketingzwecken zu.
+            </label>
+          </div>
+          <div className={styles.buttonContainer}>
+            <button type="submit" className={styles.submitButton}>
+              <span>ANMELDEN</span>
+              <span>
+                <Arrow fill={'white'} />
+              </span>
+            </button>
+          </div>
+        </>
+      ) : (
+        <div className={styles.successContainer}>
+          <p>
+            Du hast dich erfolgreich für unseren Newsletter angemeldet und wir
+            werden dich weiterhin auf dem Laufenden behalten!
+          </p>
         </div>
-
-        <div className={styles.nameContainer}>
-          <div>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              placeholder="名前 - Vorname"
-              required
-            />
-          </div>
-
-          <div>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              placeholder="苗字 - Nachname"
-              required
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.consentContainer}>
-        <label>
-          <input
-            type="checkbox"
-            name="consent"
-            checked={formData.consent}
-            onChange={handleChange}
-            required
-          />
-          Mit dem Absenden dieses Formulars stimme ich der Nutzung meiner Daten
-          zu Marketingzwecken zu.
-        </label>
-      </div>
-      <div className={styles.buttonContainer}>
-        <button type="submit" className={styles.submitButton}>
-          <span>ANMELDEN</span>
-          <span>
-            <Arrow fill={'white'} />
-          </span>
-        </button>
-      </div>
+      )}
     </form>
   );
 }
