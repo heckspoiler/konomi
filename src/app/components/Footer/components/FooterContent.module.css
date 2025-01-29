@@ -93,6 +93,19 @@
 }
 
 
+.newsletterOverlay {
+    position: fixed;
+    height: fit-content;
+    padding: 2rem;
+    border: 1px solid var(--dark-blue);
+    width: 50svw;
+    z-index: 20;
+    background-color: var(--dark-blue);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
 
 @media screen and (min-width: 1080px) {
 
