@@ -133,20 +133,15 @@
           "default_value": false
         }
       },
-      "location_icon": {
-        "type": "Image",
+      "google_location_link": {
+        "type": "Link",
         "config": {
-          "label": "Location Icon",
-          "constraint": {},
-          "thumbnails": []
-        }
-      },
-      "date_icon": {
-        "type": "Image",
-        "config": {
-          "label": "Date Icon",
-          "constraint": {},
-          "thumbnails": []
+          "label": "Google Location Link",
+          "placeholder": "Kein Text",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
         }
       },
       "slices": {

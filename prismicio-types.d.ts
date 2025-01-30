@@ -401,26 +401,15 @@ interface EventDocumentData {
   is_crafting: prismic.BooleanField;
 
   /**
-   * Location Icon field in *Event*
+   * Google Location Link field in *Event*
    *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: event.location_icon
+   * - **Field Type**: Link
+   * - **Placeholder**: Kein Text
+   * - **API ID Path**: event.google_location_link
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  location_icon: prismic.ImageField<never>;
-
-  /**
-   * Date Icon field in *Event*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: event.date_icon
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  date_icon: prismic.ImageField<never>;
+  google_location_link: prismic.LinkField;
 
   /**
    * Slice Zone field in *Event*
