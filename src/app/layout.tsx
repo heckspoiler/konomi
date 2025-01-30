@@ -26,10 +26,8 @@ export default function RootLayout({
       <body>
         <Providers>
           <Background />
-          <Header />
-          <Logo />
+          <Header /> <Logo />
           {children}
-
           <PrismicPreview repositoryName={repositoryName} />
           <Script id="typekit" strategy="afterInteractive">
             {typeface}

@@ -68,7 +68,7 @@ export default function FooterContent({ data }: { data: any }) {
             </div>
             <div className={styles.supportersLogos}>
               {data.supporters.map((item: any, index: number) => (
-                <div key={index}>
+                <div key={index} className={styles.supporter}>
                   <PrismicNextLink field={item.supporters_link}>
                     <PrismicNextImage field={item.supporters_image} />
                   </PrismicNextLink>

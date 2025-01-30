@@ -61,7 +61,6 @@
     background-color: white;
     height: 100svh;
     width: 100svw;
-    z-index: 100;
     display: none;
     z-index: 1000;
 }

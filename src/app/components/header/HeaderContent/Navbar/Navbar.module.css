@@ -82,7 +82,23 @@
     display: flex;
     gap: 2rem;
     align-items: center;
+    width: fit-content;
 
+}
+
+.socials div {
+    background-color: var(--dark-blue);
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.socials div a {
+    background-color: var(--dark-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lowerContainer {

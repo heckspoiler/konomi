@@ -3,7 +3,7 @@
     width: 100svw;
     padding: 1rem var(--main-container-padding);
     background-color: var(--dark-blue);
-    z-index: 1000;
+    z-index: 10;
 }
 
 .footer * {
@@ -25,6 +25,6 @@
         width: fit-content;
         padding: 1rem var(--main-container-padding);
         background-color: var(--dark-blue);
-        z-index: 1000;
+
     }
 }

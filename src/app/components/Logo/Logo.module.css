@@ -2,8 +2,8 @@
     position: fixed;
     bottom: 0.7rem;
     right: 0.7rem;
-    z-index: 2;
     cursor: pointer;
+    z-index: -1;
 }
 
 .logo img {
