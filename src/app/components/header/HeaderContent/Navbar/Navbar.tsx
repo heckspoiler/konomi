@@ -34,6 +34,7 @@ export default function Navbar({
     content.navigation_items.forEach((item: any) => {
       if (
         item.navigation_item.url &&
+        pathname &&
         pathname.startsWith(item.navigation_item.url)
       ) {
         setIsActiveItem(item);

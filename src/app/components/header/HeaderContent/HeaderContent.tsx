@@ -84,8 +84,8 @@ export default function HeaderContent({
           <Image
             src={hero.data.hero_image.url}
             alt={hero.data.hero_image.alt}
-            width={4961 / 6}
-            height={7016 / 6}
+            width={4961 / 7}
+            height={7016 / 7}
           />
         </div>
       </div>
