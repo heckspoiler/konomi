@@ -37,13 +37,13 @@ function EventsContentInner({ events, page }: { events?: any; page: any }) {
   });
 
   useEffect(() => {
-    if (pathname.startsWith('/events')) {
+    if (pathname && pathname.startsWith('/events')) {
       setBackComponent(
         <div className={styles.backToContainer}>
           <BackToComponent text="Zum Archiv" url="/archive" />
         </div>
       );
-    } else if (pathname.startsWith('/archive')) {
+    } else if (pathname && pathname.startsWith('/archive')) {
       setBackComponent(
         <BackToComponent text="Aktuelle Events" url="/events" />
       );
@@ -56,7 +56,7 @@ function EventsContentInner({ events, page }: { events?: any; page: any }) {
       <div className={styles.eventsContainer}>
         <div className={styles.backLinkContainer}>
           {backComponent}
-          {pathname.startsWith('/events') && (
+          {pathname && pathname.startsWith('/events') && (
             <div className={`${isFoldoutOpen && styles.foldoutOpen}`}>
               <FilterComponent
                 events={events}
