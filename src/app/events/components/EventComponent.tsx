@@ -7,6 +7,9 @@ import Link from 'next/link';
 import { formatDateTime } from '../../../../helpers/formateDateTime';
 import LeftContainer from './LeftContainer';
 
+import LocationIcon from '../[uid]/components/LocationIcon';
+import CalendarIcon from '../[uid]/components/CalendarIcon';
+
 interface EventProps {
   event: {
     uid: string;
@@ -35,9 +38,7 @@ export default function EventComponent({ event }: EventProps) {
       <PrismicRichText field={event.data.event_title} />
       <div className={styles.middleContainer}>
         <div className={styles.addressContainer}>
-          <div>
-            <PrismicNextImage field={event.data.location_icon} />
-          </div>
+          <LocationIcon />
           <div>
             <PrismicRichText field={event.data.event_location} />
             <PrismicRichText field={event.data.event_street} />
@@ -47,7 +48,7 @@ export default function EventComponent({ event }: EventProps) {
         <div className={styles.lowerRightContainer}>
           <div className={styles.dateContainer}>
             <div className={styles.iconContainer}>
-              <PrismicNextImage field={event.data.date_icon} />
+              <CalendarIcon />
             </div>
             <div>
               <p className={styles.date}>{startDateTime.dayOnly}</p>

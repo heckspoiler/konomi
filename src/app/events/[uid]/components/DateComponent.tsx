@@ -3,17 +3,14 @@ import React from 'react';
 import { formatDateTime } from '../../../../../helpers/formateDateTime';
 
 import styles from './DateComponent.module.css';
-
-import { PrismicNextImage } from '@prismicio/next';
+import CalendarIcon from './CalendarIcon';
 
 export default function DateComponent({ data }: { data: any }) {
   const startDateTime = formatDateTime(data.event_start_date);
   const endDateTime = formatDateTime(data.event_end_date);
   return (
     <div className={styles.dateContainer}>
-      <div>
-        <PrismicNextImage field={data.date_icon} />
-      </div>
+      <CalendarIcon />
       <div className={styles.textContainer}>
         <p>
           <span>{startDateTime.dayOnly}</span> -
