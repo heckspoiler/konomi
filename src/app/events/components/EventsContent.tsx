@@ -50,6 +50,8 @@ function EventsContentInner({ events, page }: { events?: any; page: any }) {
     }
   }, [pathname]);
 
+  // render stuff
+
   return (
     <div className={styles.container}>
       <MainHeading page={page} />
