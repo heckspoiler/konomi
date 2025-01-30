@@ -65,8 +65,8 @@ export default function Navbar({
         </div>
         <div className={styles.socials}>
           {content.navigation_social_icons.map((item: any, index: number) => (
-            <div key={index}>
-              <Link href={item.socials_link.url ?? ''}>
+            <div key={index} onClick={() => closeMenu({ setMenuIsOpen })}>
+              <Link href={item.socials_link.url ?? '/#about'}>
                 <PrismicNextImage field={item.socials_icon} />
               </Link>
             </div>

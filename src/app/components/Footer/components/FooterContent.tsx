@@ -15,7 +15,16 @@ export default function FooterContent({ data }: { data: any }) {
     <>
       {newsletterIsOpen && (
         <div className={styles.newsletterOverlay}>
-          <NewsletterForm />
+          <div
+            className={styles.crossContainer}
+            onClick={() => setNewsletterIsOpen(false)}
+            role="button"
+            aria-label="Close newsletter"
+          >
+            <div></div>
+            <div></div>
+          </div>
+          <NewsletterForm stylesprops={styles} arrowFill={'var(--dark-blue)'} />
         </div>
       )}
       <div className={styles.container}>

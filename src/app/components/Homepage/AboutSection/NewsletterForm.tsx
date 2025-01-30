@@ -2,11 +2,17 @@
 
 import React, { useState } from 'react';
 
-import styles from './NewsletterForm.module.css';
+import cssStyles from './NewsletterForm.module.css';
 
 import Arrow from '../../arrow/Arrow';
 
-export default function NewsletterForm() {
+export default function NewsletterForm({
+  stylesprops,
+  arrowFill,
+}: {
+  stylesprops?: any;
+  arrowFill?: string;
+}) {
   const [isHovered, setIsHovered] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -16,6 +22,8 @@ export default function NewsletterForm() {
     lastName: '',
     consent: false,
   });
+
+  const styles = stylesprops || cssStyles;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -132,7 +140,9 @@ export default function NewsletterForm() {
             >
               <span>ANMELDEN</span>
               <span>
-                <Arrow fill={!isHovered ? 'white' : 'var(--dark-blue)'} />
+                <Arrow
+                  fill={!isHovered && !arrowFill ? 'white' : 'var(--dark-blue)'}
+                />
               </span>
             </button>
           </div>
