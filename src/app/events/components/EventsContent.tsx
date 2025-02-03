@@ -58,15 +58,14 @@ function EventsContentInner({ events, page }: { events?: any; page: any }) {
       <div className={styles.eventsContainer}>
         <div className={styles.backLinkContainer}>
           {backComponent}
-          {pathname && pathname.startsWith('/events') && (
-            <div className={`${isFoldoutOpen && styles.foldoutOpen}`}>
-              <FilterComponent
-                events={events}
-                isFoldoutOpen={isFoldoutOpen}
-                setIsFoldoutOpen={setIsFoldoutOpen}
-              />
-            </div>
-          )}
+
+          <div className={`${isFoldoutOpen && styles.foldoutOpen}`}>
+            <FilterComponent
+              events={events}
+              isFoldoutOpen={isFoldoutOpen}
+              setIsFoldoutOpen={setIsFoldoutOpen}
+            />
+          </div>
         </div>
         {filteredEvents &&
           filteredEvents.map((event: any, index: number) => (
