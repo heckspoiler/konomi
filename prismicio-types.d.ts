@@ -256,7 +256,7 @@ interface EventDocumentData {
    * Eventfrog Link field in *Event*
    *
    * - **Field Type**: Link
-   * - **Placeholder**: TICKETS
+   * - **Placeholder**: Kein Text notwendig
    * - **API ID Path**: event.eventfrog_link
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
@@ -410,6 +410,17 @@ interface EventDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   google_location_link: prismic.LinkField;
+
+  /**
+   * Location Website field in *Event*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Kein Text notwendig
+   * - **API ID Path**: event.location_website
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  location_website: prismic.LinkField;
 
   /**
    * Slice Zone field in *Event*

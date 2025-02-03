@@ -25,10 +25,10 @@
         "type": "Link",
         "config": {
           "label": "Eventfrog Link",
-          "placeholder": "TICKETS",
+          "placeholder": "Kein Text notwendig",
           "select": null,
           "allowTargetBlank": true,
-          "allowText": true,
+          "allowText": false,
           "repeat": false
         }
       },
@@ -141,6 +141,17 @@
           "select": null,
           "allowTargetBlank": true,
           "allowText": false,
+          "repeat": false
+        }
+      },
+      "location_website": {
+        "type": "Link",
+        "config": {
+          "label": "Location Website",
+          "placeholder": "Kein Text notwendig",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
           "repeat": false
         }
       },

@@ -21,6 +21,7 @@ import DateComponent from './DateComponent';
 import Link from 'next/link';
 import BackToComponent from '../../components/BackToComponent';
 import OverlayImage from './OverlayImage';
+import Arrow from '@/app/components/arrow/Arrow';
 
 export default function EventContent({
   page,
@@ -66,7 +67,9 @@ export default function EventContent({
           <DateComponent data={data} />
           <div className={styles.linkContainer}>
             {!buttonShow ? (
-              <PrismicNextLink field={data.eventfrog_link} />
+              <PrismicNextLink field={data.eventfrog_link}>
+                Tickets
+              </PrismicNextLink>
             ) : (
               <Link href="/events">Events</Link>
             )}
@@ -77,8 +80,14 @@ export default function EventContent({
         </div>
         <div className={styles.descriptionContainer}>
           <p>{data.event_description}</p>
+        </div>{' '}
+        <div className={styles.locationLink}>
+          <PrismicNextLink field={data.location_website}>
+            Mehr über {data.event_location[0].text} erfahren
+          </PrismicNextLink>
         </div>
       </div>
+
       {backComponent}
       <div
         className={`${styles.overlayImageContainer} ${overlayIsOpen ? styles.isOpen : ''}`}
