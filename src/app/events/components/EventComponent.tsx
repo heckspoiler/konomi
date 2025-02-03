@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './EventComponent.module.css';
 import { PrismicRichText } from '@prismicio/react';
-import { PrismicNextImage } from '@prismicio/next';
+import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
 import Link from 'next/link';
 
 import { formatDateTime } from '../../../../helpers/formateDateTime';
@@ -24,6 +24,7 @@ interface EventProps {
       event_location: any;
       event_link: any;
       event_postcode_and_city: any;
+      google_location_link: any;
       location_icon: any;
       date_icon: any;
     };
@@ -38,12 +39,14 @@ export default function EventComponent({ event }: EventProps) {
       <PrismicRichText field={event.data.event_title} />
       <div className={styles.middleContainer}>
         <div className={styles.addressContainer}>
-          <LocationIcon />
-          <div>
-            <PrismicRichText field={event.data.event_location} />
-            <PrismicRichText field={event.data.event_street} />
-            <PrismicRichText field={event.data.event_postcode_and_city} />
-          </div>
+          <PrismicNextLink field={event.data.google_location_link}>
+            <LocationIcon />
+            <div>
+              <PrismicRichText field={event.data.event_location} />
+              <PrismicRichText field={event.data.event_street} />
+              <PrismicRichText field={event.data.event_postcode_and_city} />
+            </div>
+          </PrismicNextLink>
         </div>
         <div className={styles.lowerRightContainer}>
           <div className={styles.dateContainer}>

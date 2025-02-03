@@ -60,7 +60,9 @@ export default function EventContent({
         </div>
         <IconComponent event={page} />
         <div className={styles.infoContainer}>
-          <LocationComponent data={data} />
+          <PrismicNextLink field={data.google_location_link}>
+            <LocationComponent data={data} />
+          </PrismicNextLink>
           <DateComponent data={data} />
           <div className={styles.linkContainer}>
             {!buttonShow ? (
