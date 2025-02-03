@@ -33,7 +33,7 @@ export default function RootLayout({
             {typeface}
           </Script>
           <Footer />
-          {/* <Splashscreen /> */}
+          <Splashscreen />
         </Providers>
       </body>
     </html>

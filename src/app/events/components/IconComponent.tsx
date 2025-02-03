@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Vinyl from '../../../../public/svg/vinyl.svg';
 import Drink from '../../../../public/svg/drink.svg';
 import Food from '../../../../public/svg/food.svg';
+import Craft from '../../../../public/svg/sword.svg';
 
 function renderIcon(property: string, value: boolean) {
   if (!value) return null;
@@ -20,6 +21,8 @@ function renderIcon(property: string, value: boolean) {
       return <Image src={Vinyl} alt="music" height={60} width={60} />;
     case 'is_lecture':
       return <Image src={Book} alt="lecture" height={60} width={60} />;
+    case 'is_crafting':
+      return <Image src={Craft} alt="lecture" height={55} width={55} />;
     default:
       return null;
   }
@@ -37,6 +40,7 @@ export default function IconComponent({
     { key: 'is_food', value: event.data.is_food },
     { key: 'is_music', value: event.data.is_music },
     { key: 'is_lecture', value: event.data.is_lecture },
+    { key: 'is_crafting', value: event.data.is_crafting },
   ];
 
   return (
