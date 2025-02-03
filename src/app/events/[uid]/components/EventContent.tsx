@@ -21,7 +21,6 @@ import DateComponent from './DateComponent';
 import Link from 'next/link';
 import BackToComponent from '../../components/BackToComponent';
 import OverlayImage from './OverlayImage';
-import Arrow from '@/app/components/arrow/Arrow';
 
 export default function EventContent({
   page,
