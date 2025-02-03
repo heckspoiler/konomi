@@ -38,16 +38,16 @@ export default function EventComponent({ event }: EventProps) {
     <div className={styles.event}>
       <PrismicRichText field={event.data.event_title} />
       <div className={styles.middleContainer}>
-        <div className={styles.addressContainer}>
-          <PrismicNextLink field={event.data.google_location_link}>
+        <PrismicNextLink field={event.data.google_location_link}>
+          <div className={styles.addressContainer}>
             <LocationIcon />
             <div>
               <PrismicRichText field={event.data.event_location} />
               <PrismicRichText field={event.data.event_street} />
               <PrismicRichText field={event.data.event_postcode_and_city} />
             </div>
-          </PrismicNextLink>
-        </div>
+          </div>{' '}
+        </PrismicNextLink>
         <div className={styles.lowerRightContainer}>
           <div className={styles.dateContainer}>
             <div className={styles.iconContainer}>
