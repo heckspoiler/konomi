@@ -2,6 +2,8 @@ import { PrismicPreview } from '@prismicio/next';
 import { repositoryName } from '@/prismicio';
 import Script from 'next/script';
 
+import { Analytics } from '@vercel/analytics/react';
+
 import { Providers } from './components/Providers/Providers';
 
 import Background from './components/background/Background';
@@ -28,6 +30,7 @@ export default function RootLayout({
           <Background />
           <Header /> <Logo />
           {children}
+          <Analytics />
           <PrismicPreview repositoryName={repositoryName} />
           <Script id="typekit" strategy="afterInteractive">
             {typeface}
