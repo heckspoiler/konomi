@@ -6,6 +6,10 @@
     background-color: var(--dark-blue);
 }
 
+.category {
+    position: relative;
+}
+
 .container h5 {
     font-variation-settings: var(--subtitle-weight);
     padding: 0.5rem 0.75rem;
@@ -13,16 +17,47 @@
     cursor: pointer;
     transition: all 0.2s var(--bezier);
     background-color: white;
+    z-index: 20;
 }
 
-.container h5:hover {
-    background-color: var(--dark-blue);
-    color: white;
-    border-color: white;
+/* Only apply hover styles on devices that support hover */
+@media (hover: hover) {
+    .container h5:hover {
+        background-color: var(--dark-blue);
+        color: white;
+        border-color: white;
+    }
+}
+
+/* Styles for touch devices */
+@media (hover: none) {
+    .container h5:active {
+        background-color: var(--dark-blue);
+        color: white;
+        border-color: white;
+    }
 }
 
 .open h5 {
     background-color: var(--dark-blue);
     color: white;
+    border-color: white;
+}
+
+.indicator {
+    height: 8px;
+    width: 8px;
+    background-color: transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    transition: background-color 0.2s var(--bezier), border-color 0.2s var(--bezier);
+    border: 1px solid transparent;
+    z-index: 0;
+}
+
+.indicatorVisible {
+    background-color: var(--red);
     border-color: white;
 }

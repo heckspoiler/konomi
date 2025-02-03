@@ -20,28 +20,37 @@ export default function Topfield({
       <div
         key="event"
         onClick={() => handleClick('event')}
-        className={`${fieldIsOpen === 'event' ? styles.open : ''} ${
+        className={`${styles.category} ${fieldIsOpen === 'event' ? styles.open : ''} ${
           selectedEventType ? styles.hasFilter : ''
         }`}
       >
+        <div
+          className={`${styles.indicator} ${selectedEventType && styles.indicatorVisible}`}
+        ></div>{' '}
         <h5>Eventart</h5>
       </div>
       <div
         key="date"
         onClick={() => handleClick('date')}
-        className={`${fieldIsOpen === 'date' ? styles.open : ''} ${
+        className={`${styles.category} ${fieldIsOpen === 'date' ? styles.open : ''} ${
           selectedDate ? styles.hasFilter : ''
         }`}
       >
+        <div
+          className={`${styles.indicator} ${selectedDate && styles.indicatorVisible}`}
+        ></div>
         <h5>Datum</h5>
       </div>
       <div
         key="location"
         onClick={() => handleClick('location')}
-        className={`${fieldIsOpen === 'location' ? styles.open : ''} ${
+        className={`${styles.category} ${fieldIsOpen === 'location' ? styles.open : ''} ${
           selectedLocation ? styles.hasFilter : ''
         }`}
       >
+        <div
+          className={`${styles.indicator} ${selectedLocation && styles.indicatorVisible}`}
+        ></div>
         <h5>Location</h5>
       </div>
     </div>

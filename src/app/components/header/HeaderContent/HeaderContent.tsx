@@ -43,10 +43,8 @@ export default function HeaderContent({
       }
     };
 
-    // Initial measurement
     updateHeaderHeight();
 
-    // Update on resize
     window.addEventListener('resize', updateHeaderHeight);
 
     // Update when content might change

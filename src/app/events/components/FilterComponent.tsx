@@ -4,6 +4,8 @@ import React from 'react';
 import styles from './FilterComponent.module.css';
 import FilterFoldout from './Filtercomponents/FilterFoldout';
 
+import { useFilter } from '../../../../contexts/FilterContext';
+
 export default function FilterComponent({
   events,
   setIsFoldoutOpen,
@@ -13,8 +15,16 @@ export default function FilterComponent({
   isFoldoutOpen: any;
   setIsFoldoutOpen: any;
 }) {
+  const { selectedDate, selectedLocation, selectedEventType } = useFilter();
+
+  const hasActiveFilters =
+    selectedDate || selectedLocation || selectedEventType;
+
   return (
     <div className={styles.filterContainer}>
+      <div
+        className={`${styles.indicator} ${hasActiveFilters && !isFoldoutOpen ? styles.indicatorVisible : ''}`}
+      ></div>
       <div className={styles.filterHeader}>
         <div
           className={`${styles.filterItem} ${isFoldoutOpen ? styles.open : ''}`}
