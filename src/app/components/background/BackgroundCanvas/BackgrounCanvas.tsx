@@ -18,6 +18,7 @@ import { usePathname } from 'next/navigation';
 
 import mobileBackground from '/public/images/background-mobile_bgw.png';
 import desktopBackground from '/public/images/background-desktop_bgw.png';
+import tabletBackground from '/public/images/background_tablet_bgw.png';
 
 import vertexShader from './shaders/background.vert';
 import fragmentShader from './shaders/background.frag';
@@ -36,7 +37,7 @@ export default function BackgroundCanvas() {
   const [directionsMultiplier, setDirectionsMultiplier] = useState<number>(1);
   const pathname = usePathname();
 
-  const { isMobile } = useMobile();
+  const { isMobile, isDesktop, isTablet } = useMobile();
 
   useEffect(() => {
     setScrollHeight(0);
@@ -65,8 +66,10 @@ export default function BackgroundCanvas() {
   useEffect(() => {
     // Update background based on screen size
     const updateBackground = () => {
-      if (window.innerWidth < 1020) {
+      if (isMobile) {
         setBackground(mobileBackground.src);
+      } else if (isTablet) {
+        setBackground(tabletBackground.src);
       } else {
         setBackground(desktopBackground.src);
       }
