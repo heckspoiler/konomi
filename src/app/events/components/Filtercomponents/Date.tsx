@@ -4,8 +4,12 @@ import FiltermappingContainer from './FiltermappingContainer';
 import { formatDate } from '../../../../../helpers/formatDate';
 import { useFilter } from '../../../../../contexts/FilterContext';
 
+import { useMobile } from '../../../../../contexts/MobileContext';
+
 export default function DateFilter({ events }: { events: any }) {
   const { selectedDate, setSelectedDate } = useFilter();
+
+  const { isMobile, isTablet, isDesktop } = useMobile();
 
   const datesSorted = events
     .map((event: any) => formatDate(event.data.event_start_date))
@@ -17,6 +21,14 @@ export default function DateFilter({ events }: { events: any }) {
       a.localeCompare(b, 'en', { sensitivity: 'base' })
     );
 
+  const handleInteraction = (
+    e: React.TouchEvent | React.MouseEvent,
+    date: string
+  ) => {
+    e.preventDefault(); // Prevent any default behavior
+    setSelectedDate(selectedDate === date ? '' : date);
+  };
+
   return (
     <FiltermappingContainer>
       {datesSorted.map((date: string, index: number) => {
@@ -24,8 +36,11 @@ export default function DateFilter({ events }: { events: any }) {
         return (
           <div
             key={index}
-            className={`${styles.eventType} ${isSelected ? styles.selected : ''}`}
-            onClick={() => setSelectedDate(isSelected ? '' : date)}
+            className={`${styles.eventType} ${isSelected && isDesktop ? styles.selected : ''}`}
+            onClick={() => isDesktop && setSelectedDate(isSelected ? '' : date)}
+            onTouchEnd={(e) =>
+              isMobile && isTablet && handleInteraction(e, date)
+            }
           >
             <p>{date}</p>
           </div>

@@ -4,6 +4,10 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    /* Prevents weird flash on mobile */
+    touch-action: manipulation;
+    /* Improves touch behavior */
 }
 
 .eventType p {
@@ -14,12 +18,16 @@
     border: none;
 }
 
+/* Selected state for both mobile and desktop */
+.selected p {
+    background-color: var(--dark-blue);
+    color: white;
+}
+
 .eventType p:hover {
     background-color: var(--dark-blue);
     color: white;
 }
 
-.selected p {
-    background-color: var(--dark-blue);
-    color: white;
-}
+/* Only for non-touch devices */
+@media (hover: hover) {}
