@@ -389,6 +389,18 @@ interface EventDocumentData {
   is_lecture: prismic.BooleanField;
 
   /**
+   * is Art field in *Event*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: event.is_art
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_art: prismic.BooleanField;
+
+  /**
    * Is Crafting field in *Event*
    *
    * - **Field Type**: Boolean

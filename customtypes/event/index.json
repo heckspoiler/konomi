@@ -124,6 +124,15 @@
           "default_value": false
         }
       },
+      "is_art": {
+        "type": "Boolean",
+        "config": {
+          "label": "is Art",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "is_crafting": {
         "type": "Boolean",
         "config": {

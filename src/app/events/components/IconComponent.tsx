@@ -7,22 +7,25 @@ import Image from 'next/image';
 import Vinyl from '../../../../public/svg/vinyl.svg';
 import Drink from '../../../../public/svg/drink.svg';
 import Food from '../../../../public/svg/food.svg';
-import Craft from '../../../../public/svg/sword.svg';
+import Craft from '../../../../public/svg/hammer.svg';
+import Art from '../../../../public/svg/brush.svg';
 
 function renderIcon(property: string, value: boolean) {
   if (!value) return null;
 
   switch (property) {
     case 'is_drinks':
-      return <Image src={Drink} alt="drink" height={60} width={60} />;
+      return <Image src={Drink} alt="drink" height={55} width={55} />;
     case 'is_food':
-      return <Image src={Food} alt="food" height={60} width={60} />;
+      return <Image src={Food} alt="food" height={55} width={55} />;
     case 'is_music':
-      return <Image src={Vinyl} alt="music" height={60} width={60} />;
+      return <Image src={Vinyl} alt="music" height={55} width={55} />;
     case 'is_lecture':
-      return <Image src={Book} alt="lecture" height={60} width={60} />;
+      return <Image src={Book} alt="lecture" height={55} width={55} />;
     case 'is_crafting':
-      return <Image src={Craft} alt="lecture" height={55} width={55} />;
+      return <Image src={Craft} alt="craft" height={55} width={55} />;
+    case 'is_art':
+      return <Image src={Art} alt="art" height={55} width={55} />;
     default:
       return null;
   }
@@ -41,6 +44,7 @@ export default function IconComponent({
     { key: 'is_music', value: event.data.is_music },
     { key: 'is_lecture', value: event.data.is_lecture },
     { key: 'is_crafting', value: event.data.is_crafting },
+    { key: 'is_art', value: event.data.is_art },
   ];
 
   return (

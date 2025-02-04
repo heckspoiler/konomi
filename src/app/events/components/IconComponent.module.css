@@ -1,6 +1,6 @@
 .iconContainer {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     align-items: center;
     justify-content: flex-start;
     width: 60%;
@@ -15,7 +15,7 @@
 .icon img {
     height: 100%;
     width: auto;
-    max-width: 1.5rem;
+    max-width: 1.2rem;
 }
 
 
@@ -27,6 +27,7 @@
 
     .iconContainer {
         width: 80%;
+        gap: 3rem;
     }
 
     .icon {
