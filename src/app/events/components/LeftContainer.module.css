@@ -40,25 +40,6 @@
 }
 
 
-.iconContainer {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    justify-content: flex-start;
-    width: 60%;
-}
-
-.icon {
-    height: 1.5rem;
-    width: 1.5rem;
-
-}
-
-.icon img {
-    height: 100%;
-    width: auto;
-    max-width: 1.5rem;
-}
 
 
 

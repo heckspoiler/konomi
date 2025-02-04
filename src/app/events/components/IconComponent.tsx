@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import styles from './LeftContainer.module.css';
+import styles from './IconComponent.module.css';
 import Book from '../../../../public/svg/book.svg';
 import Image from 'next/image';
 import Vinyl from '../../../../public/svg/vinyl.svg';
