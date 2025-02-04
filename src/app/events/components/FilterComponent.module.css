@@ -51,7 +51,7 @@
     border-radius: 50%;
     position: absolute;
     top: -4px;
-    left: -4px;
+    right: -4px;
     transition: background-color 0.2s var(--bezier), border-color 0.2s var(--bezier);
     border: 1px solid transparent;
     z-index: 0;

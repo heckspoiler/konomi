@@ -20,6 +20,30 @@
     z-index: 20;
 }
 
+.open h5 {
+    background-color: var(--dark-blue);
+    color: white;
+    border-color: white;
+}
+
+.indicator {
+    height: 8px;
+    width: 8px;
+    background-color: transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    transition: background-color 0.2s var(--bezier), border-color 0.2s var(--bezier);
+    border: 1px solid transparent;
+    z-index: 0;
+}
+
+.indicatorVisible {
+    background-color: var(--red);
+    border-color: white;
+}
+
 /* Only apply hover styles on devices that support hover */
 @media (hover: hover) {
     .container h5:hover {
@@ -36,28 +60,4 @@
         color: white;
         border-color: white;
     }
-}
-
-.open h5 {
-    background-color: var(--dark-blue);
-    color: white;
-    border-color: white;
-}
-
-.indicator {
-    height: 8px;
-    width: 8px;
-    background-color: transparent;
-    border-radius: 50%;
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    transition: background-color 0.2s var(--bezier), border-color 0.2s var(--bezier);
-    border: 1px solid transparent;
-    z-index: 0;
-}
-
-.indicatorVisible {
-    background-color: var(--red);
-    border-color: white;
 }
