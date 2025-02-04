@@ -69,7 +69,7 @@ export default function BackgroundCanvas() {
       if (isMobile) {
         setBackground(mobileBackground.src);
       } else if (isTablet) {
-        setBackground(tabletBackground.src);
+        setBackground(mobileBackground.src);
       } else {
         setBackground(desktopBackground.src);
       }
