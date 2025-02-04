@@ -25,7 +25,6 @@ export default function DateFilter({ events }: { events: any }) {
     e: React.TouchEvent | React.MouseEvent,
     date: string
   ) => {
-    e.preventDefault(); // Prevent any default behavior
     setSelectedDate(selectedDate === date ? '' : date);
   };
 
@@ -37,10 +36,7 @@ export default function DateFilter({ events }: { events: any }) {
           <div
             key={index}
             className={`${styles.eventType} ${isSelected && isDesktop ? styles.selected : ''}`}
-            onClick={() => isDesktop && setSelectedDate(isSelected ? '' : date)}
-            onTouchEnd={(e) =>
-              isMobile && isTablet && handleInteraction(e, date)
-            }
+            onClick={() => setSelectedDate(isSelected ? '' : date)}
           >
             <p>{date}</p>
           </div>

@@ -26,6 +26,7 @@ import fragmentShader from './shaders/background.frag';
 import getScrollPercentage from '../../../../../helpers/getScrollPercentage';
 
 const MOBILE_BREAKPOINT = 768;
+const TABLET_BREAKPOINT = 1024;
 const MOBILE_MULTIPLIER = 2;
 const DESKTOP_MULTIPLIER = 2;
 
@@ -66,10 +67,13 @@ export default function BackgroundCanvas() {
   useEffect(() => {
     // Update background based on screen size
     const updateBackground = () => {
-      if (isMobile) {
+      if (window.innerWidth < MOBILE_BREAKPOINT) {
         setBackground(mobileBackground.src);
-      } else if (isTablet) {
-        setBackground(mobileBackground.src);
+      } else if (
+        window.innerWidth < TABLET_BREAKPOINT &&
+        window.innerWidth >= MOBILE_BREAKPOINT
+      ) {
+        setBackground(tabletBackground.src);
       } else {
         setBackground(desktopBackground.src);
       }
