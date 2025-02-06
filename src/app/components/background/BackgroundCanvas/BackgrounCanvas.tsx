@@ -146,7 +146,7 @@ export default function BackgroundCanvas() {
 
     const renderer = new WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0xffffff, 1);
+    renderer.setClearColor(0xf9f7ed, 1);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     mountRef.current.appendChild(renderer.domElement);

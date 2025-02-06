@@ -49,6 +49,7 @@ body {
     min-height: 100svh;
     height: fit-content;
     overflow-x: hidden;
+    background-color: #F9F7ED !important;
 }
 
 h1,
@@ -102,6 +103,7 @@ p {
     font-size: 1.2rem;
     hyphens: auto;
     text-align: justify;
+    background-color: #F9F7ED !important;
 
 }
 
