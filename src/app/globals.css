@@ -13,7 +13,7 @@
     --main-container-padding: 0.7rem;
 
     /* colors */
-    --dark-blue: #0064D4;
+    --dark-blue: rgba(188, 0, 45, 1);
     --light-blue: #D5E9FF;
     --red-lowopa: rgba(188, 0, 45, 0.2);
     --red: rgba(188, 0, 45, 1);

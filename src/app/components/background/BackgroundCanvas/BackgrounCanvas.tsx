@@ -16,7 +16,7 @@ import { useMobile } from '../../../../../contexts/MobileContext';
 
 import { usePathname } from 'next/navigation';
 
-import mobileBackground from '/public/images/background-mobile_bgw.png';
+import mobileBackground from '/public/images/background-mobile_bgwred.png';
 import desktopBackground from '/public/images/background-desktop_bgw_test.png';
 import tabletBackground from '/public/images/background_tablet_bgw.png';
 
