@@ -13,7 +13,6 @@ import {
 } from 'three';
 
 import { useMobile } from '../../../../../contexts/MobileContext';
-
 import { usePathname } from 'next/navigation';
 
 import mobileBackground from '/public/images/background-mobile_bgwred.png';
@@ -48,13 +47,11 @@ export default function BackgroundCanvas() {
     }
   }, [pathname]);
 
-  // Scroll handler effect
   useEffect(() => {
     const handleScroll = () => {
-      const newScrollHeight = getScrollPercentage() / 100; // Convert to 0-1 range
+      const newScrollHeight = getScrollPercentage() / 100;
       setScrollHeight(newScrollHeight);
 
-      // Update the uniform if material exists
       if (materialRef.current) {
         materialRef.current.uniforms.u_scrollHeight.value = newScrollHeight;
       }
@@ -65,7 +62,6 @@ export default function BackgroundCanvas() {
   }, []);
 
   useEffect(() => {
-    // Update background based on screen size
     const updateBackground = () => {
       if (window.innerWidth < MOBILE_BREAKPOINT) {
         setBackground(mobileBackground.src);
@@ -91,7 +87,6 @@ export default function BackgroundCanvas() {
     isMobile ? setDirectionsMultiplier(2) : setDirectionsMultiplier(42);
   }, [isMobile]);
 
-  // Scene setup effect
   useEffect(() => {
     if (!mountRef.current) return;
 
@@ -116,10 +111,10 @@ export default function BackgroundCanvas() {
 
     for (let i = 0; i < planeGeometry.attributes.position.count; i++) {
       randomDirections[i * (directionsMultiplier ?? 1)] =
-        (Math.random() - 0.9) * 5; // x
+        (Math.random() - 0.9) * 5;
       randomDirections[i * (directionsMultiplier ?? 1)] =
-        (Math.random() - 0.1) * 1.5; // y
-      randomDirections[i * (directionsMultiplier ?? 1)] = Math.random() * 1.5; // z
+        (Math.random() - 0.1) * 1.5;
+      randomDirections[i * (directionsMultiplier ?? 1)] = Math.random() * 1.5;
     }
 
     planeGeometry.setAttribute(
@@ -138,15 +133,17 @@ export default function BackgroundCanvas() {
       uniforms: shaderUniforms,
     });
 
-    // Store reference to material
     materialRef.current = planeMaterial;
 
     const planeMesh = new Mesh(planeGeometry, planeMaterial);
     scene.add(planeMesh);
 
-    const renderer = new WebGLRenderer({ antialias: true });
+    const renderer = new WebGLRenderer({
+      antialias: true,
+      alpha: true, // Enable transparency
+    });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0xf9f7ed, 1);
+    renderer.setClearColor(0x000000, 0); // Set clear color to transparent
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     mountRef.current.appendChild(renderer.domElement);
