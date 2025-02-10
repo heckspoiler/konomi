@@ -66,7 +66,7 @@ export default function Navbar({
         <div className={styles.socials}>
           {content.navigation_social_icons.map((item: any, index: number) => (
             <div key={index} onClick={() => closeMenu({ setMenuIsOpen })}>
-              <Link href={item.socials_link.url ?? '/#about'}>
+              <Link href={item.socials_link.url ?? 'mailto:tickets@konomi.ch'}>
                 <PrismicNextImage field={item.socials_icon} />
               </Link>
             </div>
@@ -87,10 +87,12 @@ export default function Navbar({
             closeMenu({ setMenuIsOpen });
           }}
         >
-          <PrismicNextLink field={content.impressum_link}>
-            <p>{content.impressum_link.text}</p>
-            <Arrow fill="var(--beige)" height="10" width="9" />
-          </PrismicNextLink>
+          <div className={styles.impressumContent}>
+            <PrismicNextLink field={content.impressum_link}>
+              <p>{content.impressum_link.text}</p>
+              <Arrow fill="var(--red)" height="10" width="9" />
+            </PrismicNextLink>
+          </div>
         </div>
       </div>
     </nav>

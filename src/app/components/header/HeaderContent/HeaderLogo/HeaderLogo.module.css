@@ -9,23 +9,33 @@
     background-color: var(--red);
     padding: 0.2rem;
     transform-origin: center left;
+    transition: background-color 0.2s var(--bezier)
 }
 
 .logoContainer * {
     color: var(--beige);
     padding: 0.1rem;
+
 }
-
-
 
 .logoContainer h1 {
     transform: translateY(0.3rem);
     font-size: 2.3rem;
+    transition: all 0.2s var(--bezier)
 }
 
 .logoContainer h3 {
     transform: translateY(-0.2rem);
     width: fit-content;
+    transition: all 0.2s var(--bezier)
+}
+
+.open {
+    background-color: var(--beige)
+}
+
+.open * {
+    color: var(--red);
 }
 
 

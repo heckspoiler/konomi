@@ -36,7 +36,7 @@
     margin-left: 2rem;
     width: fit-content;
     pointer-events: none;
-    background-color: var(--red);
+    background-color: var(--beige);
     padding: 0rem 0.5rem;
 
 }
@@ -48,8 +48,8 @@
     padding: 1rem 0.5rem;
     height: 100%;
     width: fit-content;
-    color: var(--beige);
-    background-color: var(--red);
+    color: var(--red);
+    background-color: var(--beige);
     height: 4rem;
     pointer-events: all;
 
@@ -87,7 +87,7 @@
 }
 
 .socials div {
-    background-color: var(--red);
+    background-color: var(--beige);
     padding: 0.25rem;
     display: flex;
     align-items: center;
@@ -95,7 +95,7 @@
 }
 
 .socials div a {
-    background-color: var(--red);
+    background-color: var(--beige);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,8 +129,10 @@
 
 .address * {
     font-family: var(--title-font);
-    color: var(--beige);
+    color: var(--red);
     font-size: 0.8rem;
+    background-color: var(--beige);
+
 }
 
 .address div {
@@ -143,6 +145,12 @@
 
 .impressum {
     width: fit-content;
+    background-color: var(--beige);
+
+}
+
+.impressum p {
+    color: var(--red);
 }
 
 .impressum svg {

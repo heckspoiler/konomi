@@ -21,7 +21,7 @@
 @media screen and (min-width: 1080px) {
 
     .section {
-        padding: calc(var(--header-height) + 3rem) 0.7rem;
+        padding: calc(var(--header-height) + 3rem) var(--header-height);
 
     }
 

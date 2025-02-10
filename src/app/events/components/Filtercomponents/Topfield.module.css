@@ -17,6 +17,7 @@
     cursor: pointer;
     transition: all 0.2s var(--bezier);
     z-index: 20;
+    background-color: var(--beige);
 }
 
 .open h5 {
@@ -39,7 +40,7 @@
 }
 
 .indicatorVisible {
-    background-color: var(--red);
+    background-color: var(--dark-blue);
     border-color: var(--beige);
 }
 

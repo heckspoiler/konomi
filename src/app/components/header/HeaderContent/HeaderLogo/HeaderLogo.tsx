@@ -43,7 +43,7 @@ export default function HeaderLogo({
 
   return (
     <div
-      className={styles.logoContainer}
+      className={`${styles.logoContainer} ${menuIsOpen ? styles.open : ''}`}
       ref={titleRef}
       onClick={() => {
         closeMenu({ setMenuIsOpen });
