@@ -81,7 +81,10 @@
 
 }
 
-.eventContainer p {}
+.eventContainer p,
+.eventContainer h5 {
+    background-color: var(--beige);
+}
 
 .overlayImageContainer {
     position: fixed;
