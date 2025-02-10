@@ -7,7 +7,7 @@ void main() {
    vec2 uv = vUv;
    
    // Smaller grid for more subtle effect
-   vec2 gridSize = vec2(40.0, 40.0);
+   vec2 gridSize = vec2(200.0, 200.0);
    vec2 squareID = floor(uv * gridSize);
    
    // More subtle movement

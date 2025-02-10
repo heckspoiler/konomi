@@ -7,8 +7,9 @@
 }
 
 .section {
-    padding: calc(var(--header-height) + 2rem) 0.7rem;
+    padding: calc(var(--header-height) + 1rem) 0.7rem;
     border-bottom: var(--border-small);
+    background-color: var(--beige);
 }
 
 
