@@ -1,18 +1,18 @@
 .event {
-    border: 2px solid var(--dark-blue);
+    border: 2px solid var(--red);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: 14rem;
     width: 100%;
     padding: 1.5rem;
-    background-color: white;
+    background-color: var(--beige);
     position: relative;
 }
 
 
 .event * {
-    color: var(--dark-blue)
+    color: var(--red)
 }
 
 .event h2 {

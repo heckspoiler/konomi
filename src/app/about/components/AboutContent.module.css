@@ -28,8 +28,8 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border: 1px solid var(--dark-blue);
-    background-color: var(--dark-blue);
+    border: 1px solid var(--red);
+    background-color: var(--red);
 }
 
 .member,
@@ -39,19 +39,19 @@
 
 .member:hover {
 
-    background-color: white;
+    background-color: var(--beige);
 }
 
 .member a {
     font-variation-settings: var(--title-weight);
     font-size: 0.9rem;
-    color: white;
+    color: var(--beige);
     padding: 0.75rem;
 
 }
 
 .member:hover a {
-    color: var(--dark-blue)
+    color: var(--red)
 }
 
 
@@ -74,7 +74,7 @@
     .member a {
         font-variation-settings: var(--title-weight);
         font-size: 1rem;
-        color: white;
+        color: var(--beige);
         padding: 1rem;
 
     }

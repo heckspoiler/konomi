@@ -39,7 +39,7 @@ export default function AboutContent({ page }: { page: any }) {
           >
             <PrismicNextLink field={item.konomi_member_link} />
             <Arrow
-              fill={hoveredIndex === index ? 'var(--dark-blue)' : 'white'}
+              fill={hoveredIndex === index ? 'var(--red)' : 'var(--beige)'}
             />
           </div>
         ))}

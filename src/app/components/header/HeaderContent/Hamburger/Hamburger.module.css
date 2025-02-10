@@ -16,7 +16,7 @@
     position: absolute;
     height: 0.28rem;
     width: 2.28rem;
-    background-color: var(--dark-blue);
+    background-color: var(--red);
     transition: opacity 0.4s var(--bezier), transform 0.4s var(--bezier), background-color 0.4s var(--bezier);
     transform-origin: center;
 }
@@ -80,7 +80,7 @@
     }
 
     .open .hamburgerLine {
-        background-color: var(--dark-blue);
+        background-color: var(--red);
     }
 
     /* Adjust line positions for desktop */

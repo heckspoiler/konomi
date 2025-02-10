@@ -17,7 +17,7 @@
     gap: calc(var(--header-height) / 2);
     align-items: center;
     height: fit-content;
-    background-color: white;
+    background-color: var(--beige);
 }
 
 .event {

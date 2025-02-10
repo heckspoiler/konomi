@@ -141,7 +141,9 @@ export default function NewsletterForm({
               <span>ANMELDEN</span>
               <span>
                 <Arrow
-                  fill={!isHovered && !arrowFill ? 'white' : 'var(--dark-blue)'}
+                  fill={
+                    !isHovered && !arrowFill ? 'var(--beige)' : 'var(--red)'
+                  }
                 />
               </span>
             </button>

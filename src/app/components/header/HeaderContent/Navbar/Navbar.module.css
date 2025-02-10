@@ -5,14 +5,14 @@
     flex-direction: column;
     gap: 4rem;
     padding-top: 25svh;
-    background-color: var(--dark-blue);
+    background-color: var(--red);
     background: var(--hero-image);
     background-size: auto 100%;
     background-repeat: no-repeat;
 }
 
 .navbar * {
-    color: white;
+    color: var(--beige);
 }
 
 .clickables {
@@ -36,7 +36,7 @@
     margin-left: 2rem;
     width: fit-content;
     pointer-events: none;
-    background-color: var(--dark-blue);
+    background-color: var(--red);
     padding: 0rem 0.5rem;
 
 }
@@ -48,8 +48,8 @@
     padding: 1rem 0.5rem;
     height: 100%;
     width: fit-content;
-    color: white;
-    background-color: var(--dark-blue);
+    color: var(--beige);
+    background-color: var(--red);
     height: 4rem;
     pointer-events: all;
 
@@ -87,7 +87,7 @@
 }
 
 .socials div {
-    background-color: var(--dark-blue);
+    background-color: var(--red);
     padding: 0.25rem;
     display: flex;
     align-items: center;
@@ -95,7 +95,7 @@
 }
 
 .socials div a {
-    background-color: var(--dark-blue);
+    background-color: var(--red);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,7 +129,7 @@
 
 .address * {
     font-family: var(--title-font);
-    color: white;
+    color: var(--beige);
     font-size: 0.8rem;
 }
 
@@ -152,7 +152,7 @@
 @media screen and (min-width: 1080px) {
 
     .navbar {
-        background-color: var(--dark-blue);
+        background-color: var(--red);
         background: none;
     }
 }
@@ -167,7 +167,7 @@
         flex-direction: column;
         gap: 4rem;
         padding-top: 25svh;
-        background-color: var(--dark-blue);
+        background-color: var(--red);
         background: var(--hero-image);
         background-size: auto 100%;
         background-repeat: no-repeat;

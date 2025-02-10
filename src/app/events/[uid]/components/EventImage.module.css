@@ -1,5 +1,5 @@
 .imageContainer {
-    border: 2px solid var(--dark-blue);
+    border: 2px solid var(--red);
     height: fit-content;
     width: 100%;
     aspect-ratio: 16/9;
@@ -16,13 +16,13 @@
     width: 100%;
     object-fit: cover;
     display: block;
-    background-color: white;
+    background-color: var(--beige);
 }
 
 .overlay {
     position: absolute;
     inset: 0;
-    background-color: var(--dark-blue);
+    background-color: var(--red);
     mix-blend-mode: hue;
     pointer-events: none;
     opacity: 1;

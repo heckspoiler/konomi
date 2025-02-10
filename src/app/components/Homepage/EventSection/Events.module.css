@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 0.35rem 0;
-    border-bottom: 2px solid var(--dark-blue);
+    border-bottom: 2px solid var(--red);
 }
 
 .event>* {

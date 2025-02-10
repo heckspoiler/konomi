@@ -1,5 +1,5 @@
 .eventType {
-    border: 1px solid var(--dark-blue);
+    border: 1px solid var(--red);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,8 +11,8 @@
 }
 
 .eventType p {
-    background-color: white;
-    color: var(--dark-blue);
+    background-color: var(--beige);
+    color: var(--red);
     transition: all 0.2s var(--bezier);
     width: 100%;
     border: none;
@@ -20,13 +20,13 @@
 
 /* Selected state for both mobile and desktop */
 .selected p {
-    background-color: var(--dark-blue);
-    color: white;
+    background-color: var(--red);
+    color: var(--beige);
 }
 
 .eventType p:hover {
-    background-color: var(--dark-blue);
-    color: white;
+    background-color: var(--red);
+    color: var(--beige);
 }
 
 /* Only for non-touch devices */

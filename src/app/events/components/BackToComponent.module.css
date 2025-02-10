@@ -8,14 +8,14 @@
 
 
 .backToContainer a {
-    color: white;
-    background-color: var(--dark-blue);
+    color: var(--beige);
+    background-color: var(--red);
     padding: 0.5rem;
     font-size: 0.75rem;
     font-variation-settings: var(--subtitle-weight);
     text-transform: uppercase;
     width: fit-content;
-    border: 1px solid var(--dark-blue);
+    border: 1px solid var(--red);
     transition: all 0.2s var(--bezier);
     width: 100%;
     text-align: center;
@@ -23,8 +23,8 @@
 }
 
 .backToContainer a:hover {
-    color: var(--dark-blue);
-    background-color: white;
+    color: var(--red);
+    background-color: var(--beige);
 }
 
 /* !!!! DESKTOP !!!!! */
@@ -45,7 +45,7 @@
     }
 
     .backToContainer a:hover {
-        color: var(--dark-blue);
-        background-color: white;
+        color: var(--red);
+        background-color: var(--beige);
     }
 }

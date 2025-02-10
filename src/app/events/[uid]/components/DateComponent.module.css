@@ -7,7 +7,7 @@
 }
 
 .textContainer p {
-    color: var(--dark-blue);
+    color: var(--red);
     font-family: var(--title-font);
     font-variation-settings: var(--subtitle-weight);
     font-size: 0.7rem;

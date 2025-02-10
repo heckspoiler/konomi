@@ -89,7 +89,7 @@ export default function Navbar({
         >
           <PrismicNextLink field={content.impressum_link}>
             <p>{content.impressum_link.text}</p>
-            <Arrow fill="white" height="10" width="9" />
+            <Arrow fill="var(--beige)" height="10" width="9" />
           </PrismicNextLink>
         </div>
       </div>

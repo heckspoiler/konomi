@@ -13,14 +13,14 @@
 
 .form input[type="text"],
 .form input[type="email"] {
-    background-color: white;
-    border: 1px solid var(--dark-blue);
+    background-color: var(--beige);
+    border: 1px solid var(--red);
     outline: none;
     font-family: var(--title-font);
     font-weight: var(--subtitle-weight);
     width: 100% !important;
     padding: 0.7rem;
-    color: var(--dark-blue);
+    color: var(--red);
     font-variation-settings: var(--subtitle-weight);
     border-radius: none;
 }

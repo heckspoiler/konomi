@@ -1,7 +1,7 @@
 .main {
     height: 100svh;
     width: 100svw;
-    background-color: white;
+    background-color: var(--beige);
     position: fixed;
     top: 0;
     left: 0;
@@ -23,7 +23,7 @@
     overflow: hidden;
     max-height: 100svh;
     align-items: center;
-    background-color: var(--dark-blue);
+    background-color: var(--red);
     animation: slideIn 0.9s var(--bezier) forwards;
     transform: translateX(-180%);
     animation-delay: 0.5s;
@@ -43,7 +43,7 @@
     transform: translateX(-180%) translateY(10px);
     animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     animation-delay: calc(1.5s + (var(--index) * 0.1s));
-    color: white;
+    color: var(--beige);
 }
 
 @keyframes slideIn {

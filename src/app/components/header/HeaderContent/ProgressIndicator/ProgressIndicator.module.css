@@ -8,25 +8,25 @@
     padding: var(--main-container-padding);
     top: calc(var(--header-height) + 1rem);
     padding-bottom: 1rem;
-    background-color: white;
+    background-color: var(--beige);
     flex-wrap: wrap;
     gap: 0.5rem;
 }
 
 .active {
-    background-color: var(--dark-blue);
+    background-color: var(--red);
 }
 
 
 .active a {
-    color: white;
+    color: var(--beige);
 }
 
 
 .link {
     position: relative;
     display: flex;
-    border: 1px solid var(--dark-blue);
+    border: 1px solid var(--red);
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s var(--bezier)
@@ -49,11 +49,11 @@
 
 
 .link:hover {
-    background-color: var(--dark-blue);
+    background-color: var(--red);
 }
 
 .link:hover a {
-    color: white;
+    color: var(--beige);
 }
 
 

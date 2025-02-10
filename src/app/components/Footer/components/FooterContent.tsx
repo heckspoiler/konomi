@@ -24,7 +24,7 @@ export default function FooterContent({ data }: { data: any }) {
             <div></div>
             <div></div>
           </div>
-          <NewsletterForm stylesprops={styles} arrowFill={'var(--dark-blue)'} />
+          <NewsletterForm stylesprops={styles} arrowFill={'var(--red)'} />
         </div>
       )}
       <div className={styles.container}>

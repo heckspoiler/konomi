@@ -6,7 +6,7 @@
     /* general */
     font-size: calc(100vw / 375 * 14);
     --bezier: cubic-bezier(0.645, 0.045, 0.355, 1.000);
-    --border-small: 0.2rem solid var(--dark-blue);
+    --border-small: 0.2rem solid var(--red);
 
 
     /* paddings */
@@ -17,6 +17,7 @@
     --light-blue: #D5E9FF;
     --red-lowopa: rgba(188, 0, 45, 0.2);
     --red: rgba(188, 0, 45, 1);
+    --beige: #E1CEBC;
 
 
     /* typefaces */
@@ -25,7 +26,6 @@
     --subtitle-weight: "wght" 500;
     --japanese-subtitle-weight: "wght" 300;
     --ultrathin: "wght" 100;
-    --gradient: linear-gradient(45deg, var(--light-blue), white);
     --text-font: "futura-pt", sans-serif;
 }
 
@@ -36,8 +36,8 @@
 }
 
 *::selection {
-    color: white;
-    background-color: var(--dark-blue);
+    color: var(--beige);
+    background-color: var(--red);
 }
 
 * {
@@ -49,7 +49,7 @@ body {
     min-height: 100svh;
     height: fit-content;
     overflow-x: hidden;
-    background-color: #F9F7ED !important;
+    background-color: var(--beige) !important;
 }
 
 h1,
@@ -60,7 +60,7 @@ h5,
 h6,
 a {
     font-family: var(--title-font);
-    color: var(--dark-blue);
+    color: var(--red);
     -webkit-font-smoothing: antialiased;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -90,7 +90,7 @@ h4 {
 
 h5 {
     font-variation-settings: var(--ultrathin);
-    color: var(--dark-blue);
+    color: var(--red);
 }
 
 
@@ -103,7 +103,6 @@ p {
     font-size: 1.2rem;
     hyphens: auto;
     text-align: justify;
-    background-color: #F9F7ED !important;
 
 }
 
@@ -126,7 +125,7 @@ nav h5 {
 
 label {
     font-family: var(--title-font);
-    color: var(--dark-blue);
+    color: var(--red);
     font-variation-settings: var(--subtitle-weight);
     font-size: 0.75rem;
 }
@@ -136,22 +135,22 @@ input {
 }
 
 button {
-    background-color: var(--dark-blue);
-    color: white;
+    background-color: var(--red);
+    color: var(--beige);
     font-family: var(--title-font);
     font-variation-settings: var(--subtitle-weight);
     text-transform: uppercase;
     padding: 0.5rem 0.75rem;
     border: none;
-    border: 0.5px solid var(--dark-blue);
+    border: 0.5px solid var(--red);
     outline: none;
     cursor: pointer;
     transition: all 0.2s var(--bezier)
 }
 
 button:hover {
-    color: var(--dark-blue);
-    background-color: white;
+    color: var(--red);
+    background-color: var(--beige);
 }
 
 
