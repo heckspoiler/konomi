@@ -24,6 +24,7 @@ const BasicSlice = ({ slice }: BasicSliceProps): JSX.Element => {
         <section
           data-slice-type={slice.slice_type}
           data-slice-variation={slice.variation}
+          className={styles.slice}
         >
           <div className={styles.sliceContainer}>
             <div className={styles.upperContainer}>
@@ -49,6 +50,7 @@ const BasicSlice = ({ slice }: BasicSliceProps): JSX.Element => {
         <section
           data-slice-type={slice.slice_type}
           data-slice-variation={slice.variation}
+          className={styles.slice}
         >
           <div className={styles.sliceContainer}>
             <div className={styles.upperContainer}>
@@ -73,6 +75,7 @@ const BasicSlice = ({ slice }: BasicSliceProps): JSX.Element => {
         <section
           data-slice-type={slice.slice_type}
           data-slice-variation={slice.variation}
+          className={styles.slice}
         >
           <div className={styles.sliceContainer}>
             <div className={styles.upperContainer}>
@@ -100,6 +103,7 @@ const BasicSlice = ({ slice }: BasicSliceProps): JSX.Element => {
       {slice.variation === 'whyKonomi' && (
         <section
           data-slice-type={slice.slice_type}
+          className={styles.slice}
           data-slice-variation={slice.variation}
         >
           <div className={styles.sliceContainer}>

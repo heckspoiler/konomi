@@ -100,7 +100,7 @@ export default function BackgroundCanvas() {
       1,
       1000
     );
-    camera.position.z = 1;
+    camera.position.z = 5;
 
     const loader = new TextureLoader();
     const texture = loader.load(background);
@@ -111,7 +111,7 @@ export default function BackgroundCanvas() {
 
     for (let i = 0; i < planeGeometry.attributes.position.count; i++) {
       randomDirections[i * (directionsMultiplier ?? 1)] =
-        (Math.random() - 0.9) * 5;
+        (Math.random() - 0.4) * 5;
       randomDirections[i * (directionsMultiplier ?? 1)] =
         (Math.random() - 0.1) * 1.5;
       randomDirections[i * (directionsMultiplier ?? 1)] = Math.random() * 1.5;

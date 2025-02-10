@@ -4,6 +4,10 @@
     gap: 2rem;
 }
 
+.sliceContainer p {
+    background-color: var(--beige);
+}
+
 .upperContainer {
     display: flex;
     flex-direction: column;

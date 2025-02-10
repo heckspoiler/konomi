@@ -11,7 +11,6 @@
 }
 
 .eventType p {
-    background-color: var(--beige);
     color: var(--red);
     transition: all 0.2s var(--bezier);
     width: 100%;

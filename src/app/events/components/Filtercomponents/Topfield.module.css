@@ -16,7 +16,6 @@
     border: 1px solid var(--red);
     cursor: pointer;
     transition: all 0.2s var(--bezier);
-    background-color: var(--beige);
     z-index: 20;
 }
 
