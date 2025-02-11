@@ -5,7 +5,7 @@
     flex-direction: column;
     gap: 4rem;
     padding-top: 25svh;
-    background-color: var(--red);
+    background-color: var(--beige);
     background: var(--hero-image);
     background-size: auto 100%;
     background-repeat: no-repeat;
@@ -160,7 +160,7 @@
 @media screen and (min-width: 1080px) {
 
     .navbar {
-        background-color: var(--red);
+        background-color: var(--beige);
         background: none;
     }
 }
@@ -175,7 +175,7 @@
         flex-direction: column;
         gap: 4rem;
         padding-top: 25svh;
-        background-color: var(--red);
+        background-color: var(--beige);
         background: var(--hero-image);
         background-size: auto 100%;
         background-repeat: no-repeat;
