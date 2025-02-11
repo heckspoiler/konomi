@@ -25,6 +25,7 @@
 .middleContainer {
     display: flex;
     justify-content: space-between;
+
 }
 
 .addressContainer {
@@ -55,6 +56,10 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.dayDate {
+    display: flex;
 }
 
 .date,
@@ -97,7 +102,7 @@
 
     .middleContainer {
         display: flex;
-        justify-content: initial;
+        justify-content: space-between;
         gap: 4rem;
 
     }
@@ -106,6 +111,7 @@
         display: flex;
         gap: 1rem;
         align-items: center;
+
     }
 
     .addressContainer h5 {
@@ -119,7 +125,7 @@
     }
 
     .date {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .time {

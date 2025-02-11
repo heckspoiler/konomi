@@ -50,6 +50,8 @@ export default function EventContent({
     }
   }, [pathname]);
 
+  console.log(data.event_description);
+
   return (
     <div className={styles.container}>
       <MainHeading title={'Event'} page={events} buttonShow={buttonShow} />
@@ -78,11 +80,19 @@ export default function EventContent({
           <EventImage image={data.event_image} />
         </div>
         <div className={styles.descriptionContainer}>
-          <PrismicRichText field={data.event_description} />
-        </div>{' '}
+          {data.event_description.map((item: any, index: number) => {
+            if (item.text.trim() === '') return null;
+
+            return (
+              <div key={index} className={styles.descriptionParagraph}>
+                <p>{item.text.replace(/\n/g, ' ')}</p>
+              </div>
+            );
+          })}
+        </div>
         <div className={styles.locationLink}>
           <PrismicNextLink field={data.location_website}>
-            Mehr über {data.event_location[0].text} erfahren
+            Über {data.event_location[0].text}
           </PrismicNextLink>
         </div>
       </div>

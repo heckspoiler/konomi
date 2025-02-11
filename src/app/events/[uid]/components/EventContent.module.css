@@ -131,6 +131,13 @@
     transform: rotate(-45deg);
 }
 
+.descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+
 
 /* Desktop styles */
 @media screen and (min-width: 1080px) {

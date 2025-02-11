@@ -62,7 +62,11 @@ export default function EventComponent({ event }: EventProps) {
               <CalendarIcon />
             </div>
             <div>
-              <p className={styles.date}>{startDateTime.dayOnly}</p>
+              <span className={styles.dayDate}>
+                <p className={styles.date}>{startDateTime.dayOnly} </p>
+                <p className={styles.date}> - {startDateTime.dayOnly}</p>
+              </span>
+
               <p className={styles.time}>
                 {startDateTime.timeOnly} - {endDateTime.timeOnly}
               </p>
