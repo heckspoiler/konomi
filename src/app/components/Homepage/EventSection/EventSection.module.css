@@ -6,14 +6,16 @@
 
 .moreEventsLink {
     width: fit-content;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+
+
 }
 
 .moreEventsLink a {
     font-variation-settings: var(--title-weight);
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .moreEventsLink svg {

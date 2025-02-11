@@ -7,6 +7,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: var(--beige);
+    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+}
+
+.noBG {
+    background-color: transparent;
 }
 
 

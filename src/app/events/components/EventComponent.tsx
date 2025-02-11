@@ -64,7 +64,9 @@ export default function EventComponent({ event }: EventProps) {
             <div>
               <span className={styles.dayDate}>
                 <p className={styles.date}>{startDateTime.dayOnly} </p>
-                <p className={styles.date}> - {startDateTime.dayOnly}</p>
+                {endDateTime.dayOnly !== startDateTime.dayOnly && (
+                  <p className={styles.date}> - {endDateTime.dayOnly}</p>
+                )}
               </span>
 
               <p className={styles.time}>

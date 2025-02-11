@@ -7,6 +7,8 @@ import { useMobile } from '../../../../../contexts/MobileContext';
 import ClickOverlay from './ClickOverlay';
 import HeaderLogo from './HeaderLogo/HeaderLogo';
 
+import { usePathname } from 'next/navigation';
+
 import Image from 'next/image';
 
 export default function HeaderContent({
@@ -19,6 +21,12 @@ export default function HeaderContent({
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const { isMobile } = useMobile();
   const headerRef = useRef<HTMLDivElement>(null);
+  const [isHome, setIsHome] = useState<boolean>(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    pathname === '/' ? setIsHome(true) : setIsHome(false);
+  }, [pathname]);
 
   useEffect(() => {
     if (hero?.data?.hero_image?.url) {
@@ -60,7 +68,10 @@ export default function HeaderContent({
   }, []);
 
   return (
-    <div ref={headerRef} className={styles.main}>
+    <div
+      ref={headerRef}
+      className={`${styles.main} ${isHome && !isMobile ? styles.noBG : ''}`}
+    >
       <HeaderLogo
         content={content}
         menuIsOpen={menuIsOpen}

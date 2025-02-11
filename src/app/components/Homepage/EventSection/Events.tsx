@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from './Events.module.css';
-import { PrismicRichText } from '@prismicio/react';
 import Link from 'next/link';
 import Arrow from '../../arrow/Arrow';
 import { truncateText } from '../../../../../helpers/truncateText';
@@ -24,7 +23,7 @@ export default function Events({ events }: { events: any }) {
 
   const sortedUpcomingEvents = events
     .filter((event: any) => {
-      const eventDate = new Date(event.data.event_start_date);
+      const eventDate = new Date(event.data.event_end_date);
       const bufferDate = new Date(currentDate.getTime() - 60 * 60 * 1000);
       return eventDate >= bufferDate && !event.tags.includes('archived');
     })

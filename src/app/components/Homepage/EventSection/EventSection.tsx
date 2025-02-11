@@ -28,8 +28,16 @@ export default function EventSection({
         </div>
         <Events events={events} />
         <div className={styles.moreEventsLink}>
-          <PrismicNextLink field={scheduleSlice[0].primary.more_events_link} />
-          <Arrow height={'15'} width={'14'} />
+          {events.length === 0 ? (
+            <Link href="/archive">
+              Zum Archiv <Arrow height={'15'} width={'14'} />
+            </Link>
+          ) : (
+            <PrismicNextLink field={scheduleSlice[0].primary.more_events_link}>
+              <>{scheduleSlice[0].primary.more_events_link.text}</>
+              <Arrow height={'15'} width={'14'} />
+            </PrismicNextLink>
+          )}
         </div>
       </div>
     </SectionContainer>

@@ -50,8 +50,6 @@ function EventsContentInner({ events, page }: { events?: any; page: any }) {
     }
   }, [pathname]);
 
-  // render stuff
-
   return (
     <div className={styles.container}>
       <MainHeading page={page} />
@@ -68,9 +66,16 @@ function EventsContentInner({ events, page }: { events?: any; page: any }) {
           </div>
         </div>
         {filteredEvents &&
-          filteredEvents.map((event: any, index: number) => (
-            <EventComponent key={index} event={event} />
-          ))}
+          filteredEvents
+            .sort((a: any, b: any) => {
+              return (
+                new Date(a.data.event_start_date).getTime() -
+                new Date(b.data.event_start_date).getTime()
+              );
+            })
+            .map((event: any, index: number) => (
+              <EventComponent key={index} event={event} />
+            ))}
       </div>
     </div>
   );
