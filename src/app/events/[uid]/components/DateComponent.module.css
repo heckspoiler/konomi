@@ -11,6 +11,8 @@
     font-family: var(--title-font);
     font-variation-settings: var(--subtitle-weight);
     font-size: 0.7rem;
+    width: fit-content;
+    display: flex;
 }
 
 .textContainer p span {

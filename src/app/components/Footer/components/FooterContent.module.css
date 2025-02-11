@@ -75,14 +75,12 @@
     display: flex;
     flex-direction: column;
     gap: calc(var(--header-height) / 6);
-    /*hello*/
 }
 
 .supportersLogos {
     display: grid;
     align-items: center;
     grid-template-columns: repeat(3, 1fr);
-    /*hello*/
 }
 
 .supporter {

@@ -5,7 +5,7 @@
     justify-content: space-between;
     min-height: 14rem;
     width: 100%;
-    padding: 1.5rem;
+    padding: 1rem 1.25rem;
     background-color: var(--beige);
     position: relative;
 }
@@ -17,7 +17,7 @@
 
 .event h2 {
     text-decoration: underline;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 
@@ -64,14 +64,15 @@
 
 
 .date {
-    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
     font-variation-settings: var(--title-weight);
+
 }
 
 .time {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-variation-settings: var(--subtitle-weight);
-
+    display: flex;
 }
 
 

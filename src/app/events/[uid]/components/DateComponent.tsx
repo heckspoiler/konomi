@@ -13,11 +13,17 @@ export default function DateComponent({ data }: { data: any }) {
       <CalendarIcon />
       <div className={styles.textContainer}>
         <p>
-          <span>{startDateTime.dayOnly}</span> -
-          <span>{endDateTime.dayOnly}</span>
+          <span>
+            {startDateTime.dayOnly}
+            {endDateTime.dayOnly !== startDateTime.dayOnly && ' - '}
+            {endDateTime.dayOnly !== startDateTime.dayOnly &&
+              endDateTime.dayOnly}{' '}
+          </span>
         </p>
         <p>
-          {startDateTime.timeOnly} - {endDateTime.timeOnly}
+          {startDateTime.timeOnly}
+          {endDateTime && ' - '}
+          {endDateTime && endDateTime.timeOnly}
         </p>
       </div>
     </div>
