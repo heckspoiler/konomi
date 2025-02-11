@@ -4,25 +4,27 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
 }
 
 .section {
-    padding: calc(var(--header-height) + 1rem) 0.7rem;
-    border-bottom: var(--border-small);
+    padding: calc(var(--header-height)) 0.7rem;
+    border-bottom: var(--border);
     background-color: var(--beige);
+    border-left: var(--border);
+    border-right: var(--border);
 }
 
 
 .section:nth-of-type(1) {
 
-    border-top: var(--border-small)
+    border-top: var(--border)
 }
 
 @media screen and (min-width: 1080px) {
 
     .section {
-        padding: calc(var(--header-height) + 3rem) var(--header-height);
-
+        padding: calc(var(--header-height) + 1rem) var(--header-height);
     }
 
 

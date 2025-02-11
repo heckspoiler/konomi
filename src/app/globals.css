@@ -7,8 +7,7 @@
     font-size: calc(100vw / 375 * 14);
     --bezier: cubic-bezier(0.645, 0.045, 0.355, 1.000);
     --border-small: 0.2rem solid var(--red);
-
-
+    --border: 0.1rem solid var(--red);
     /* paddings */
     --main-container-padding: 0.7rem;
 

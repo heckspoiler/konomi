@@ -10,7 +10,7 @@
 .backToContainer a {
     color: var(--beige);
     background-color: var(--red);
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
     font-size: 0.75rem;
     font-variation-settings: var(--subtitle-weight);
     text-transform: uppercase;
@@ -19,7 +19,6 @@
     transition: all 0.2s var(--bezier);
     width: 100%;
     text-align: center;
-
 }
 
 .backToContainer a:hover {

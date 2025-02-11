@@ -40,7 +40,7 @@ function EventsContentInner({ events, page }: { events?: any; page: any }) {
     if (pathname && pathname.startsWith('/events')) {
       setBackComponent(
         <div className={styles.backToContainer}>
-          <BackToComponent text="Zum Archiv" url="/archive" />
+          <BackToComponent text="Archiv" url="/archive" />
         </div>
       );
     } else if (pathname && pathname.startsWith('/archive')) {

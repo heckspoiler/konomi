@@ -1,5 +1,5 @@
 .event {
-    border: 2px solid var(--red);
+    border: var(--border);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
