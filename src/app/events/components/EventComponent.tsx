@@ -2,10 +2,11 @@ import React from 'react';
 import styles from './EventComponent.module.css';
 import { PrismicRichText } from '@prismicio/react';
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
-import Link from 'next/link';
-
+import { truncateText } from '../../../../helpers/truncateText';
 import { formatDateTime } from '../../../../helpers/formateDateTime';
 import LeftContainer from './LeftContainer';
+
+import { useMobile } from '../../../../contexts/MobileContext';
 
 import LocationIcon from '../[uid]/components/LocationIcon';
 import CalendarIcon from '../[uid]/components/CalendarIcon';
@@ -34,6 +35,8 @@ interface EventProps {
 export default function EventComponent({ event }: EventProps) {
   const startDateTime = formatDateTime(event.data.event_start_date);
   const endDateTime = formatDateTime(event.data.event_end_date);
+
+  const { isMobile } = useMobile();
   return (
     <div className={styles.event}>
       <PrismicRichText field={event.data.event_title} />
@@ -42,7 +45,12 @@ export default function EventComponent({ event }: EventProps) {
           <div className={styles.addressContainer}>
             <LocationIcon />
             <div>
-              <PrismicRichText field={event.data.event_location} />
+              <h5>
+                {truncateText(
+                  event.data.event_location[0].text,
+                  isMobile ? 25 : 100
+                )}
+              </h5>
               <PrismicRichText field={event.data.event_street} />
               <PrismicRichText field={event.data.event_postcode_and_city} />
             </div>
