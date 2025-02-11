@@ -78,7 +78,7 @@ export default function EventContent({
           <EventImage image={data.event_image} />
         </div>
         <div className={styles.descriptionContainer}>
-          <p>{data.event_description}</p>
+          <PrismicRichText field={data.event_description} />
         </div>{' '}
         <div className={styles.locationLink}>
           <PrismicNextLink field={data.location_website}>

@@ -332,13 +332,13 @@ interface EventDocumentData {
   /**
    * Event Description field in *Event*
    *
-   * - **Field Type**: Text
-   * - **Placeholder**: Japanische Kulinarik kennt viele Aromen und Geschmäcker. Eine davon ist jedoch so präsent
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Text für Event
    * - **API ID Path**: event.event_description
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  event_description: prismic.KeyTextField;
+  event_description: prismic.RichTextField;
 
   /**
    * Is Food field in *Event*

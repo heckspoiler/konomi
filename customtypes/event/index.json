@@ -82,10 +82,12 @@
         }
       },
       "event_description": {
-        "type": "Text",
+        "type": "StructuredText",
         "config": {
           "label": "Event Description",
-          "placeholder": "Japanische Kulinarik kennt viele Aromen und Geschmäcker. Eine davon ist jedoch so präsent"
+          "placeholder": "Text für Event",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
         }
       },
       "is_food": {
