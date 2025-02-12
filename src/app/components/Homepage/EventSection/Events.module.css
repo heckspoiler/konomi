@@ -1,5 +1,5 @@
 .scheduleContainer {
-    padding: 1rem 0;
+    padding: calc(var(--header-height) / 2) 0 1rem 0;
 }
 
 .event {
