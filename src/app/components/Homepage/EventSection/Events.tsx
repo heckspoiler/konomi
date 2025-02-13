@@ -38,10 +38,10 @@ export default function Events({ events }: { events: any }) {
     <div className={styles.scheduleContainer}>
       {sortedUpcomingEvents.slice(0, 10).map((event: any, index: number) => (
         <div key={index} className={styles.event}>
+          <h4>{formatDate(event.data.event_start_date)}</h4>{' '}
           <h2>
-            {truncateText(event.data.event_title[0].text, isMobile ? 10 : 25)}
+            {truncateText(event.data.event_title[0].text, isMobile ? 60 : 100)}
           </h2>
-          <h4>{formatDate(event.data.event_start_date)}</h4>
           <Link href={`/events/${event.uid}`}>
             <span>
               <h5>Mehr</h5>
