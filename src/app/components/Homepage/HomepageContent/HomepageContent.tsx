@@ -13,8 +13,6 @@ import { components } from '@/slices';
 
 import { useMobile } from '../../../../../contexts/MobileContext';
 
-import { eventsStore } from '../../../../../stores/eventStore';
-
 interface HomepageContentProps {
   defaultVariationSlice: any;
   eventsPass: any;
