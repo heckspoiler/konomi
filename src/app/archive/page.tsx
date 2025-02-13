@@ -17,7 +17,7 @@ export default async function Page() {
 
   return (
     <div className={styles.main}>
-      <EventsContent events={events} page={page} />
+      <EventsContent page={page} />
     </div>
   );
 }

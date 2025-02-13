@@ -8,6 +8,8 @@ import styles from './page.module.css';
 import { PrismicNextImage } from '@prismicio/next';
 import EventsContent from './components/EventsContent';
 
+import { useEvents } from '../../../contexts/EventsContext';
+
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle('events');

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import styles from './EventsContent.module.css';
 import MainHeading from './MainHeading';
 import EventComponent from './EventComponent';
@@ -9,24 +9,43 @@ import { usePathname } from 'next/navigation';
 import FilterComponent from './FilterComponent';
 import { FilterProvider, useFilter } from '../../../../contexts/FilterContext';
 import { formatDate } from '../../../../helpers/formatDate';
-import { eventsStore } from '../../../../stores/eventStore';
+import { useEvents } from '../../../../contexts/EventsContext';
 
-function EventsContentInner({ page }: { page: any }) {
+function EventsContentInner({ page, events }: { page: any; events: any }) {
   const pathname = usePathname();
-  const [backComponent, setBackComponent] = useState<React.ReactNode>(null);
   const { selectedDate, selectedLocation, selectedEventType } = useFilter();
   const [isFoldoutOpen, setIsFoldoutOpen] = useState(false);
-  // Filter events based on selected criteria
+  const [usedEvents, setUsedEvents] = useState([]);
 
-  const { events } = eventsStore() as {
-    events: Object[];
-  };
+  const now = useMemo(() => new Date(), []);
 
-  const sortedEvents = events.filter((event: any) => {
-    return !event.tags.includes('archived');
-  });
+  const upcomingEvents = useMemo(
+    () =>
+      events?.filter(
+        (event: any) =>
+          new Date(event.data.event_end_date).getTime() > now.getTime()
+      ),
+    [events, now]
+  );
 
-  const filteredEvents = sortedEvents?.filter((event: any) => {
+  const pastEvents = useMemo(
+    () =>
+      events?.filter(
+        (event: any) =>
+          new Date(event.data.event_end_date).getTime() < now.getTime()
+      ),
+    [events, now]
+  );
+
+  useEffect(() => {
+    if (pathname.startsWith('/events')) {
+      setUsedEvents(upcomingEvents);
+    } else if (pathname.startsWith('/archive')) {
+      setUsedEvents(pastEvents);
+    }
+  }, [pathname]);
+
+  const filteredEvents = usedEvents?.filter((event: any) => {
     const matchesDate =
       !selectedDate || formatDate(event.data.event_start_date) === selectedDate;
 
@@ -46,18 +65,18 @@ function EventsContentInner({ page }: { page: any }) {
     return matchesDate && matchesLocation && matchesEventType;
   });
 
-  useEffect(() => {
-    if (pathname && pathname.startsWith('/events')) {
-      setBackComponent(
+  const backComponent = useMemo(() => {
+    if (pathname.startsWith('/events')) {
+      return (
         <div className={styles.backToContainer}>
           <BackToComponent text="Archiv" url="/archive" />
         </div>
       );
-    } else if (pathname && pathname.startsWith('/archive')) {
-      setBackComponent(
-        <BackToComponent text="Aktuelle Events" url="/events" />
-      );
     }
+    if (pathname.startsWith('/archive')) {
+      return <BackToComponent text="Aktuelle Events" url="/events" />;
+    }
+    return null;
   }, [pathname]);
 
   return (
@@ -91,10 +110,12 @@ function EventsContentInner({ page }: { page: any }) {
   );
 }
 
-function EventsContent({ events, page }: { events?: any; page: any }) {
+function EventsContent({ page }: { page: any }) {
+  const { events } = useEvents();
+
   return (
     <FilterProvider>
-      <EventsContentInner page={page} />
+      <EventsContentInner page={page} events={events} />
     </FilterProvider>
   );
 }
