@@ -13,9 +13,11 @@ import { components } from '@/slices';
 
 import { useMobile } from '../../../../../contexts/MobileContext';
 
+import { eventsStore } from '../../../../../stores/eventStore';
+
 interface HomepageContentProps {
   defaultVariationSlice: any;
-  events: any;
+  eventsPass: any;
   scheduleSlice: any;
   konomiSlice: any;
   whySlice: any;
@@ -25,7 +27,7 @@ type SectionId = 'about' | 'events' | 'konomi' | 'why';
 
 export default function HomepageContent({
   defaultVariationSlice,
-  events,
+  eventsPass,
   scheduleSlice,
   konomiSlice,
   whySlice,
@@ -36,6 +38,17 @@ export default function HomepageContent({
   const konomiRef = useRef<HTMLDivElement>(null);
   const whyRef = useRef<HTMLDivElement>(null);
   const [threshold, setThreshold] = useState<number>(0.1);
+
+  const { events, setEvents } = eventsStore() as {
+    events: Object[];
+    setEvents: (value: boolean) => void;
+  };
+
+  useEffect(() => {
+    if (eventsPass) {
+      setEvents(eventsPass);
+    }
+  }, [eventsPass]);
 
   const { isMobile } = useMobile();
 

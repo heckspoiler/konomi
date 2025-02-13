@@ -41,7 +41,7 @@ export default async function Index() {
 
   return (
     <HomepageContent
-      events={events}
+      eventsPass={events}
       defaultVariationSlice={defaultVariationSlice}
       scheduleSlice={scheduleSlice}
       konomiSlice={konomiSlice}

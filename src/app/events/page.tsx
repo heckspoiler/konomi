@@ -12,15 +12,9 @@ export default async function Page() {
   const client = createClient();
   const page = await client.getSingle('events');
 
-  const eventsFetch = await client.getAllByType('event');
-
-  const events = eventsFetch.filter((event: any) => {
-    return !event.tags.includes('archived');
-  });
-
   return (
     <div className={styles.main}>
-      <EventsContent events={events} page={page} />
+      <EventsContent page={page} />
     </div>
   );
 }

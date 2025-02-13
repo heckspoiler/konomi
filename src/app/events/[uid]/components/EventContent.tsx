@@ -50,8 +50,6 @@ export default function EventContent({
     }
   }, [pathname]);
 
-  console.log(data.event_description);
-
   return (
     <div className={styles.container}>
       <MainHeading title={'Event'} page={events} buttonShow={buttonShow} />

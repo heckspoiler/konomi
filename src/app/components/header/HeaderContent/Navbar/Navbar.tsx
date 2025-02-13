@@ -42,8 +42,6 @@ export default function Navbar({
     });
   }, [pathname]);
 
-  console.log(hero.data.hero_image.url);
-
   return (
     <nav className={`${styles.navbar} ${menuIsOpen ? styles.open : ''}`}>
       <div className={styles.clickables}>

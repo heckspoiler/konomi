@@ -6,7 +6,7 @@ import MainHeading from '@/app/events/components/MainHeading';
 
 export default function ImpressumContent({ page }: { page: any }) {
   const content = page.data;
-  console.log(content);
+
   return (
     <div className={styles.container}>
       <MainHeading page={page} />
