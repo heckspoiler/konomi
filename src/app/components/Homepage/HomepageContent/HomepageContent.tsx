@@ -39,17 +39,6 @@ export default function HomepageContent({
   const whyRef = useRef<HTMLDivElement>(null);
   const [threshold, setThreshold] = useState<number>(0.1);
 
-  const { events, setEvents } = eventsStore() as {
-    events: Object[];
-    setEvents: (value: boolean) => void;
-  };
-
-  useEffect(() => {
-    if (eventsPass) {
-      setEvents(eventsPass);
-    }
-  }, [eventsPass]);
-
   const { isMobile } = useMobile();
 
   useEffect(() => {
@@ -109,11 +98,7 @@ export default function HomepageContent({
         />
       </div>
       <div id="events" ref={eventsRef} className={styles.section}>
-        <EventSection
-          scheduleSlice={scheduleSlice}
-          events={events}
-          components={components}
-        />
+        <EventSection scheduleSlice={scheduleSlice} components={components} />
       </div>
       <div id="konomi" ref={konomiRef} className={styles.section}>
         <KonomiSection konomiSlice={konomiSlice} components={components} />

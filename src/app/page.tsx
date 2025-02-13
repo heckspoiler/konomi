@@ -4,9 +4,9 @@ import { createClient } from '@/prismicio';
 
 import HomepageContent from './components/Homepage/HomepageContent/HomepageContent';
 
-const client = createClient();
-const home = await client.getByUID('page', 'home');
 export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const home = await client.getByUID('page', 'home');
   return {
     title: home.data.meta_title,
     description: home.data.meta_description,
@@ -18,6 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Index() {
+  const client = createClient();
+  const home = await client.getByUID('page', 'home');
   const events = await client.getAllByType('event');
 
   const defaultVariationSlice = home.data.slices.filter(

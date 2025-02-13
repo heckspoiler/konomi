@@ -9,15 +9,17 @@ import Events from './Events';
 import Link from 'next/link';
 import Arrow from '../../arrow/Arrow';
 import { PrismicNextLink } from '@prismicio/next';
+import { useEvents } from '../../../../../contexts/EventsContext';
+
 export default function EventSection({
   scheduleSlice,
   components,
-  events,
 }: {
   scheduleSlice: any;
   components: any;
-  events: any;
 }) {
+  const { events } = useEvents();
+
   return (
     <SectionContainer>
       <SliceZone slices={scheduleSlice} components={components} />
