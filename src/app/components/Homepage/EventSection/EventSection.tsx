@@ -22,8 +22,9 @@ export default function EventSection({
 
   return (
     <SectionContainer>
-      <SliceZone slices={scheduleSlice} components={components} />
       <div className={styles.programContainer}>
+        {' '}
+        <SliceZone slices={scheduleSlice} components={components} />
         <div className={styles.programText}>
           <PrismicRichText field={scheduleSlice[0].primary.program_text} />
         </div>

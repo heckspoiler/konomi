@@ -46,5 +46,6 @@
 @media screen and (min-width: 1080px) {
     .event h2 {
         text-align: left;
+        padding-left: 1rem;
     }
 }
