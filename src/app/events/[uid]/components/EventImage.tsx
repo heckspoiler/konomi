@@ -6,7 +6,7 @@ import { PrismicNextImage } from '@prismicio/next';
 export default function EventImage({ image }: { image: any }) {
   return (
     <div className={styles.imageContainer}>
-      <div className={styles.overlay}></div>
+      {/* <div className={styles.overlay}></div> */}
       <PrismicNextImage field={image} />
     </div>
   );
