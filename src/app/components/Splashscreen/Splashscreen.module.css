@@ -16,6 +16,7 @@
     align-items: center;
     animation: slideUp 0.8s var(--bezier) forwards;
     animation-delay: 2.4s;
+
 }
 
 .letterContainer {
@@ -24,7 +25,7 @@
     max-height: 100svh;
     align-items: center;
     background-color: var(--red);
-    animation: slideIn 0.9s var(--bezier) forwards;
+    animation: slideInBlock 0.9s var(--bezier) forwards;
     transform: translateX(-180%);
     animation-delay: 0.5s;
     flex-direction: column;
@@ -47,6 +48,20 @@
 }
 
 @keyframes slideIn {
+    0% {
+
+        transform: translateX(-180%);
+        rotate: 20deg;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        rotate: 0deg;
+    }
+}
+
+@keyframes slideInBlock {
     0% {
 
         transform: translateX(-180%);
