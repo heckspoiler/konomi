@@ -24,7 +24,7 @@ export default function ProgressIndicator({
       <div
         className={`${styles.link} ${activeSection === 'events' ? styles.active : ''}`}
       >
-        <Link href="#events">Wo ist Konomi?</Link>
+        <Link href="#events">Konomi Programm</Link>
       </div>
 
       <div

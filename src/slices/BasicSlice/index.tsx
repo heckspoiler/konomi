@@ -65,7 +65,6 @@ const BasicSlice = ({ slice }: BasicSliceProps): JSX.Element => {
                   />
                 </div>
               </div>
-              <PrismicRichText field={slice.primary.text} />
             </div>
           </div>
         </section>
