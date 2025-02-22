@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 import styles from './Topfield.module.css';
 import { useFilter } from '../../../../../contexts/FilterContext';
+import { usePathname } from 'next/navigation';
 
 export default function Topfield({
   fieldIsOpen,
@@ -10,13 +13,15 @@ export default function Topfield({
   setIsFieldOpen: any;
 }) {
   const { selectedEventType, selectedDate, selectedLocation } = useFilter();
-
+  const pathname = usePathname();
   const handleClick = (key: string) => {
     setIsFieldOpen(fieldIsOpen === key ? '' : key);
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={`${pathname === '/archive' ? styles.containerArchived : styles.container}`}
+    >
       <div
         key="event"
         onClick={() => handleClick('event')}
@@ -29,18 +34,20 @@ export default function Topfield({
         ></div>{' '}
         <h5>Eventart</h5>
       </div>
-      <div
-        key="date"
-        onClick={() => handleClick('date')}
-        className={`${styles.category} ${fieldIsOpen === 'date' ? styles.open : ''} ${
-          selectedDate ? styles.hasFilter : ''
-        }`}
-      >
+      {pathname === '/archive' ? null : (
         <div
-          className={`${styles.indicator} ${selectedDate && styles.indicatorVisible}`}
-        ></div>
-        <h5>Datum</h5>
-      </div>
+          key="date"
+          onClick={() => handleClick('date')}
+          className={`${styles.category} ${fieldIsOpen === 'date' ? styles.open : ''} ${
+            selectedDate ? styles.hasFilter : ''
+          }`}
+        >
+          <div
+            className={`${styles.indicator} ${selectedDate && styles.indicatorVisible}`}
+          ></div>
+          <h5>Datum</h5>
+        </div>
+      )}
       <div
         key="location"
         onClick={() => handleClick('location')}
