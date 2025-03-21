@@ -43,6 +43,7 @@ export default async function RootLayout({
           </Script>
           <Footer />
           <Splashscreen />
+          <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
         </Providers>
       </body>
     </html>
