@@ -60,7 +60,8 @@ function EventsContentInner({ page, events }: { page: any; events: any }) {
       (selectedEventType === 'drinks' && event.data.is_drinks) ||
       (selectedEventType === 'music' && event.data.is_music) ||
       (selectedEventType === 'lecture' && event.data.is_lecture) ||
-      (selectedEventType === 'crafting' && event.data.is_crafting);
+      (selectedEventType === 'crafting' && event.data.is_crafting) ||
+      (selectedEventType === 'art' && event.data.is_art);
 
     return matchesDate && matchesLocation && matchesEventType;
   });

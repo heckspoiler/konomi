@@ -24,6 +24,10 @@ const EventtypeArray: EventType[] = [
     name: 'Lesung',
     value: 'lecture',
   },
+  {
+    name: 'Kunst',
+    value: 'art',
+  },
 ];
 
 export default EventtypeArray;
