@@ -17,7 +17,8 @@ import { usePathname } from 'next/navigation';
 
 import mobileBackground from '/public/images/background-mobile_bgwred.png';
 import desktopBackground from '/public/images/background-desktop_bgw_test.png';
-import tabletBackground from '/public/images/background_tablet_bgw.png';
+import tabletBackground from '/public/images/background-tablet-new.png';
+import tabletPortraitBackground from '/public/images/background-tablet-new-portrait.png'; // Add this new import for tablet portrait
 
 import vertexShader from './shaders/background.vert';
 import fragmentShader from './shaders/background.frag';
@@ -36,6 +37,9 @@ export default function BackgroundCanvas() {
   const [scrollHeight, setScrollHeight] = useState<number>(0);
   const [directionsMultiplier, setDirectionsMultiplier] = useState<number>(1);
   const pathname = usePathname();
+  const [isPortrait, setIsPortrait] = useState<boolean>(
+    window.innerHeight > window.innerWidth
+  );
 
   const { isMobile, isDesktop, isTablet } = useMobile();
 
@@ -61,16 +65,38 @@ export default function BackgroundCanvas() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Check for orientation changes
+  useEffect(() => {
+    const handleOrientationChange = () => {
+      setIsPortrait(window.innerHeight > window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleOrientationChange);
+    return () => {
+      window.removeEventListener('resize', handleOrientationChange);
+    };
+  }, []);
+
   useEffect(() => {
     const updateBackground = () => {
-      if (window.innerWidth < MOBILE_BREAKPOINT) {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const isPortrait = height > width;
+
+      if (width < MOBILE_BREAKPOINT) {
+        // Mobile device
         setBackground(mobileBackground.src);
-      } else if (
-        window.innerWidth < TABLET_BREAKPOINT &&
-        window.innerWidth >= MOBILE_BREAKPOINT
-      ) {
-        setBackground(tabletBackground.src);
+      } else if (width < TABLET_BREAKPOINT && width >= MOBILE_BREAKPOINT) {
+        // Tablet device
+        if (isPortrait) {
+          // Tablet in portrait mode
+          setBackground(tabletPortraitBackground.src);
+        } else {
+          // Tablet in landscape mode
+          setBackground(tabletBackground.src);
+        }
       } else {
+        // Desktop device
         setBackground(desktopBackground.src);
       }
     };
@@ -81,7 +107,7 @@ export default function BackgroundCanvas() {
     return () => {
       window.removeEventListener('resize', updateBackground);
     };
-  }, []);
+  }, [isPortrait]); // Add isPortrait to dependency array
 
   useEffect(() => {
     isMobile ? setDirectionsMultiplier(2) : setDirectionsMultiplier(42);
