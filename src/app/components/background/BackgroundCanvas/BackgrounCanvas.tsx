@@ -37,9 +37,7 @@ export default function BackgroundCanvas() {
   const [scrollHeight, setScrollHeight] = useState<number>(0);
   const [directionsMultiplier, setDirectionsMultiplier] = useState<number>(1);
   const pathname = usePathname();
-  const [isPortrait, setIsPortrait] = useState<boolean>(
-    window.innerHeight > window.innerWidth
-  );
+  const [isPortrait, setIsPortrait] = useState<boolean>(false);
 
   const { isMobile, isDesktop, isTablet } = useMobile();
 
@@ -65,8 +63,11 @@ export default function BackgroundCanvas() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Check for orientation changes
+  // Check for orientation changes and set initial value
   useEffect(() => {
+    // Set initial orientation value
+    setIsPortrait(window.innerHeight > window.innerWidth);
+
     const handleOrientationChange = () => {
       setIsPortrait(window.innerHeight > window.innerWidth);
     };
@@ -78,6 +79,9 @@ export default function BackgroundCanvas() {
   }, []);
 
   useEffect(() => {
+    // Skip during server-side rendering
+    if (typeof window === 'undefined') return;
+
     const updateBackground = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
@@ -114,7 +118,8 @@ export default function BackgroundCanvas() {
   }, [isMobile]);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    // Skip during server-side rendering
+    if (typeof window === 'undefined' || !mountRef.current) return;
 
     const scene = new Scene();
     const aspectRatio = window.innerWidth / window.innerHeight;
