@@ -10,15 +10,12 @@
 .section {
     padding: calc(var(--header-height)) 0.7rem;
     background-color: var(--beige);
-    border-left: var(--border);
-    border-right: var(--border);
-    border-bottom: var(--border);
-    border-bottom-style: dotted;
+    border-top: var(--border)
 }
 
 
 .section:nth-of-type(1) {
-    border-top: var(--border)
+    border-top: none
 }
 
 .section:nth-of-type(4) {

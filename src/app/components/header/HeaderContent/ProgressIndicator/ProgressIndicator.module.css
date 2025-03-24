@@ -11,6 +11,7 @@
     background-color: var(--beige);
     flex-wrap: wrap;
     gap: 0.5rem;
+    border-bottom: var(--border)
 }
 
 .active {
@@ -72,6 +73,7 @@
         align-items: left;
         justify-content: space-evenly;
         width: fit-content;
+        border-bottom: none;
     }
 
     .container>div>a {
