@@ -34,6 +34,7 @@
 
     /* typefaces */
     --title-font: "Clash Grotesk", sans-serif;
+    --logo-weight: "wght" 650;
     --title-weight: "wght" 550;
     --subtitle-weight: "wght" 400;
     --japanese-subtitle-weight: "wght" 400;

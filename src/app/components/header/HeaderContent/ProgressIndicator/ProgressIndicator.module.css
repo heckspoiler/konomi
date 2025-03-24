@@ -29,7 +29,8 @@
     border: 1px solid var(--red);
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s var(--bezier)
+    transition: background-color 0.2s var(--bezier);
+
 }
 
 .link>a {
@@ -43,6 +44,9 @@
     display: block;
     text-align: center;
     transition: color 0.2s var(--bezier);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
