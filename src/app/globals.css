@@ -1,5 +1,18 @@
 /* !!!! MOBILE DEVELOPMENT FIRST!!!!! */
 
+@font-face {
+    font-family: "Clash Grotesk";
+    src: url("/fonts/ClashGrotesk-Variable.ttf");
+}
+
+
+@font-face {
+    font-family: "League Spartan";
+    src: url("/fonts/LeagueSpartan-VariableFont_wght.ttf");
+}
+
+
+
 
 :root {
 
@@ -20,12 +33,12 @@
 
 
     /* typefaces */
-    --title-font: "fractul-variable", sans-serif;
-    --title-weight: "wght" 700;
-    --subtitle-weight: "wght" 500;
-    --japanese-subtitle-weight: "wght" 300;
-    --ultrathin: "wght" 100;
-    --text-font: "futura-pt", sans-serif;
+    --title-font: "Clash Grotesk", sans-serif;
+    --title-weight: "wght" 600;
+    --subtitle-weight: "wght" 400;
+    --japanese-subtitle-weight: "wght" 400;
+    --ultrathin: "wght" 500;
+    --text-font: "League Spartan", sans-serif;
 }
 
 * {
@@ -98,11 +111,11 @@ h5 {
 
 p {
     font-family: var(--text-font);
-    font-style: normal;
     font-size: 1rem;
     hyphens: auto;
     text-align: justify;
     line-height: 1.3;
+    font-weight: 200;
 
 }
 

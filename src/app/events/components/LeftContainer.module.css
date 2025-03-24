@@ -18,7 +18,8 @@
     font-variation-settings: var(--subtitle-weight);
     color: var(--beige);
     border: 1px solid var(--red);
-    transition: all 0.2s var(--bezier)
+    transition: all 0.2s var(--bezier);
+    text-transform: uppercase;
 }
 
 .linkContainer a:hover {
