@@ -87,7 +87,7 @@
           "label": "Event Description",
           "placeholder": "Text für Event",
           "allowTargetBlank": true,
-          "multi": "paragraph"
+          "multi": "paragraph,strong,em,hyperlink,image,heading5,heading6,heading4,list-item,o-list-item,embed"
         }
       },
       "is_food": {

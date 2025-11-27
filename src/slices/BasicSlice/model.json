@@ -45,7 +45,7 @@
             "label": "Text",
             "placeholder": "Konomi ist das Festival japanischen Geschmacks in Basel.",
             "allowTargetBlank": true,
-            "multi": "paragraph"
+            "multi": "paragraph,heading4,heading5,heading6,strong,em,hyperlink,embed"
           }
         },
         "lower_titile": {
