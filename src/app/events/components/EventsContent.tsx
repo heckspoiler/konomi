@@ -95,9 +95,9 @@ function EventsContentInner({ page, events }: { page: any; events: any }) {
             />
           </div>
         </div>
-        {filteredEvents &&
+        {pathname.includes('archive') ? (
           filteredEvents
-            .sort((a: any, b: any) => {
+            ?.sort((a: any, b: any) => {
               return (
                 new Date(a.data.event_start_date).getTime() -
                 new Date(b.data.event_start_date).getTime()
@@ -105,7 +105,21 @@ function EventsContentInner({ page, events }: { page: any; events: any }) {
             })
             .map((event: any, index: number) => (
               <EventComponent key={index} event={event} />
-            ))}
+            ))
+        ) : upcomingEvents && upcomingEvents.length > 0 ? (
+          filteredEvents
+            ?.sort((a: any, b: any) => {
+              return (
+                new Date(a.data.event_start_date).getTime() -
+                new Date(b.data.event_start_date).getTime()
+              );
+            })
+            .map((event: any, index: number) => (
+              <EventComponent key={index} event={event} />
+            ))
+        ) : (
+          <h1>Wir sehen uns im 2026!</h1>
+        )}
       </div>
     </div>
   );
