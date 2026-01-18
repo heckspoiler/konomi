@@ -24,10 +24,10 @@ export default function Location({ events }: { events: any }) {
       .map((event: any) => event.data.event_location[0].text)
       .filter(
         (location: string, index: number, self: string[]) =>
-          self.indexOf(location) === index
+          self.indexOf(location) === index,
       )
       .sort((a: string, b: string) =>
-        a.localeCompare(b, 'en', { sensitivity: 'base' })
+        a.localeCompare(b, 'en', { sensitivity: 'base' }),
       );
 
     // Filter upcoming events
@@ -40,10 +40,10 @@ export default function Location({ events }: { events: any }) {
       .map((event: any) => event.data.event_location[0].text)
       .filter(
         (location: string, index: number, self: string[]) =>
-          self.indexOf(location) === index
+          self.indexOf(location) === index,
       )
       .sort((a: string, b: string) =>
-        a.localeCompare(b, 'en', { sensitivity: 'base' })
+        a.localeCompare(b, 'en', { sensitivity: 'base' }),
       );
 
     setArchivedLocations(archived);
@@ -51,7 +51,7 @@ export default function Location({ events }: { events: any }) {
   }, [events]);
 
   const locationsToShow =
-    pathname === '/archived' ? archivedLocations : upcomingLocations;
+    pathname.startsWith('/archive') ? archivedLocations : upcomingLocations;
 
   console.log(events);
 

@@ -15,7 +15,7 @@
     justify-content: flex-start;
     align-items: center;
     animation: slideUp 0.8s var(--bezier) forwards;
-    animation-delay: 2.4s;
+    animation-delay: 2.8s;
 
 }
 
@@ -41,7 +41,7 @@
 
 .letter {
     font-size: calc(3rem + 6vh);
-    transform: translateX(-180%) translateY(10px);
+    transform: translateX(-250%) translateY(10px);
     animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     animation-delay: calc(1.5s + (var(--index) * 0.1s));
     color: var(--beige);
@@ -50,14 +50,15 @@
 @keyframes slideIn {
     0% {
 
-        transform: translateX(-180%);
-        rotate: 20deg;
+        transform: translateX(-250%) scale(0) rotateX(180deg);
+
+
     }
 
     100% {
-        opacity: 1;
-        transform: translateX(0);
-        rotate: 0deg;
+
+        transform: translateX(0) scale(1) rotateX(0);
+
     }
 }
 
