@@ -9,19 +9,24 @@
     background-color: var(--red);
     padding: 0.2rem;
     transform-origin: center left;
-    transition: background-color 0.2s var(--bezier)
+    transition: all 0.4s var(--bezier);
+    transform: scale(0.9) rotateY(0deg);
+
 }
 
 .logoContainer * {
     color: var(--beige);
     padding: 0.1rem;
+}
 
+.notHomepage {
+    transform: scale(0.7) rotateX(360deg);
 }
 
 .logoContainer h1 {
     transform: translateY(0.3rem);
     font-size: 2.3rem;
-    transition: all 0.2s var(--bezier);
+    transition: all 0.4s var(--bezier);
     font-variation-settings: var(--logo-weight);
 }
 

@@ -14,7 +14,6 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@gsap/react": "^2.1.1",
     "@lottiefiles/dotlottie-react": "^0.9.3",
     "@lottiefiles/react-lottie-player": "^3.5.4",
     "@prismicio/client": "^7.13.1",
@@ -22,7 +21,6 @@
     "@prismicio/react": "^2.9.1",
     "@vercel/analytics": "^1.4.1",
     "dotenv": "^16.4.7",
-    "gsap": "npm:@gsap/shockingly@^3.12.5",
     "i": "^0.3.7",
     "next": "15.0.5",
     "npm": "^11.0.0",

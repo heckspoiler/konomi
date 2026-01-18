@@ -1,16 +1,11 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import { PrismicRichText } from '@prismicio/react';
 import styles from './HeaderLogo.module.css';
 import { usePathname } from 'next/navigation';
 import { closeMenu } from '../../../../../../helpers/closeMenu';
-
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-
-gsap.registerPlugin(useGSAP);
 
 const pathnames = ['/about', '/events', '/archive', '/contact'];
 
@@ -27,23 +22,9 @@ export default function HeaderLogo({
   const titleRef = useRef<HTMLDivElement>(null);
   const isNotHomePage = pathnames.some((path) => pathname.includes(path));
 
-  useGSAP(() => {
-    const titleElement = titleRef.current;
-
-    if (titleElement) {
-      gsap.to(titleElement, {
-        scale: isNotHomePage ? '0.7' : '1',
-        rotateX: isNotHomePage ? 360 : 0,
-        backfaceVisibility: 'visible',
-        duration: 0.4,
-        ease: 'power1.inOut',
-      });
-    }
-  }, [pathname]);
-
   return (
     <div
-      className={`${styles.logoContainer} ${menuIsOpen ? styles.open : ''}`}
+      className={`${styles.logoContainer} ${menuIsOpen ? styles.open : ''} ${isNotHomePage ? styles.notHomepage : ''}`}
       ref={titleRef}
       onClick={() => {
         closeMenu({ setMenuIsOpen });
