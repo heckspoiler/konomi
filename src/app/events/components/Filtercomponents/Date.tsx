@@ -5,8 +5,9 @@ import { formatDate } from '../../../../../helpers/formatDate';
 import { useFilter } from '../../../../../contexts/FilterContext';
 import { useMobile } from '../../../../../contexts/MobileContext';
 import { usePathname } from 'next/navigation';
+import { EventsDocument } from '../../../../../prismicio-types';
 
-export default function DateFilter({ events }: { events: any }) {
+export default function DateFilter({ events }: { events: EventsDocument[] }) {
   const { selectedDate, setSelectedDate } = useFilter();
   const pathname = usePathname();
   const { isMobile, isTablet, isDesktop } = useMobile();
@@ -31,7 +32,7 @@ export default function DateFilter({ events }: { events: any }) {
     .map((event: any) => formatDate(event.data.event_start_date))
     .filter(
       (date: string, index: number, self: string[]) =>
-        self.indexOf(date) === index
+        self.indexOf(date) === index,
     )
     .sort((a: string, b: string) => {
       if (pathname === '/archived') {
@@ -43,7 +44,7 @@ export default function DateFilter({ events }: { events: any }) {
 
   const handleInteraction = (
     e: React.TouchEvent | React.MouseEvent,
-    date: string
+    date: string,
   ) => {
     setSelectedDate(selectedDate === date ? '' : date);
   };
