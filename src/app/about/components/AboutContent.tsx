@@ -4,12 +4,15 @@ import React, { useEffect, useState } from 'react';
 
 import styles from './AboutContent.module.css';
 import MainHeading from '@/app/events/components/MainHeading';
-import { PrismicRichText } from '@prismicio/react';
 
 import { PrismicNextLink } from '@prismicio/next';
 import Arrow from '@/app/components/arrow/Arrow';
+import {
+  AboutDocument,
+  AboutDocumentDataKonomiMemberItem,
+} from '../../../../prismicio-types';
 
-export default function AboutContent({ page }: { page: any }) {
+export default function AboutContent({ page }: { page: AboutDocument }) {
   const data = page.data;
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -30,19 +33,21 @@ export default function AboutContent({ page }: { page: any }) {
       </div>
 
       <div className={styles.membersContainer}>
-        {data.konomi_member.map((item: any, index: number) => (
-          <div
-            key={index}
-            className={styles.member}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
-          >
-            <PrismicNextLink field={item.konomi_member_link} />
-            <Arrow
-              fill={hoveredIndex === index ? 'var(--red)' : 'var(--beige)'}
-            />
-          </div>
-        ))}
+        {data.konomi_member.map(
+          (item: AboutDocumentDataKonomiMemberItem, index: number) => (
+            <div
+              key={index}
+              className={styles.member}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <PrismicNextLink field={item.konomi_member_link} />
+              <Arrow
+                fill={hoveredIndex === index ? 'var(--red)' : 'var(--beige)'}
+              />
+            </div>
+          ),
+        )}
       </div>
     </div>
   );

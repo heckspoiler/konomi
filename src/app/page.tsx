@@ -21,21 +21,22 @@ export default async function Index() {
   const client = createClient();
   const home = await client.getByUID('page', 'home');
   const events = await client.getAllByType('event');
+  const landingCategories = await client.getSingle('landing_categories');
 
   const defaultVariationSlice = home.data.slices.filter(
-    (slice) => slice.variation === 'default'
+    (slice) => slice.variation === 'default',
   );
 
   const scheduleSlice = home.data.slices.filter(
-    (slice) => slice.variation === 'schedule'
+    (slice) => slice.variation === 'schedule',
   );
 
   const konomiSlice = home.data.slices.filter(
-    (slice) => slice.variation === 'whoIsKonomi'
+    (slice) => slice.variation === 'whoIsKonomi',
   );
 
   const whySlice = home.data.slices.filter(
-    (slice) => slice.variation === 'whyKonomi'
+    (slice) => slice.variation === 'whyKonomi',
   );
 
   return (
@@ -45,6 +46,7 @@ export default async function Index() {
       scheduleSlice={scheduleSlice}
       konomiSlice={konomiSlice}
       whySlice={whySlice}
+      landingCategories={landingCategories}
     />
   );
 }

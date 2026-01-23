@@ -924,6 +924,65 @@ export type ImpressumDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Landing Categories → Categories*
+ */
+export interface LandingCategoriesDocumentDataCategoriesItem {
+  /**
+   * Category field in *Landing Categories → Categories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_categories.categories[].category
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category: prismic.KeyTextField;
+
+  /**
+   * Category Key (DO NOT CHANGE!) field in *Landing Categories → Categories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_categories.categories[].category_key
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category_key: prismic.KeyTextField;
+}
+
+/**
+ * Content for Landing Categories documents
+ */
+interface LandingCategoriesDocumentData {
+  /**
+   * Categories field in *Landing Categories*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_categories.categories[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  categories: prismic.GroupField<
+    Simplify<LandingCategoriesDocumentDataCategoriesItem>
+  >;
+}
+
+/**
+ * Landing Categories document from Prismic
+ *
+ * - **API ID**: `landing_categories`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LandingCategoriesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<LandingCategoriesDocumentData>,
+    "landing_categories",
+    Lang
+  >;
+
+/**
  * Content for Logo documents
  */
 interface LogoDocumentData {
@@ -1178,6 +1237,7 @@ export type AllDocumentTypes =
   | FooterDocument
   | HeroImageDocument
   | ImpressumDocument
+  | LandingCategoriesDocument
   | LogoDocument
   | PageDocument
   | SettingsDocument;
@@ -1629,6 +1689,9 @@ declare module "@prismicio/client" {
       ImpressumDocumentData,
       ImpressumDocumentDataImpressumContentItem,
       ImpressumDocumentDataSlicesSlice,
+      LandingCategoriesDocument,
+      LandingCategoriesDocumentData,
+      LandingCategoriesDocumentDataCategoriesItem,
       LogoDocument,
       LogoDocumentData,
       PageDocument,

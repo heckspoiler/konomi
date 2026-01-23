@@ -36,6 +36,11 @@
 }
 
 
+.seeyou h2 {
+    font-size: 1.5rem;
+}
+
+
 .event a h5 {
     font-variation-settings: var(--title-weight);
     font-family: var(--title-font);

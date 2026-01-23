@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import SectionContainer from '../SectionContainer/SectionContainer';
 
@@ -10,6 +10,7 @@ import Link from 'next/link';
 import Arrow from '../../arrow/Arrow';
 import { PrismicNextLink } from '@prismicio/next';
 import { useEvents } from '../../../../../contexts/EventsContext';
+import { EventDocument } from '../../../../../prismicio-types';
 
 export default function EventSection({
   scheduleSlice,
@@ -19,6 +20,18 @@ export default function EventSection({
   components: any;
 }) {
   const { events } = useEvents();
+
+  const now = useMemo(() => new Date(), []);
+
+  const upcomingEvents = useMemo(
+    () =>
+      events?.filter(
+        (event: EventDocument) =>
+          new Date(event.data.event_end_date as string).getTime() >
+          now.getTime(),
+      ),
+    [events, now],
+  );
 
   return (
     <SectionContainer>
@@ -30,14 +43,14 @@ export default function EventSection({
         </div>
         <Events events={events} />
         <div className={styles.moreEventsLink}>
-          {events.length === 0 ? (
+          {upcomingEvents.length === 0 ? (
             <Link href="/archive">
-              Zum Archiv <Arrow height={'15'} width={'14'} />
+              Zum Archiv <Arrow height={'12'} width={'12'} />
             </Link>
           ) : (
             <PrismicNextLink field={scheduleSlice[0].primary.more_events_link}>
               <>{scheduleSlice[0].primary.more_events_link.text}</>
-              <Arrow height={'15'} width={'14'} />
+              <Arrow height={'12'} width={'12'} />
             </PrismicNextLink>
           )}
         </div>

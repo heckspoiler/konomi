@@ -1,5 +1,7 @@
-export function formatDateTime(isoString: string) {
-  const date = new Date(isoString);
+import { TimestampField } from '@prismicio/client';
+
+export function formatDateTime(isoString: string | TimestampField) {
+  const date = new Date(isoString as string);
 
   // Get day and month with leading zeros
   const day = date.getDate().toString().padStart(2, '0');

@@ -5,12 +5,12 @@ import { formatDate } from '../../../../../helpers/formatDate';
 import { useFilter } from '../../../../../contexts/FilterContext';
 import { useMobile } from '../../../../../contexts/MobileContext';
 import { usePathname } from 'next/navigation';
-import { EventsDocument } from '../../../../../prismicio-types';
+import { EventDocument } from '../../../../../prismicio-types';
 
-export default function DateFilter({ events }: { events: EventsDocument[] }) {
+export default function DateFilter({ events }: { events: EventDocument[] }) {
   const { selectedDate, setSelectedDate } = useFilter();
   const pathname = usePathname();
-  const { isMobile, isTablet, isDesktop } = useMobile();
+  const { isDesktop } = useMobile();
 
   // Get current date at midnight for accurate comparison
   const currentDate = new Date();
@@ -18,8 +18,8 @@ export default function DateFilter({ events }: { events: EventsDocument[] }) {
 
   // Filter and sort dates based on pathname
   const datesSorted = events
-    .filter((event: any) => {
-      const eventDate = new Date(event.data.event_start_date);
+    .filter((event: EventDocument) => {
+      const eventDate = new Date(event.data.event_start_date ?? '');
       eventDate.setHours(0, 0, 0, 0);
 
       if (pathname === '/events') {
@@ -29,7 +29,7 @@ export default function DateFilter({ events }: { events: EventsDocument[] }) {
       }
       return true;
     })
-    .map((event: any) => formatDate(event.data.event_start_date))
+    .map((event: EventDocument) => formatDate(event.data.event_start_date ?? ''))
     .filter(
       (date: string, index: number, self: string[]) =>
         self.indexOf(date) === index,
@@ -41,13 +41,6 @@ export default function DateFilter({ events }: { events: EventsDocument[] }) {
 
       return a.localeCompare(b, 'en', { sensitivity: 'base' });
     });
-
-  const handleInteraction = (
-    e: React.TouchEvent | React.MouseEvent,
-    date: string,
-  ) => {
-    setSelectedDate(selectedDate === date ? '' : date);
-  };
 
   return (
     <FiltermappingContainer>

@@ -1,11 +1,10 @@
 .filterContainer {
     display: flex;
-    width: fit-content;
+    width: 100%;
     position: relative;
     z-index: 100;
 
 }
-
 
 .filterContainer p {
     color: var(--beige);
@@ -22,12 +21,15 @@
     text-transform: uppercase;
     font-family: var(--title-font);
     cursor: pointer;
+    width: fit-content;
 }
 
 .filterContainer p:hover {
     color: var(--red);
     background-color: var(--beige);
 }
+
+
 
 
 .foldoutContainer {

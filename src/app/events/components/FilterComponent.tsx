@@ -1,19 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styles from './FilterComponent.module.css';
 import FilterFoldout from './Filtercomponents/FilterFoldout';
 
 import { useFilter } from '../../../../contexts/FilterContext';
+import { EventDocument } from '../../../../prismicio-types';
 
 export default function FilterComponent({
   events,
   setIsFoldoutOpen,
   isFoldoutOpen,
 }: {
-  events: any;
-  isFoldoutOpen: any;
-  setIsFoldoutOpen: any;
+  events: EventDocument[];
+  isFoldoutOpen: boolean;
+  setIsFoldoutOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   const { selectedDate, selectedLocation, selectedEventType } = useFilter();
 

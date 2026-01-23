@@ -1,9 +1,10 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
+import { EventDocument } from '../prismicio-types';
 
 interface EventsContextType {
-  events: Object[];
+  events: EventDocument[];
 }
 
 const EventsContext = createContext<EventsContextType>({
@@ -15,7 +16,7 @@ export function EventsProvider({
   events,
 }: {
   children: React.ReactNode;
-  events: Object[];
+  events: EventDocument[];
 }) {
   return (
     <EventsContext.Provider value={{ events }}>

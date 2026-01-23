@@ -11,7 +11,9 @@ import ProgressIndicator from '../../header/HeaderContent/ProgressIndicator/Prog
 
 import { components } from '@/slices';
 
-import { useMobile } from '../../../../../contexts/MobileContext';
+import MainSection from './MainSection/MainSection';
+
+import { LandingCategoriesDocument } from '../../../../../prismicio-types';
 
 interface HomepageContentProps {
   defaultVariationSlice: any;
@@ -19,33 +21,23 @@ interface HomepageContentProps {
   scheduleSlice: any;
   konomiSlice: any;
   whySlice: any;
+  landingCategories: LandingCategoriesDocument;
 }
 
-type SectionId = 'about' | 'events' | 'konomi' | 'why';
+type SectionId = 'about' | 'events' | 'konomi' | 'why' | '';
 
 export default function HomepageContent({
   defaultVariationSlice,
-  eventsPass,
   scheduleSlice,
   konomiSlice,
   whySlice,
+  landingCategories,
 }: HomepageContentProps) {
-  const [activeSection, setActiveSection] = useState<SectionId>('about');
+  const [activeSection, setActiveSection] = useState<SectionId>('');
   const aboutRef = useRef<HTMLDivElement>(null);
   const eventsRef = useRef<HTMLDivElement>(null);
   const konomiRef = useRef<HTMLDivElement>(null);
   const whyRef = useRef<HTMLDivElement>(null);
-  const [threshold, setThreshold] = useState<number>(0.1);
-
-  const { isMobile } = useMobile();
-
-  useEffect(() => {
-    if (isMobile) {
-      setThreshold(0.5);
-    } else {
-      setThreshold(0.1);
-    }
-  }, [isMobile]);
 
   useEffect(() => {
     const sectionRefs = {
@@ -57,8 +49,8 @@ export default function HomepageContent({
 
     const options = {
       root: null,
-      rootMargin: '-40% 0px -40% 0px',
-      threshold: threshold,
+      rootMargin: '-48% 0px -48% 0px',
+      threshold: 0,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -70,14 +62,12 @@ export default function HomepageContent({
       });
     }, options);
 
-    // Observe all sections
     Object.values(sectionRefs).forEach((ref) => {
       if (ref.current) {
         observer.observe(ref.current);
       }
     });
 
-    // Cleanup
     return () => {
       Object.values(sectionRefs).forEach((ref) => {
         if (ref.current) {
@@ -87,24 +77,49 @@ export default function HomepageContent({
     };
   }, []);
 
-  return (
-    <section className={styles.main}>
-      <div id="about" ref={aboutRef} className={styles.section}>
+  const sectionConfig = [
+    {
+      id: 'about',
+      ref: aboutRef,
+      component: (
         <AboutSection
           defaultVariationSlice={defaultVariationSlice}
           components={components}
         />
-      </div>
-      <div id="events" ref={eventsRef} className={styles.section}>
+      ),
+    },
+    {
+      id: 'events',
+      ref: eventsRef,
+      component: (
         <EventSection scheduleSlice={scheduleSlice} components={components} />
-      </div>
-      <div id="konomi" ref={konomiRef} className={styles.section}>
+      ),
+    },
+    {
+      id: 'konomi',
+      ref: konomiRef,
+      component: (
         <KonomiSection konomiSlice={konomiSlice} components={components} />
-      </div>
-      <div id="why" ref={whyRef} className={styles.section}>
-        <WhySection whySlice={whySlice} components={components} />
-      </div>
-      <ProgressIndicator activeSection={activeSection} />
+      ),
+    },
+    {
+      id: 'why',
+      ref: whyRef,
+      component: <WhySection whySlice={whySlice} components={components} />,
+    },
+  ];
+
+  return (
+    <section className={styles.main}>
+      {sectionConfig.map(({ id, ref, component }) => (
+        <MainSection key={id} ref={ref} id={id}>
+          {component}
+        </MainSection>
+      ))}
+      <ProgressIndicator
+        activeSection={activeSection}
+        landingCategories={landingCategories}
+      />
     </section>
   );
 }

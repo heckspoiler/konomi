@@ -3,8 +3,10 @@ import styles from './LowerContent.module.css';
 import FiltermappingContainer from './FiltermappingContainer';
 import { useFilter } from '../../../../../contexts/FilterContext';
 import { usePathname } from 'next/navigation';
+import { EventDocument } from '../../../../../prismicio-types';
+import { asText } from '@prismicio/client';
 
-export default function Location({ events }: { events: any }) {
+export default function Location({ events }: { events: EventDocument[] }) {
   const { selectedLocation, setSelectedLocation } = useFilter();
   const [archivedLocations, setArchivedLocations] = useState<string[]>([]);
   const [upcomingLocations, setUpcomingLocations] = useState<string[]>([]);
@@ -16,12 +18,12 @@ export default function Location({ events }: { events: any }) {
 
     // Filter archived events
     const archived = events
-      .filter((event: any) => {
-        const eventDate = new Date(event.data.event_start_date);
+      .filter((event: EventDocument) => {
+        const eventDate = new Date(event.data.event_start_date ?? '');
         eventDate.setHours(0, 0, 0, 0);
         return eventDate < currentDate;
       })
-      .map((event: any) => event.data.event_location[0].text)
+      .map((event: EventDocument) => asText(event.data.event_location) ?? '')
       .filter(
         (location: string, index: number, self: string[]) =>
           self.indexOf(location) === index,
@@ -32,12 +34,12 @@ export default function Location({ events }: { events: any }) {
 
     // Filter upcoming events
     const upcoming = events
-      .filter((event: any) => {
-        const eventDate = new Date(event.data.event_start_date);
+      .filter((event: EventDocument) => {
+        const eventDate = new Date(event.data.event_start_date ?? '');
         eventDate.setHours(0, 0, 0, 0);
         return eventDate >= currentDate;
       })
-      .map((event: any) => event.data.event_location[0].text)
+      .map((event: EventDocument) => asText(event.data.event_location) ?? '')
       .filter(
         (location: string, index: number, self: string[]) =>
           self.indexOf(location) === index,
@@ -52,8 +54,6 @@ export default function Location({ events }: { events: any }) {
 
   const locationsToShow =
     pathname.startsWith('/archive') ? archivedLocations : upcomingLocations;
-
-  console.log(events);
 
   return (
     <FiltermappingContainer>

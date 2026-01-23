@@ -1,0 +1,5 @@
+.section {
+    padding: calc(1rem + 1vw) 0.7rem;
+    background-color: var(--beige);
+    border: var(--border);
+}

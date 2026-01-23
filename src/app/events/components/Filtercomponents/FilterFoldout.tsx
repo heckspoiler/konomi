@@ -1,21 +1,22 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, Dispatch, SetStateAction } from 'react';
 
 import styles from './FilterFoldout.module.css';
 
 import Topfield from './Topfield';
 import Bottomfield from './Bottomfield';
 import { useFilter } from '../../../../../contexts/FilterContext';
+import { EventDocument } from '../../../../../prismicio-types';
 
 export default function FilterFoldout({
   events,
   isFoldoutOpen,
   setIsFoldoutOpen,
 }: {
-  events: any;
-  isFoldoutOpen: any;
-  setIsFoldoutOpen: any;
+  events: EventDocument[];
+  isFoldoutOpen: boolean;
+  setIsFoldoutOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   const [fieldIsOpen, setIsFieldOpen] = useState('event');
 

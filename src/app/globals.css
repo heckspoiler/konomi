@@ -13,7 +13,6 @@
 
 
 
-
 :root {
 
     /* general */
@@ -155,7 +154,6 @@ button {
     font-variation-settings: var(--subtitle-weight);
     text-transform: uppercase;
     padding: 0.5rem 0.75rem;
-    border: none;
     border: 0.5px solid var(--red);
     outline: none;
     cursor: pointer;
@@ -166,8 +164,6 @@ button:hover {
     color: var(--red);
     background-color: var(--beige);
 }
-
-
 
 
 /* !!!! DESKTOP !!!!! */

@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './EventComponent.module.css';
+
 import { PrismicRichText } from '@prismicio/react';
-import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
+import { PrismicNextLink } from '@prismicio/next';
 import { truncateText } from '../../../../helpers/truncateText';
 import { formatDateTime } from '../../../../helpers/formateDateTime';
 import LeftContainer from './LeftContainer';
@@ -10,26 +11,11 @@ import { useMobile } from '../../../../contexts/MobileContext';
 
 import LocationIcon from '../[uid]/components/LocationIcon';
 import CalendarIcon from '../[uid]/components/CalendarIcon';
+import { RichTextField, asText } from '@prismicio/client';
+import { EventDocument } from '../../../../prismicio-types';
 
 interface EventProps {
-  event: {
-    uid: string;
-    url: string;
-    data: {
-      event_title: any;
-      event_street: any;
-      event_start_date: string;
-      event_end_date: string;
-      event_image: any;
-      event_description: string;
-      event_location: any;
-      event_link: any;
-      event_postcode_and_city: any;
-      google_location_link: any;
-      location_icon: any;
-      date_icon: any;
-    };
-  };
+  event: EventDocument;
 }
 
 export default function EventComponent({ event }: EventProps) {
@@ -47,8 +33,8 @@ export default function EventComponent({ event }: EventProps) {
             <div>
               <h5>
                 {truncateText(
-                  event.data.event_location[0].text,
-                  isMobile ? 25 : 100
+                  asText(event.data.event_location) ?? '',
+                  isMobile ? 25 : 100,
                 )}
               </h5>
               <PrismicRichText field={event.data.event_street} />

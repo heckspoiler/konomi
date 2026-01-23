@@ -4,13 +4,18 @@ import React from 'react';
 import { PrismicRichText } from '@prismicio/react';
 
 import styles from './MainHeading.module.css';
+import {
+  AboutDocument,
+  ArchiveDocument,
+  EventsDocument,
+} from '../../../../prismicio-types';
 
 export default function MainHeading({
   page,
   title,
   buttonShow,
 }: {
-  page?: any;
+  page: EventsDocument | ArchiveDocument | AboutDocument;
   title?: string;
   buttonShow?: any;
 }) {

@@ -2,42 +2,33 @@
 
 import React from 'react';
 import styles from './ProgressIndicator.module.css';
-import Link from 'next/link';
-
-import { useMobile } from '../../../../../../contexts/MobileContext';
+import { LandingCategoriesDocument } from '../../../../../../prismicio-types';
 
 export default function ProgressIndicator({
   activeSection,
+  landingCategories,
 }: {
   activeSection: string;
+  landingCategories: LandingCategoriesDocument;
 }) {
-  const { isMobile } = useMobile();
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
 
   return (
     <div className={styles.container}>
-      <div
-        className={`${styles.link} ${activeSection === 'about' ? styles.active : ''}`}
-      >
-        <Link href="#about">Was ist Konomi?</Link>
-      </div>
-
-      <div
-        className={`${styles.link} ${activeSection === 'events' ? styles.active : ''}`}
-      >
-        <Link href="#events">Konomi Programm</Link>
-      </div>
-
-      <div
-        className={`${styles.link} ${activeSection === 'konomi' ? styles.active : ''}`}
-      >
-        <Link href="#konomi">Wer ist Konomi?</Link>
-      </div>
-
-      <div
-        className={`${styles.link} ${activeSection === 'why' ? styles.active : ''}`}
-      >
-        <Link href="#why">Warum ist Konomi?</Link>
-      </div>
+      {landingCategories.data.categories.map((item, index) => (
+        <button
+          className={`${styles.link} ${activeSection === item.category_key ? styles.active : ''}`}
+          key={index}
+          onClick={() => scrollToSection(item.category_key ?? '')}
+        >
+          {item.category}
+        </button>
+      ))}
     </div>
   );
 }
