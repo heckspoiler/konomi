@@ -23,7 +23,6 @@ import BackToComponent from '../../components/BackToComponent';
 import OverlayImage from './OverlayImage';
 import {
   EventDocument,
-  EventsDocument,
   EventsDocumentData,
   Simplify,
 } from '../../../../../prismicio-types';

@@ -9,8 +9,6 @@ export default async function Page() {
   const client = createClient();
   const page = await client.getSingle('impressum');
 
-  const content = page;
-
   return (
     <div className={styles.main}>
       <ImpressumContent page={page} />

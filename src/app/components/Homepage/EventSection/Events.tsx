@@ -6,7 +6,7 @@ import Arrow from '../../arrow/Arrow';
 import { truncateText } from '../../../../../helpers/truncateText';
 import { formatDate } from '../../../../../helpers/formatDate';
 import { EventDocument } from '../../../../../prismicio-types';
-import { asText, DateField } from '@prismicio/client';
+import { asText } from '@prismicio/client';
 
 export default function Events({ events }: { events: EventDocument[] }) {
   const [isMobile, setIsMobile] = useState(false);

@@ -30,7 +30,7 @@ export default function HeaderContent({
   const pathname = usePathname();
 
   useEffect(() => {
-    pathname === '/' ? setIsHome(true) : setIsHome(false);
+    setIsHome(pathname === '/');
   }, [pathname]);
 
   useEffect(() => {
