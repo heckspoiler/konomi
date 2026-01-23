@@ -44,7 +44,7 @@ export default function FooterContent({ footer }: { footer: FooterDocument }) {
               <PrismicRichText field={footer.data.address_postcode} />
             </div>
             <div className={styles.socials}>
-              {footer.data.socials_links.map((item: any, index: number) => (
+              {footer.data.socials_links.map((item, index) => (
                 <div
                   className={styles.socialItem}
                   key={index}
@@ -68,7 +68,7 @@ export default function FooterContent({ footer }: { footer: FooterDocument }) {
               <PrismicRichText field={footer.data.supporters_subtitle} />
             </div>
             <div className={styles.supportersLogos}>
-              {footer.data.supporters.map((item: any, index: number) => (
+              {footer.data.supporters.map((item, index) => (
                 <div key={index} className={styles.supporter}>
                   <PrismicNextLink field={item.supporters_link}>
                     <PrismicNextImage field={item.supporters_image} />

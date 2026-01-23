@@ -31,10 +31,10 @@ export default function Events({ events }: { events: EventDocument[] }) {
       const bufferDate = new Date(currentDate.getTime() - 60 * 60 * 1000);
       return eventDate >= bufferDate && !event.tags.includes('archived');
     })
-    .sort((a: any, b: any) => {
+    .sort((a: EventDocument, b: EventDocument) => {
       return (
-        new Date(a.data.event_start_date).getTime() -
-        new Date(b.data.event_start_date).getTime()
+        new Date(a.data.event_start_date as string).getTime() -
+        new Date(b.data.event_start_date as string).getTime()
       );
     });
 

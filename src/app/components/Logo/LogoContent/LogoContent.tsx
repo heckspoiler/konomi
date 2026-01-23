@@ -4,8 +4,9 @@ import React from 'react';
 import { PrismicNextImage } from '@prismicio/next';
 
 import styles from './LogoContent.module.css';
+import { LogoDocument } from '../../../../../prismicio-types';
 
-export default function LogoContent({ logo }: { logo: any }) {
+export default function LogoContent({ logo }: { logo: LogoDocument }) {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

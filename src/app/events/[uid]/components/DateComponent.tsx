@@ -4,8 +4,13 @@ import { formatDateTime } from '../../../../../helpers/formateDateTime';
 
 import styles from './DateComponent.module.css';
 import CalendarIcon from './CalendarIcon';
+import { EventDocumentData, Simplify } from '../../../../../prismicio-types';
 
-export default function DateComponent({ data }: { data: any }) {
+export default function DateComponent({
+  data,
+}: {
+  data: Simplify<EventDocumentData>;
+}) {
   const startDateTime = formatDateTime(data.event_start_date);
   const endDateTime = formatDateTime(data.event_end_date);
   return (

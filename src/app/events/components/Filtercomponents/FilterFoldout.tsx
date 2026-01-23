@@ -29,7 +29,6 @@ export default function FilterFoldout({
     setSelectedEventType,
   } = useFilter();
 
-  // Check if any filter is active
   const hasActiveFilters =
     selectedDate || selectedLocation || selectedEventType;
 

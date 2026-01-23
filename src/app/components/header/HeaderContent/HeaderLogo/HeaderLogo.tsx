@@ -6,6 +6,10 @@ import { PrismicRichText } from '@prismicio/react';
 import styles from './HeaderLogo.module.css';
 import { usePathname } from 'next/navigation';
 import { closeMenu } from '../../../../../../helpers/closeMenu';
+import {
+  SettingsDocumentData,
+  Simplify,
+} from '../../../../../../prismicio-types';
 
 const pathnames = ['/about', '/events', '/archive', '/contact'];
 
@@ -14,7 +18,7 @@ export default function HeaderLogo({
   menuIsOpen,
   setMenuIsOpen,
 }: {
-  content: any;
+  content: Simplify<SettingsDocumentData>;
   menuIsOpen: boolean;
   setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {

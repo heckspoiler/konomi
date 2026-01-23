@@ -85,8 +85,8 @@ export default function EventContent({
           <EventImage image={data.event_image} />
         </div>
         <div className={styles.descriptionContainer}>
-          {data.event_description.map((item: any, index: number) => {
-            if (item.text.trim() === '') return null;
+          {data.event_description.map((item, index: number) => {
+            if (!('text' in item) || item.text.trim() === '') return null;
 
             return (
               <div key={index} className={styles.descriptionParagraph}>

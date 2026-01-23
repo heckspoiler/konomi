@@ -17,7 +17,7 @@ export default function ImpressumContent({
       <MainHeading page={page} />
       <div className={styles.contentContainer}>
         {content.impressum_content &&
-          content.impressum_content.map((item: any, index: number) => (
+          content.impressum_content.map((item, index) => (
             <div key={index} className={styles.event}>
               <PrismicRichText field={item.subtitle} />
               <div className={styles.text}>
