@@ -1,8 +1,6 @@
 import { Metadata } from 'next';
-import { PrismicRichText, SliceZone } from '@prismicio/react';
 
 import { createClient } from '@/prismicio';
-import { components } from '@/slices';
 
 import styles from './page.module.css';
 import EventsContent from './components/EventsContent';

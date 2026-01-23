@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styles from './Topfield.module.css';
 import { useFilter } from '../../../../../contexts/FilterContext';
 import { usePathname } from 'next/navigation';
@@ -10,7 +10,7 @@ export default function Topfield({
   setIsFieldOpen,
 }: {
   fieldIsOpen: string;
-  setIsFieldOpen: any;
+  setIsFieldOpen: Dispatch<SetStateAction<string>>;
 }) {
   const { selectedEventType, selectedDate, selectedLocation } = useFilter();
   const pathname = usePathname();

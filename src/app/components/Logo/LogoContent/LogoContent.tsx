@@ -3,17 +3,13 @@
 import React from 'react';
 import { PrismicNextImage } from '@prismicio/next';
 
-export default function LogoContent({
-  styles,
-  data,
-}: {
-  styles: any;
-  data: any;
-}) {
+import styles from './LogoContent.module.css';
+
+export default function LogoContent({ logo }: { logo: any }) {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // This makes the scroll animation smooth
+      behavior: 'smooth',
     });
   };
 
@@ -29,7 +25,7 @@ export default function LogoContent({
         }
       }}
     >
-      <PrismicNextImage field={data.data.logo_image} />
+      <PrismicNextImage field={logo.data.logo_image} />
     </div>
   );
 }

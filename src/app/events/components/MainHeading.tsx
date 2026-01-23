@@ -7,17 +7,28 @@ import styles from './MainHeading.module.css';
 import {
   AboutDocument,
   ArchiveDocument,
+  EventDocument,
   EventsDocument,
+  EventsDocumentData,
+  ImpressumDocument,
+  Simplify,
 } from '../../../../prismicio-types';
+import { PrismicDocumentWithUID } from '@prismicio/client';
 
 export default function MainHeading({
   page,
   title,
   buttonShow,
 }: {
-  page: EventsDocument | ArchiveDocument | AboutDocument;
+  page:
+    | EventsDocument
+    | ArchiveDocument
+    | AboutDocument
+    | ImpressumDocument
+    | EventDocument
+    | PrismicDocumentWithUID<Simplify<EventsDocumentData>>;
   title?: string;
-  buttonShow?: any;
+  buttonShow?: boolean;
 }) {
   return (
     <div className={styles.mainHeadingContainer}>
@@ -28,13 +39,18 @@ export default function MainHeading({
             {buttonShow && <h3>ARCHIV</h3>}
           </div>
         ) : (
-          <PrismicRichText field={page.data.page_title} />
+          'page_title' in page.data && (
+            <PrismicRichText field={page.data.page_title} />
+          )
         )}
 
-        <div className={styles.subtitleContainer}>
-          <PrismicRichText field={page.data.japanese_subtitles_first} />
-          <PrismicRichText field={page.data.japanese_subtitles_second} />
-        </div>
+        {'japanese_subtitles_first' in page.data &&
+          'japanese_subtitles_second' in page.data && (
+            <div className={styles.subtitleContainer}>
+              <PrismicRichText field={page.data.japanese_subtitles_first} />
+              <PrismicRichText field={page.data.japanese_subtitles_second} />
+            </div>
+          )}
       </div>
     </div>
   );

@@ -3,8 +3,13 @@ import React from 'react';
 import styles from './ImpressumContent.module.css';
 import { PrismicRichText } from '@prismicio/react';
 import MainHeading from '@/app/events/components/MainHeading';
+import { ImpressumDocument } from '../../../../prismicio-types';
 
-export default function ImpressumContent({ page }: { page: any }) {
+export default function ImpressumContent({
+  page,
+}: {
+  page: ImpressumDocument;
+}) {
   const content = page.data;
 
   return (

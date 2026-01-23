@@ -3,7 +3,7 @@
     width: 100svw;
     padding: 1rem var(--main-container-padding);
     background-color: var(--red);
-    z-index: 10;
+    z-index: 11;
 }
 
 .footer * {

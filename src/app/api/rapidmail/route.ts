@@ -43,10 +43,10 @@ export async function POST(request: Request) {
     try {
       data = JSON.parse(responseText);
     } catch (e) {
-      console.error('Failed to parse response:', responseText);
+      console.error('Failed to parse response:', responseText, e);
       return NextResponse.json(
-        { error: 'Invalid response from RapidMail API' },
-        { status: 500 }
+        { error: 'Invalid response from RapidMail API', e },
+        { status: 500 },
       );
     }
 
@@ -57,7 +57,7 @@ export async function POST(request: Request) {
           error: data.message || 'Failed to subscribe',
           details: data,
         },
-        { status: response.status }
+        { status: response.status },
       );
     }
 
@@ -69,7 +69,7 @@ export async function POST(request: Request) {
     console.error('RapidMail API error:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Failed to subscribe' },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

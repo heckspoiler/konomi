@@ -8,11 +8,11 @@ import styles from './Footer.module.css';
 
 export default async function Footer() {
   const client = createClient();
-  const settings = await client.getSingle('footer');
-  const data = settings.data;
+  const footer = await client.getSingle('footer');
+
   return (
     <footer className={styles.footer}>
-      <FooterContent data={data} />
+      <FooterContent footer={footer} />
     </footer>
   );
 }

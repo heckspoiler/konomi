@@ -5,7 +5,7 @@ import styles from './FiltermappingContainer.module.css';
 export default function FiltermappingContainer({
   children,
 }: {
-  children: any;
+  children: React.ReactNode;
 }) {
   return <div className={styles.container}>{children}</div>;
 }

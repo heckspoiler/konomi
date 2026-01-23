@@ -13,14 +13,16 @@ import { components } from '@/slices';
 
 import MainSection from './MainSection/MainSection';
 
-import { LandingCategoriesDocument } from '../../../../../prismicio-types';
+import {
+  BasicSliceSlice,
+  LandingCategoriesDocument,
+} from '../../../../../prismicio-types';
 
 interface HomepageContentProps {
-  defaultVariationSlice: any;
-  eventsPass: any;
-  scheduleSlice: any;
-  konomiSlice: any;
-  whySlice: any;
+  defaultVariationSlice: BasicSliceSlice[];
+  scheduleSlice: BasicSliceSlice[];
+  konomiSlice: BasicSliceSlice[];
+  whySlice: BasicSliceSlice[];
   landingCategories: LandingCategoriesDocument;
 }
 

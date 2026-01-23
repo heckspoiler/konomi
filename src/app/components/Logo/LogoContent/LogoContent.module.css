@@ -1,0 +1,7 @@
+.logoContainer {
+    position: fixed;
+    bottom: 0.7rem;
+    right: 0.7rem;
+    cursor: pointer;
+    z-index: 10;
+}

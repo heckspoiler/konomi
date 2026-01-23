@@ -3,7 +3,6 @@ import { SliceComponentProps } from '@prismicio/react';
 
 import styles from './BasicSlice.module.css';
 
-import { createClient } from '@/prismicio';
 import { PrismicRichText } from '@prismicio/react';
 import { PrismicNextLink } from '@prismicio/next';
 

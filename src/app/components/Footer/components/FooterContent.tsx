@@ -1,14 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import styles from './FooterContent.module.css';
 import { PrismicRichText } from '@prismicio/react';
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
 import Heart from '../../heart/Heart';
 import NewsletterForm from '../../Homepage/AboutSection/NewsletterForm';
+import { FooterDocument } from '../../../../../prismicio-types';
 
-export default function FooterContent({ data }: { data: any }) {
+export default function FooterContent({ footer }: { footer: FooterDocument }) {
   const [newsletterIsOpen, setNewsletterIsOpen] = useState(false);
 
   return (
@@ -29,21 +30,21 @@ export default function FooterContent({ data }: { data: any }) {
       )}
       <div className={styles.container}>
         <div className={styles.upperContent}>
-          <PrismicRichText field={data.footer_title} />
-          <PrismicRichText field={data.footer_subtitle} />
+          <PrismicRichText field={footer.data.footer_title} />
+          <PrismicRichText field={footer.data.footer_subtitle} />
           <div className={styles.japanese}>
-            <PrismicRichText field={data.japanese_subtitle_first} />
-            <PrismicRichText field={data.japanese_subtilte_second} />
+            <PrismicRichText field={footer.data.japanese_subtitle_first} />
+            <PrismicRichText field={footer.data.japanese_subtilte_second} />
           </div>
         </div>
         <div className={styles.lowerContent}>
           <div className={styles.contact}>
             <div className={styles.address}>
-              <PrismicRichText field={data.address_street} />
-              <PrismicRichText field={data.address_postcode} />
+              <PrismicRichText field={footer.data.address_street} />
+              <PrismicRichText field={footer.data.address_postcode} />
             </div>
             <div className={styles.socials}>
-              {data.socials_links.map((item: any, index: number) => (
+              {footer.data.socials_links.map((item: any, index: number) => (
                 <div
                   className={styles.socialItem}
                   key={index}
@@ -64,10 +65,10 @@ export default function FooterContent({ data }: { data: any }) {
           <div className={styles.supporters}>
             <div className={styles.titleContainer}>
               <Heart width="15" height="15" />
-              <PrismicRichText field={data.supporters_subtitle} />
+              <PrismicRichText field={footer.data.supporters_subtitle} />
             </div>
             <div className={styles.supportersLogos}>
-              {data.supporters.map((item: any, index: number) => (
+              {footer.data.supporters.map((item: any, index: number) => (
                 <div key={index} className={styles.supporter}>
                   <PrismicNextLink field={item.supporters_link}>
                     <PrismicNextImage field={item.supporters_image} />

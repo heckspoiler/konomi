@@ -20,7 +20,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Index() {
   const client = createClient();
   const home = await client.getByUID('page', 'home');
-  const events = await client.getAllByType('event');
   const landingCategories = await client.getSingle('landing_categories');
 
   const defaultVariationSlice = home.data.slices.filter(
@@ -41,7 +40,6 @@ export default async function Index() {
 
   return (
     <HomepageContent
-      eventsPass={events}
       defaultVariationSlice={defaultVariationSlice}
       scheduleSlice={scheduleSlice}
       konomiSlice={konomiSlice}

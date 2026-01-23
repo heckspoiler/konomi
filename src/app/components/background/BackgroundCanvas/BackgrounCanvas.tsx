@@ -27,23 +27,18 @@ import getScrollPercentage from '../../../../../helpers/getScrollPercentage';
 
 const MOBILE_BREAKPOINT = 768;
 const TABLET_BREAKPOINT = 1024;
-const MOBILE_MULTIPLIER = 2;
-const DESKTOP_MULTIPLIER = 2;
 
 export default function BackgroundCanvas() {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const materialRef = useRef<ShaderMaterial | null>(null);
   const [background, setBackground] = useState<string>(mobileBackground.src);
-  const [scrollHeight, setScrollHeight] = useState<number>(0);
   const [directionsMultiplier, setDirectionsMultiplier] = useState<number>(1);
   const pathname = usePathname();
   const [isPortrait, setIsPortrait] = useState<boolean>(false);
 
-  const { isMobile, isDesktop, isTablet } = useMobile();
+  const { isMobile } = useMobile();
 
   useEffect(() => {
-    setScrollHeight(0);
-
     if (materialRef.current) {
       materialRef.current.uniforms.u_scrollHeight.value = 0;
     }
@@ -52,7 +47,6 @@ export default function BackgroundCanvas() {
   useEffect(() => {
     const handleScroll = () => {
       const newScrollHeight = getScrollPercentage() / 100;
-      setScrollHeight(newScrollHeight);
 
       if (materialRef.current) {
         materialRef.current.uniforms.u_scrollHeight.value = newScrollHeight;
@@ -114,13 +108,18 @@ export default function BackgroundCanvas() {
   }, [isPortrait]); // Add isPortrait to dependency array
 
   useEffect(() => {
-    isMobile ? setDirectionsMultiplier(2) : setDirectionsMultiplier(42);
+    if (isMobile) {
+      setDirectionsMultiplier(2);
+    } else {
+      setDirectionsMultiplier(42);
+    }
   }, [isMobile]);
 
   useEffect(() => {
     // Skip during server-side rendering
     if (typeof window === 'undefined' || !mountRef.current) return;
 
+    const currentMount = mountRef.current;
     const scene = new Scene();
     const aspectRatio = window.innerWidth / window.innerHeight;
     const camera = new OrthographicCamera(
@@ -129,7 +128,7 @@ export default function BackgroundCanvas() {
       1,
       -1,
       1,
-      1000
+      1000,
     );
     camera.position.z = 5;
 
@@ -137,7 +136,7 @@ export default function BackgroundCanvas() {
     const texture = loader.load(background);
     const planeGeometry = new PlaneGeometry(2 * aspectRatio, 2, 50, 50);
     const randomDirections = new Float32Array(
-      planeGeometry.attributes.position.count * 3
+      planeGeometry.attributes.position.count * 3,
     );
 
     for (let i = 0; i < planeGeometry.attributes.position.count; i++) {
@@ -150,12 +149,12 @@ export default function BackgroundCanvas() {
 
     planeGeometry.setAttribute(
       'randomDirection',
-      new BufferAttribute(randomDirections, 3)
+      new BufferAttribute(randomDirections, 3),
     );
 
     const shaderUniforms = {
       u_texture: { value: texture },
-      u_scrollHeight: { value: scrollHeight },
+      u_scrollHeight: { value: 0 },
     };
 
     const planeMaterial = new ShaderMaterial({
@@ -202,13 +201,14 @@ export default function BackgroundCanvas() {
 
     return () => {
       window.removeEventListener('resize', onWindowResize);
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (currentMount) {
+        currentMount.removeChild(renderer.domElement);
       }
       renderer.dispose();
       materialRef.current = null;
     };
-  }, [background]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [background, directionsMultiplier]);
 
   return <div ref={mountRef} style={{ width: '100vw', height: '100vh' }} />;
 }

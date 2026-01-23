@@ -10,16 +10,24 @@ import Link from 'next/link';
 import Arrow from '../../arrow/Arrow';
 import { PrismicNextLink } from '@prismicio/next';
 import { useEvents } from '../../../../../contexts/EventsContext';
-import { EventDocument } from '../../../../../prismicio-types';
+import {
+  BasicSliceSlice,
+  BasicSliceSliceSchedulePrimary,
+  EventDocument,
+} from '../../../../../prismicio-types';
+
+import type { components as SliceComponents } from '@/slices';
 
 export default function EventSection({
   scheduleSlice,
   components,
 }: {
-  scheduleSlice: any;
-  components: any;
+  scheduleSlice: BasicSliceSlice[];
+  components: typeof SliceComponents;
 }) {
   const { events } = useEvents();
+  const schedulePrimary = scheduleSlice[0]
+    .primary as BasicSliceSliceSchedulePrimary;
 
   const now = useMemo(() => new Date(), []);
 
@@ -29,7 +37,7 @@ export default function EventSection({
         (event: EventDocument) =>
           new Date(event.data.event_end_date as string).getTime() >
           now.getTime(),
-      ),
+      ) ?? [],
     [events, now],
   );
 
@@ -39,7 +47,7 @@ export default function EventSection({
         {' '}
         <SliceZone slices={scheduleSlice} components={components} />
         <div className={styles.programText}>
-          <PrismicRichText field={scheduleSlice[0].primary.program_text} />
+          <PrismicRichText field={schedulePrimary.program_text} />
         </div>
         <Events events={events} />
         <div className={styles.moreEventsLink}>
@@ -48,8 +56,8 @@ export default function EventSection({
               Zum Archiv <Arrow height={'12'} width={'12'} />
             </Link>
           ) : (
-            <PrismicNextLink field={scheduleSlice[0].primary.more_events_link}>
-              <>{scheduleSlice[0].primary.more_events_link.text}</>
+            <PrismicNextLink field={schedulePrimary.more_events_link}>
+              <>{schedulePrimary.more_events_link.text}</>
               <Arrow height={'12'} width={'12'} />
             </PrismicNextLink>
           )}

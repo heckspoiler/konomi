@@ -7,11 +7,7 @@ import LogoContent from './LogoContent/LogoContent';
 
 export default async function Logo() {
   const client = createClient();
-  const data = await client.getSingle('logo');
+  const logo = await client.getSingle('logo');
 
-  return (
-    <>
-      <LogoContent styles={styles} data={data} />
-    </>
-  );
+  return <LogoContent logo={logo} />;
 }

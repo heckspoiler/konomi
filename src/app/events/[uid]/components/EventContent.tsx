@@ -21,13 +21,20 @@ import DateComponent from './DateComponent';
 import Link from 'next/link';
 import BackToComponent from '../../components/BackToComponent';
 import OverlayImage from './OverlayImage';
+import {
+  EventDocument,
+  EventsDocument,
+  EventsDocumentData,
+  Simplify,
+} from '../../../../../prismicio-types';
+import { PrismicDocumentWithUID } from '@prismicio/client';
 
 export default function EventContent({
   page,
   events,
 }: {
-  page: any;
-  events: any;
+  page: EventDocument;
+  events: PrismicDocumentWithUID<Simplify<EventsDocumentData>>;
 }) {
   const data = page.data;
   const [overlayIsOpen, setOverlayIsOpen] = useState(false);
@@ -41,14 +48,14 @@ export default function EventContent({
       setBackComponent(
         <div className={styles.backToContainer}>
           <BackToComponent text="Mehr Events" url="/events" />
-        </div>
+        </div>,
       );
     } else if (buttonShow) {
       setBackComponent(
-        <BackToComponent text="Zurück zum Archiv" url="/archive" />
+        <BackToComponent text="Zurück zum Archiv" url="/archive" />,
       );
     }
-  }, [pathname]);
+  }, [pathname, buttonShow]);
 
   return (
     <div className={styles.container}>
@@ -90,7 +97,10 @@ export default function EventContent({
         </div>
         <div className={styles.locationLink}>
           <PrismicNextLink field={data.location_website}>
-            Über {data.event_location[0].text}
+            Über{' '}
+            {data.event_location[0] &&
+              'text' in data.event_location[0] &&
+              data.event_location[0].text}
           </PrismicNextLink>
         </div>
       </div>

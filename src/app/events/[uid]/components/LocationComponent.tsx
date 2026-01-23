@@ -4,8 +4,13 @@ import { PrismicRichText } from '@prismicio/react';
 import LocationIcon from './LocationIcon';
 
 import styles from './LocationComponent.module.css';
+import { EventDocumentData, Simplify } from '../../../../../prismicio-types';
 
-export default function LocationComponent({ data }: { data: any }) {
+export default function LocationComponent({
+  data,
+}: {
+  data: Simplify<EventDocumentData>;
+}) {
   return (
     <div className={styles.locationContainer}>
       <LocationIcon />

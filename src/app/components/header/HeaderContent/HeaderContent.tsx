@@ -10,13 +10,18 @@ import HeaderLogo from './HeaderLogo/HeaderLogo';
 import { usePathname } from 'next/navigation';
 
 import Image from 'next/image';
+import {
+  HeroImageDocument,
+  SettingsDocumentData,
+  Simplify,
+} from '../../../../../prismicio-types';
 
 export default function HeaderContent({
   content,
   hero,
 }: {
-  content: any;
-  hero: any;
+  content: Simplify<SettingsDocumentData>;
+  hero: HeroImageDocument;
 }) {
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const { isMobile } = useMobile();
@@ -32,7 +37,7 @@ export default function HeaderContent({
     if (hero?.data?.hero_image?.url) {
       document.documentElement.style.setProperty(
         '--hero-image',
-        `url(${hero.data.hero_image.url})`
+        `url(${hero.data.hero_image.url})`,
       );
     }
     return () => {
@@ -46,7 +51,7 @@ export default function HeaderContent({
         const height = headerRef.current.offsetHeight;
         document.documentElement.style.setProperty(
           '--header-height',
-          `${height}px`
+          `${height}px`,
         );
       }
     };
@@ -87,12 +92,11 @@ export default function HeaderContent({
           menuIsOpen={menuIsOpen}
           content={content}
           setMenuIsOpen={setMenuIsOpen}
-          hero={hero}
         />
         <div className={styles.heroImage}>
           <Image
-            src={hero.data.hero_image.url}
-            alt={hero.data.hero_image.alt}
+            src={hero.data.hero_image.url as string}
+            alt={hero.data.hero_image.alt as string}
             width={4961 / 7}
             height={7016 / 7}
           />

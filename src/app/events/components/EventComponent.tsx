@@ -11,7 +11,7 @@ import { useMobile } from '../../../../contexts/MobileContext';
 
 import LocationIcon from '../[uid]/components/LocationIcon';
 import CalendarIcon from '../[uid]/components/CalendarIcon';
-import { RichTextField, asText } from '@prismicio/client';
+import { asText } from '@prismicio/client';
 import { EventDocument } from '../../../../prismicio-types';
 
 interface EventProps {

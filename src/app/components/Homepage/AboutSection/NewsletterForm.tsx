@@ -10,7 +10,7 @@ export default function NewsletterForm({
   stylesprops,
   arrowFill,
 }: {
-  stylesprops?: any;
+  stylesprops?: Record<string, string>;
   arrowFill?: string;
 }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -24,6 +24,8 @@ export default function NewsletterForm({
   });
 
   const styles = stylesprops || cssStyles;
+
+  console.log(error);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,6 +57,7 @@ export default function NewsletterForm({
     } catch (error) {
       setError(error instanceof Error ? error.message : 'Failed to subscribe');
       console.error('Newsletter signup failed:', error);
+      console.log(error);
     }
   };
 

@@ -1,30 +1,30 @@
 'use client';
 
-import React, { useState, useEffect, use } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
 
 import Link from 'next/link';
 
 import { closeMenu } from '../../../../../../helpers/closeMenu';
-import { CloseMenuProps } from '../../../../../../helpers/closeMenu';
 
 import { usePathname } from 'next/navigation';
-import Image from 'next/image';
 import styles from './Navbar.module.css';
 import { PrismicRichText } from '@prismicio/react';
 import Arrow from '@/app/components/arrow/Arrow';
+import {
+  SettingsDocumentData,
+  Simplify,
+} from '../../../../../../prismicio-types';
 
 export default function Navbar({
   content,
   menuIsOpen,
   setMenuIsOpen,
-  hero,
 }: {
-  content: any;
+  content: Simplify<SettingsDocumentData>;
   menuIsOpen: boolean;
   setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  hero: any;
 }) {
   const [isActiveItem, setIsActiveItem] = useState();
 

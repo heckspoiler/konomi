@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from './LowerContent.module.css';
 import FiltermappingContainer from './FiltermappingContainer';
 import EventtypeArray from './EventtypeArray';

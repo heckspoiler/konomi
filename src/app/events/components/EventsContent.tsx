@@ -57,7 +57,7 @@ function EventsContentInner({
     } else if (pathname.startsWith('/archive')) {
       setUsedEvents(pastEvents);
     }
-  }, [pathname]);
+  }, [pathname, upcomingEvents, pastEvents]);
 
   const filteredEvents = usedEvents?.filter((event: EventDocument) => {
     const matchesDate =

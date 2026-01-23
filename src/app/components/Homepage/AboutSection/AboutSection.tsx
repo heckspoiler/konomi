@@ -4,13 +4,15 @@ import SectionContainer from '../SectionContainer/SectionContainer';
 
 import { SliceZone } from '@prismicio/react';
 import NewsletterForm from './NewsletterForm';
+import type { components as SliceComponents } from '@/slices';
+import { BasicSliceSlice } from '../../../../../prismicio-types';
 
 export default function AboutSection({
   defaultVariationSlice,
   components,
 }: {
-  defaultVariationSlice: any;
-  components: any;
+  defaultVariationSlice: BasicSliceSlice[];
+  components: typeof SliceComponents;
 }) {
   return (
     <SectionContainer>
