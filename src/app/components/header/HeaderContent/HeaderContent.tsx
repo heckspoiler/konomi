@@ -45,33 +45,6 @@ export default function HeaderContent({
     };
   }, [hero?.data?.hero_image?.url]);
 
-  useEffect(() => {
-    const updateHeaderHeight = () => {
-      if (headerRef.current) {
-        const height = headerRef.current.offsetHeight;
-        document.documentElement.style.setProperty(
-          '--header-height',
-          `${height}px`,
-        );
-      }
-    };
-
-    updateHeaderHeight();
-
-    window.addEventListener('resize', updateHeaderHeight);
-
-    // Update when content might change
-    const resizeObserver = new ResizeObserver(updateHeaderHeight);
-    if (headerRef.current) {
-      resizeObserver.observe(headerRef.current);
-    }
-
-    return () => {
-      window.removeEventListener('resize', updateHeaderHeight);
-      resizeObserver.disconnect();
-    };
-  }, []);
-
   return (
     <div
       ref={headerRef}

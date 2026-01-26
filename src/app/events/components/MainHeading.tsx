@@ -11,6 +11,7 @@ import {
   EventsDocument,
   EventsDocumentData,
   ImpressumDocument,
+  NewsDocument,
   Simplify,
 } from '../../../../prismicio-types';
 import { PrismicDocumentWithUID } from '@prismicio/client';
@@ -26,6 +27,7 @@ export default function MainHeading({
     | AboutDocument
     | ImpressumDocument
     | EventDocument
+    | NewsDocument
     | PrismicDocumentWithUID<Simplify<EventsDocumentData>>;
   title?: string;
   buttonShow?: boolean;

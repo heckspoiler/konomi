@@ -22,7 +22,7 @@
 }
 
 .open .hamburgerLine {
-    background-color: #F9F7ED;
+    background-color: var(--beige);
 }
 
 /* Position lines with absolute positioning */

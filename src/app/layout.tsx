@@ -27,6 +27,8 @@ export default async function RootLayout({
 
   const events = await client.getAllByType('event');
 
+  const splashscreenVisible = false;
+
   return (
     <html lang="en">
       <body>
@@ -39,7 +41,7 @@ export default async function RootLayout({
             {typeface}
           </Script>
           <Footer />
-          <Splashscreen />
+          {splashscreenVisible && <Splashscreen />}
           <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
         </Providers>
       </body>

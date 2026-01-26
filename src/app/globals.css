@@ -19,9 +19,11 @@
     font-size: calc(100vw / 375 * 14);
     --bezier: cubic-bezier(0.645, 0.045, 0.355, 1.000);
     --border-small: 0.2rem solid var(--red);
-    --border: 0.1rem solid var(--red);
+    --border: 1px solid var(--red);
     /* paddings */
     --main-container-padding: 0.7rem;
+
+    --header-height: 6.4rem;
 
     /* colors */
     --dark-blue: #0069DA;
@@ -39,6 +41,78 @@
     --japanese-subtitle-weight: "wght" 400;
     --ultrathin: "wght" 500;
     --text-font: "League Spartan", sans-serif;
+
+    /* Base spacing unit (16px) */
+    --spacing-base: 1rem;
+
+    /* Spacing Scale */
+    --spacing-0: 0;
+    --spacing-px: 1px;
+    --spacing-0-5: calc(var(--spacing-base) * 0.125);
+    /* 2px */
+    --spacing-1: calc(var(--spacing-base) * 0.25);
+    /* 4px */
+    --spacing-1-5: calc(var(--spacing-base) * 0.375);
+    /* 6px */
+    --spacing-2: calc(var(--spacing-base) * 0.5);
+    /* 8px */
+    --spacing-2-5: calc(var(--spacing-base) * 0.625);
+    /* 10px */
+    --spacing-3: calc(var(--spacing-base) * 0.75);
+    /* 12px */
+    --spacing-3-5: calc(var(--spacing-base) * 0.875);
+    /* 14px */
+    --spacing-4: calc(var(--spacing-base) * 1);
+    /* 16px */
+    --spacing-5: calc(var(--spacing-base) * 1.25);
+    /* 20px */
+    --spacing-6: calc(var(--spacing-base) * 1.5);
+    /* 24px */
+    --spacing-7: calc(var(--spacing-base) * 1.75);
+    /* 28px */
+    --spacing-8: calc(var(--spacing-base) * 2);
+    /* 28px */
+    --spacing-8-5: calc(var(--spacing-base) * 2.1);
+    /* 32px */
+    --spacing-9: calc(var(--spacing-base) * 2.25);
+    /* 36px */
+    --spacing-10: calc(var(--spacing-base) * 2.5);
+    /* 40px */
+    --spacing-11: calc(var(--spacing-base) * 2.75);
+    /* 44px */
+    --spacing-12: calc(var(--spacing-base) * 3);
+    /* 48px */
+    --spacing-14: calc(var(--spacing-base) * 3.5);
+    /* 56px */
+    --spacing-16: calc(var(--spacing-base) * 4);
+    /* 64px */
+    --spacing-20: calc(var(--spacing-base) * 5);
+    /* 80px */
+    --spacing-24: calc(var(--spacing-base) * 6);
+    /* 96px */
+    --spacing-28: calc(var(--spacing-base) * 7);
+    /* 112px */
+    --spacing-32: calc(var(--spacing-base) * 8);
+    /* 128px */
+    --spacing-36: calc(var(--spacing-base) * 9);
+    /* 144px */
+    --spacing-40: calc(var(--spacing-base) * 10);
+    /* 160px */
+    --spacing-44: calc(var(--spacing-base) * 11);
+    /* 176px */
+    --spacing-48: calc(var(--spacing-base) * 12);
+    /* 192px */
+    --spacing-52: calc(var(--spacing-base) * 13);
+    /* 208px */
+    --spacing-56: calc(var(--spacing-base) * 14);
+    /* 224px */
+    --spacing-60: calc(var(--spacing-base) * 15);
+    /* 240px */
+    --spacing-64: calc(var(--spacing-base) * 16);
+    /* 256px */
+
+
+
 }
 
 * {

@@ -1,0 +1,18 @@
+/* !!!! MOBILE DEVELOPMENT FIRST!!!!! */
+
+.main {
+    position: relative;
+    min-height: 100svh;
+    padding: var(--header-height) var(--main-container-padding);
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+/* !!!! DESKTOP !!!!! */
+
+@media screen and (min-width: 1080px) {}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {}

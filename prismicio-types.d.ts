@@ -1010,6 +1010,250 @@ interface LogoDocumentData {
 export type LogoDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<LogoDocumentData>, "logo", Lang>;
 
+type NewsDocumentDataSlicesSlice = never;
+
+/**
+ * Content for News documents
+ */
+interface NewsDocumentData {
+  /**
+   * Page title field in *News*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news.page_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  page_title: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles First field in *News*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news.japanese_subtitles_first
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtitles_first: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles Second field in *News*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news.japanese_subtitles_second
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  japanese_subtitles_second: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *News*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NewsDocumentDataSlicesSlice> /**
+   * Meta Title field in *News*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: news.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *News*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: news.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *News*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * News document from Prismic
+ *
+ * - **API ID**: `news`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NewsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<NewsDocumentData>, "news", Lang>;
+
+/**
+ * Item in *Newsarticle → Tags*
+ */
+export interface NewsarticleDocumentDataTagsItem {
+  /**
+   * Item field in *Newsarticle → Tags*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsarticle.tags[].item
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  item: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Newsarticle → Gallery*
+ */
+export interface NewsarticleDocumentDataGalleryItem {
+  /**
+   * Gallery Item field in *Newsarticle → Gallery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsarticle.gallery[].gallery_item
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  gallery_item: prismic.ImageField<never>;
+}
+
+type NewsarticleDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Newsarticle documents
+ */
+interface NewsarticleDocumentData {
+  /**
+   * Tags field in *Newsarticle*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsarticle.tags[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  tags: prismic.GroupField<Simplify<NewsarticleDocumentDataTagsItem>>;
+
+  /**
+   * Title field in *Newsarticle*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsarticle.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Hero Image field in *Newsarticle*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsarticle.hero_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_image: prismic.ImageField<never>;
+
+  /**
+   * Description field in *Newsarticle*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsarticle.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Gallery field in *Newsarticle*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsarticle.gallery[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  gallery: prismic.GroupField<Simplify<NewsarticleDocumentDataGalleryItem>>;
+
+  /**
+   * Slice Zone field in *Newsarticle*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsarticle.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NewsarticleDocumentDataSlicesSlice> /**
+   * Meta Title field in *Newsarticle*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: newsarticle.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Newsarticle*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: newsarticle.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Newsarticle*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsarticle.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Newsarticle document from Prismic
+ *
+ * - **API ID**: `newsarticle`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NewsarticleDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<NewsarticleDocumentData>,
+    "newsarticle",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice = BasicSliceSlice;
 
 /**
@@ -1239,6 +1483,8 @@ export type AllDocumentTypes =
   | ImpressumDocument
   | LandingCategoriesDocument
   | LogoDocument
+  | NewsDocument
+  | NewsarticleDocument
   | PageDocument
   | SettingsDocument;
 
@@ -1694,6 +1940,14 @@ declare module "@prismicio/client" {
       LandingCategoriesDocumentDataCategoriesItem,
       LogoDocument,
       LogoDocumentData,
+      NewsDocument,
+      NewsDocumentData,
+      NewsDocumentDataSlicesSlice,
+      NewsarticleDocument,
+      NewsarticleDocumentData,
+      NewsarticleDocumentDataTagsItem,
+      NewsarticleDocumentDataGalleryItem,
+      NewsarticleDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
