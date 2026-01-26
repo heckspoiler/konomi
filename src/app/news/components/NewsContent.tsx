@@ -20,7 +20,7 @@ export default function NewsContent({ page, articles }: NewsContentProps) {
       <TitleContainer page={page} length={length} />
       <div className={styles.previewcontainer}>
         {articles.slice(0, 5).map((article, index) => (
-          <ArticlePreview article={article} />
+          <ArticlePreview article={article} key={index} />
         ))}
       </div>{' '}
       <div className={styles.newslettercontainer}>
@@ -28,7 +28,7 @@ export default function NewsContent({ page, articles }: NewsContentProps) {
       </div>
       <div className={styles.previewcontainer}>
         {articles.slice(5, articles.length).map((article, index) => (
-          <ArticlePreview article={article} />
+          <ArticlePreview article={article} key={index} />
         ))}
       </div>{' '}
     </div>

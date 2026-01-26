@@ -13,7 +13,7 @@ type ArticlePreviewProps = { article: NewsarticleDocument };
 
 export default function ArticlePreview({ article }: ArticlePreviewProps) {
   return (
-    <div className={styles.articlepreview}>
+    <div className={styles.articlepreview} key={article.id}>
       <div className={styles.uppercontainer}>
         <div className={styles.date}>
           <p>{formatDate(article.first_publication_date)}</p>
