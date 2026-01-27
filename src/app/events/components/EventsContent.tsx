@@ -89,8 +89,7 @@ function EventsContentInner({
     const matchesSearch =
       !query ||
       asText(event.data.event_title)?.toLowerCase().includes(searchLower) ||
-      asText(event.data.event_location)?.toLowerCase().includes(searchLower) ||
-      asText(event.data.event_description)?.toLowerCase().includes(searchLower);
+      asText(event.data.event_location)?.toLowerCase().includes(searchLower);
 
     return matchesDate && matchesLocation && matchesEventType && matchesSearch;
   });

@@ -37,7 +37,6 @@
 }
 
 .backtolink {
-
     width: fit-content;
 }
 
@@ -48,6 +47,15 @@
     color: var(--beige);
     text-transform: uppercase;
     font-size: 0.8rem;
+    transition: all 0.2s var(--bezier)
+}
+
+
+.backtolink:hover a {
+
+    background-color: var(--beige);
+    color: var(--red);
+
 }
 
 .tagscontainer {

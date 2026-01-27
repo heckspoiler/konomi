@@ -10,6 +10,8 @@ import TitleContainer from '../../components/TitleContainer';
 import DateComponent from '@/app/events/[uid]/components/DateComponent';
 import EventImage from '@/app/events/[uid]/components/EventImage';
 import { PrismicNextLink } from '@prismicio/next';
+import IconComponent from '@/app/events/components/IconComponent';
+import IconComponentNews from '../../components/IconComponentNews';
 
 type NewsArticleContentProps = {
   page: NewsarticleDocument;
@@ -28,11 +30,7 @@ export default function NewsarticleContent({
           <PrismicRichText field={page.data.title} />
         </div>
         <div className={styles.middlecontainer}>
-          <div className={styles.tagscontainer}>
-            {page.data.tags.map((item, index) => (
-              <p key={index}>{item.item}</p>
-            ))}
-          </div>
+          <IconComponentNews page={page} />
           <div className={styles.date}>
             <DateComponent variant="news" document={page} />
           </div>

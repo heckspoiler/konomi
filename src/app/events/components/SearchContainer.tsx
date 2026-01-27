@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import styles from './SearchContainer.module.css';
@@ -11,14 +13,16 @@ type SearchIconProps = {
 };
 
 export default function SearchContainer({ searchicon }: SearchIconProps) {
-  const { setQuery } = useSearchbarStore();
+  const { query, setQuery } = useSearchbarStore();
 
   return (
     <div className={styles.searchcontainer}>
       <input
         placeholder="Suchen"
         id="eventsearch"
+        value={query}
         onChange={(e) => setQuery(e.target.value)}
+        suppressHydrationWarning
       />
       <PrismicNextImage field={searchicon.data.icon} />
     </div>

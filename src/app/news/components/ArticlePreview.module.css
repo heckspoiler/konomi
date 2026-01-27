@@ -85,5 +85,13 @@
     padding: var(--spacing-2) var(--spacing-4);
     color: var(--beige);
     background-color: var(--red);
-    font-size: 0.75rem
+    font-size: 0.75rem;
+    transition: all 0.2s var(--bezier);
+    border: var(--border);
+}
+
+.link a:hover {
+    color: var(--red);
+    background-color: var(--beige);
+
 }
