@@ -55,8 +55,8 @@ export default function EventImage({
                 }
               >
                 <Arrow
-                  height={!isMobile ? '18' : '14'}
-                  width={!isMobile ? '18' : '14'}
+                  height={!isMobile ? '18' : '12'}
+                  width={!isMobile ? '18' : '12'}
                 />
               </div>
               <div
@@ -68,8 +68,8 @@ export default function EventImage({
                 }
               >
                 <Arrow
-                  height={!isMobile ? '18' : '14'}
-                  width={!isMobile ? '18' : '14'}
+                  height={!isMobile ? '18' : '12'}
+                  width={!isMobile ? '18' : '12'}
                 />
               </div>
             </div>
