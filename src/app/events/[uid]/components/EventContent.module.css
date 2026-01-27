@@ -142,20 +142,18 @@
 .arrowcontainerOne,
 .arrowcontainerTwo {
     position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 80%;
     cursor: pointer;
     z-index: 1001;
     padding: 1rem;
 }
 
 .arrowcontainerOne {
-    left: 1rem;
-    transform: translateY(-50%);
+    left: 0.5rem;
 }
 
 .arrowcontainerTwo {
-    right: 1rem;
+    right: 0.5rem;
 }
 
 .arrowcontainerOne svg {
@@ -177,12 +175,34 @@
     }
 
     .eventContainer {
-        padding: var(--header-height)/2 0;
-
+        padding: var(--spacing-6) 0;
+        gap: var(--spacing-8)
     }
 
     .eventContainer p {
         width: 90%;
+    }
+
+    .arrowcontainerOne,
+    .arrowcontainerTwo {
+
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 1001;
+        padding: 1rem;
+    }
+
+    .arrowcontainerOne {
+        left: 1rem;
+        transform: translateY(-50%);
+    }
+
+
+
+    .arrowcontainerTwo {
+        right: 1rem;
+        transform: translateY(-50%);
     }
 }
 

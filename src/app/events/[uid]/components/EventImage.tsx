@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Dispatch, SetStateAction } from 'react';
 
 import styles from './EventImage.module.css';
@@ -31,7 +33,9 @@ export default function EventImage({
       >
         <PrismicNextImage
           field={
-            images?.length && activeImage !== undefined ? images[activeImage].image : image
+            images?.length && activeImage !== undefined
+              ? images[activeImage].image
+              : image
           }
         />
       </div>
