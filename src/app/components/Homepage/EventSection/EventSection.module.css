@@ -24,11 +24,40 @@
 }
 
 
+.downloads {
+    padding-top: var(--spacing-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4)
+}
+
+.downloads h3 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-variation-settings: var(--title-weight);
+}
+
 .downloadbar {
     display: flex;
     gap: var(--spacing-4);
-    padding-top: var(--spacing-8);
     width: fit-content;
+}
+
+.downloadbar a {
+    font-size: 0.75rem;
+    padding: var(--spacing-2) var(--spacing-4);
+    border: var(--border);
+    color: var(--beige);
+    background-color: var(--red);
+    transition: all 0.2s var(--bezier);
+    text-transform: uppercase;
+    font-variation-settings: var(--subtitle-weight);
+    font-family: var(--title-font);
+}
+
+.downloadbar a:hover {
+    color: var(--red);
+    background-color: var(--beige);
 }
 
 

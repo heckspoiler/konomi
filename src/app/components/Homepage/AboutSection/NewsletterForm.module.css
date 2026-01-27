@@ -19,7 +19,7 @@
     font-family: var(--title-font);
     font-weight: var(--subtitle-weight);
     width: 100% !important;
-    padding: 0.7rem;
+    padding: var(--spacing-3);
     color: var(--red);
     font-variation-settings: var(--subtitle-weight);
     border-radius: none;

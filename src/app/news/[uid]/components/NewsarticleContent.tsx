@@ -10,7 +10,6 @@ import TitleContainer from '../../components/TitleContainer';
 import DateComponent from '@/app/events/[uid]/components/DateComponent';
 import EventImage from '@/app/events/[uid]/components/EventImage';
 import { PrismicNextLink } from '@prismicio/next';
-import IconComponent from '@/app/events/components/IconComponent';
 import IconComponentNews from '../../components/IconComponentNews';
 
 type NewsArticleContentProps = {

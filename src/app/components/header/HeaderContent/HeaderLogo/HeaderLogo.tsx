@@ -11,8 +11,6 @@ import {
   Simplify,
 } from '../../../../../../prismicio-types';
 
-const pathnames = ['/about', '/events', '/archive', '/contact'];
-
 export default function HeaderLogo({
   content,
   menuIsOpen,
@@ -24,11 +22,10 @@ export default function HeaderLogo({
 }) {
   const pathname = usePathname();
   const titleRef = useRef<HTMLDivElement>(null);
-  const isNotHomePage = pathnames.some((path) => pathname.includes(path));
 
   return (
     <div
-      className={`${styles.logoContainer} ${menuIsOpen ? styles.open : ''} ${isNotHomePage ? styles.notHomepage : ''}`}
+      className={`${styles.logoContainer} ${menuIsOpen ? styles.open : ''} ${pathname !== '/' ? styles.notHomepage : ''}`}
       ref={titleRef}
       onClick={() => {
         closeMenu({ setMenuIsOpen });

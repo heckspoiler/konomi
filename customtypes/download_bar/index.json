@@ -25,6 +25,15 @@
             }
           }
         }
+      },
+      "is_downloadbar_visible": {
+        "type": "Boolean",
+        "config": {
+          "label": "Is Downloadbar visible",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
       }
     }
   }
