@@ -1,9 +1,21 @@
 import React from 'react';
 import styles from './OverlayImage.module.css';
 import { PrismicNextImage } from '@prismicio/next';
-import { ImageFieldImage } from '@prismicio/client';
+import { GroupField, ImageFieldImage } from '@prismicio/client';
+import {
+  EventDocumentDataGalleryItem,
+  Simplify,
+} from '../../../../../prismicio-types';
 
-export default function OverlayImage({ image }: { image: ImageFieldImage }) {
+export default function OverlayImage({
+  image,
+  activeImage,
+  images,
+}: {
+  image: ImageFieldImage;
+  activeImage: number;
+  images: GroupField<Simplify<EventDocumentDataGalleryItem>>;
+}) {
   return (
     <div className={styles.container}>
       <div className={styles.crossContainer}>
@@ -11,7 +23,9 @@ export default function OverlayImage({ image }: { image: ImageFieldImage }) {
         <div></div>
       </div>
       <div className={styles.imageContainer}>
-        <PrismicNextImage field={image} />
+        <PrismicNextImage
+          field={images?.length ? images[activeImage].image : image}
+        />
       </div>
     </div>
   );

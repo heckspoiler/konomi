@@ -139,6 +139,33 @@
     gap: 0.75rem;
 }
 
+.arrowcontainerOne,
+.arrowcontainerTwo {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1001;
+    padding: 1rem;
+}
+
+.arrowcontainerOne {
+    left: 1rem;
+    transform: translateY(-50%);
+}
+
+.arrowcontainerTwo {
+    right: 1rem;
+}
+
+.arrowcontainerOne svg {
+    transform: rotate(-135deg)
+}
+
+.arrowcontainerTwo svg {
+    transform: rotate(45deg)
+}
+
 
 
 /* Desktop styles */

@@ -16,9 +16,14 @@
     width: 100%;
 }
 
+.arrowcontainer {
+    background-color: red;
+    position: absolute;
+    z-index: 100;
+    height: 20rem;
+}
+
 /* desktop */
 
 /* Desktop styles */
-@media screen and (min-width: 1080px) {
-    .container {}
-}
+@media screen and (min-width: 1080px) {}

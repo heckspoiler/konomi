@@ -367,6 +367,21 @@ export type DownloadBarDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Event → Gallery*
+ */
+export interface EventDocumentDataGalleryItem {
+  /**
+   * Image field in *Event → Gallery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.gallery[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+}
+
 type EventDocumentDataSlicesSlice = never;
 
 /**
@@ -411,6 +426,17 @@ interface EventDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   event_image: prismic.ImageField<never>;
+
+  /**
+   * Gallery field in *Event*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.gallery[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  gallery: prismic.GroupField<Simplify<EventDocumentDataGalleryItem>>;
 
   /**
    * Event Start Date field in *Event*
@@ -1292,14 +1318,14 @@ export interface NewsarticleDocumentDataTagsItem {
  */
 export interface NewsarticleDocumentDataGalleryItem {
   /**
-   * Gallery Item field in *Newsarticle → Gallery*
+   * Image field in *Newsarticle → Gallery*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: newsarticle.gallery[].gallery_item
+   * - **API ID Path**: newsarticle.gallery[].image
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
-  gallery_item: prismic.ImageField<never>;
+  image: prismic.ImageField<never>;
 }
 
 type NewsarticleDocumentDataSlicesSlice = never;
@@ -2173,6 +2199,7 @@ declare module "@prismicio/client" {
       DownloadBarDocumentDataDownloadBarItem,
       EventDocument,
       EventDocumentData,
+      EventDocumentDataGalleryItem,
       EventDocumentDataSlicesSlice,
       EventsDocument,
       EventsDocumentData,

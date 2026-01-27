@@ -60,10 +60,10 @@
           "label": "Gallery",
           "repeat": true,
           "fields": {
-            "gallery_item": {
+            "image": {
               "type": "Image",
               "config": {
-                "label": "Gallery Item",
+                "label": "Image",
                 "constraint": {},
                 "thumbnails": []
               }

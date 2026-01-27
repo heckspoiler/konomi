@@ -40,7 +40,7 @@ export default function NewsarticleContent({
         </div>{' '}
         <div className={styles.backtolink}>
           <PrismicNextLink href={newsPage.url as string}>
-            Zurück
+            Zur Übersicht
           </PrismicNextLink>
         </div>
       </div>

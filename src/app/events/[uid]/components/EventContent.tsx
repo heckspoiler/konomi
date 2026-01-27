@@ -27,6 +27,7 @@ import {
   Simplify,
 } from '../../../../../prismicio-types';
 import { PrismicDocumentWithUID } from '@prismicio/client';
+import Arrow from '@/app/components/arrow/Arrow';
 
 export default function EventContent({
   page,
@@ -38,6 +39,7 @@ export default function EventContent({
   const data = page.data;
   const [overlayIsOpen, setOverlayIsOpen] = useState(false);
   const buttonShow = page.tags.includes('archived');
+  const [activeImage, setActiveImage] = useState<number>(0);
 
   const pathname = usePathname();
   const [backComponent, setBackComponent] = useState<React.ReactNode>(null);
@@ -82,9 +84,16 @@ export default function EventContent({
             )}
           </div>
         </div>
-        <div onClick={() => setOverlayIsOpen(true)}>
-          <EventImage image={data.event_image} />
+        <div>
+          <EventImage
+            image={data.event_image}
+            images={data.gallery}
+            setOverlayIsOpen={setOverlayIsOpen}
+            activeImage={activeImage}
+            setActiveImage={setActiveImage}
+          />
         </div>
+
         <div className={styles.descriptionContainer}>
           {data.event_description.map((item, index: number) => {
             if (!('text' in item) || item.text.trim() === '') return null;
@@ -116,7 +125,32 @@ export default function EventContent({
             <div></div>
           </div>
         </div>
-        <OverlayImage image={data.event_image} />
+        <OverlayImage
+          image={data.event_image}
+          activeImage={activeImage}
+          images={data.gallery}
+        />{' '}
+        <div
+          className={styles.arrowcontainerOne}
+          onClick={() =>
+            activeImage !== undefined && activeImage > 0
+              ? setActiveImage && setActiveImage(activeImage - 1)
+              : setActiveImage && setActiveImage(page.data.gallery.length - 1)
+          }
+        >
+          <Arrow height="18" width="18" />
+        </div>
+        <div
+          className={styles.arrowcontainerTwo}
+          onClick={() =>
+            activeImage !== undefined &&
+            activeImage < page.data.gallery.length - 1
+              ? setActiveImage && setActiveImage(activeImage + 1)
+              : setActiveImage && setActiveImage(0)
+          }
+        >
+          <Arrow height="18" width="18" />
+        </div>
       </div>
     </div>
   );
