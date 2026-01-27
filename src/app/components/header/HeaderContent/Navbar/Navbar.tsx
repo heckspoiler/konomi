@@ -58,19 +58,20 @@ export default function Navbar({
               item: Simplify<SettingsDocumentDataNavigationItemsItem>,
               index: number,
             ) => (
-            <li
-              key={index}
-              className={`${styles.item} ${isActiveItem === item ? styles.active : ''}`}
-              onClick={() => {
-                closeMenu({ setMenuIsOpen });
-              }}
-            >
-              <div className={styles.itemContent}>
-                <PrismicNextLink field={item.navigation_item} />
-                <PrismicNextImage field={item.navigation_active_image} />
-              </div>
-            </li>
-          ))}
+              <li
+                key={index}
+                className={`${styles.item} ${isActiveItem === item ? styles.active : ''}`}
+                onClick={() => {
+                  closeMenu({ setMenuIsOpen });
+                }}
+              >
+                <div className={styles.itemContent}>
+                  <PrismicNextLink field={item.navigation_item} />
+                  <PrismicNextImage field={item.navigation_active_image} />
+                </div>
+              </li>
+            ),
+          )}
         </div>
         <div className={styles.socials}>
           {content.navigation_social_icons.map(
@@ -85,10 +86,11 @@ export default function Navbar({
                     'mailto:tickets@konomi.ch'
                   }
                 >
-                <PrismicNextImage field={item.socials_icon} />
-              </Link>
-            </div>
-          ))}
+                  <PrismicNextImage field={item.socials_icon} />
+                </Link>
+              </div>
+            ),
+          )}
         </div>
       </div>
       <div className={styles.lowerContainer}>
@@ -98,10 +100,11 @@ export default function Navbar({
               item: Simplify<SettingsDocumentDataNavigationAddressItem>,
               index: number,
             ) => (
-            <div key={index}>
-              <PrismicRichText field={item.address_line} />
-            </div>
-          ))}
+              <div key={index}>
+                <PrismicRichText field={item.address_line} />
+              </div>
+            ),
+          )}
         </div>
         <div
           className={styles.impressum}

@@ -8,9 +8,7 @@ import styles from './NewsarticleContent.module.css';
 import { PrismicRichText } from '@prismicio/react';
 import TitleContainer from '../../components/TitleContainer';
 import DateComponent from '@/app/events/[uid]/components/DateComponent';
-import IconComponentNews from '../../components/IconComponentNews';
 import EventImage from '@/app/events/[uid]/components/EventImage';
-import Link from 'next/link';
 import { PrismicNextLink } from '@prismicio/next';
 
 type NewsArticleContentProps = {

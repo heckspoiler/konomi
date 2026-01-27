@@ -48,6 +48,15 @@
                 "constraint": {},
                 "thumbnails": []
               }
+            },
+            "is_visible_in_production": {
+              "type": "Boolean",
+              "config": {
+                "label": "Is Visible in Production",
+                "placeholder_false": "false",
+                "placeholder_true": "true",
+                "default_value": true
+              }
             }
           }
         }

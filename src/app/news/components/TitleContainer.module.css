@@ -1,7 +1,6 @@
 .mainHeadingContainer {
     position: fixed;
     top: calc(var(--header-height) - 2px);
-    padding-right: var(--main-container-padding);
     width: 100%;
     z-index: 1;
     left: var(--main-container-padding);
@@ -12,7 +11,8 @@
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr;
-    padding-right: var(--main-container-padding);
+    padding-right: 0;
+
 
 }
 
