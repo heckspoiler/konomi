@@ -45,16 +45,42 @@ export default function BackgroundCanvas() {
   }, [pathname]);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let currentVelocity = 0;
+    let animationId: number;
+
     const handleScroll = () => {
       const newScrollHeight = getScrollPercentage() / 100;
+      const scrollDelta = Math.abs(window.scrollY - lastScrollY);
+      lastScrollY = window.scrollY;
+
+      // Boost velocity on scroll
+      currentVelocity = Math.min(currentVelocity + scrollDelta * 0.01, 1);
 
       if (materialRef.current) {
         materialRef.current.uniforms.u_scrollHeight.value = newScrollHeight;
       }
     };
 
+    // Decay loop - smoothly reduces velocity when not scrolling
+    const decayLoop = () => {
+      currentVelocity *= 0.95; // Decay factor
+      if (currentVelocity < 0.001) currentVelocity = 0;
+
+      if (materialRef.current) {
+        materialRef.current.uniforms.u_scrollVelocity.value = currentVelocity;
+      }
+
+      animationId = requestAnimationFrame(decayLoop);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    animationId = requestAnimationFrame(decayLoop);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(animationId);
+    };
   }, []);
 
   // Check for orientation changes and set initial value
@@ -155,6 +181,7 @@ export default function BackgroundCanvas() {
     const shaderUniforms = {
       u_texture: { value: texture },
       u_scrollHeight: { value: 0 },
+      u_scrollVelocity: { value: 0 },
     };
 
     const planeMaterial = new ShaderMaterial({

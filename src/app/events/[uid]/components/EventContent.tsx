@@ -69,7 +69,7 @@ export default function EventContent({
           <PrismicNextLink field={data.google_location_link}>
             <LocationComponent data={data} />
           </PrismicNextLink>
-          <DateComponent data={data} />
+          <DateComponent variant="event" data={data} />
           <div className={styles.linkContainer}>
             {!buttonShow ? (
               <PrismicNextLink field={data.eventfrog_link}>

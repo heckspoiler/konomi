@@ -19,7 +19,7 @@
     }
 
     .previewcontainer {
-        padding: 0 6rem;
+        padding: 0 calc(5rem + 5vw);
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         column-gap: 1rem;

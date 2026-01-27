@@ -7,7 +7,6 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-
     justify-content: center;
 }
 
@@ -17,18 +16,4 @@
     object-fit: cover;
     display: block;
     background-color: var(--beige);
-}
-
-.overlay {
-    position: absolute;
-    inset: 0;
-    background-color: var(--red);
-    mix-blend-mode: hue;
-    pointer-events: none;
-    opacity: 1;
-    transition: opacity 0.2s var(--bezier);
-}
-
-.imageContainer:hover .overlay {
-    opacity: 0;
 }

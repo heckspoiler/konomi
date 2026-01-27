@@ -1,42 +1,36 @@
-// fragment shader
+// fragment shader - chromatic aberration on scroll
 varying vec2 vUv;
 uniform sampler2D u_texture;
 uniform float u_scrollHeight;
+uniform float u_scrollVelocity;
 
 void main() {
   vec2 uv = vUv;
 
-  vec2 gridSize = vec2(100.0, 100.0);
-  vec2 squareID = floor(uv * gridSize);
+  // Center point for radial chromatic aberration
+  vec2 center = vec2(0.5, 0.5);
+  vec2 dir = uv - center;
 
-  vec2 moveDir = vec2(
-      sin(squareID.y * 6.8 + u_scrollHeight) * u_scrollHeight,
-      cos(squareID.x * 6.8 + u_scrollHeight) * u_scrollHeight
-  );
+  // Chromatic aberration strength based on scroll velocity
+  // Only active while scrolling, fades when stopped
+  float strength = u_scrollVelocity * 0.02;
 
-  float moveAmount = 0.5;
-  vec2 distortedUV = uv + (moveDir * moveAmount);
+  // Sample each color channel at slightly different offsets
+  float r = texture2D(u_texture, uv + dir * strength).r;
+  float g = texture2D(u_texture, uv).g;
+  float b = texture2D(u_texture, uv - dir * strength).b;
+  float a = texture2D(u_texture, uv).a;
 
-  distortedUV = clamp(distortedUV, 0.0, 1.0);
+  vec4 color = vec4(r, g, b, a);
 
-  vec4 baseColor = texture2D(u_texture, distortedUV);
-
-  // Check if it's our beige background color
-  bool isBeige = baseColor.r > 0.928 && baseColor.g > 0.909 && baseColor.b > 0.815 && 
-                 baseColor.r < 0.930 && baseColor.g < 0.911 && baseColor.b < 0.817;
+  // Check if it's our beige background color (check center sample)
+  vec4 centerColor = texture2D(u_texture, uv);
+  bool isBeige = centerColor.r > 0.928 && centerColor.g > 0.909 && centerColor.b > 0.815 &&
+                 centerColor.r < 0.930 && centerColor.g < 0.911 && centerColor.b < 0.817;
 
   if (isBeige) {
       discard;
   } else {
-      // For colors darker than beige, fade them based on scroll
-      float fadeAmount = 1.0 - (u_scrollHeight * 0.5); // Adjust the 0.5 to control fade speed
-      fadeAmount = clamp(fadeAmount, 0.2, 1.0); // Don't let it fade completely
-
-      // Only fade colors that are darker than the beige
-      if (baseColor.r < 0.928 || baseColor.g < 0.909 || baseColor.b < 0.815) {
-          baseColor.rgba *= fadeAmount;
-      }
-
-      gl_FragColor = baseColor;
+      gl_FragColor = color;
   }
 }

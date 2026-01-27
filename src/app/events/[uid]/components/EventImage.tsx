@@ -7,7 +7,6 @@ import { ImageFieldImage } from '@prismicio/client';
 export default function EventImage({ image }: { image: ImageFieldImage }) {
   return (
     <div className={styles.imageContainer}>
-      {/* <div className={styles.overlay}></div> */}
       <PrismicNextImage field={image} />
     </div>
   );

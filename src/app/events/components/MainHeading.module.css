@@ -7,6 +7,7 @@
     left: var(--main-container-padding);
     background-color: var(--beige);
 
+
 }
 
 .mainHeading {
@@ -39,6 +40,7 @@
     .mainHeadingContainer {
         width: 55vw;
         left: initial;
+
     }
 }
 

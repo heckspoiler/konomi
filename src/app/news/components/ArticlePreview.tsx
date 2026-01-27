@@ -7,7 +7,7 @@ import { PrismicRichText } from '@prismicio/react';
 import { formatDate } from '../../../../helpers/formatDate';
 import Link from 'next/link';
 
-import Arrow from '@/app/components/arrow/Arrow';
+import IconComponentNews from './IconComponentNews';
 
 type ArticlePreviewProps = { article: NewsarticleDocument };
 
@@ -19,23 +19,22 @@ export default function ArticlePreview({ article }: ArticlePreviewProps) {
           <p>{formatDate(article.first_publication_date)}</p>
         </div>
         <div className={styles.tags}>
-          {article.data.tags.map((item) => (
-            <p>{item.item}</p>
-          ))}
+          <IconComponentNews page={article} />
         </div>
       </div>
       <div className={styles.imagecontainer}>
         <PrismicNextImage field={article.data.hero_image} />
       </div>
-      <div className={styles.titlecontainer}>
-        <PrismicRichText field={article.data.title} />
-      </div>
-      <div className={styles.descriptioncontainer}>
-        <PrismicRichText field={article.data.description} />
+      <div className={styles.textcontainer}>
+        <div className={styles.titlecontainer}>
+          <PrismicRichText field={article.data.title} />
+        </div>
+        <div className={styles.descriptioncontainer}>
+          <PrismicRichText field={article.data.description} />
+        </div>
       </div>
       <div className={styles.link}>
         <Link href={article.url as string}>Zum Artikel</Link>
-        <Arrow />
       </div>
     </div>
   );

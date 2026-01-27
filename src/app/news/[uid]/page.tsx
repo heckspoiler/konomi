@@ -5,6 +5,8 @@ import { createClient } from '@/prismicio';
 
 import NewsarticleContent from './components/NewsarticleContent';
 
+import styles from './page.module.css';
+
 type Params = { uid: string };
 
 export default async function Page({ params }: { params: Promise<Params> }) {
@@ -14,7 +16,13 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     .getByUID('newsarticle', uid)
     .catch(() => notFound());
 
-  return <NewsarticleContent page={page} />;
+  const newsPage = await client.getSingle('news');
+
+  return (
+    <div className={styles.main}>
+      <NewsarticleContent page={page} newsPage={newsPage} />
+    </div>
+  );
 }
 
 export async function generateMetadata({
