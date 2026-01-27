@@ -18,12 +18,14 @@ export default function EventImage({
   setOverlayIsOpen,
   activeImage,
   setActiveImage,
+  isMobile,
 }: {
   image: ImageFieldImage;
   images?: GroupField<Simplify<EventDocumentDataGalleryItem>>;
   setOverlayIsOpen?: Dispatch<SetStateAction<boolean>>;
   activeImage?: number;
   setActiveImage?: Dispatch<SetStateAction<number>>;
+  isMobile?: boolean;
 }) {
   return (
     <div className={styles.container}>
@@ -52,7 +54,10 @@ export default function EventImage({
                     : setActiveImage && setActiveImage(images.length - 1)
                 }
               >
-                <Arrow height="18" width="18" />
+                <Arrow
+                  height={!isMobile ? '18' : '14'}
+                  width={!isMobile ? '18' : '14'}
+                />
               </div>
               <div
                 className={styles.arrowcontainerTwo}
@@ -62,7 +67,10 @@ export default function EventImage({
                     : setActiveImage && setActiveImage(0)
                 }
               >
-                <Arrow height="18" width="18" />
+                <Arrow
+                  height={!isMobile ? '18' : '14'}
+                  width={!isMobile ? '18' : '14'}
+                />
               </div>
             </div>
             <div className={styles.gallerycontainer}>

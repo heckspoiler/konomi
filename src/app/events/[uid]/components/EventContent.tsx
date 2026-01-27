@@ -16,6 +16,8 @@ import EventImage from './EventImage';
 
 import IconComponent from '../../components/IconComponent';
 
+import { useMobile } from '../../../../../contexts/MobileContext';
+
 import LocationComponent from './LocationComponent';
 import DateComponent from './DateComponent';
 import Link from 'next/link';
@@ -40,7 +42,7 @@ export default function EventContent({
   const [overlayIsOpen, setOverlayIsOpen] = useState(false);
   const buttonShow = page.tags.includes('archived');
   const [activeImage, setActiveImage] = useState<number>(0);
-
+  const { isMobile } = useMobile();
   const pathname = usePathname();
   const [backComponent, setBackComponent] = useState<React.ReactNode>(null);
 
@@ -91,6 +93,7 @@ export default function EventContent({
             setOverlayIsOpen={setOverlayIsOpen}
             activeImage={activeImage}
             setActiveImage={setActiveImage}
+            isMobile={isMobile}
           />
         </div>
 
@@ -130,27 +133,39 @@ export default function EventContent({
           activeImage={activeImage}
           images={data.gallery}
         />{' '}
-        <div
-          className={styles.arrowcontainerOne}
-          onClick={() =>
-            activeImage !== undefined && activeImage > 0
-              ? setActiveImage && setActiveImage(activeImage - 1)
-              : setActiveImage && setActiveImage(page.data.gallery.length - 1)
-          }
-        >
-          <Arrow height="18" width="18" />
-        </div>
-        <div
-          className={styles.arrowcontainerTwo}
-          onClick={() =>
-            activeImage !== undefined &&
-            activeImage < page.data.gallery.length - 1
-              ? setActiveImage && setActiveImage(activeImage + 1)
-              : setActiveImage && setActiveImage(0)
-          }
-        >
-          <Arrow height="18" width="18" />
-        </div>
+        {data.gallery.length > 0 && (
+          <>
+            {' '}
+            <div
+              className={styles.arrowcontainerOne}
+              onClick={() =>
+                activeImage !== undefined && activeImage > 0
+                  ? setActiveImage && setActiveImage(activeImage - 1)
+                  : setActiveImage &&
+                    setActiveImage(page.data.gallery.length - 1)
+              }
+            >
+              <Arrow
+                height={!isMobile ? '18' : '14'}
+                width={!isMobile ? '18' : '14'}
+              />
+            </div>
+            <div
+              className={styles.arrowcontainerTwo}
+              onClick={() =>
+                activeImage !== undefined &&
+                activeImage < page.data.gallery.length - 1
+                  ? setActiveImage && setActiveImage(activeImage + 1)
+                  : setActiveImage && setActiveImage(0)
+              }
+            >
+              <Arrow
+                height={!isMobile ? '18' : '14'}
+                width={!isMobile ? '18' : '14'}
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
