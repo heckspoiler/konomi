@@ -42,16 +42,21 @@ export default function DateComponent(props: DateComponentProps) {
   const startDateTime = formatDateTime(props.data.event_start_date);
   const endDateTime = formatDateTime(props.data.event_end_date);
 
+  const isSameDay = startDateTime.dayMonthYear === endDateTime.dayMonthYear;
+
   return (
     <div className={styles.dateContainer}>
       <CalendarIcon />
       <div className={styles.textContainer}>
         <p>
           <span>
-            {startDateTime.dayOnly}
-            {endDateTime.dayOnly !== startDateTime.dayOnly && ' - '}
-            {endDateTime.dayOnly !== startDateTime.dayOnly &&
-              endDateTime.dayOnly}{' '}
+            {isSameDay ? (
+              startDateTime.dayMonthYear
+            ) : (
+              <>
+                {startDateTime.dayOnly} - {endDateTime.dayMonthYear}
+              </>
+            )}
           </span>
         </p>
         <p>

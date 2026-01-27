@@ -14,6 +14,8 @@ import CalendarIcon from '../[uid]/components/CalendarIcon';
 import { asText } from '@prismicio/client';
 import { EventDocument } from '../../../../prismicio-types';
 
+import { usePathname } from 'next/navigation';
+
 interface EventProps {
   event: EventDocument;
 }
@@ -23,6 +25,8 @@ export default function EventComponent({ event }: EventProps) {
   const endDateTime = formatDateTime(event.data.event_end_date);
 
   const { isMobile } = useMobile();
+
+  const pathname = usePathname();
   return (
     <div className={styles.event}>
       <PrismicRichText field={event.data.event_title} />
@@ -43,23 +47,26 @@ export default function EventComponent({ event }: EventProps) {
           </div>{' '}
         </PrismicNextLink>
         <div className={styles.lowerRightContainer}>
-          <div className={styles.dateContainer}>
-            <div className={styles.iconContainer}>
-              <CalendarIcon />
-            </div>
-            <div>
-              <span className={styles.dayDate}>
-                <p className={styles.date}>{startDateTime.dayOnly} </p>
-                {endDateTime.dayOnly !== startDateTime.dayOnly && (
-                  <p className={styles.date}> - {endDateTime.dayOnly}</p>
-                )}
-              </span>
+          {' '}
+          {!pathname.includes('/archive') && (
+            <div className={styles.dateContainer}>
+              <div className={styles.iconContainer}>
+                <CalendarIcon />
+              </div>
+              <div>
+                <span className={styles.dayDate}>
+                  <p className={styles.date}>{startDateTime.dayOnly} </p>
+                  {endDateTime.dayOnly !== startDateTime.dayOnly && (
+                    <p className={styles.date}> - {endDateTime.dayOnly}</p>
+                  )}
+                </span>
 
-              <p className={styles.time}>
-                {startDateTime.timeOnly} - {endDateTime.timeOnly}
-              </p>
+                <p className={styles.time}>
+                  {startDateTime.timeOnly} - {endDateTime.timeOnly}
+                </p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
       <LeftContainer event={event} />

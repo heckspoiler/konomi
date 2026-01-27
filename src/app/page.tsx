@@ -7,6 +7,7 @@ import HomepageContent from './components/Homepage/HomepageContent/HomepageConte
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
   const home = await client.getByUID('page', 'home');
+
   return {
     title: home.data.meta_title,
     description: home.data.meta_description,
@@ -21,6 +22,7 @@ export default async function Index() {
   const client = createClient();
   const home = await client.getByUID('page', 'home');
   const landingCategories = await client.getSingle('landing_categories');
+  const downloadBar = await client.getSingle('download_bar');
 
   const defaultVariationSlice = home.data.slices.filter(
     (slice) => slice.variation === 'default',
@@ -45,6 +47,7 @@ export default async function Index() {
       konomiSlice={konomiSlice}
       whySlice={whySlice}
       landingCategories={landingCategories}
+      downloadBar={downloadBar}
     />
   );
 }

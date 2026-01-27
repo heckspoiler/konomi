@@ -1,0 +1,31 @@
+{
+  "format": "custom",
+  "id": "download_bar",
+  "label": "Download Bar",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "download_bar": {
+        "type": "Group",
+        "config": {
+          "label": "Download Bar",
+          "repeat": true,
+          "fields": {
+            "item": {
+              "type": "Link",
+              "config": {
+                "label": "Item",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

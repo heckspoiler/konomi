@@ -306,6 +306,55 @@ export type ArchiveDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Download Bar → Download Bar*
+ */
+export interface DownloadBarDocumentDataDownloadBarItem {
+  /**
+   * Item field in *Download Bar → Download Bar*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: download_bar.download_bar[].item
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  item: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Content for Download Bar documents
+ */
+interface DownloadBarDocumentData {
+  /**
+   * Download Bar field in *Download Bar*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: download_bar.download_bar[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  download_bar: prismic.GroupField<
+    Simplify<DownloadBarDocumentDataDownloadBarItem>
+  >;
+}
+
+/**
+ * Download Bar document from Prismic
+ *
+ * - **API ID**: `download_bar`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type DownloadBarDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<DownloadBarDocumentData>,
+    "download_bar",
+    Lang
+  >;
+
 type EventDocumentDataSlicesSlice = never;
 
 /**
@@ -1644,6 +1693,7 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | AboutDocument
   | ArchiveDocument
+  | DownloadBarDocument
   | EventDocument
   | EventsDocument
   | FooterDocument
@@ -2106,6 +2156,9 @@ declare module "@prismicio/client" {
       ArchiveDocument,
       ArchiveDocumentData,
       ArchiveDocumentDataSlicesSlice,
+      DownloadBarDocument,
+      DownloadBarDocumentData,
+      DownloadBarDocumentDataDownloadBarItem,
       EventDocument,
       EventDocumentData,
       EventDocumentDataSlicesSlice,

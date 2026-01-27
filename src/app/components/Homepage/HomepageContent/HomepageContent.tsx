@@ -15,6 +15,7 @@ import MainSection from './MainSection/MainSection';
 
 import {
   BasicSliceSlice,
+  DownloadBarDocument,
   LandingCategoriesDocument,
 } from '../../../../../prismicio-types';
 
@@ -24,6 +25,7 @@ interface HomepageContentProps {
   konomiSlice: BasicSliceSlice[];
   whySlice: BasicSliceSlice[];
   landingCategories: LandingCategoriesDocument;
+  downloadBar: DownloadBarDocument;
 }
 
 type SectionId = 'about' | 'events' | 'konomi' | 'why' | '';
@@ -34,6 +36,7 @@ export default function HomepageContent({
   konomiSlice,
   whySlice,
   landingCategories,
+  downloadBar,
 }: HomepageContentProps) {
   const [activeSection, setActiveSection] = useState<SectionId>('');
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -94,7 +97,11 @@ export default function HomepageContent({
       id: 'events',
       ref: eventsRef,
       component: (
-        <EventSection scheduleSlice={scheduleSlice} components={components} />
+        <EventSection
+          scheduleSlice={scheduleSlice}
+          components={components}
+          downloadBar={downloadBar}
+        />
       ),
     },
     {

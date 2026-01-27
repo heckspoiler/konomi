@@ -13,6 +13,7 @@ import { useEvents } from '../../../../../contexts/EventsContext';
 import {
   BasicSliceSlice,
   BasicSliceSliceSchedulePrimary,
+  DownloadBarDocument,
   EventDocument,
 } from '../../../../../prismicio-types';
 
@@ -21,9 +22,11 @@ import type { components as SliceComponents } from '@/slices';
 export default function EventSection({
   scheduleSlice,
   components,
+  downloadBar,
 }: {
   scheduleSlice: BasicSliceSlice[];
   components: typeof SliceComponents;
+  downloadBar: DownloadBarDocument;
 }) {
   const { events } = useEvents();
   const schedulePrimary = scheduleSlice[0]
@@ -61,6 +64,11 @@ export default function EventSection({
               <Arrow height={'12'} width={'12'} />
             </PrismicNextLink>
           )}
+        </div>
+        <div className={styles.downloadbar}>
+          {downloadBar.data.download_bar.map((item) => (
+            <PrismicNextLink field={item.item} />
+          ))}
         </div>
       </div>
     </SectionContainer>
