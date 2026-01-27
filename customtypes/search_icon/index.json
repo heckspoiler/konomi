@@ -1,0 +1,19 @@
+{
+  "format": "custom",
+  "id": "search_icon",
+  "label": "Search icon",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "icon": {
+        "type": "Image",
+        "config": {
+          "label": "Icon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

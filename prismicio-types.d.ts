@@ -1423,6 +1423,38 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 /**
+ * Content for Search icon documents
+ */
+interface SearchIconDocumentData {
+  /**
+   * Icon field in *Search icon*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: search_icon.icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>;
+}
+
+/**
+ * Search icon document from Prismic
+ *
+ * - **API ID**: `search_icon`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SearchIconDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SearchIconDocumentData>,
+    "search_icon",
+    Lang
+  >;
+
+/**
  * Item in *Settings → Navigation Items*
  */
 export interface SettingsDocumentDataNavigationItemsItem {
@@ -1622,6 +1654,7 @@ export type AllDocumentTypes =
   | NewsDocument
   | NewsarticleDocument
   | PageDocument
+  | SearchIconDocument
   | SettingsDocument;
 
 /**
@@ -2105,6 +2138,8 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      SearchIconDocument,
+      SearchIconDocumentData,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItemsItem,

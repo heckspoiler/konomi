@@ -8,9 +8,10 @@ import EventsContent from './components/EventsContent';
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle('events');
+  const searchicon = await client.getSingle('search_icon');
   return (
     <div className={styles.main}>
-      <EventsContent page={page} />
+      <EventsContent page={page} searchicon={searchicon} />
     </div>
   );
 }

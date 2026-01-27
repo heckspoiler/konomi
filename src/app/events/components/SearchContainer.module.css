@@ -1,0 +1,33 @@
+.searchcontainer {
+    border: var(--border);
+    width: 60%;
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--spacing-2) 0 0;
+    gap: var(--spacing-1);
+    background-color: var(--beige);
+}
+
+.searchcontainer input {
+    background-color: var(--beige);
+    border: none;
+    height: 100%;
+    width: 100%;
+    padding: 0 var(--spacing-2);
+    border-radius: none;
+}
+
+.searchcontainer input:focus {
+    background-color: var(--red-lowopa);
+    outline: none;
+    border: none;
+}
+
+
+.searchcontainer img {
+    height: 1.2rem;
+    width: 1.2rem;
+
+}

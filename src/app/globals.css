@@ -28,7 +28,7 @@
     /* colors */
     --dark-blue: #0069DA;
     --light-blue: #D5E9FF;
-    --red-lowopa: rgba(188, 0, 45, 0.2);
+    --red-lowopa: rgba(243, 145, 168, 0.2);
     --red: rgba(188, 0, 45, 1);
     --beige: #F9F7ED;
 
@@ -219,6 +219,8 @@ label {
 
 input {
     border-radius: none;
+    font-family: var(--title-font);
+    color: var(--red)
 }
 
 button {

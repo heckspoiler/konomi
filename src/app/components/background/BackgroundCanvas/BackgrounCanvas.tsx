@@ -28,13 +28,32 @@ import getScrollPercentage from '../../../../../helpers/getScrollPercentage';
 const MOBILE_BREAKPOINT = 768;
 const TABLET_BREAKPOINT = 1024;
 
+// Helper to compute the correct background based on screen size
+function getInitialBackground(): string {
+  if (typeof window === 'undefined') return mobileBackground.src;
+
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const isPortrait = height > width;
+
+  if (width < MOBILE_BREAKPOINT) {
+    return mobileBackground.src;
+  } else if (width < TABLET_BREAKPOINT && width >= MOBILE_BREAKPOINT) {
+    return isPortrait ? tabletPortraitBackground.src : tabletBackground.src;
+  } else {
+    return desktopBackground.src;
+  }
+}
+
 export default function BackgroundCanvas() {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const materialRef = useRef<ShaderMaterial | null>(null);
-  const [background, setBackground] = useState<string>(mobileBackground.src);
+  const [background, setBackground] = useState<string>(getInitialBackground);
   const [directionsMultiplier, setDirectionsMultiplier] = useState<number>(1);
   const pathname = usePathname();
-  const [isPortrait, setIsPortrait] = useState<boolean>(false);
+  const [isPortrait, setIsPortrait] = useState<boolean>(
+    typeof window !== 'undefined' ? window.innerHeight > window.innerWidth : false
+  );
 
   const { isMobile } = useMobile();
 

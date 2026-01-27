@@ -15,17 +15,23 @@ import {
   ArchiveDocument,
   EventDocument,
   EventsDocument,
+  SearchIconDocument,
 } from '../../../../prismicio-types';
+import SearchContainer from './SearchContainer';
+import { useSearchbarStore } from '../../../../stores/useSearchStore';
 
 function EventsContentInner({
   page,
   events,
+  searchicon,
 }: {
   page: EventsDocument | ArchiveDocument;
   events: EventDocument[];
+  searchicon: SearchIconDocument;
 }) {
   const pathname = usePathname();
   const { selectedDate, selectedLocation, selectedEventType } = useFilter();
+  const { query } = useSearchbarStore();
   const [isFoldoutOpen, setIsFoldoutOpen] = useState(false);
   const [usedEvents, setUsedEvents] = useState<EventDocument[]>([]);
 
@@ -78,7 +84,15 @@ function EventsContentInner({
       (selectedEventType === 'crafting' && event.data.is_crafting) ||
       (selectedEventType === 'art' && event.data.is_art);
 
-    return matchesDate && matchesLocation && matchesEventType;
+    // Check search query
+    const searchLower = query.toLowerCase();
+    const matchesSearch =
+      !query ||
+      asText(event.data.event_title)?.toLowerCase().includes(searchLower) ||
+      asText(event.data.event_location)?.toLowerCase().includes(searchLower) ||
+      asText(event.data.event_description)?.toLowerCase().includes(searchLower);
+
+    return matchesDate && matchesLocation && matchesEventType && matchesSearch;
   });
 
   const backComponent = useMemo(() => {
@@ -90,7 +104,7 @@ function EventsContentInner({
       );
     }
     if (pathname.startsWith('/archive')) {
-      return <BackToComponent text="Aktuelle Events" url="/events" />;
+      return <BackToComponent text="Events" url="/events" />;
     }
     return null;
   }, [pathname]);
@@ -99,9 +113,9 @@ function EventsContentInner({
     <div className={styles.container}>
       <MainHeading page={page} />
       <div className={styles.eventsContainer}>
-        <div className={styles.backLinkContainer}>
-          {backComponent}
-
+        <div className={styles.filtercontainer}>
+          <div className={styles.backLinkContainer}>{backComponent}</div>
+          <SearchContainer searchicon={searchicon} />
           <div className={`${isFoldoutOpen && styles.foldoutOpen}`}>
             <FilterComponent
               events={events}
@@ -140,12 +154,18 @@ function EventsContentInner({
   );
 }
 
-function EventsContent({ page }: { page: EventsDocument | ArchiveDocument }) {
+function EventsContent({
+  page,
+  searchicon,
+}: {
+  page: EventsDocument | ArchiveDocument;
+  searchicon: SearchIconDocument;
+}) {
   const { events } = useEvents();
 
   return (
     <FilterProvider>
-      <EventsContentInner page={page} events={events} />
+      <EventsContentInner page={page} events={events} searchicon={searchicon} />
     </FilterProvider>
   );
 }
