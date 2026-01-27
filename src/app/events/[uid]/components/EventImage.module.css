@@ -30,6 +30,7 @@
     gap: var(--spacing-1);
     position: relative;
     overflow: hidden;
+    justify-content: center;
 }
 
 .galleryimage img {
