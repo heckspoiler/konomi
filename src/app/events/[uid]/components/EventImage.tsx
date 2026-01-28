@@ -10,7 +10,8 @@ import {
   Simplify,
 } from '../../../../../prismicio-types';
 
-import Arrow from '@/app/components/arrow/Arrow';
+import Gallery from './Gallery';
+import SkipArrow from './SkipArrow';
 
 export default function EventImage({
   image,
@@ -46,45 +47,30 @@ export default function EventImage({
         {images && images.length > 0 && (
           <div>
             <div className={styles.arrowcontainer}>
-              <div
-                className={styles.arrowcontainerOne}
+              <SkipArrow
                 onClick={() =>
                   activeImage !== undefined && activeImage > 0
                     ? setActiveImage && setActiveImage(activeImage - 1)
                     : setActiveImage && setActiveImage(images.length - 1)
                 }
-              >
-                <Arrow
-                  height={!isMobile ? '18' : '12'}
-                  width={!isMobile ? '18' : '12'}
-                />
-              </div>
-              <div
-                className={styles.arrowcontainerTwo}
+                className={styles.arrowcontainerOne}
+                isMobile={isMobile}
+              />
+              <SkipArrow
                 onClick={() =>
                   activeImage !== undefined && activeImage < images.length - 1
                     ? setActiveImage && setActiveImage(activeImage + 1)
                     : setActiveImage && setActiveImage(0)
                 }
-              >
-                <Arrow
-                  height={!isMobile ? '18' : '12'}
-                  width={!isMobile ? '18' : '12'}
-                />
-              </div>
+                className={styles.arrowcontainerTwo}
+                isMobile={isMobile}
+              />
             </div>
-            <div className={styles.gallerycontainer}>
-              {images &&
-                images.map((item, index) => (
-                  <div
-                    key={index}
-                    onClick={() => setActiveImage && setActiveImage(index)}
-                    className={`${styles.galleryimage} ${activeImage === index ? styles.active : ''}`}
-                  >
-                    <PrismicNextImage field={item.image} />
-                  </div>
-                ))}
-            </div>
+            <Gallery
+              activeImage={activeImage}
+              setActiveImage={setActiveImage}
+              images={images}
+            />
           </div>
         )}
       </div>

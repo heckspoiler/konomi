@@ -18,10 +18,6 @@ export default function OverlayImage({
 }) {
   return (
     <div className={styles.container}>
-      <div className={styles.crossContainer}>
-        <div></div>
-        <div></div>
-      </div>
       <div className={styles.imageContainer}>
         <PrismicNextImage
           field={images?.length ? images[activeImage].image : image}

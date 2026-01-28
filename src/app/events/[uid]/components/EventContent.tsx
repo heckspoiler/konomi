@@ -29,7 +29,8 @@ import {
   Simplify,
 } from '../../../../../prismicio-types';
 import { PrismicDocumentWithUID } from '@prismicio/client';
-import Arrow from '@/app/components/arrow/Arrow';
+import SkipArrow from './SkipArrow';
+import Cross from './Cross';
 
 export default function EventContent({
   page,
@@ -122,12 +123,7 @@ export default function EventContent({
       <div
         className={`${styles.overlayImageContainer} ${overlayIsOpen ? styles.isOpen : ''}`}
       >
-        <div onClick={() => setOverlayIsOpen(false)} className={styles.cross}>
-          <div className={styles.crossContainer}>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
+        <Cross onClick={() => setOverlayIsOpen(false)} />
         <OverlayImage
           image={data.event_image}
           activeImage={activeImage}
@@ -135,35 +131,26 @@ export default function EventContent({
         />{' '}
         {data.gallery.length > 0 && (
           <>
-            {' '}
-            <div
-              className={styles.arrowcontainerOne}
+            <SkipArrow
               onClick={() =>
                 activeImage !== undefined && activeImage > 0
                   ? setActiveImage && setActiveImage(activeImage - 1)
                   : setActiveImage &&
                     setActiveImage(page.data.gallery.length - 1)
               }
-            >
-              <Arrow
-                height={!isMobile ? '18' : '14'}
-                width={!isMobile ? '18' : '14'}
-              />
-            </div>
-            <div
-              className={styles.arrowcontainerTwo}
+              className={styles.arrowcontainerOne}
+              isMobile={isMobile}
+            />
+            <SkipArrow
               onClick={() =>
                 activeImage !== undefined &&
                 activeImage < page.data.gallery.length - 1
                   ? setActiveImage && setActiveImage(activeImage + 1)
                   : setActiveImage && setActiveImage(0)
               }
-            >
-              <Arrow
-                height={!isMobile ? '18' : '14'}
-                width={!isMobile ? '18' : '14'}
-              />
-            </div>
+              className={styles.arrowcontainerTwo}
+              isMobile={isMobile}
+            />
           </>
         )}
       </div>

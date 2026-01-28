@@ -1,0 +1,27 @@
+.gallerycontainer {
+    display: flex;
+    height: calc(3rem + 3vw);
+    gap: var(--spacing-1);
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.galleryimage img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(60%);
+    transition: all 0.2s var(--bezier);
+    scale: 0.95
+}
+
+.galleryimage img::selection {
+    background-color: transparent;
+}
+
+
+.active img {
+    filter: brightness(100%);
+    scale: 1
+}
