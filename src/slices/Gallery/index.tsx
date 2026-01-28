@@ -1,6 +1,8 @@
-import { FC } from "react";
-import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { Content } from '@prismicio/client';
+import { PrismicRichText, SliceComponentProps } from '@prismicio/react';
+
+import styles from './index.module.css';
+import { PrismicNextImage } from '@prismicio/next';
 
 /**
  * Props for `Gallery`.
@@ -10,19 +12,36 @@ export type GalleryProps = SliceComponentProps<Content.GallerySlice>;
 /**
  * Component for "Gallery" Slices.
  */
-const Gallery: FC<GalleryProps> = ({ slice }) => {
+type GalleryContext = {
+  onClick?: (
+    images: Content.GallerySlice['primary']['images'],
+    imageIndex: number,
+  ) => void;
+};
+
+const Gallery = ({
+  slice,
+  context,
+}: {
+  slice: Content.GallerySlice;
+  context?: GalleryContext;
+}) => {
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className={styles.yearcontainer}
     >
-      Placeholder component for gallery (variation: {slice.variation}) slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use the Prismic MCP server with your code editor
-       * 📚 Docs: https://prismic.io/docs/ai#code-with-prismics-mcp-server
-       */}
+      <PrismicRichText field={slice.primary.year} />
+      <div className={styles.gallery}>
+        {slice.primary.images.map((item, index) => (
+          <PrismicNextImage
+            field={item.image}
+            key={index}
+            onClick={() => context?.onClick?.(slice.primary.images, index)}
+          />
+        ))}
+      </div>
     </section>
   );
 };

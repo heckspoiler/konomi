@@ -49,6 +49,24 @@
           "multi": "paragraph,heading5,heading6,strong,em,hyperlink"
         }
       },
+      "gallery": {
+        "type": "Group",
+        "config": {
+          "label": "Gallery",
+          "repeat": true,
+          "fields": {
+            "year": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Year",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading2"
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

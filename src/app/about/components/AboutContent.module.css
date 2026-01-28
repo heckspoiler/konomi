@@ -13,7 +13,7 @@
     flex-direction: column;
     gap: calc(var(--header-height) / 2);
     align-items: center;
-    margin-top: calc(1rem + 1vw);
+    margin-top: var(--spacing-12);
 }
 
 .membersContainer {

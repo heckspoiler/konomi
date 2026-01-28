@@ -1,40 +1,68 @@
-.container {
-    position: relative;
-    margin-top: calc(var(--header-height) / 2);
-    height: fit-content;
+.content {
+    padding-top: var(--spacing-12);
     display: flex;
     flex-direction: column;
-    width: 100%;
+    gap: var(--spacing-6)
 }
 
+.overlayImageContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--beige);
+    height: 100svh;
+    width: 100svw;
+    display: none;
+    z-index: 1000;
+}
 
+.isOpen {
+    display: block;
+}
 
+.arrowcontainerOne,
+.arrowcontainerTwo {
+    position: fixed;
+    top: 80%;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 1rem;
+}
+
+.arrowcontainerOne {
+    left: 0.5rem;
+}
+
+.arrowcontainerTwo {
+    right: 0.5rem;
+}
+
+.arrowcontainerOne svg {
+    transform: rotate(-135deg)
+}
+
+.arrowcontainerTwo svg {
+    transform: rotate(45deg)
+}
 
 
 
 /* !!!! DESKTOP !!!!! */
 
 @media screen and (min-width: 1080px) {
-    .container {
-        width: 55vw;
+    .arrowcontainerOne,
+    .arrowcontainerTwo {
+        top: 50%;
+        transform: translateY(-50%);
     }
 
-}
-
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-    .container {
-        width: 80vw;
+    .arrowcontainerOne {
+        left: 1rem;
     }
 
-    .eventsContainer {
-        padding: 2rem 0;
-        display: flex;
-        flex-direction: column;
-        gap: calc(var(--header-height) / 2);
-    }
-
-    .backLinkContainer {
-        display: flex;
-        z-index: 2;
+    .arrowcontainerTwo {
+        right: 1rem;
     }
 }
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {}

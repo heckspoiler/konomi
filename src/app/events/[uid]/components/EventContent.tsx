@@ -139,7 +139,6 @@ export default function EventContent({
                     setActiveImage(page.data.gallery.length - 1)
               }
               className={styles.arrowcontainerOne}
-              isMobile={isMobile}
             />
             <SkipArrow
               onClick={() =>
@@ -149,7 +148,6 @@ export default function EventContent({
                   : setActiveImage && setActiveImage(0)
               }
               className={styles.arrowcontainerTwo}
-              isMobile={isMobile}
             />
           </>
         )}

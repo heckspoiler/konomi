@@ -1,0 +1,31 @@
+.yearcontainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+}
+
+.gallery {
+    columns: 2;
+    column-gap: var(--spacing-2);
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    margin-bottom: var(--spacing-2);
+    break-inside: avoid;
+    cursor: pointer;
+}
+
+/* !!!! DESKTOP !!!!! */
+
+@media screen and (min-width: 768px) {
+    .gallery {
+        columns: 3 250px;
+        column-gap: var(--spacing-4);
+    }
+
+    .gallery img {
+        margin-bottom: var(--spacing-4);
+    }
+}

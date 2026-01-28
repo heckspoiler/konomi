@@ -971,6 +971,21 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Gallery → Gallery*
+ */
+export interface GalleryDocumentDataGalleryItem {
+  /**
+   * Year field in *Gallery → Gallery*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.gallery[].year
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  year: prismic.RichTextField;
+}
+
 type GalleryDocumentDataSlicesSlice = GallerySlice;
 
 /**
@@ -1020,6 +1035,17 @@ interface GalleryDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   description: prismic.RichTextField;
+
+  /**
+   * Gallery field in *Gallery*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.gallery[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  gallery: prismic.GroupField<Simplify<GalleryDocumentDataGalleryItem>>;
 
   /**
    * Slice Zone field in *Gallery*
@@ -2283,6 +2309,16 @@ export interface GallerySliceDefaultPrimaryImagesItem {
  */
 export interface GallerySliceDefaultPrimary {
   /**
+   * index field in *Gallery → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.index
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  index: prismic.NumberField;
+
+  /**
    * Year field in *Gallery → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -2422,6 +2458,7 @@ declare module "@prismicio/client" {
       FooterDocumentDataSupportersItem,
       GalleryDocument,
       GalleryDocumentData,
+      GalleryDocumentDataGalleryItem,
       GalleryDocumentDataSlicesSlice,
       HeroImageDocument,
       HeroImageDocumentData,

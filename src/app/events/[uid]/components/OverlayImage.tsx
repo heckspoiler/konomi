@@ -4,6 +4,7 @@ import { PrismicNextImage } from '@prismicio/next';
 import { GroupField, ImageFieldImage } from '@prismicio/client';
 import {
   EventDocumentDataGalleryItem,
+  GallerySliceDefaultPrimaryImagesItem,
   Simplify,
 } from '../../../../../prismicio-types';
 
@@ -12,9 +13,12 @@ export default function OverlayImage({
   activeImage,
   images,
 }: {
-  image: ImageFieldImage;
+  image?: ImageFieldImage;
   activeImage: number;
-  images: GroupField<Simplify<EventDocumentDataGalleryItem>>;
+  images:
+    | GroupField<Simplify<EventDocumentDataGalleryItem>>
+    | GroupField<Simplify<GallerySliceDefaultPrimaryImagesItem>>
+    | undefined;
 }) {
   return (
     <div className={styles.container}>

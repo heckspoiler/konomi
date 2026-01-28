@@ -57,6 +57,11 @@
 						]
 					}
 				]
+			},
+			"index": {
+				"__TYPE__": "FieldContent",
+				"value": "73",
+				"type": "Number"
 			}
 		},
 		"items": []

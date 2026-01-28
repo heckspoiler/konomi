@@ -12,6 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "index": {
+          "type": "Number",
+          "config": {
+            "label": "index",
+            "placeholder": ""
+          }
+        },
         "year": {
           "type": "StructuredText",
           "config": {

@@ -19,7 +19,6 @@ export default function EventImage({
   setOverlayIsOpen,
   activeImage,
   setActiveImage,
-  isMobile,
 }: {
   image: ImageFieldImage;
   images?: GroupField<Simplify<EventDocumentDataGalleryItem>>;
@@ -54,7 +53,6 @@ export default function EventImage({
                     : setActiveImage && setActiveImage(images.length - 1)
                 }
                 className={styles.arrowcontainerOne}
-                isMobile={isMobile}
               />
               <SkipArrow
                 onClick={() =>
@@ -63,7 +61,6 @@ export default function EventImage({
                     : setActiveImage && setActiveImage(0)
                 }
                 className={styles.arrowcontainerTwo}
-                isMobile={isMobile}
               />
             </div>
             <Gallery
