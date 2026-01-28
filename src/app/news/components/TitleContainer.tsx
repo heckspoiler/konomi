@@ -1,11 +1,15 @@
 import React from 'react';
-import { NewsDocument } from '../../../../prismicio-types';
+import {
+  GalleryDocument,
+  ImpressumDocument,
+  NewsDocument,
+} from '../../../../prismicio-types';
 import { PrismicRichText } from '@prismicio/react';
 
 import styles from './TitleContainer.module.css';
 
 type TitleContainerProps = {
-  page: NewsDocument;
+  page: NewsDocument | GalleryDocument | ImpressumDocument;
   length?: number;
 };
 

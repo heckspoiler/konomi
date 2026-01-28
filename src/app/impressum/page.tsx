@@ -2,17 +2,17 @@ import { Metadata } from 'next';
 
 import { createClient } from '@/prismicio';
 
-import styles from './page.module.css';
 import ImpressumContent from './components/ImpressumContent';
+import MainContainer from '../components/MainContainer/MainContainer';
 
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle('impressum');
 
   return (
-    <div className={styles.main}>
+    <MainContainer>
       <ImpressumContent page={page} />
-    </div>
+    </MainContainer>
   );
 }
 

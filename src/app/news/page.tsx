@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 
 import { createClient } from '@/prismicio';
 
-import styles from './page.module.css';
 import NewsContent from './components/NewsContent';
+import MainContainer from '../components/MainContainer/MainContainer';
 
 export default async function Page() {
   const client = createClient();
@@ -11,9 +11,9 @@ export default async function Page() {
   const articles = await client.getAllByType('newsarticle');
 
   return (
-    <div className={styles.main}>
+    <MainContainer>
       <NewsContent page={page} articles={articles} />
-    </div>
+    </MainContainer>
   );
 }
 

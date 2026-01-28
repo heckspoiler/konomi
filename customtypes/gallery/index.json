@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "impressum",
-  "label": "Impressum",
+  "id": "gallery",
+  "label": "Gallery",
   "repeatable": false,
   "status": true,
   "json": {
@@ -9,7 +9,7 @@
       "uid": {
         "type": "UID",
         "config": {
-          "label": "uid",
+          "label": "UID",
           "placeholder": ""
         }
       },
@@ -17,7 +17,7 @@
         "type": "StructuredText",
         "config": {
           "label": "Page Title",
-          "placeholder": "Impressum",
+          "placeholder": "",
           "allowTargetBlank": true,
           "multi": "heading2"
         }
@@ -26,7 +26,7 @@
         "type": "StructuredText",
         "config": {
           "label": "Japanese Subtitles First",
-          "placeholder": "運営者情報 [Un|ei|sha|jō|hō] --",
+          "placeholder": "",
           "allowTargetBlank": true,
           "multi": "heading4"
         }
@@ -40,38 +40,24 @@
           "multi": "heading4"
         }
       },
-      "impressum_content": {
-        "type": "Group",
+      "description": {
+        "type": "StructuredText",
         "config": {
-          "label": "Impressum Content",
-          "repeat": true,
-          "fields": {
-            "subtitle": {
-              "type": "StructuredText",
-              "config": {
-                "label": "Subtitle",
-                "placeholder": "",
-                "allowTargetBlank": true,
-                "multi": "heading3"
-              }
-            },
-            "text": {
-              "type": "StructuredText",
-              "config": {
-                "label": "Text",
-                "placeholder": "",
-                "allowTargetBlank": true,
-                "multi": "paragraph,heading5,heading6,strong,hyperlink,list-item,em"
-              }
-            }
-          }
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,heading5,heading6,strong,em,hyperlink"
         }
       },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "gallery": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

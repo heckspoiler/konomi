@@ -19,6 +19,7 @@ import {
 } from '../../../../prismicio-types';
 import SearchContainer from './SearchContainer';
 import { useSearchbarStore } from '../../../../stores/useSearchStore';
+import PageContainer from '@/app/components/PageContainer/PageContainer';
 
 function EventsContentInner({
   page,
@@ -109,7 +110,7 @@ function EventsContentInner({
   }, [pathname]);
 
   return (
-    <div className={styles.container}>
+    <PageContainer>
       <MainHeading page={page} />
       <div className={styles.eventsContainer}>
         <div className={styles.filtercontainer}>
@@ -149,7 +150,7 @@ function EventsContentInner({
           <h1>Wir sehen uns im 2026!</h1>
         )}
       </div>
-    </div>
+    </PageContainer>
   );
 }
 

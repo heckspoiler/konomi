@@ -11,6 +11,7 @@ import {
   AboutDocument,
   AboutDocumentDataKonomiMemberItem,
 } from '../../../../prismicio-types';
+import PageContainer from '@/app/components/PageContainer/PageContainer';
 
 export default function AboutContent({ page }: { page: AboutDocument }) {
   const data = page.data;
@@ -26,7 +27,7 @@ export default function AboutContent({ page }: { page: AboutDocument }) {
   };
 
   return (
-    <div className={styles.container}>
+    <PageContainer>
       <MainHeading page={page} />
       <div className={styles.aboutContainer}>
         <p>{data.about_description}</p>
@@ -49,6 +50,6 @@ export default function AboutContent({ page }: { page: AboutDocument }) {
           ),
         )}
       </div>
-    </div>
+    </PageContainer>
   );
 }

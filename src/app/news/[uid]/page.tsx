@@ -5,7 +5,7 @@ import { createClient } from '@/prismicio';
 
 import NewsarticleContent from './components/NewsarticleContent';
 
-import styles from './page.module.css';
+import MainContainer from '@/app/components/MainContainer/MainContainer';
 
 type Params = { uid: string };
 
@@ -19,9 +19,9 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const newsPage = await client.getSingle('news');
 
   return (
-    <div className={styles.main}>
+    <MainContainer>
       <NewsarticleContent page={page} newsPage={newsPage} />
-    </div>
+    </MainContainer>
   );
 }
 

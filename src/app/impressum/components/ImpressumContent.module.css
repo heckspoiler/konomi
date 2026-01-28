@@ -35,6 +35,19 @@
     padding-top: 1rem;
 }
 
+.text li {
+    width: fit-content;
+    font-family: var(--text-font);
+    font-variation-settings: "wght" 200;
+    list-style-type: disc;
+    padding-top: 0.4rem;
+}
+
+.text h5 {
+    font-size: 1.2rem;
+    font-variation-settings: var(--title-weight);
+}
+
 
 
 

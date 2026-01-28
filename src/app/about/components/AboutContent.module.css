@@ -1,6 +1,5 @@
 .container {
     position: relative;
-    margin-top: calc(var(--header-height) + 2rem);
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -14,7 +13,7 @@
     flex-direction: column;
     gap: calc(var(--header-height) / 2);
     align-items: center;
-
+    margin-top: calc(1rem + 1vw);
 }
 
 .membersContainer {

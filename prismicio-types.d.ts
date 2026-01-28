@@ -971,6 +971,115 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
+type GalleryDocumentDataSlicesSlice = GallerySlice;
+
+/**
+ * Content for Gallery documents
+ */
+interface GalleryDocumentData {
+  /**
+   * Page Title field in *Gallery*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.page_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  page_title: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles First field in *Gallery*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.japanese_subtitles_first
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  japanese_subtitles_first: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles Second field in *Gallery*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.japanese_subtitles_second
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  japanese_subtitles_second: prismic.RichTextField;
+
+  /**
+   * Description field in *Gallery*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Gallery*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<GalleryDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: gallery.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: gallery.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Gallery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Gallery document from Prismic
+ *
+ * - **API ID**: `gallery`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type GalleryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<GalleryDocumentData>,
+    "gallery",
+    Lang
+  >;
+
 /**
  * Content for Hero Image documents
  */
@@ -1044,6 +1153,28 @@ interface ImpressumDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   page_title: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles First field in *Impressum*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: 運営者情報 [Un|ei|sha|jō|hō] --
+   * - **API ID Path**: impressum.japanese_subtitles_first
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  japanese_subtitles_first: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles Second field in *Impressum*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: impressum.japanese_subtitles_second
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  japanese_subtitles_second: prismic.RichTextField;
 
   /**
    * Impressum Content field in *Impressum*
@@ -1735,6 +1866,7 @@ export type AllDocumentTypes =
   | EventDocument
   | EventsDocument
   | FooterDocument
+  | GalleryDocument
   | HeroImageDocument
   | ImpressumDocument
   | LandingCategoriesDocument
@@ -2122,6 +2254,86 @@ export type BasicSliceSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Gallery → Default → Primary → Images*
+ */
+export interface GallerySliceDefaultPrimaryImagesItem {
+  /**
+   * Image field in *Gallery → Default → Primary → Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.images[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Caption field in *Gallery → Default → Primary → Images*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.images[].caption
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  caption: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Gallery → Default → Primary*
+ */
+export interface GallerySliceDefaultPrimary {
+  /**
+   * Year field in *Gallery → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: 2025
+   * - **API ID Path**: gallery.default.primary.year
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  year: prismic.RichTextField;
+
+  /**
+   * Images field in *Gallery → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  images: prismic.GroupField<Simplify<GallerySliceDefaultPrimaryImagesItem>>;
+}
+
+/**
+ * Default variation for Gallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GallerySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GallerySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Gallery*
+ */
+type GallerySliceVariation = GallerySliceDefault;
+
+/**
+ * Gallery Shared Slice
+ *
+ * - **API ID**: `gallery`
+ * - **Description**: Gallery
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GallerySlice = prismic.SharedSlice<
+  "gallery",
+  GallerySliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -2208,6 +2420,9 @@ declare module "@prismicio/client" {
       FooterDocumentData,
       FooterDocumentDataSocialsLinksItem,
       FooterDocumentDataSupportersItem,
+      GalleryDocument,
+      GalleryDocumentData,
+      GalleryDocumentDataSlicesSlice,
       HeroImageDocument,
       HeroImageDocumentData,
       ImpressumDocument,
@@ -2249,6 +2464,11 @@ declare module "@prismicio/client" {
       BasicSliceSliceSchedule,
       BasicSliceSliceWhoIsKonomi,
       BasicSliceSliceWhyKonomi,
+      GallerySlice,
+      GallerySliceDefaultPrimaryImagesItem,
+      GallerySliceDefaultPrimary,
+      GallerySliceVariation,
+      GallerySliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

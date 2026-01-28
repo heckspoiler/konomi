@@ -2,8 +2,9 @@ import React from 'react';
 
 import styles from './ImpressumContent.module.css';
 import { PrismicRichText } from '@prismicio/react';
-import MainHeading from '@/app/events/components/MainHeading';
 import { ImpressumDocument } from '../../../../prismicio-types';
+import PageContainer from '@/app/components/PageContainer/PageContainer';
+import TitleContainer from '@/app/news/components/TitleContainer';
 
 export default function ImpressumContent({
   page,
@@ -13,8 +14,8 @@ export default function ImpressumContent({
   const content = page.data;
 
   return (
-    <div className={styles.container}>
-      <MainHeading page={page} />
+    <PageContainer>
+      <TitleContainer page={page} />
       <div className={styles.contentContainer}>
         {content.impressum_content &&
           content.impressum_content.map((item, index) => (
@@ -26,6 +27,6 @@ export default function ImpressumContent({
             </div>
           ))}
       </div>
-    </div>
+    </PageContainer>
   );
 }

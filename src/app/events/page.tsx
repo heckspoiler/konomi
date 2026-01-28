@@ -2,17 +2,17 @@ import { Metadata } from 'next';
 
 import { createClient } from '@/prismicio';
 
-import styles from './page.module.css';
 import EventsContent from './components/EventsContent';
+import MainContainer from '../components/MainContainer/MainContainer';
 
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle('events');
   const searchicon = await client.getSingle('search_icon');
   return (
-    <div className={styles.main}>
+    <MainContainer>
       <EventsContent page={page} searchicon={searchicon} />
-    </div>
+    </MainContainer>
   );
 }
 
