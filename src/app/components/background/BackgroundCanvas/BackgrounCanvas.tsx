@@ -1,39 +1,60 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
-import {
-  Scene,
-  OrthographicCamera,
-  WebGLRenderer,
-  PlaneGeometry,
-  ShaderMaterial,
-  TextureLoader,
-  BufferAttribute,
-  Mesh,
-} from 'three';
-
-import { useMobile } from '../../../../../contexts/MobileContext';
+import { useRef, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import mobileBackground from '/public/images/background-mobile_bgwred.png';
 import desktopBackground from '/public/images/background-desktop_bgw_test.png';
 import tabletBackground from '/public/images/background-tablet-new.png';
-import tabletPortraitBackground from '/public/images/background-tablet-new-portrait.png'; // Add this new import for tablet portrait
-
-import vertexShader from './shaders/background.vert';
-import fragmentShader from './shaders/background.frag';
-
-import getScrollPercentage from '../../../../../helpers/getScrollPercentage';
+import tabletPortraitBackground from '/public/images/background-tablet-new-portrait.png';
 
 const MOBILE_BREAKPOINT = 768;
 const TABLET_BREAKPOINT = 1024;
 
-// Helper to compute the correct background based on screen size
-function getInitialBackground(): string {
-  if (typeof window === 'undefined') return mobileBackground.src;
+const vertexShaderSource = `
+  attribute vec2 a_position;
+  attribute vec2 a_texCoord;
+  varying vec2 vUv;
 
-  const width = window.innerWidth;
-  const height = window.innerHeight;
+  void main() {
+    vUv = a_texCoord;
+    gl_Position = vec4(a_position, 0.0, 1.0);
+  }
+`;
+
+const fragmentShaderSource = `
+  precision mediump float;
+  varying vec2 vUv;
+  uniform sampler2D u_texture;
+  uniform float u_scrollVelocity;
+
+  void main() {
+    vec2 uv = vUv;
+    vec2 center = vec2(0.5, 0.5);
+    vec2 dir = uv - center;
+
+    float strength = u_scrollVelocity * 0.02;
+
+    float r = texture2D(u_texture, uv + dir * strength).r;
+    float g = texture2D(u_texture, uv).g;
+    float b = texture2D(u_texture, uv - dir * strength).b;
+    float a = texture2D(u_texture, uv).a;
+
+    vec4 color = vec4(r, g, b, a);
+
+    vec4 centerColor = texture2D(u_texture, uv);
+    bool isBeige = centerColor.r > 0.928 && centerColor.g > 0.909 && centerColor.b > 0.815 &&
+                   centerColor.r < 0.930 && centerColor.g < 0.911 && centerColor.b < 0.817;
+
+    if (isBeige) {
+      discard;
+    } else {
+      gl_FragColor = color;
+    }
+  }
+`;
+
+function getBackgroundForSize(width: number, height: number): string {
   const isPortrait = height > width;
 
   if (width < MOBILE_BREAKPOINT) {
@@ -45,66 +66,58 @@ function getInitialBackground(): string {
   }
 }
 
+function createShader(gl: WebGLRenderingContext, type: number, source: string): WebGLShader | null {
+  const shader = gl.createShader(type);
+  if (!shader) return null;
+
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.error('Shader compile error:', gl.getShaderInfoLog(shader));
+    gl.deleteShader(shader);
+    return null;
+  }
+
+  return shader;
+}
+
+function createProgram(gl: WebGLRenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader): WebGLProgram | null {
+  const program = gl.createProgram();
+  if (!program) return null;
+
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+  gl.linkProgram(program);
+
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    console.error('Program link error:', gl.getProgramInfoLog(program));
+    gl.deleteProgram(program);
+    return null;
+  }
+
+  return program;
+}
+
 export default function BackgroundCanvas() {
-  const mountRef = useRef<HTMLDivElement | null>(null);
-  const materialRef = useRef<ShaderMaterial | null>(null);
-  const [background, setBackground] = useState<string>(getInitialBackground);
-  const [directionsMultiplier, setDirectionsMultiplier] = useState<number>(1);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const glRef = useRef<WebGLRenderingContext | null>(null);
+  const programRef = useRef<WebGLProgram | null>(null);
+  const scrollVelocityRef = useRef<number>(0);
+  const animationIdRef = useRef<number>(0);
+
+  const [background, setBackground] = useState<string>('');
+  const [isPortrait, setIsPortrait] = useState<boolean>(false);
+
   const pathname = usePathname();
-  const [isPortrait, setIsPortrait] = useState<boolean>(
-    typeof window !== 'undefined' ? window.innerHeight > window.innerWidth : false
-  );
 
-  const { isMobile } = useMobile();
-
+  // Reset scroll on route change
   useEffect(() => {
-    if (materialRef.current) {
-      materialRef.current.uniforms.u_scrollHeight.value = 0;
-    }
+    scrollVelocityRef.current = 0;
   }, [pathname]);
 
+  // Handle orientation changes
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let currentVelocity = 0;
-    let animationId: number;
-
-    const handleScroll = () => {
-      const newScrollHeight = getScrollPercentage() / 100;
-      const scrollDelta = Math.abs(window.scrollY - lastScrollY);
-      lastScrollY = window.scrollY;
-
-      // Boost velocity on scroll
-      currentVelocity = Math.min(currentVelocity + scrollDelta * 0.01, 1);
-
-      if (materialRef.current) {
-        materialRef.current.uniforms.u_scrollHeight.value = newScrollHeight;
-      }
-    };
-
-    // Decay loop - smoothly reduces velocity when not scrolling
-    const decayLoop = () => {
-      currentVelocity *= 0.95; // Decay factor
-      if (currentVelocity < 0.001) currentVelocity = 0;
-
-      if (materialRef.current) {
-        materialRef.current.uniforms.u_scrollVelocity.value = currentVelocity;
-      }
-
-      animationId = requestAnimationFrame(decayLoop);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    animationId = requestAnimationFrame(decayLoop);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      cancelAnimationFrame(animationId);
-    };
-  }, []);
-
-  // Check for orientation changes and set initial value
-  useEffect(() => {
-    // Set initial orientation value
     setIsPortrait(window.innerHeight > window.innerWidth);
 
     const handleOrientationChange = () => {
@@ -112,149 +125,156 @@ export default function BackgroundCanvas() {
     };
 
     window.addEventListener('resize', handleOrientationChange);
-    return () => {
-      window.removeEventListener('resize', handleOrientationChange);
-    };
+    return () => window.removeEventListener('resize', handleOrientationChange);
   }, []);
 
+  // Update background based on screen size
   useEffect(() => {
-    // Skip during server-side rendering
-    if (typeof window === 'undefined') return;
-
     const updateBackground = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const isPortrait = height > width;
-
-      if (width < MOBILE_BREAKPOINT) {
-        // Mobile device
-        setBackground(mobileBackground.src);
-      } else if (width < TABLET_BREAKPOINT && width >= MOBILE_BREAKPOINT) {
-        // Tablet device
-        if (isPortrait) {
-          // Tablet in portrait mode
-          setBackground(tabletPortraitBackground.src);
-        } else {
-          // Tablet in landscape mode
-          setBackground(tabletBackground.src);
-        }
-      } else {
-        // Desktop device
-        setBackground(desktopBackground.src);
-      }
+      setBackground(getBackgroundForSize(window.innerWidth, window.innerHeight));
     };
 
     updateBackground();
     window.addEventListener('resize', updateBackground);
+    return () => window.removeEventListener('resize', updateBackground);
+  }, [isPortrait]);
 
-    return () => {
-      window.removeEventListener('resize', updateBackground);
-    };
-  }, [isPortrait]); // Add isPortrait to dependency array
-
+  // Scroll handling
   useEffect(() => {
-    if (isMobile) {
-      setDirectionsMultiplier(2);
-    } else {
-      setDirectionsMultiplier(42);
-    }
-  }, [isMobile]);
+    let lastScrollY = window.scrollY;
 
-  useEffect(() => {
-    // Skip during server-side rendering
-    if (typeof window === 'undefined' || !mountRef.current) return;
-
-    const currentMount = mountRef.current;
-    const scene = new Scene();
-    const aspectRatio = window.innerWidth / window.innerHeight;
-    const camera = new OrthographicCamera(
-      -aspectRatio,
-      aspectRatio,
-      1,
-      -1,
-      1,
-      1000,
-    );
-    camera.position.z = 5;
-
-    const loader = new TextureLoader();
-    const texture = loader.load(background);
-    const planeGeometry = new PlaneGeometry(2 * aspectRatio, 2, 50, 50);
-    const randomDirections = new Float32Array(
-      planeGeometry.attributes.position.count * 3,
-    );
-
-    for (let i = 0; i < planeGeometry.attributes.position.count; i++) {
-      randomDirections[i * (directionsMultiplier ?? 1)] =
-        (Math.random() - 0.4) * 5;
-      randomDirections[i * (directionsMultiplier ?? 1)] =
-        (Math.random() - 0.1) * 1.5;
-      randomDirections[i * (directionsMultiplier ?? 1)] = Math.random() * 1.5;
-    }
-
-    planeGeometry.setAttribute(
-      'randomDirection',
-      new BufferAttribute(randomDirections, 3),
-    );
-
-    const shaderUniforms = {
-      u_texture: { value: texture },
-      u_scrollHeight: { value: 0 },
-      u_scrollVelocity: { value: 0 },
+    const handleScroll = () => {
+      const scrollDelta = Math.abs(window.scrollY - lastScrollY);
+      lastScrollY = window.scrollY;
+      scrollVelocityRef.current = Math.min(scrollVelocityRef.current + scrollDelta * 0.01, 1);
     };
 
-    const planeMaterial = new ShaderMaterial({
-      vertexShader,
-      fragmentShader,
-      uniforms: shaderUniforms,
-    });
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    materialRef.current = planeMaterial;
+  // Main WebGL setup
+  useEffect(() => {
+    if (!canvasRef.current || !background) return;
 
-    const planeMesh = new Mesh(planeGeometry, planeMaterial);
-    scene.add(planeMesh);
+    const canvas = canvasRef.current;
+    const gl = canvas.getContext('webgl', { alpha: true, antialias: true });
+    if (!gl) {
+      console.error('WebGL not supported');
+      return;
+    }
 
-    const renderer = new WebGLRenderer({
-      antialias: true,
-      alpha: true, // Enable transparency
-    });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000, 0); // Set clear color to transparent
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    glRef.current = gl;
 
-    mountRef.current.appendChild(renderer.domElement);
+    // Create shaders
+    const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+    const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+    if (!vertexShader || !fragmentShader) return;
 
+    // Create program
+    const program = createProgram(gl, vertexShader, fragmentShader);
+    if (!program) return;
+
+    programRef.current = program;
+    gl.useProgram(program);
+
+    // Fullscreen quad vertices (position + texCoord)
+    // Note: Y texCoords flipped (1->0, 0->1) because WebGL has origin at bottom-left
+    const vertices = new Float32Array([
+      // position    // texCoord
+      -1, -1,        0, 1,
+       1, -1,        1, 1,
+      -1,  1,        0, 0,
+       1,  1,        1, 0,
+    ]);
+
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+    const positionLoc = gl.getAttribLocation(program, 'a_position');
+    const texCoordLoc = gl.getAttribLocation(program, 'a_texCoord');
+
+    gl.enableVertexAttribArray(positionLoc);
+    gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 16, 0);
+
+    gl.enableVertexAttribArray(texCoordLoc);
+    gl.vertexAttribPointer(texCoordLoc, 2, gl.FLOAT, false, 16, 8);
+
+    // Load texture
+    const texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+
+    // Placeholder pixel while image loads
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 0]));
+
+    const image = new Image();
+    image.crossOrigin = 'anonymous';
+    image.onload = () => {
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    };
+    image.src = background;
+
+    // Get uniform locations
+    const scrollVelocityLoc = gl.getUniformLocation(program, 'u_scrollVelocity');
+
+    // Enable blending for transparency
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+    // Resize handler
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio, 2);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      gl.viewport(0, 0, canvas.width, canvas.height);
+    };
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Render loop
     const render = () => {
-      renderer.render(scene, camera);
+      // Decay velocity
+      scrollVelocityRef.current *= 0.95;
+      if (scrollVelocityRef.current < 0.001) scrollVelocityRef.current = 0;
+
+      gl.clearColor(0, 0, 0, 0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+
+      gl.uniform1f(scrollVelocityLoc, scrollVelocityRef.current);
+
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+      animationIdRef.current = requestAnimationFrame(render);
     };
 
-    const animateScene = () => {
-      requestAnimationFrame(animateScene);
-      render();
-    };
-
-    const onWindowResize = () => {
-      const newAspectRatio = window.innerWidth / window.innerHeight;
-      camera.left = -newAspectRatio;
-      camera.right = newAspectRatio;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      render();
-    };
-
-    window.addEventListener('resize', onWindowResize);
-    animateScene();
+    render();
 
     return () => {
-      window.removeEventListener('resize', onWindowResize);
-      if (currentMount) {
-        currentMount.removeChild(renderer.domElement);
-      }
-      renderer.dispose();
-      materialRef.current = null;
+      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationIdRef.current);
+      gl.deleteProgram(program);
+      gl.deleteShader(vertexShader);
+      gl.deleteShader(fragmentShader);
+      gl.deleteBuffer(buffer);
+      gl.deleteTexture(texture);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [background, directionsMultiplier]);
+  }, [background]);
 
-  return <div ref={mountRef} style={{ width: '100vw', height: '100vh' }} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        width: '100vw',
+        height: '100vh',
+        display: 'block',
+      }}
+    />
+  );
 }
