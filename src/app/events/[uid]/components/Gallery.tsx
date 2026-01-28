@@ -1,5 +1,5 @@
 import { GroupField } from '@prismicio/client';
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useRef, useEffect } from 'react';
 import {
   EventDocumentDataGalleryItem,
   Simplify,
@@ -19,12 +19,31 @@ export default function Gallery({
   setActiveImage,
   activeImage,
 }: GalleryProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (activeImage === undefined || !containerRef.current) return;
+
+    const activeElement = imageRefs.current[activeImage];
+    if (!activeElement) return;
+
+    activeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center',
+    });
+  }, [activeImage]);
+
   return (
-    <div className={styles.gallerycontainer}>
+    <div className={styles.gallerycontainer} ref={containerRef}>
       {images &&
         images.map((item, index) => (
           <div
             key={index}
+            ref={(el) => {
+              imageRefs.current[index] = el;
+            }}
             onClick={() => setActiveImage && setActiveImage(index)}
             className={`${styles.galleryimage} ${activeImage === index ? styles.active : ''}`}
           >

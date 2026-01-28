@@ -26,4 +26,8 @@
 /* desktop */
 
 /* Desktop styles */
-@media screen and (min-width: 1080px) {}
+@media screen and (min-width: 1080px) {
+    .container {
+        padding: calc(2rem + 2vw)
+    }
+}
