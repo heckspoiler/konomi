@@ -12,6 +12,8 @@
     display: flex;
     flex-direction: column;
     gap: calc(var(--header-height) / 2);
+    padding: var(--maincontainer-padding);
+    margin-top: var(--header-height)
 }
 
 .middlecontainer {
@@ -27,8 +29,6 @@
     font-variation-settings: var(--title-weight);
     text-transform: uppercase;
 }
-
-
 
 
 .infocontainer {

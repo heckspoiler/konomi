@@ -1,11 +1,28 @@
 .container {
     position: relative;
-    margin-top: calc(var(--header-height) / 2);
+    margin-top: calc(var(--header-height));
     height: fit-content;
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: var(--maincontainer-padding)
+    padding: var(--maincontainer-padding);
+    gap: var(--spacing-4)
+}
+
+.previewcontainer {
+    padding: 0 var(--maincontainer-padding);
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: var(--spacing-4)
+}
+
+
+.newslettercontainer {
+
+    margin: auto;
+    padding: var(--spacing-6);
+    border: var(--border);
+    background-color: var(--beige);
 }
 
 /* !!!! DESKTOP !!!!! */
@@ -15,7 +32,9 @@
         width: 100vw;
         padding: 6rem 0;
         display: flex;
-        gap: 2rem
+        gap: 2rem;
+        margin-top: calc(var(--header-height) / 2);
+
     }
 
     .previewcontainer {
