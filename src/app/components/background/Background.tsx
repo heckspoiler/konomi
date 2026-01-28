@@ -1,8 +1,13 @@
-import React from 'react';
+'use client';
+
+import dynamic from 'next/dynamic';
 
 import styles from './Background.module.css';
 
-import BackgroundCanvas from './BackgroundCanvas/BackgrounCanvas';
+const BackgroundCanvas = dynamic(
+  () => import('./BackgroundCanvas/BackgrounCanvas'),
+  { ssr: false }
+);
 
 export default function Background() {
   return (
