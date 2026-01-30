@@ -12,6 +12,7 @@ import {
   AboutDocumentDataKonomiMemberItem,
 } from '../../../../prismicio-types';
 import PageContainer from '@/app/components/PageContainer/PageContainer';
+import { PrismicRichText } from '@prismicio/react';
 
 export default function AboutContent({ page }: { page: AboutDocument }) {
   const data = page.data;
@@ -30,7 +31,7 @@ export default function AboutContent({ page }: { page: AboutDocument }) {
     <PageContainer>
       <MainHeading page={page} />
       <div className={styles.aboutContainer}>
-        <p>{data.about_description}</p>
+        <PrismicRichText field={page.data.description} />
       </div>
 
       <div className={styles.membersContainer}>
@@ -49,6 +50,11 @@ export default function AboutContent({ page }: { page: AboutDocument }) {
             </div>
           ),
         )}
+      </div>
+      <div className={styles.whykonomi}>
+        <PrismicRichText field={page.data.why_konomi} />
+        <PrismicRichText field={page.data.why_description} />
+        <PrismicRichText field={page.data.konomi_means_taste} />
       </div>
     </PageContainer>
   );

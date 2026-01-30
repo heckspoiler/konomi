@@ -141,6 +141,17 @@ interface AboutDocumentData {
   about_description: prismic.KeyTextField;
 
   /**
+   * description field in *About*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
    * Konomi Member field in *About*
    *
    * - **Field Type**: Group
@@ -152,6 +163,39 @@ interface AboutDocumentData {
   konomi_member: prismic.GroupField<
     Simplify<AboutDocumentDataKonomiMemberItem>
   >;
+
+  /**
+   * Why Konomi? field in *About*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.why_konomi
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  why_konomi: prismic.RichTextField;
+
+  /**
+   * Why Description field in *About*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.why_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  why_description: prismic.RichTextField;
+
+  /**
+   * Konomi means Taste field in *About*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.konomi_means_taste
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  konomi_means_taste: prismic.RichTextField;
 
   /**
    * Slice Zone field in *About*
@@ -971,21 +1015,6 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
-/**
- * Item in *Gallery → Gallery*
- */
-export interface GalleryDocumentDataGalleryItem {
-  /**
-   * Year field in *Gallery → Gallery*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.gallery[].year
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  year: prismic.RichTextField;
-}
-
 type GalleryDocumentDataSlicesSlice = GallerySlice;
 
 /**
@@ -1035,17 +1064,6 @@ interface GalleryDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   description: prismic.RichTextField;
-
-  /**
-   * Gallery field in *Gallery*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.gallery[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  gallery: prismic.GroupField<Simplify<GalleryDocumentDataGalleryItem>>;
 
   /**
    * Slice Zone field in *Gallery*
@@ -2458,7 +2476,6 @@ declare module "@prismicio/client" {
       FooterDocumentDataSupportersItem,
       GalleryDocument,
       GalleryDocumentData,
-      GalleryDocumentDataGalleryItem,
       GalleryDocumentDataSlicesSlice,
       HeroImageDocument,
       HeroImageDocumentData,

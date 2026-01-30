@@ -47,6 +47,15 @@
           "placeholder": "Yap Yap Yap"
         }
       },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,heading5,heading6,strong,em,hyperlink,list-item"
+        }
+      },
       "konomi_member": {
         "type": "Group",
         "config": {
@@ -65,6 +74,33 @@
               }
             }
           }
+        }
+      },
+      "why_konomi": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Why Konomi?",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading2,strong,em"
+        }
+      },
+      "why_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Why Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,heading5,heading6,strong,em,hyperlink,list-item"
+        }
+      },
+      "konomi_means_taste": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Konomi means Taste",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading2"
         }
       },
       "slices": {
