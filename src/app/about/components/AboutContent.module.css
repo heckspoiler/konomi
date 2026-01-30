@@ -72,15 +72,22 @@
     .membersContainer {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 0.5rem;
+        gap: var(--spacing-2);
     }
 
     .member a {
         font-variation-settings: var(--title-weight);
         font-size: 1rem;
         color: var(--beige);
-        padding: 1rem;
+        padding: var(--spacing-4);
 
+    }
+
+    .whykonomi {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-4);
+        padding-top: var(--spacing-16)
     }
 
 }
