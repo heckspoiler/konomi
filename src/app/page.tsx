@@ -24,20 +24,32 @@ export default async function Index() {
   const landingCategories = await client.getSingle('landing_categories');
   const downloadBar = await client.getSingle('download_bar');
 
-  const defaultVariationSlice = home.data.slices.filter(
+  const defaultSlice = home.data.slices.filter(
+    (slice) => slice.slice_type === 'basic_slice',
+  );
+
+  const gallerySlice = home.data.slices.filter(
+    (slice) => slice.slice_type === 'landing_gallery',
+  );
+
+  const defaultVariationSlice = defaultSlice.filter(
     (slice) => slice.variation === 'default',
   );
 
-  const scheduleSlice = home.data.slices.filter(
+  const scheduleSlice = defaultSlice.filter(
     (slice) => slice.variation === 'schedule',
   );
 
-  const konomiSlice = home.data.slices.filter(
+  const konomiSlice = defaultSlice.filter(
     (slice) => slice.variation === 'whoIsKonomi',
   );
 
-  const whySlice = home.data.slices.filter(
+  const whySlice = defaultSlice.filter(
     (slice) => slice.variation === 'whyKonomi',
+  );
+
+  const galleryDefaultSlice = gallerySlice.filter(
+    (slice) => slice.slice_type === 'landing_gallery',
   );
 
   return (
@@ -46,6 +58,7 @@ export default async function Index() {
       scheduleSlice={scheduleSlice}
       konomiSlice={konomiSlice}
       whySlice={whySlice}
+      galleryDefaultSlice={galleryDefaultSlice}
       landingCategories={landingCategories}
       downloadBar={downloadBar}
     />

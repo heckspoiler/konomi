@@ -1,0 +1,77 @@
+/* ! MOBLIE FIRST ! */
+
+.embla__viewport {
+    overflow: hidden;
+    width: calc(100vw - calc(2 * var(--spacing-2)));
+    margin: 0 auto;
+    padding-top: var(--spacing-20);
+}
+
+.buttonbar {
+    width: 90vw;
+    display: none;
+    padding-top: var(--spacing-4)
+}
+
+.embla__container {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+    height: 12rem;
+    gap: var(--spacing-1);
+}
+
+.embla__slide {
+    flex: 0 0 auto;
+    min-width: 0;
+    height: 100%;
+
+
+}
+
+.embla__slide a {
+    display: block;
+    height: 100%;
+}
+
+.embla__slide img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+
+.buttonbar {
+    display: none;
+}
+
+.buttonbar button:nth-of-type(1) svg {
+    transform: rotate(-135deg)
+}
+
+.buttonbar button:nth-of-type(2) svg {
+    transform: rotate(45deg)
+}
+
+/* !!!! DESKTOP !!!!! */
+
+@media screen and (min-width: 1280px) {
+    .embla__viewport {
+        overflow: hidden;
+        width: 75vw;
+        margin: 0 auto;
+        padding-top: 6rem;
+    }
+
+    .buttonbar {
+        width: 75vw;
+        display: flex;
+        justify-content: space-between;
+        padding-top: var(--spacing-4)
+    }
+}
+
+
+
+/* !!!! TABLET !!!!! */
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {}

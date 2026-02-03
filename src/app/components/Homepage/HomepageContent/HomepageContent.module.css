@@ -1,10 +1,16 @@
 .main {
     min-height: 100svh;
-    margin-top: 100svh;
+    margin-top: var(--header-height);
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 2rem;
+    gap: calc(100svh - var(--header-height));
+}
+
+.allsections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8)
 }
 
 .section {
@@ -12,6 +18,8 @@
     background-color: var(--beige);
     border: var(--border);
 }
+
+
 
 
 

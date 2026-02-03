@@ -5,5 +5,6 @@ import dynamic from "next/dynamic";
 export const components = {
   basic_slice: dynamic(() => import("./BasicSlice")),
   gallery: dynamic(() => import("./Gallery")),
+  landing_gallery: dynamic(() => import("./LandingGallery")),
   rich_text: dynamic(() => import("./RichText")),
 };

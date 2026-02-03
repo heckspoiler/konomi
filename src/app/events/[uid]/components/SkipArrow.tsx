@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Arrow from '@/app/components/arrow/Arrow';
 
 import styles from './SkipArrow.module.css';
 
-import { useMobile } from '../../../../../contexts/MobileContext';
-
 type SkipArrowProps = {
-  className: string;
+  className?: string;
   onClick: () => void;
 };
 
 export default function SkipArrow({ className, onClick }: SkipArrowProps) {
-  const { isMobile } = useMobile();
+  const [isHovered, setIsHovered] = useState<boolean | undefined>(false);
 
   return (
-    <button className={`${styles.button} ${className}`} onClick={onClick}>
-      <Arrow height={!isMobile ? '18' : '12'} width={!isMobile ? '18' : '12'} />
+    <button
+      className={`${styles.button} ${className}`}
+      onClick={onClick}
+      onMouseOver={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Arrow
+        height={'12'}
+        width={'12'}
+        fill={`${isHovered ? 'var(--red)' : 'var(--beige)'}`}
+      />
     </button>
   );
 }

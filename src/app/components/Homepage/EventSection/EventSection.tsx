@@ -11,10 +11,10 @@ import Arrow from '../../arrow/Arrow';
 import { PrismicNextLink } from '@prismicio/next';
 import { useEvents } from '../../../../../contexts/EventsContext';
 import {
-  BasicSliceSlice,
-  BasicSliceSliceSchedulePrimary,
+   BasicSliceSliceSchedulePrimary,
   DownloadBarDocument,
   EventDocument,
+  PageDocumentDataSlicesSlice,
 } from '../../../../../prismicio-types';
 
 import type { components as SliceComponents } from '@/slices';
@@ -24,7 +24,7 @@ export default function EventSection({
   components,
   downloadBar,
 }: {
-  scheduleSlice: BasicSliceSlice[];
+  scheduleSlice: PageDocumentDataSlicesSlice[];
   components: typeof SliceComponents;
   downloadBar: DownloadBarDocument;
 }) {

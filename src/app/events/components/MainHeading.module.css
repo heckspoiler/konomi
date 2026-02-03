@@ -1,6 +1,6 @@
 .mainHeadingContainer {
     position: fixed;
-    top: calc(var(--header-height) - 2px);
+    top: calc(var(--header-height) - var(--spacing-2));
     padding-right: var(--main-container-padding);
     width: 100%;
     z-index: 1;

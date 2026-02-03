@@ -5,8 +5,9 @@ import styles from './HomepageContent.module.css';
 
 import AboutSection from '../AboutSection/AboutSection';
 import EventSection from '../EventSection/EventSection';
-import KonomiSection from '../KonomiSection/KonomiSection';
 import WhySection from '../WhySection/WhySection';
+
+import GallerySection from '../GallerySection/GallerySection';
 import ProgressIndicator from '../../header/HeaderContent/ProgressIndicator/ProgressIndicator';
 
 import { components } from '@/slices';
@@ -14,42 +15,43 @@ import { components } from '@/slices';
 import MainSection from './MainSection/MainSection';
 
 import {
-  BasicSliceSlice,
   DownloadBarDocument,
   LandingCategoriesDocument,
+  PageDocumentDataSlicesSlice,
 } from '../../../../../prismicio-types';
 
 interface HomepageContentProps {
-  defaultVariationSlice: BasicSliceSlice[];
-  scheduleSlice: BasicSliceSlice[];
-  konomiSlice: BasicSliceSlice[];
-  whySlice: BasicSliceSlice[];
+  defaultVariationSlice: PageDocumentDataSlicesSlice[];
+  scheduleSlice: PageDocumentDataSlicesSlice[];
+  konomiSlice: PageDocumentDataSlicesSlice[];
+  whySlice: PageDocumentDataSlicesSlice[];
   landingCategories: LandingCategoriesDocument;
   downloadBar: DownloadBarDocument;
+  galleryDefaultSlice: PageDocumentDataSlicesSlice[];
 }
 
-type SectionId = 'about' | 'events' | 'konomi' | 'why' | '';
+type SectionId = 'about' | 'events' | 'konomi' | 'why' | 'gallery' | '';
 
 export default function HomepageContent({
   defaultVariationSlice,
   scheduleSlice,
-  konomiSlice,
   whySlice,
+  galleryDefaultSlice,
   landingCategories,
   downloadBar,
 }: HomepageContentProps) {
   const [activeSection, setActiveSection] = useState<SectionId>('');
   const aboutRef = useRef<HTMLDivElement>(null);
   const eventsRef = useRef<HTMLDivElement>(null);
-  const konomiRef = useRef<HTMLDivElement>(null);
   const whyRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sectionRefs = {
       about: aboutRef,
       events: eventsRef,
-      konomi: konomiRef,
       why: whyRef,
+      gallery: galleryRef,
     };
 
     const options = {
@@ -104,13 +106,7 @@ export default function HomepageContent({
         />
       ),
     },
-    {
-      id: 'konomi',
-      ref: konomiRef,
-      component: (
-        <KonomiSection konomiSlice={konomiSlice} components={components} />
-      ),
-    },
+
     {
       id: 'why',
       ref: whyRef,
@@ -120,11 +116,19 @@ export default function HomepageContent({
 
   return (
     <section className={styles.main}>
-      {sectionConfig.map(({ id, ref, component }) => (
-        <MainSection key={id} ref={ref} id={id}>
-          {component}
-        </MainSection>
-      ))}
+      <div className={styles.gallerysection}>
+        <GallerySection
+          gallerySlice={galleryDefaultSlice}
+          components={components}
+        />
+      </div>
+      <div className={styles.allsections}>
+        {sectionConfig.map(({ id, ref, component }) => (
+          <MainSection key={id} ref={ref} id={id}>
+            {component}
+          </MainSection>
+        ))}
+      </div>
       <ProgressIndicator
         activeSection={activeSection}
         landingCategories={landingCategories}

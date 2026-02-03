@@ -1623,7 +1623,7 @@ export type NewsarticleDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = BasicSliceSlice;
+type PageDocumentDataSlicesSlice = LandingGallerySlice | BasicSliceSlice;
 
 /**
  * Content for Page documents
@@ -2388,6 +2388,78 @@ export type GallerySlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *LandingGallery → Default → Primary → Gallery*
+ */
+export interface LandingGallerySliceDefaultPrimaryGalleryItem {
+  /**
+   * Image field in *LandingGallery → Default → Primary → Gallery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_gallery.default.primary.gallery[].item
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  item: prismic.ImageField<never>;
+
+  /**
+   * Link field in *LandingGallery → Default → Primary → Gallery*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_gallery.default.primary.gallery[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *LandingGallery → Default → Primary*
+ */
+export interface LandingGallerySliceDefaultPrimary {
+  /**
+   * Gallery field in *LandingGallery → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_gallery.default.primary.gallery[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  gallery: prismic.GroupField<
+    Simplify<LandingGallerySliceDefaultPrimaryGalleryItem>
+  >;
+}
+
+/**
+ * Default variation for LandingGallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LandingGallerySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LandingGallerySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *LandingGallery*
+ */
+type LandingGallerySliceVariation = LandingGallerySliceDefault;
+
+/**
+ * LandingGallery Shared Slice
+ *
+ * - **API ID**: `landing_gallery`
+ * - **Description**: LandingGallery
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LandingGallerySlice = prismic.SharedSlice<
+  "landing_gallery",
+  LandingGallerySliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -2523,6 +2595,11 @@ declare module "@prismicio/client" {
       GallerySliceDefaultPrimary,
       GallerySliceVariation,
       GallerySliceDefault,
+      LandingGallerySlice,
+      LandingGallerySliceDefaultPrimaryGalleryItem,
+      LandingGallerySliceDefaultPrimary,
+      LandingGallerySliceVariation,
+      LandingGallerySliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

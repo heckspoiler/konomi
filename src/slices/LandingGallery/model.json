@@ -1,0 +1,47 @@
+{
+  "id": "landing_gallery",
+  "type": "SharedSlice",
+  "name": "LandingGallery",
+  "description": "LandingGallery",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "gallery": {
+          "type": "Group",
+          "config": {
+            "label": "Gallery",
+            "repeat": true,
+            "fields": {
+              "item": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
