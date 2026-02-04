@@ -71,6 +71,13 @@
           }
         }
       },
+      "publishing_date": {
+        "type": "Date",
+        "config": {
+          "label": "Publishing Date",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

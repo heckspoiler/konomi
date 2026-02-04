@@ -95,15 +95,6 @@
             "multi": "heading4"
           }
         },
-        "text": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Text",
-            "placeholder": "Konomi ist das Festival japanischen Geschmacks in Basel.",
-            "allowTargetBlank": true,
-            "multi": "paragraph,heading5,heading6,strong,em,hyperlink,list-item"
-          }
-        },
         "program_heading": {
           "type": "StructuredText",
           "config": {
@@ -120,42 +111,6 @@
             "placeholder": "In unserem Programm findest du genaue Details über Veranstaltungen",
             "allowTargetBlank": true,
             "multi": "paragraph,heading5,heading6,strong,em,hyperlink,list-item"
-          }
-        },
-        "event": {
-          "type": "Group",
-          "config": {
-            "label": "Event",
-            "repeat": true,
-            "fields": {
-              "event_name": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "Event Name",
-                  "placeholder": "Sake Trinken",
-                  "allowTargetBlank": true,
-                  "multi": "heading5"
-                }
-              },
-              "event_date": {
-                "type": "Date",
-                "config": {
-                  "label": "Event Date",
-                  "placeholder": ""
-                }
-              },
-              "eventfrog_link": {
-                "type": "Link",
-                "config": {
-                  "label": "Eventfrog Link",
-                  "placeholder": "Mehr",
-                  "select": null,
-                  "allowTargetBlank": true,
-                  "allowText": true,
-                  "repeat": false
-                }
-              }
-            }
           }
         },
         "more_events_link": {
@@ -281,6 +236,73 @@
             "placeholder": "dt.: \"Geschmack\"",
             "allowTargetBlank": true,
             "multi": "heading4"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "news",
+      "name": "News",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "japanese_subtitles_first": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Japanese Subtitles First",
+            "placeholder": "食べる [ta|be|ru] -- ",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
+        "japanese_subtitle_second": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Japanese Subtitle Second",
+            "placeholder": "dt.: \"essen\"",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
+        "news_heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "News Heading",
+            "placeholder": "News",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "news_preview": {
+          "type": "StructuredText",
+          "config": {
+            "label": "News Preview",
+            "placeholder": "In unserem Programm findest du genaue Details über Veranstaltungen",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading5,heading6,strong,em,hyperlink,list-item"
+          }
+        },
+        "more_news_link": {
+          "type": "Link",
+          "config": {
+            "label": "More News Link",
+            "placeholder": "Mehr News",
+            "select": null,
+            "allowTargetBlank": false,
+            "allowText": true,
+            "repeat": false
           }
         }
       },

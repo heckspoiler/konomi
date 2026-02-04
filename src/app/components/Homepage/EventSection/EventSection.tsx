@@ -11,7 +11,7 @@ import Arrow from '../../arrow/Arrow';
 import { PrismicNextLink } from '@prismicio/next';
 import { useEvents } from '../../../../../contexts/EventsContext';
 import {
-   BasicSliceSliceSchedulePrimary,
+  BasicSliceSliceSchedulePrimary,
   DownloadBarDocument,
   EventDocument,
   PageDocumentDataSlicesSlice,
@@ -47,7 +47,6 @@ export default function EventSection({
   return (
     <SectionContainer>
       <div className={styles.programContainer}>
-        {' '}
         <SliceZone slices={scheduleSlice} components={components} />
         <div className={styles.programText}>
           <PrismicRichText field={schedulePrimary.program_text} />

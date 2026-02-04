@@ -17,34 +17,48 @@ import MainSection from './MainSection/MainSection';
 import {
   DownloadBarDocument,
   LandingCategoriesDocument,
+  NewsarticleDocument,
   PageDocumentDataSlicesSlice,
 } from '../../../../../prismicio-types';
+import NewsSection from '../NewsSection/NewsSection';
 
 interface HomepageContentProps {
   defaultVariationSlice: PageDocumentDataSlicesSlice[];
   scheduleSlice: PageDocumentDataSlicesSlice[];
   konomiSlice: PageDocumentDataSlicesSlice[];
+  newsSlice: PageDocumentDataSlicesSlice[];
+  news: NewsarticleDocument[];
   whySlice: PageDocumentDataSlicesSlice[];
   landingCategories: LandingCategoriesDocument;
   downloadBar: DownloadBarDocument;
   galleryDefaultSlice: PageDocumentDataSlicesSlice[];
 }
 
-type SectionId = 'about' | 'events' | 'konomi' | 'why' | 'gallery' | '';
+type SectionId =
+  | 'about'
+  | 'events'
+  | 'konomi'
+  | 'why'
+  | 'gallery'
+  | 'news'
+  | '';
 
 export default function HomepageContent({
   defaultVariationSlice,
   scheduleSlice,
   whySlice,
+  newsSlice,
   galleryDefaultSlice,
   landingCategories,
   downloadBar,
+  news,
 }: HomepageContentProps) {
   const [activeSection, setActiveSection] = useState<SectionId>('');
   const aboutRef = useRef<HTMLDivElement>(null);
   const eventsRef = useRef<HTMLDivElement>(null);
   const whyRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const newsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sectionRefs = {
@@ -52,6 +66,7 @@ export default function HomepageContent({
       events: eventsRef,
       why: whyRef,
       gallery: galleryRef,
+      newsRef: newsRef,
     };
 
     const options = {
@@ -92,6 +107,17 @@ export default function HomepageContent({
         <AboutSection
           defaultVariationSlice={defaultVariationSlice}
           components={components}
+        />
+      ),
+    },
+    {
+      id: 'news',
+      ref: newsRef,
+      component: (
+        <NewsSection
+          newsSlice={newsSlice}
+          components={components}
+          news={news}
         />
       ),
     },

@@ -1,0 +1,65 @@
+.container {
+    display: flex;
+    padding: var(--spacing-4) 0;
+    border-bottom: var(--border);
+    display: flex;
+    gap: var(--spacing-4);
+
+}
+
+.container:last-of-type {
+    border-bottom: none;
+
+}
+
+.imagecontainer {
+    height: 5rem;
+
+    width: auto;
+    overflow: hidden;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+}
+
+.imagecontainer img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+    height: 5rem;
+
+    justify-content: space-between;
+}
+
+.titlecontainer h3 {
+    font-variation-settings: var(--title-weight);
+    text-transform: uppercase;
+    font-size: var(--spacing-4)
+}
+
+.description p {
+    width: 80%;
+}
+
+.linkcontainer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: var(--spacing-2);
+    flex-shrink: 0;
+    width: fit-content;
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+
+.linkcontainer a {
+    font-variation-settings: var(--title-weight);
+    text-transform: uppercase;
+    font-size: var(--spacing-3);
+}

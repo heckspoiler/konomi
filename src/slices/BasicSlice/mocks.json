@@ -76,61 +76,6 @@
 					}
 				]
 			},
-			"text": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Amet elit exercitation pariatur incididunt nostrud id culpa ut laboris aliqua ea culpa. Eiusmod mollit proident do ipsum enim sint irure duis voluptate eiusmod. Consectetur commodo consectetur proident veniam nostrud dolore labore enim enim ullamco."
-						}
-					}
-				]
-			},
-			"event": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"event_name",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "heading5",
-											"content": {
-												"text": "Cloud"
-											}
-										}
-									]
-								}
-							],
-							[
-								"event_date",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Date",
-									"value": "2013-05-01"
-								}
-							],
-							[
-								"eventfrog_link",
-								{
-									"key": "b1b96d13-e5cd-4f05-98ae-c8070645a936",
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "ExternalLink",
-										"url": "http://twitter.com",
-										"text": "organization"
-									}
-								}
-							]
-						]
-					}
-				]
-			},
 			"program_heading": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -315,6 +260,82 @@
 						}
 					}
 				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "news",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Remove"
+						}
+					}
+				]
+			},
+			"japanese_subtitles_first": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Which"
+						}
+					}
+				]
+			},
+			"japanese_subtitle_second": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Nearly"
+						}
+					}
+				]
+			},
+			"news_preview": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Esse exercitation ullamco aliquip quis mollit excepteur adipisicing. Irure ut dolor pariatur eiusmod et laborum ex deserunt commodo. Ullamco ad do aliqua ad consequat eiusmod sit anim."
+						}
+					}
+				]
+			},
+			"news_heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Citizen"
+						}
+					}
+				]
+			},
+			"more_news_link": {
+				"__TYPE__": "LinkContent",
+				"key": "b66dc5cc-0e34-4f2d-8c7a-5201e88e977c",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "even"
+				}
 			}
 		},
 		"items": [

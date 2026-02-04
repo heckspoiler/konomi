@@ -23,6 +23,16 @@ export default async function Index() {
   const home = await client.getByUID('page', 'home');
   const landingCategories = await client.getSingle('landing_categories');
   const downloadBar = await client.getSingle('download_bar');
+  const newsFetch = await client.getAllByType('newsarticle', {
+    limit: 10,
+  });
+
+  const news = newsFetch.sort((a, b) => {
+    return (
+      new Date(a.data.publishing_date as string).getTime() -
+      new Date(b.data.publishing_date as string).getTime()
+    );
+  });
 
   const defaultSlice = home.data.slices.filter(
     (slice) => slice.slice_type === 'basic_slice',
@@ -39,6 +49,8 @@ export default async function Index() {
   const scheduleSlice = defaultSlice.filter(
     (slice) => slice.variation === 'schedule',
   );
+
+  const newsSlice = defaultSlice.filter((slice) => slice.variation === 'news');
 
   const konomiSlice = defaultSlice.filter(
     (slice) => slice.variation === 'whoIsKonomi',
@@ -61,6 +73,8 @@ export default async function Index() {
       galleryDefaultSlice={galleryDefaultSlice}
       landingCategories={landingCategories}
       downloadBar={downloadBar}
+      newsSlice={newsSlice}
+      news={news}
     />
   );
 }

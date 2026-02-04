@@ -16,7 +16,7 @@ export default function ArticlePreview({ article }: ArticlePreviewProps) {
     <div className={styles.articlepreview} key={article.id}>
       <div className={styles.uppercontainer}>
         <div className={styles.date}>
-          <p>{formatDate(article.first_publication_date)}</p>
+          <p>{formatDate(article.data.publishing_date)}</p>
         </div>
         <div className={styles.tags}>
           <IconComponentNews page={article} />

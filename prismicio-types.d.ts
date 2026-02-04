@@ -1565,6 +1565,17 @@ interface NewsarticleDocumentData {
   gallery: prismic.GroupField<Simplify<NewsarticleDocumentDataGalleryItem>>;
 
   /**
+   * Publishing Date field in *Newsarticle*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsarticle.publishing_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/date
+   */
+  publishing_date: prismic.DateField;
+
+  /**
    * Slice Zone field in *Newsarticle*
    *
    * - **Field Type**: Slice Zone
@@ -1922,47 +1933,6 @@ export type AllDocumentTypes =
   | SettingsDocument;
 
 /**
- * Item in *BasicSlice → Schedule → Primary → Event*
- */
-export interface BasicSliceSliceSchedulePrimaryEventItem {
-  /**
-   * Event Name field in *BasicSlice → Schedule → Primary → Event*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Sake Trinken
-   * - **API ID Path**: basic_slice.schedule.primary.event[].event_name
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  event_name: prismic.RichTextField;
-
-  /**
-   * Event Date field in *BasicSlice → Schedule → Primary → Event*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: *None*
-   * - **API ID Path**: basic_slice.schedule.primary.event[].event_date
-   * - **Documentation**: https://prismic.io/docs/fields/date
-   */
-  event_date: prismic.DateField;
-
-  /**
-   * Eventfrog Link field in *BasicSlice → Schedule → Primary → Event*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Mehr
-   * - **API ID Path**: basic_slice.schedule.primary.event[].eventfrog_link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  eventfrog_link: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-}
-
-/**
  * Primary content in *BasicSlice → Default → Primary*
  */
 export interface BasicSliceSliceDefaultPrimary {
@@ -2065,16 +2035,6 @@ export interface BasicSliceSliceSchedulePrimary {
   japanese_subtitle_second: prismic.RichTextField;
 
   /**
-   * Text field in *BasicSlice → Schedule → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Konomi ist das Festival japanischen Geschmacks in Basel.
-   * - **API ID Path**: basic_slice.schedule.primary.text
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  text: prismic.RichTextField;
-
-  /**
    * Program Heading field in *BasicSlice → Schedule → Primary*
    *
    * - **Field Type**: Rich Text
@@ -2093,16 +2053,6 @@ export interface BasicSliceSliceSchedulePrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   program_text: prismic.RichTextField;
-
-  /**
-   * Event field in *BasicSlice → Schedule → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: basic_slice.schedule.primary.event[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  event: prismic.GroupField<Simplify<BasicSliceSliceSchedulePrimaryEventItem>>;
 
   /**
    * More Events Link field in *BasicSlice → Schedule → Primary*
@@ -2277,13 +2227,98 @@ export type BasicSliceSliceWhyKonomi = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *BasicSlice → News → Primary*
+ */
+export interface BasicSliceSliceNewsPrimary {
+  /**
+   * Heading field in *BasicSlice → News → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: basic_slice.news.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitles First field in *BasicSlice → News → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: 食べる [ta|be|ru] --
+   * - **API ID Path**: basic_slice.news.primary.japanese_subtitles_first
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  japanese_subtitles_first: prismic.RichTextField;
+
+  /**
+   * Japanese Subtitle Second field in *BasicSlice → News → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: dt.: "essen"
+   * - **API ID Path**: basic_slice.news.primary.japanese_subtitle_second
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  japanese_subtitle_second: prismic.RichTextField;
+
+  /**
+   * News Heading field in *BasicSlice → News → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: News
+   * - **API ID Path**: basic_slice.news.primary.news_heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  news_heading: prismic.RichTextField;
+
+  /**
+   * News Preview field in *BasicSlice → News → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: In unserem Programm findest du genaue Details über Veranstaltungen
+   * - **API ID Path**: basic_slice.news.primary.news_preview
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  news_preview: prismic.RichTextField;
+
+  /**
+   * More News Link field in *BasicSlice → News → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Mehr News
+   * - **API ID Path**: basic_slice.news.primary.more_news_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  more_news_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * News variation for BasicSlice Slice
+ *
+ * - **API ID**: `news`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BasicSliceSliceNews = prismic.SharedSliceVariation<
+  "news",
+  Simplify<BasicSliceSliceNewsPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *BasicSlice*
  */
 type BasicSliceSliceVariation =
   | BasicSliceSliceDefault
   | BasicSliceSliceSchedule
   | BasicSliceSliceWhoIsKonomi
-  | BasicSliceSliceWhyKonomi;
+  | BasicSliceSliceWhyKonomi
+  | BasicSliceSliceNews;
 
 /**
  * BasicSlice Shared Slice
@@ -2581,15 +2616,16 @@ declare module "@prismicio/client" {
       AllDocumentTypes,
       BasicSliceSlice,
       BasicSliceSliceDefaultPrimary,
-      BasicSliceSliceSchedulePrimaryEventItem,
       BasicSliceSliceSchedulePrimary,
       BasicSliceSliceWhoIsKonomiPrimary,
       BasicSliceSliceWhyKonomiPrimary,
+      BasicSliceSliceNewsPrimary,
       BasicSliceSliceVariation,
       BasicSliceSliceDefault,
       BasicSliceSliceSchedule,
       BasicSliceSliceWhoIsKonomi,
       BasicSliceSliceWhyKonomi,
+      BasicSliceSliceNews,
       GallerySlice,
       GallerySliceDefaultPrimaryImagesItem,
       GallerySliceDefaultPrimary,
