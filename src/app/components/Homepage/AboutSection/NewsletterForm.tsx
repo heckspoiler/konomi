@@ -4,16 +4,11 @@ import React, { useState } from 'react';
 
 import cssStyles from './NewsletterForm.module.css';
 
-import Arrow from '../../arrow/Arrow';
-
 export default function NewsletterForm({
   stylesprops,
-  arrowFill,
 }: {
   stylesprops?: Record<string, string>;
-  arrowFill?: string;
 }) {
-  const [isHovered, setIsHovered] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
@@ -135,12 +130,7 @@ export default function NewsletterForm({
             </label>
           </div>
           <div className={styles.buttonContainer}>
-            <button
-              type="submit"
-              className={styles.submitButton}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
+            <button type="submit" className={styles.submitButton}>
               <span>ANMELDEN</span>
             </button>
           </div>
