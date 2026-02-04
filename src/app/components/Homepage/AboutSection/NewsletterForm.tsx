@@ -142,13 +142,6 @@ export default function NewsletterForm({
               onMouseLeave={() => setIsHovered(false)}
             >
               <span>ANMELDEN</span>
-              <span>
-                <Arrow
-                  fill={
-                    !isHovered && !arrowFill ? 'var(--beige)' : 'var(--red)'
-                  }
-                />
-              </span>
             </button>
           </div>
         </>
