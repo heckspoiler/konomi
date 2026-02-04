@@ -142,7 +142,7 @@ export default function HomepageContent({
 
   return (
     <section className={styles.main}>
-      <div className={styles.gallerysection}>
+      <div className={styles.gallerysection} id="gallery">
         <GallerySection
           gallerySlice={galleryDefaultSlice}
           components={components}
