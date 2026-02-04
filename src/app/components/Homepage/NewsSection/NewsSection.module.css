@@ -1,0 +1,14 @@
+.linkcontainer {
+    display: flex;
+
+
+}
+
+.linkcontainer a {
+
+    font-variation-settings: var(--title-weight);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}

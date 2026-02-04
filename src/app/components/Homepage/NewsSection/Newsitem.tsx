@@ -3,7 +3,6 @@ import React from 'react';
 import styles from './Newsitem.module.css';
 
 import { NewsarticleDocument } from '../../../../../prismicio-types';
-import { PrismicRichText } from '@prismicio/react';
 import { PrismicNextImage } from '@prismicio/next';
 import Link from 'next/link';
 
@@ -47,7 +46,7 @@ export default function NewsItem({ item }: Props) {
             Zum Artikel <Arrow />
           </Link>
         </div>
-      </div>{' '}
+      </div>
     </div>
   );
 }

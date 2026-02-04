@@ -5,11 +5,14 @@ import SectionContainer from '../SectionContainer/SectionContainer';
 
 import { SliceZone } from '@prismicio/react';
 import {
+  BasicSliceSliceNewsPrimary,
   NewsarticleDocument,
   PageDocumentDataSlicesSlice,
 } from '../../../../../prismicio-types';
 import type { components as SliceComponents } from '@/slices';
 import NewsItem from './Newsitem';
+import { PrismicNextLink } from '@prismicio/next';
+import Arrow from '../../arrow/Arrow';
 
 type NewsSectionProps = {
   newsSlice: PageDocumentDataSlicesSlice[];
@@ -22,6 +25,8 @@ export default function NewsSection({
   components,
   news,
 }: NewsSectionProps) {
+  const newsSlicePrimary = newsSlice[0].primary as BasicSliceSliceNewsPrimary;
+
   return (
     <SectionContainer>
       <div className={styles.newsContainer}>
@@ -31,6 +36,12 @@ export default function NewsSection({
         {news.map((item, index) => (
           <NewsItem key={index} item={item} />
         ))}
+      </div>
+      <div className={styles.linkcontainer}>
+        <PrismicNextLink field={newsSlicePrimary.more_news_link}>
+          {newsSlicePrimary.more_news_link.text}
+          <Arrow height="12" width="12" />
+        </PrismicNextLink>
       </div>
     </SectionContainer>
   );
