@@ -16,7 +16,8 @@
     text-transform: uppercase;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--spacing-2);
+    border-bottom: var(--border);
 }
 
 .moreEventsLink svg {

@@ -1,6 +1,7 @@
 .linkcontainer {
     display: flex;
-
+    width: fit-content;
+    border-bottom: var(--border);
 
 }
 

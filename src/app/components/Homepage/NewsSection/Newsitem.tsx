@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import styles from './Newsitem.module.css';
 
-import { NewsarticleDocument } from '../../../../../prismicio-types';
+import {
+  BasicSliceSliceNewsPrimary,
+  NewsarticleDocument,
+} from '../../../../../prismicio-types';
 import { PrismicNextImage } from '@prismicio/next';
 import Link from 'next/link';
 
@@ -14,10 +17,15 @@ import Arrow from '../../arrow/Arrow';
 
 type Props = {
   item: NewsarticleDocument;
+  newsSlicePrimary: BasicSliceSliceNewsPrimary;
 };
 
-export default function NewsItem({ item }: Props) {
+export default function NewsItem({ item, newsSlicePrimary }: Props) {
   const { isMobile } = useMobile();
+
+  const height = useMemo(() => {
+    return isMobile ? '8.5' : '15';
+  }, [isMobile]);
 
   return (
     <div className={styles.container}>
@@ -43,7 +51,7 @@ export default function NewsItem({ item }: Props) {
         </div>{' '}
         <div className={styles.linkcontainer}>
           <Link href={item.url as string}>
-            Zum Artikel <Arrow />
+            {newsSlicePrimary.item_link_text} <Arrow height={height} />
           </Link>
         </div>
       </div>

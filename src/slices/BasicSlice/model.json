@@ -304,6 +304,13 @@
             "allowText": true,
             "repeat": false
           }
+        },
+        "item_link_text": {
+          "type": "Text",
+          "config": {
+            "label": "Item Link Text",
+            "placeholder": "Zum Artikel"
+          }
         }
       },
       "items": {}

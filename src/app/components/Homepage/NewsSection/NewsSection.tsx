@@ -34,7 +34,11 @@ export default function NewsSection({
       </div>
       <div className={styles.newspreviews}>
         {news.map((item, index) => (
-          <NewsItem key={index} item={item} />
+          <NewsItem
+            key={index}
+            item={item}
+            newsSlicePrimary={newsSlicePrimary}
+          />
         ))}
       </div>
       <div className={styles.linkcontainer}>

@@ -2295,6 +2295,16 @@ export interface BasicSliceSliceNewsPrimary {
     prismic.FieldState,
     never
   >;
+
+  /**
+   * Item Link Text field in *BasicSlice → News → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Zum Artikel
+   * - **API ID Path**: basic_slice.news.primary.item_link_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  item_link_text: prismic.KeyTextField;
 }
 
 /**

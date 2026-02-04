@@ -329,13 +329,18 @@
 				]
 			},
 			"more_news_link": {
-				"__TYPE__": "LinkContent",
 				"key": "b66dc5cc-0e34-4f2d-8c7a-5201e88e977c",
+				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
 					"url": "https://prismic.io",
 					"text": "even"
 				}
+			},
+			"item_link_text": {
+				"__TYPE__": "FieldContent",
+				"value": "careful",
+				"type": "Text"
 			}
 		},
 		"items": [
