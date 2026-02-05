@@ -17,6 +17,14 @@
     cursor: pointer;
 }
 
+.year {
+    position: sticky;
+    top: calc(var(--header-height) + 2.2rem);
+    left: 0;
+    background-color: var(--beige);
+    width: fit-content;
+}
+
 /* !!!! DESKTOP !!!!! */
 
 @media screen and (min-width: 768px) {

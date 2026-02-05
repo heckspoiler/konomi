@@ -32,7 +32,9 @@ const Gallery = ({
       data-slice-variation={slice.variation}
       className={styles.yearcontainer}
     >
-      <PrismicRichText field={slice.primary.year} />
+      <div className={styles.year}>
+        <PrismicRichText field={slice.primary.year} />
+      </div>
       <div className={styles.gallery}>
         {slice.primary.images.map((item, index) => (
           <PrismicNextImage
