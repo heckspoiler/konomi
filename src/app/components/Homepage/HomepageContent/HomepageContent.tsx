@@ -5,7 +5,6 @@ import styles from './HomepageContent.module.css';
 
 import AboutSection from '../AboutSection/AboutSection';
 import EventSection from '../EventSection/EventSection';
-import WhySection from '../WhySection/WhySection';
 
 import GallerySection from '../GallerySection/GallerySection';
 import ProgressIndicator from '../../header/HeaderContent/ProgressIndicator/ProgressIndicator';
@@ -70,8 +69,8 @@ export default function HomepageContent({
     };
 
     const options = {
-      root: null,
-      rootMargin: '-48% 0px -48% 0px',
+      root: document,
+      rootMargin: '10% 0px 0px 0px',
       threshold: 0,
     };
 
@@ -132,17 +131,11 @@ export default function HomepageContent({
         />
       ),
     },
-
-    {
-      id: 'why',
-      ref: whyRef,
-      component: <WhySection whySlice={whySlice} components={components} />,
-    },
   ];
 
   return (
     <section className={styles.main}>
-      <div className={styles.gallerysection} id="gallery">
+      <div className={styles.gallerysection} id="gallery" ref={galleryRef}>
         <GallerySection
           gallerySlice={galleryDefaultSlice}
           components={components}
