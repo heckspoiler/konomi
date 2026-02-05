@@ -16,6 +16,7 @@ import NewsletterForm from '@/app/components/Homepage/AboutSection/NewsletterFor
 import TagContainer from '../../components/TagContainer';
 import { useMobile } from '../../../../../contexts/MobileContext';
 import OverlayContainer from '@/app/components/OverlayContainer/OverlayContainer';
+import { isFilled } from '@prismicio/client';
 
 type NewsArticleContentProps = {
   page: NewsarticleDocument;
@@ -54,7 +55,9 @@ export default function NewsarticleContent({
           <PrismicRichText field={page.data.description} />
         </DescriptionContainer>
         <div className={styles.backtolink}>
-          <PrismicNextLink field={page.data.redirect_link} />
+          {isFilled.link(page.data.redirect_link) && (
+            <PrismicNextLink field={page.data.redirect_link} />
+          )}
           <PrismicNextLink href={newsPage.url as string}>
             Zur Übersicht
           </PrismicNextLink>
