@@ -10,9 +10,16 @@ export default async function Page() {
   const page = await client.getSingle('news');
   const articles = await client.getAllByType('newsarticle');
 
+  const sortedArticles = articles.sort((a, b) => {
+    return (
+      new Date(b.data.publishing_date as string).getTime() -
+      new Date(a.data.publishing_date as string).getTime()
+    );
+  });
+
   return (
     <MainContainer>
-      <NewsContent page={page} articles={articles} />
+      <NewsContent page={page} articles={sortedArticles} />
     </MainContainer>
   );
 }

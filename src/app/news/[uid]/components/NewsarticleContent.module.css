@@ -43,6 +43,9 @@
 
 .backtolink {
     width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
 }
 
 .backtolink a {
@@ -52,11 +55,12 @@
     color: var(--beige);
     text-transform: uppercase;
     font-size: 0.8rem;
-    transition: all 0.2s var(--bezier)
+    transition: all 0.2s var(--bezier);
+    width: fit-content;
 }
 
 
-.backtolink:hover a {
+.backtolink a:hover {
 
     background-color: var(--beige);
     color: var(--red);

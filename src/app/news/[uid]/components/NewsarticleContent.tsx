@@ -54,6 +54,7 @@ export default function NewsarticleContent({
           <PrismicRichText field={page.data.description} />
         </DescriptionContainer>
         <div className={styles.backtolink}>
+          <PrismicNextLink field={page.data.redirect_link} />
           <PrismicNextLink href={newsPage.url as string}>
             Zur Übersicht
           </PrismicNextLink>

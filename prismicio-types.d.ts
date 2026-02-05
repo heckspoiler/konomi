@@ -1588,6 +1588,23 @@ interface NewsarticleDocumentData {
   has_newsletterfield: prismic.BooleanField;
 
   /**
+   * Redirect Link field in *Newsarticle*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsarticle.redirect_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  redirect_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
    * Slice Zone field in *Newsarticle*
    *
    * - **Field Type**: Slice Zone

@@ -87,6 +87,17 @@
           "default_value": false
         }
       },
+      "redirect_link": {
+        "type": "Link",
+        "config": {
+          "label": "Redirect Link",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
