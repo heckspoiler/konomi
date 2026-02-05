@@ -29,6 +29,4 @@
     .section {
         padding: calc(var(--header-height) + 1rem) var(--header-height);
     }
-
-
 }

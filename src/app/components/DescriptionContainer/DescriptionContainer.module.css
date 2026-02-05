@@ -1,0 +1,14 @@
+.descriptioncontainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+
+.descriptioncontainer * {
+    font-size: 1rem;
+    font-family: var(--text-font)
+}
+
+.descriptioncontainer a {
+    text-decoration: underline;
+}

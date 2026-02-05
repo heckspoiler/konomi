@@ -24,15 +24,16 @@ type DateComponentProps = EventProps | NewsProps;
 
 export default function DateComponent(props: DateComponentProps) {
   if (props.variant === 'news') {
-    const publishingDate = formatDateTime(
-      props.document.first_publication_date,
-    );
+    const publishingDate = props.document.data.publishing_date
+      ?.split('-')
+      .reverse()
+      .join('.');
     return (
       <div className={styles.dateContainer}>
         <CalendarIcon />
         <div className={styles.textContainer}>
           <p>
-            <span>{publishingDate.dayMonthYear}</span>
+            <span>{publishingDate}</span>
           </p>
         </div>
       </div>

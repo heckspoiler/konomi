@@ -1576,6 +1576,18 @@ interface NewsarticleDocumentData {
   publishing_date: prismic.DateField;
 
   /**
+   * Has Newsletterfield field in *Newsarticle*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: newsarticle.has_newsletterfield
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  has_newsletterfield: prismic.BooleanField;
+
+  /**
    * Slice Zone field in *Newsarticle*
    *
    * - **Field Type**: Slice Zone

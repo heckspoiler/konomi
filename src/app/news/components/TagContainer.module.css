@@ -1,0 +1,14 @@
+.tags {
+    display: flex;
+    gap: var(--spacing-2);
+}
+
+.tags p {
+    color: var(--red);
+    background-color: var(--beige);
+    border: var(--border);
+    padding: var(--spacing-1) var(--spacing-2);
+    font-size: 0.6rem;
+    line-height: 100%;
+    height: fit-content;
+}

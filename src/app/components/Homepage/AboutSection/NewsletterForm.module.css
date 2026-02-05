@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    width: 100%;
+    width: fit-content
 }
 
 .form h2 {
@@ -18,7 +18,7 @@
     outline: none;
     font-family: var(--title-font);
     font-weight: var(--subtitle-weight);
-    width: 100% !important;
+    width: 100%;
     padding: var(--spacing-3);
     color: var(--red);
     font-variation-settings: var(--subtitle-weight);

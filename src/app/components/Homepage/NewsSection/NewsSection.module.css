@@ -2,11 +2,9 @@
     display: flex;
     width: fit-content;
     border-bottom: var(--border);
-
 }
 
 .linkcontainer a {
-
     font-variation-settings: var(--title-weight);
     text-transform: uppercase;
     display: flex;

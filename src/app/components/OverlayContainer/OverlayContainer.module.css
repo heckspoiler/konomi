@@ -1,0 +1,39 @@
+.overlayImageContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--beige);
+    height: 100svh;
+    width: 100svw;
+    display: none;
+    z-index: 1000;
+}
+
+.isOpen {
+    display: block;
+}
+
+.arrowcontainerOne,
+.arrowcontainerTwo {
+    position: fixed;
+    top: 80%;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 1rem;
+}
+
+.arrowcontainerOne {
+    left: 0.5rem;
+}
+
+.arrowcontainerTwo {
+    right: 0.5rem;
+}
+
+.arrowcontainerOne svg {
+    transform: rotate(-135deg)
+}
+
+.arrowcontainerTwo svg {
+    transform: rotate(45deg)
+}

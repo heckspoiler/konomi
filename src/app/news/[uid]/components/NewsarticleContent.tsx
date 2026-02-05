@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import {
   NewsarticleDocument,
   NewsDocument,
@@ -10,7 +11,11 @@ import TitleContainer from '../../components/TitleContainer';
 import DateComponent from '@/app/events/[uid]/components/DateComponent';
 import EventImage from '@/app/events/[uid]/components/EventImage';
 import { PrismicNextLink } from '@prismicio/next';
-import IconComponentNews from '../../components/IconComponentNews';
+import DescriptionContainer from '@/app/components/DescriptionContainer/DescriptionContainer';
+import NewsletterForm from '@/app/components/Homepage/AboutSection/NewsletterForm';
+import TagContainer from '../../components/TagContainer';
+import { useMobile } from '../../../../../contexts/MobileContext';
+import OverlayContainer from '@/app/components/OverlayContainer/OverlayContainer';
 
 type NewsArticleContentProps = {
   page: NewsarticleDocument;
@@ -21,6 +26,9 @@ export default function NewsarticleContent({
   page,
   newsPage,
 }: NewsArticleContentProps) {
+  const [overlayIsOpen, setOverlayIsOpen] = useState<boolean>(false);
+  const [activeImage, setActiveImage] = useState<number>(0);
+  const { isMobile } = useMobile();
   return (
     <div className={styles.container}>
       <TitleContainer page={newsPage} />
@@ -29,21 +37,42 @@ export default function NewsarticleContent({
           <PrismicRichText field={page.data.title} />
         </div>
         <div className={styles.middlecontainer}>
-          <IconComponentNews page={page} />
+          <TagContainer article={page} />
           <div className={styles.date}>
             <DateComponent variant="news" document={page} />
           </div>
         </div>
-        <EventImage image={page.data.hero_image} />
-        <div className={styles.descriptioncontainer}>
+        <EventImage
+          image={page.data.hero_image}
+          images={page.data.gallery}
+          setOverlayIsOpen={setOverlayIsOpen}
+          activeImage={activeImage}
+          setActiveImage={setActiveImage}
+          isMobile={isMobile}
+        />
+        <DescriptionContainer>
           <PrismicRichText field={page.data.description} />
-        </div>{' '}
+        </DescriptionContainer>
         <div className={styles.backtolink}>
           <PrismicNextLink href={newsPage.url as string}>
             Zur Übersicht
           </PrismicNextLink>
         </div>
+
+        {page.data.has_newsletterfield && (
+          <div className={styles.newsletterbox}>
+            <NewsletterForm />
+          </div>
+        )}
       </div>
+      <OverlayContainer
+        overlayIsOpen={overlayIsOpen}
+        setOverlayIsOpen={setOverlayIsOpen}
+        activeImage={activeImage}
+        setActiveImage={setActiveImage}
+        data={page.data}
+        page={page}
+      />
     </div>
   );
 }

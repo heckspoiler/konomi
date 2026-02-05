@@ -2,7 +2,7 @@
     background-color: var(--red);
     border: none;
     border: var(--border);
-    padding: var(--spacing-2) var(--spacing-3);
+    padding: var(--spacing-1-5) var(--spacing-2);
 }
 
 .button:hover {

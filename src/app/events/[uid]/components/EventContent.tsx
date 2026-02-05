@@ -22,15 +22,16 @@ import LocationComponent from './LocationComponent';
 import DateComponent from './DateComponent';
 import Link from 'next/link';
 import BackToComponent from '../../components/BackToComponent';
-import OverlayImage from './OverlayImage';
+
 import {
   EventDocument,
   EventsDocumentData,
   Simplify,
 } from '../../../../../prismicio-types';
 import { PrismicDocumentWithUID } from '@prismicio/client';
-import SkipArrow from './SkipArrow';
-import Cross from './Cross';
+
+import DescriptionContainer from '@/app/components/DescriptionContainer/DescriptionContainer';
+import OverlayContainer from '@/app/components/OverlayContainer/OverlayContainer';
 
 export default function EventContent({
   page,
@@ -98,17 +99,9 @@ export default function EventContent({
           />
         </div>
 
-        <div className={styles.descriptionContainer}>
-          {data.event_description.map((item, index: number) => {
-            if (!('text' in item) || item.text.trim() === '') return null;
-
-            return (
-              <div key={index} className={styles.descriptionParagraph}>
-                <p>{item.text.replace(/\n/g, ' ')}</p>
-              </div>
-            );
-          })}
-        </div>
+        <DescriptionContainer>
+          <PrismicRichText field={data.event_description} />
+        </DescriptionContainer>
         <div className={styles.locationLink}>
           <PrismicNextLink field={data.location_website}>
             Über{' '}
@@ -120,38 +113,14 @@ export default function EventContent({
       </div>
 
       {backComponent}
-      <div
-        className={`${styles.overlayImageContainer} ${overlayIsOpen ? styles.isOpen : ''}`}
-      >
-        <Cross onClick={() => setOverlayIsOpen(false)} />
-        <OverlayImage
-          image={data.event_image}
-          activeImage={activeImage}
-          images={data.gallery}
-        />{' '}
-        {data.gallery.length > 0 && (
-          <>
-            <SkipArrow
-              onClick={() =>
-                activeImage !== undefined && activeImage > 0
-                  ? setActiveImage && setActiveImage(activeImage - 1)
-                  : setActiveImage &&
-                    setActiveImage(page.data.gallery.length - 1)
-              }
-              className={styles.arrowcontainerOne}
-            />
-            <SkipArrow
-              onClick={() =>
-                activeImage !== undefined &&
-                activeImage < page.data.gallery.length - 1
-                  ? setActiveImage && setActiveImage(activeImage + 1)
-                  : setActiveImage && setActiveImage(0)
-              }
-              className={styles.arrowcontainerTwo}
-            />
-          </>
-        )}
-      </div>
+      <OverlayContainer
+        overlayIsOpen={overlayIsOpen}
+        setOverlayIsOpen={setOverlayIsOpen}
+        activeImage={activeImage}
+        setActiveImage={setActiveImage}
+        data={data}
+        page={page}
+      />
     </div>
   );
 }

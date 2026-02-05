@@ -4,23 +4,21 @@ import styles from './ArticlePreview.module.css';
 import { NewsarticleDocument } from '../../../../prismicio-types';
 import { PrismicNextImage } from '@prismicio/next';
 import { PrismicRichText } from '@prismicio/react';
-import { formatDate } from '../../../../helpers/formatDate';
 import Link from 'next/link';
+import TagContainer from './TagContainer';
 
-import IconComponentNews from './IconComponentNews';
-
-type ArticlePreviewProps = { article: NewsarticleDocument };
+export type ArticlePreviewProps = { article: NewsarticleDocument };
 
 export default function ArticlePreview({ article }: ArticlePreviewProps) {
+  const date = article.data.publishing_date?.split('-').reverse().join('.');
+
   return (
     <div className={styles.articlepreview} key={article.id}>
       <div className={styles.uppercontainer}>
         <div className={styles.date}>
-          <p>{formatDate(article.data.publishing_date)}</p>
+          <p>{date}</p>
         </div>
-        <div className={styles.tags}>
-          <IconComponentNews page={article} />
-        </div>
+        <TagContainer article={article} />
       </div>
       <div className={styles.imagecontainer}>
         <PrismicNextImage field={article.data.hero_image} />
