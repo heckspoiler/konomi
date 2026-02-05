@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './LowerContent.module.css';
 import FiltermappingContainer from './FiltermappingContainer';
-import { formatDate } from '../../../../../helpers/formatDate';
-import { useFilter } from '../../../../../contexts/FilterContext';
-import { useMobile } from '../../../../../contexts/MobileContext';
+import { formatDate } from '@helpers/formatDate';
+import { useFilter } from '@contexts/FilterContext';
+import { useMobile } from '@contexts/MobileContext';
 import { usePathname } from 'next/navigation';
-import { EventDocument } from '../../../../../prismicio-types';
+import { EventDocument } from '@/prismicio-types';
 
 export default function DateFilter({ events }: { events: EventDocument[] }) {
   const { selectedDate, setSelectedDate } = useFilter();
@@ -29,7 +29,9 @@ export default function DateFilter({ events }: { events: EventDocument[] }) {
       }
       return true;
     })
-    .map((event: EventDocument) => formatDate(event.data.event_start_date ?? ''))
+    .map((event: EventDocument) =>
+      formatDate(event.data.event_start_date ?? ''),
+    )
     .filter(
       (date: string, index: number, self: string[]) =>
         self.indexOf(date) === index,

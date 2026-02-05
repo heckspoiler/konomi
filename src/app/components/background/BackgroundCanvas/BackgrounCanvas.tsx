@@ -3,10 +3,10 @@
 import { useRef, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-import mobileBackground from '/public/images/background-mobile_bgwred.png';
-import desktopBackground from '/public/images/background-desktop_bgw_test.png';
-import tabletBackground from '/public/images/background-tablet-new.png';
-import tabletPortraitBackground from '/public/images/background-tablet-new-portrait.png';
+import mobileBackground from '@public/images/background-mobile_bgwred.png';
+import desktopBackground from '@public/images/background-desktop_bgw_test.png';
+import tabletBackground from '@public/images/background-tablet-new.png';
+import tabletPortraitBackground from '@public/images/background-tablet-new-portrait.png';
 
 const MOBILE_BREAKPOINT = 768;
 const TABLET_BREAKPOINT = 1024;
@@ -66,7 +66,11 @@ function getBackgroundForSize(width: number, height: number): string {
   }
 }
 
-function createShader(gl: WebGLRenderingContext, type: number, source: string): WebGLShader | null {
+function createShader(
+  gl: WebGLRenderingContext,
+  type: number,
+  source: string,
+): WebGLShader | null {
   const shader = gl.createShader(type);
   if (!shader) return null;
 
@@ -82,7 +86,11 @@ function createShader(gl: WebGLRenderingContext, type: number, source: string): 
   return shader;
 }
 
-function createProgram(gl: WebGLRenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader): WebGLProgram | null {
+function createProgram(
+  gl: WebGLRenderingContext,
+  vertexShader: WebGLShader,
+  fragmentShader: WebGLShader,
+): WebGLProgram | null {
   const program = gl.createProgram();
   if (!program) return null;
 
@@ -131,7 +139,9 @@ export default function BackgroundCanvas() {
   // Update background based on screen size
   useEffect(() => {
     const updateBackground = () => {
-      setBackground(getBackgroundForSize(window.innerWidth, window.innerHeight));
+      setBackground(
+        getBackgroundForSize(window.innerWidth, window.innerHeight),
+      );
     };
 
     updateBackground();
@@ -146,7 +156,10 @@ export default function BackgroundCanvas() {
     const handleScroll = () => {
       const scrollDelta = Math.abs(window.scrollY - lastScrollY);
       lastScrollY = window.scrollY;
-      scrollVelocityRef.current = Math.min(scrollVelocityRef.current + scrollDelta * 0.01, 1);
+      scrollVelocityRef.current = Math.min(
+        scrollVelocityRef.current + scrollDelta * 0.01,
+        1,
+      );
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -170,7 +183,11 @@ export default function BackgroundCanvas() {
 
     // Create shaders
     const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
-    const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+    const fragmentShader = createShader(
+      gl,
+      gl.FRAGMENT_SHADER,
+      fragmentShaderSource,
+    );
     if (!vertexShader || !fragmentShader) return;
 
     // Create program
@@ -184,10 +201,7 @@ export default function BackgroundCanvas() {
     // Note: Y texCoords flipped (1->0, 0->1) because WebGL has origin at bottom-left
     const vertices = new Float32Array([
       // position    // texCoord
-      -1, -1,        0, 1,
-       1, -1,        1, 1,
-      -1,  1,        0, 0,
-       1,  1,        1, 0,
+      -1, -1, 0, 1, 1, -1, 1, 1, -1, 1, 0, 0, 1, 1, 1, 0,
     ]);
 
     const buffer = gl.createBuffer();
@@ -208,14 +222,31 @@ export default function BackgroundCanvas() {
     gl.bindTexture(gl.TEXTURE_2D, texture);
 
     // Placeholder pixel while image loads
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 0]));
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      0,
+      gl.RGBA,
+      1,
+      1,
+      0,
+      gl.RGBA,
+      gl.UNSIGNED_BYTE,
+      new Uint8Array([0, 0, 0, 0]),
+    );
 
     const image = new Image();
     image.crossOrigin = 'anonymous';
     image.onload = () => {
       if (!isMounted) return;
       gl.bindTexture(gl.TEXTURE_2D, texture);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+      gl.texImage2D(
+        gl.TEXTURE_2D,
+        0,
+        gl.RGBA,
+        gl.RGBA,
+        gl.UNSIGNED_BYTE,
+        image,
+      );
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
@@ -224,7 +255,10 @@ export default function BackgroundCanvas() {
     image.src = background;
 
     // Get uniform locations
-    const scrollVelocityLoc = gl.getUniformLocation(program, 'u_scrollVelocity');
+    const scrollVelocityLoc = gl.getUniformLocation(
+      program,
+      'u_scrollVelocity',
+    );
 
     // Enable blending for transparency
     gl.enable(gl.BLEND);

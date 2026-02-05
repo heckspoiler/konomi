@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'; // Add useRef
 import styles from './HeaderContent.module.css';
 import Hamburger from './Hamburger/Hamburger';
 import Navbar from './Navbar/Navbar';
-import { useMobile } from '../../../../../contexts/MobileContext';
+import { useMobile } from '@contexts/MobileContext';
 import ClickOverlay from './ClickOverlay';
 import HeaderLogo from './HeaderLogo/HeaderLogo';
 
@@ -14,7 +14,7 @@ import {
   HeroImageDocument,
   SettingsDocumentData,
   Simplify,
-} from '../../../../../prismicio-types';
+} from '@/prismicio-types';
 
 export default function HeaderContent({
   content,

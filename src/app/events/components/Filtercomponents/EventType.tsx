@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './LowerContent.module.css';
 import FiltermappingContainer from './FiltermappingContainer';
 import EventtypeArray from './EventtypeArray';
-import { useFilter } from '../../../../../contexts/FilterContext';
+import { useFilter } from '@contexts/FilterContext';
 
 type EventType = {
   name: string;

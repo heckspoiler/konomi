@@ -7,7 +7,7 @@ import { PrismicRichText } from '@prismicio/react';
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
 import Heart from '../../heart/Heart';
 import NewsletterForm from '../../Homepage/AboutSection/NewsletterForm';
-import { FooterDocument } from '../../../../../prismicio-types';
+import { FooterDocument } from '@/prismicio-types';
 
 export default function FooterContent({ footer }: { footer: FooterDocument }) {
   const [newsletterIsOpen, setNewsletterIsOpen] = useState(false);

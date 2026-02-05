@@ -18,7 +18,7 @@ import {
   LandingCategoriesDocument,
   NewsarticleDocument,
   PageDocumentDataSlicesSlice,
-} from '../../../../../prismicio-types';
+} from '@/prismicio-types';
 import NewsSection from '../NewsSection/NewsSection';
 
 interface HomepageContentProps {

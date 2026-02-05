@@ -10,7 +10,7 @@ import Arrow from '@/app/components/arrow/Arrow';
 import {
   AboutDocument,
   AboutDocumentDataKonomiMemberItem,
-} from '../../../../prismicio-types';
+} from '@/prismicio-types';
 import PageContainer from '@/app/components/PageContainer/PageContainer';
 import { PrismicRichText } from '@prismicio/react';
 

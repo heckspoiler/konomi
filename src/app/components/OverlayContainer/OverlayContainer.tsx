@@ -10,7 +10,7 @@ import {
   NewsarticleDocument,
   NewsarticleDocumentData,
   Simplify,
-} from '../../../../prismicio-types';
+} from '@/prismicio-types';
 
 type OverlayContainerProps = {
   overlayIsOpen: boolean;

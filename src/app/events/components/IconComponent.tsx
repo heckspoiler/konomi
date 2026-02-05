@@ -2,14 +2,14 @@
 
 import React from 'react';
 import styles from './IconComponent.module.css';
-import Book from '../../../../public/svg/book_red.svg';
+import Book from '@public/svg/book_red.svg';
 import Image from 'next/image';
-import Vinyl from '../../../../public/svg/vinyl_red.svg';
-import Drink from '../../../../public/svg/drinks_red.svg';
-import Food from '../../../../public/svg/food_red.svg';
-import Craft from '../../../../public/svg/hammer_red.svg';
-import Art from '../../../../public/svg/brush_red.svg';
-import { EventDocument } from '../../../../prismicio-types';
+import Vinyl from '@public/svg/vinyl_red.svg';
+import Drink from '@public/svg/drinks_red.svg';
+import Food from '@public/svg/food_red.svg';
+import Craft from '@public/svg/hammer_red.svg';
+import Art from '@public/svg/brush_red.svg';
+import { EventDocument } from '@/prismicio-types';
 
 function renderIcon(property: string, value: boolean) {
   if (!value) return null;

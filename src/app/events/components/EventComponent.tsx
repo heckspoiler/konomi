@@ -3,16 +3,16 @@ import styles from './EventComponent.module.css';
 
 import { PrismicRichText } from '@prismicio/react';
 import { PrismicNextLink } from '@prismicio/next';
-import { truncateText } from '../../../../helpers/truncateText';
-import { formatDateTime } from '../../../../helpers/formateDateTime';
+import { truncateText } from '@helpers/truncateText';
+import { formatDateTime } from '@helpers/formateDateTime';
 import LeftContainer from './LeftContainer';
 
-import { useMobile } from '../../../../contexts/MobileContext';
+import { useMobile } from '@contexts/MobileContext';
 
 import LocationIcon from '../[uid]/components/LocationIcon';
 import CalendarIcon from '../[uid]/components/CalendarIcon';
 import { asText } from '@prismicio/client';
-import { EventDocument } from '../../../../prismicio-types';
+import { EventDocument } from '@/prismicio-types';
 
 import { usePathname } from 'next/navigation';
 

@@ -19,7 +19,11 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@public/*": ["./public/*"]
+      "@public/*": ["./public/*"],
+      "@/prismicio-types": ["./prismicio-types.d.ts"],
+      "@helpers/*": ["./helpers/*"],
+      "@contexts/*": ["./contexts/*"],
+      "@stores/*": ["./stores/*"]
     },
     "target": "ES2017",
     "noUnusedLocals": true,

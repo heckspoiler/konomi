@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './NewsContent.module.css';
 
-import { NewsarticleDocument, NewsDocument } from '../../../../prismicio-types';
+import { NewsarticleDocument, NewsDocument } from '@/prismicio-types';
 import ArticlePreview from './ArticlePreview';
 import TitleContainer from './TitleContainer';
 import NewsletterForm from '@/app/components/Homepage/AboutSection/NewsletterForm';

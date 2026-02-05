@@ -7,7 +7,7 @@ import styles from './Bottomfield.module.css';
 import EventType from './EventType';
 import Location from './Location';
 import Date from './Date';
-import { EventDocument } from '../../../../../prismicio-types';
+import { EventDocument } from '@/prismicio-types';
 
 export default function Bottomfield({
   events,

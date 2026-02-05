@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { formatDateTime } from '../../../../../helpers/formateDateTime';
+import { formatDateTime } from '@helpers/formateDateTime';
 
 import styles from './DateComponent.module.css';
 import CalendarIcon from './CalendarIcon';
@@ -8,7 +8,7 @@ import {
   EventDocumentData,
   NewsarticleDocument,
   Simplify,
-} from '../../../../../prismicio-types';
+} from '@/prismicio-types';
 
 type EventProps = {
   variant: 'event';

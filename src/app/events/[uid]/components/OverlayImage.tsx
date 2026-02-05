@@ -6,7 +6,7 @@ import {
   EventDocumentDataGalleryItem,
   GallerySliceDefaultPrimaryImagesItem,
   Simplify,
-} from '../../../../../prismicio-types';
+} from '@/prismicio-types';
 
 export default function OverlayImage({
   image,

@@ -5,7 +5,7 @@ import SectionContainer from '../SectionContainer/SectionContainer';
 import { SliceZone } from '@prismicio/react';
 import NewsletterForm from './NewsletterForm';
 import type { components as SliceComponents } from '@/slices';
-import { PageDocumentDataSlicesSlice } from '../../../../../prismicio-types';
+import { PageDocumentDataSlicesSlice } from '@/prismicio-types';
 
 export default function AboutSection({
   defaultVariationSlice,

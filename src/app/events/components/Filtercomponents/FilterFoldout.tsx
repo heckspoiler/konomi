@@ -6,8 +6,8 @@ import styles from './FilterFoldout.module.css';
 
 import Topfield from './Topfield';
 import Bottomfield from './Bottomfield';
-import { useFilter } from '../../../../../contexts/FilterContext';
-import { EventDocument } from '../../../../../prismicio-types';
+import { useFilter } from '@contexts/FilterContext';
+import { EventDocument } from '@/prismicio-types';
 
 export default function FilterFoldout({
   events,

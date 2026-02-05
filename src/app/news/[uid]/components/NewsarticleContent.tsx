@@ -1,9 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import {
-  NewsarticleDocument,
-  NewsDocument,
-} from '../../../../../prismicio-types';
+import { NewsarticleDocument, NewsDocument } from '@/prismicio-types';
 
 import styles from './NewsarticleContent.module.css';
 import { PrismicRichText } from '@prismicio/react';
@@ -14,7 +11,7 @@ import { PrismicNextLink } from '@prismicio/next';
 import DescriptionContainer from '@/app/components/DescriptionContainer/DescriptionContainer';
 import NewsletterForm from '@/app/components/Homepage/AboutSection/NewsletterForm';
 import TagContainer from '../../components/TagContainer';
-import { useMobile } from '../../../../../contexts/MobileContext';
+import { useMobile } from '@contexts/MobileContext';
 import OverlayContainer from '@/app/components/OverlayContainer/OverlayContainer';
 import { isFilled } from '@prismicio/client';
 

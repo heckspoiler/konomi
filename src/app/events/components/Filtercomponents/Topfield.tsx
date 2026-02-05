@@ -2,7 +2,7 @@
 
 import React, { Dispatch, SetStateAction } from 'react';
 import styles from './Topfield.module.css';
-import { useFilter } from '../../../../../contexts/FilterContext';
+import { useFilter } from '@contexts/FilterContext';
 import { usePathname } from 'next/navigation';
 
 export default function Topfield({

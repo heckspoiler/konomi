@@ -7,18 +7,18 @@ import EventComponent from './EventComponent';
 import BackToComponent from './BackToComponent';
 import { usePathname } from 'next/navigation';
 import FilterComponent from './FilterComponent';
-import { FilterProvider, useFilter } from '../../../../contexts/FilterContext';
-import { formatDate } from '../../../../helpers/formatDate';
+import { FilterProvider, useFilter } from '@contexts/FilterContext';
+import { formatDate } from '@helpers/formatDate';
 import { asText } from '@prismicio/client';
-import { useEvents } from '../../../../contexts/EventsContext';
+import { useEvents } from '@contexts/EventsContext';
 import {
   ArchiveDocument,
   EventDocument,
   EventsDocument,
   SearchIconDocument,
-} from '../../../../prismicio-types';
+} from '@/prismicio-types';
 import SearchContainer from './SearchContainer';
-import { useSearchbarStore } from '../../../../stores/useSearchStore';
+import { useSearchbarStore } from '@stores/useSearchStore';
 import PageContainer from '@/app/components/PageContainer/PageContainer';
 
 function EventsContentInner({

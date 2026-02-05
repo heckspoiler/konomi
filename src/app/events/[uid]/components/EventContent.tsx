@@ -16,18 +16,14 @@ import EventImage from './EventImage';
 
 import IconComponent from '../../components/IconComponent';
 
-import { useMobile } from '../../../../../contexts/MobileContext';
+import { useMobile } from '@contexts/MobileContext';
 
 import LocationComponent from './LocationComponent';
 import DateComponent from './DateComponent';
 import Link from 'next/link';
 import BackToComponent from '../../components/BackToComponent';
 
-import {
-  EventDocument,
-  EventsDocumentData,
-  Simplify,
-} from '../../../../../prismicio-types';
+import { EventDocument, EventsDocumentData, Simplify } from '@/prismicio-types';
 import { PrismicDocumentWithUID } from '@prismicio/client';
 
 import DescriptionContainer from '@/app/components/DescriptionContainer/DescriptionContainer';

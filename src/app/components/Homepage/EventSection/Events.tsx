@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import styles from './Events.module.css';
 import Link from 'next/link';
 import Arrow from '../../arrow/Arrow';
-import { truncateText } from '../../../../../helpers/truncateText';
-import { formatDate } from '../../../../../helpers/formatDate';
-import { EventDocument } from '../../../../../prismicio-types';
+import { truncateText } from '@helpers/truncateText';
+import { formatDate } from '@helpers/formatDate';
+import { EventDocument } from '@/prismicio-types';
 import { asText } from '@prismicio/client';
 
 export default function Events({ events }: { events: EventDocument[] }) {

@@ -4,8 +4,8 @@ import React, { Dispatch, SetStateAction } from 'react';
 import styles from './FilterComponent.module.css';
 import FilterFoldout from './Filtercomponents/FilterFoldout';
 
-import { useFilter } from '../../../../contexts/FilterContext';
-import { EventDocument } from '../../../../prismicio-types';
+import { useFilter } from '@contexts/FilterContext';
+import { EventDocument } from '@/prismicio-types';
 
 export default function FilterComponent({
   events,

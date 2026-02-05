@@ -9,13 +9,13 @@ import Events from './Events';
 import Link from 'next/link';
 import Arrow from '../../arrow/Arrow';
 import { PrismicNextLink } from '@prismicio/next';
-import { useEvents } from '../../../../../contexts/EventsContext';
+import { useEvents } from '@contexts/EventsContext';
 import {
   BasicSliceSliceSchedulePrimary,
   DownloadBarDocument,
   EventDocument,
   PageDocumentDataSlicesSlice,
-} from '../../../../../prismicio-types';
+} from '@/prismicio-types';
 
 import type { components as SliceComponents } from '@/slices';
 

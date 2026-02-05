@@ -2,7 +2,7 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import dateIcon from '../../../../../public/svg/calendar.svg';
+import dateIcon from '@public/svg/calendar.svg';
 
 export default function CalendarIcon() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NewsarticleDocument } from '../../../../prismicio-types';
+import { NewsarticleDocument } from '@/prismicio-types';
 
 import styles from './TagContainer.module.css';
 

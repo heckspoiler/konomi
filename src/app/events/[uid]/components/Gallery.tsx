@@ -1,9 +1,6 @@
 import { GroupField } from '@prismicio/client';
 import React, { Dispatch, SetStateAction, useRef, useEffect } from 'react';
-import {
-  EventDocumentDataGalleryItem,
-  Simplify,
-} from '../../../../../prismicio-types';
+import { EventDocumentDataGalleryItem, Simplify } from '@/prismicio-types';
 
 import styles from './Gallery.module.css';
 import { PrismicNextImage } from '@prismicio/next';

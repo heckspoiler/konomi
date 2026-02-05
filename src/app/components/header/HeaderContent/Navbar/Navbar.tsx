@@ -18,7 +18,7 @@ import {
   SettingsDocumentDataNavigationItemsItem,
   SettingsDocumentDataNavigationSocialIconsItem,
   Simplify,
-} from '../../../../../../prismicio-types';
+} from '@/prismicio-types';
 
 export default function Navbar({
   content,

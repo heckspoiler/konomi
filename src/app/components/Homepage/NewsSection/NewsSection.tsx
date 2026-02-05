@@ -8,7 +8,7 @@ import {
   BasicSliceSliceNewsPrimary,
   NewsarticleDocument,
   PageDocumentDataSlicesSlice,
-} from '../../../../../prismicio-types';
+} from '@/prismicio-types';
 import type { components as SliceComponents } from '@/slices';
 import NewsItem from './Newsitem';
 import { PrismicNextLink } from '@prismicio/next';

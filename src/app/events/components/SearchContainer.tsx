@@ -4,9 +4,9 @@ import React from 'react';
 
 import styles from './SearchContainer.module.css';
 import { PrismicNextImage } from '@prismicio/next';
-import { SearchIconDocument } from '../../../../prismicio-types';
+import { SearchIconDocument } from '@/prismicio-types';
 
-import { useSearchbarStore } from '../../../../stores/useSearchStore';
+import { useSearchbarStore } from '@stores/useSearchStore';
 
 type SearchIconProps = {
   searchicon: SearchIconDocument;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './ImpressumContent.module.css';
 import { PrismicRichText } from '@prismicio/react';
-import { ImpressumDocument } from '../../../../prismicio-types';
+import { ImpressumDocument } from '@/prismicio-types';
 import PageContainer from '@/app/components/PageContainer/PageContainer';
 import TitleContainer from '@/app/news/components/TitleContainer';
 

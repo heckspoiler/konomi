@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styles from './ProgressIndicator.module.css';
-import { LandingCategoriesDocument } from '../../../../../../prismicio-types';
+import { LandingCategoriesDocument } from '@/prismicio-types';
 
 export default function ProgressIndicator({
   activeSection,

@@ -13,7 +13,7 @@ import {
   ImpressumDocument,
   NewsDocument,
   Simplify,
-} from '../../../../prismicio-types';
+} from '@/prismicio-types';
 import { PrismicDocumentWithUID } from '@prismicio/client';
 
 export default function MainHeading({

@@ -1,8 +1,8 @@
 'use client';
 
-import { EventsProvider } from '../../../../contexts/EventsContext';
-import { MobileProvider } from '../../../../contexts/MobileContext';
-import { EventDocument } from '../../../../prismicio-types';
+import { EventsProvider } from '@contexts/EventsContext';
+import { MobileProvider } from '@contexts/MobileContext';
+import { EventDocument } from '@/prismicio-types';
 
 export function Providers({
   children,

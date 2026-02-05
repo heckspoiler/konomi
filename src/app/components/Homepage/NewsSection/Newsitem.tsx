@@ -5,14 +5,14 @@ import styles from './Newsitem.module.css';
 import {
   BasicSliceSliceNewsPrimary,
   NewsarticleDocument,
-} from '../../../../../prismicio-types';
+} from '@/prismicio-types';
 import { PrismicNextImage } from '@prismicio/next';
 import Link from 'next/link';
 
-import { truncateText } from '../../../../../helpers/truncateText';
+import { truncateText } from '@helpers/truncateText';
 import { asText } from '@prismicio/client';
 
-import { useMobile } from '../../../../../contexts/MobileContext';
+import { useMobile } from '@contexts/MobileContext';
 import Arrow from '../../arrow/Arrow';
 
 type Props = {

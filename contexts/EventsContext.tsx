@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext } from 'react';
-import { EventDocument } from '../prismicio-types';
+import { EventDocument } from '@/prismicio-types';
 
 interface EventsContextType {
   events: EventDocument[];

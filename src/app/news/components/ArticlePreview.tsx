@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './ArticlePreview.module.css';
-import { NewsarticleDocument } from '../../../../prismicio-types';
+import { NewsarticleDocument } from '@/prismicio-types';
 import { PrismicNextImage } from '@prismicio/next';
 import { PrismicRichText } from '@prismicio/react';
 import Link from 'next/link';

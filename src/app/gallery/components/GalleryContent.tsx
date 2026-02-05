@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { GalleryDocument } from '../../../../prismicio-types';
+import { GalleryDocument } from '@/prismicio-types';
 import { PrismicRichText, SliceZone } from '@prismicio/react';
 import { components } from '@/slices';
 import { Content } from '@prismicio/client';
@@ -23,9 +23,14 @@ type GalleryContentProps = {
 export default function GalleryContent({ page }: GalleryContentProps) {
   const [overlayIsOpen, setOverlayIsOpen] = useState(false);
   const [activeImage, setActiveImage] = useState<number>(0);
-  const [activeImages, setActiveImages] = useState<Content.GallerySlice['primary']['images']>([]);
+  const [activeImages, setActiveImages] = useState<
+    Content.GallerySlice['primary']['images']
+  >([]);
 
-  const onClick = (images: Content.GallerySlice['primary']['images'], imageIndex: number) => {
+  const onClick = (
+    images: Content.GallerySlice['primary']['images'],
+    imageIndex: number,
+  ) => {
     setActiveImages(images);
     setOverlayIsOpen(true);
     setActiveImage(imageIndex);
@@ -48,10 +53,7 @@ export default function GalleryContent({ page }: GalleryContentProps) {
         className={`${styles.overlayImageContainer} ${overlayIsOpen ? styles.isOpen : ''}`}
       >
         <Cross onClick={() => setOverlayIsOpen(false)} />
-        <OverlayImage
-          activeImage={activeImage}
-          images={activeImages}
-        />
+        <OverlayImage activeImage={activeImage} images={activeImages} />
         {activeImages.length > 0 && (
           <>
             <SkipArrow

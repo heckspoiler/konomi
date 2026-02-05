@@ -5,11 +5,8 @@ import Link from 'next/link';
 import { PrismicRichText } from '@prismicio/react';
 import styles from './HeaderLogo.module.css';
 import { usePathname } from 'next/navigation';
-import { closeMenu } from '../../../../../../helpers/closeMenu';
-import {
-  SettingsDocumentData,
-  Simplify,
-} from '../../../../../../prismicio-types';
+import { closeMenu } from '@helpers/closeMenu';
+import { SettingsDocumentData, Simplify } from '@/prismicio-types';
 
 export default function HeaderLogo({
   content,

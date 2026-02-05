@@ -3,7 +3,7 @@ import {
   GalleryDocument,
   ImpressumDocument,
   NewsDocument,
-} from '../../../../prismicio-types';
+} from '@/prismicio-types';
 import { PrismicRichText } from '@prismicio/react';
 
 import styles from './TitleContainer.module.css';

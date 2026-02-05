@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PageDocumentDataSlicesSlice } from '../../../../../prismicio-types';
+import { PageDocumentDataSlicesSlice } from '@/prismicio-types';
 
 import type { components as SliceComponents } from '@/slices';
 import { SliceZone } from '@prismicio/react';

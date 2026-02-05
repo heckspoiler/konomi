@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styles from './LowerContent.module.css';
 import FiltermappingContainer from './FiltermappingContainer';
-import { useFilter } from '../../../../../contexts/FilterContext';
+import { useFilter } from '@contexts/FilterContext';
 import { usePathname } from 'next/navigation';
-import { EventDocument } from '../../../../../prismicio-types';
+import { EventDocument } from '@/prismicio-types';
 import { asText } from '@prismicio/client';
 
 export default function Location({ events }: { events: EventDocument[] }) {
@@ -52,8 +52,9 @@ export default function Location({ events }: { events: EventDocument[] }) {
     setUpcomingLocations(upcoming);
   }, [events]);
 
-  const locationsToShow =
-    pathname.startsWith('/archive') ? archivedLocations : upcomingLocations;
+  const locationsToShow = pathname.startsWith('/archive')
+    ? archivedLocations
+    : upcomingLocations;
 
   return (
     <FiltermappingContainer>

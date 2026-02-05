@@ -5,10 +5,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import styles from './EventImage.module.css';
 import { PrismicNextImage } from '@prismicio/next';
 import { GroupField, ImageFieldImage } from '@prismicio/client';
-import {
-  EventDocumentDataGalleryItem,
-  Simplify,
-} from '../../../../../prismicio-types';
+import { EventDocumentDataGalleryItem, Simplify } from '@/prismicio-types';
 
 import Gallery from './Gallery';
 import SkipArrow from './SkipArrow';
