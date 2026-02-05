@@ -27,7 +27,6 @@ interface HomepageContentProps {
   konomiSlice: PageDocumentDataSlicesSlice[];
   newsSlice: PageDocumentDataSlicesSlice[];
   news: NewsarticleDocument[];
-  whySlice: PageDocumentDataSlicesSlice[];
   landingCategories: LandingCategoriesDocument;
   downloadBar: DownloadBarDocument;
   galleryDefaultSlice: PageDocumentDataSlicesSlice[];
@@ -45,7 +44,6 @@ type SectionId =
 export default function HomepageContent({
   defaultVariationSlice,
   scheduleSlice,
-  whySlice,
   newsSlice,
   galleryDefaultSlice,
   landingCategories,
@@ -55,7 +53,6 @@ export default function HomepageContent({
   const [activeSection, setActiveSection] = useState<SectionId>('');
   const aboutRef = useRef<HTMLDivElement>(null);
   const eventsRef = useRef<HTMLDivElement>(null);
-  const whyRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const newsRef = useRef<HTMLDivElement>(null);
 
@@ -63,7 +60,6 @@ export default function HomepageContent({
     const sectionRefs = {
       about: aboutRef,
       events: eventsRef,
-      why: whyRef,
       gallery: galleryRef,
       newsRef: newsRef,
     };

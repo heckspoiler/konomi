@@ -56,10 +56,6 @@ export default async function Index() {
     (slice) => slice.variation === 'whoIsKonomi',
   );
 
-  const whySlice = defaultSlice.filter(
-    (slice) => slice.variation === 'whyKonomi',
-  );
-
   const galleryDefaultSlice = gallerySlice.filter(
     (slice) => slice.slice_type === 'landing_gallery',
   );
@@ -69,7 +65,6 @@ export default async function Index() {
       defaultVariationSlice={defaultVariationSlice}
       scheduleSlice={scheduleSlice}
       konomiSlice={konomiSlice}
-      whySlice={whySlice}
       galleryDefaultSlice={galleryDefaultSlice}
       landingCategories={landingCategories}
       downloadBar={downloadBar}
