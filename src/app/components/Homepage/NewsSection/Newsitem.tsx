@@ -14,6 +14,7 @@ import { asText } from '@prismicio/client';
 
 import { useMobile } from '@contexts/MobileContext';
 import Arrow from '../../arrow/Arrow';
+import { PrismicRichText } from '@prismicio/react';
 
 type Props = {
   item: NewsarticleDocument;
@@ -30,7 +31,9 @@ export default function NewsItem({ item, newsSlicePrimary }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.imagecontainer}>
-        <PrismicNextImage field={item.data.hero_image} />
+        <Link href={item.url as string}>
+          <PrismicNextImage field={item.data.hero_image} />
+        </Link>
       </div>
       <div className={styles.content}>
         <div className={styles.titlecontainer}>
@@ -42,12 +45,7 @@ export default function NewsItem({ item, newsSlicePrimary }: Props) {
           </h3>
         </div>
         <div className={styles.description}>
-          <p>
-            {truncateText(
-              item.data.description ? asText(item.data.description) : '',
-              isMobile ? 60 : 160,
-            )}
-          </p>{' '}
+          <p>{asText(item.data.description)}</p>
         </div>{' '}
         <div className={styles.linkcontainer}>
           <Link href={item.url as string}>

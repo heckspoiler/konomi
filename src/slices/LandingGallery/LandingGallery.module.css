@@ -70,9 +70,7 @@
     }
 
     .embla__container {
-        display: flex;
-        touch-action: pan-y pinch-zoom;
-        height: 12rem;
+        height: calc(5rem + 7vw);
         gap: var(--spacing-2);
     }
 }
