@@ -59,7 +59,7 @@
         overflow: hidden;
         width: 75vw;
         margin: 0 auto;
-        padding-top: 6rem;
+        padding-top: 0;
     }
 
     .buttonbar {
@@ -67,6 +67,13 @@
         display: flex;
         justify-content: space-between;
         padding-top: var(--spacing-4)
+    }
+
+    .embla__container {
+        display: flex;
+        touch-action: pan-y pinch-zoom;
+        height: 12rem;
+        gap: var(--spacing-2);
     }
 }
 
