@@ -56,14 +56,15 @@
 
 @media screen and (min-width: 1280px) {
     .embla__viewport {
+        --container-width: 78vw;
         overflow: hidden;
-        width: 75vw;
+        width: var(--container-width);
         margin: 0 auto;
         padding-top: 0;
     }
 
     .buttonbar {
-        width: 75vw;
+        width: var(--container-width);
         display: flex;
         justify-content: space-between;
         padding-top: var(--spacing-4)

@@ -14,7 +14,6 @@ import { asText } from '@prismicio/client';
 
 import { useMobile } from '@contexts/MobileContext';
 import Arrow from '../../arrow/Arrow';
-import { PrismicRichText } from '@prismicio/react';
 
 type Props = {
   item: NewsarticleDocument;
