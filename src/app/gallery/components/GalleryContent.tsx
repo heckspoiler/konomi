@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { GalleryDocument } from '@/prismicio-types';
 import { PrismicRichText, SliceZone } from '@prismicio/react';
 import { components } from '@/slices';
@@ -20,12 +20,38 @@ type GalleryContentProps = {
   page: GalleryDocument;
 };
 
+const INITIAL_SLICE_COUNT = 1;
+const SLICES_PER_BATCH = 1;
+
 export default function GalleryContent({ page }: GalleryContentProps) {
   const [overlayIsOpen, setOverlayIsOpen] = useState(false);
   const [activeImage, setActiveImage] = useState<number>(0);
   const [activeImages, setActiveImages] = useState<
     Content.GallerySlice['primary']['images']
   >([]);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_SLICE_COUNT);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
+  const allSlices = page.data.slices;
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount((prev) =>
+            Math.min(prev + SLICES_PER_BATCH, allSlices.length),
+          );
+        }
+      },
+      { rootMargin: '200px' },
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [allSlices.length]);
 
   const onClick = (
     images: Content.GallerySlice['primary']['images'],
@@ -44,10 +70,13 @@ export default function GalleryContent({ page }: GalleryContentProps) {
           <PrismicRichText field={page.data.description} />
         )}
         <SliceZone
-          slices={page.data.slices}
+          slices={allSlices.slice(0, visibleCount)}
           components={components}
           context={{ onClick: onClick }}
         />
+        {visibleCount < allSlices.length && (
+          <div ref={sentinelRef} style={{ height: '1px' }} />
+        )}
       </div>
       <div
         className={`${styles.overlayImageContainer} ${overlayIsOpen ? styles.isOpen : ''}`}

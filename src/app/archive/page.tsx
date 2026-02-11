@@ -9,6 +9,13 @@ export default async function Page() {
   const client = createClient();
   const page = await client.getSingle('archive');
   const searchicon = await client.getSingle('search_icon');
+  const archive = await client.getByType('event', {
+    page: 1,
+    pageSize: 20,
+    orderings: [{ field: 'my.event.event_start_date', direction: 'asc' }],
+  });
+
+  console.log(archive);
 
   return (
     <MainContainer>
