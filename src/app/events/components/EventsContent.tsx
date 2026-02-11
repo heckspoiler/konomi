@@ -85,12 +85,14 @@ function EventsContentInner({
       (selectedEventType === 'crafting' && event.data.is_crafting) ||
       (selectedEventType === 'art' && event.data.is_art);
 
-    // Check search query
-    const searchLower = query.toLowerCase();
+    // Check search query (normalize diacritics so e.g. ō matches o)
+    const normalize = (s: string) =>
+      s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const searchNorm = normalize(query);
     const matchesSearch =
       !query ||
-      asText(event.data.event_title)?.toLowerCase().includes(searchLower) ||
-      asText(event.data.event_location)?.toLowerCase().includes(searchLower);
+      normalize(asText(event.data.event_title) ?? '').includes(searchNorm) ||
+      normalize(asText(event.data.event_location) ?? '').includes(searchNorm);
 
     return matchesDate && matchesLocation && matchesEventType && matchesSearch;
   });
