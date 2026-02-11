@@ -6,6 +6,7 @@
     padding: 0 0.5rem;
     background-color: var(--beige);
     z-index: 10;
+
 }
 
 .mainHeading {
@@ -25,6 +26,13 @@
 
 }
 
+.titlecontainer {
+    display: flex;
+    gap: var(--spacing-2);
+
+}
+
+
 
 /* !!!! DESKTOP !!!!! */
 
@@ -36,7 +44,6 @@
         align-items: center;
         justify-content: center;
         background-color: var(--beige);
-
     }
 
     .mainHeading {
@@ -47,20 +54,35 @@
     .titlecontainer {
         display: flex;
         gap: var(--spacing-2);
+
     }
 
-    .titlecontainer {
-        width: fit-content;
-    }
 }
 
 /* !!!! TABLET !!!!! */
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
     .mainHeadingContainer {
-        width: 80vw;
-        left: initial;
-        top: calc(var(--header-height) + 1.35rem);
-        padding-top: calc(var(--header-height) / 4);
+        width: 100vw;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--beige);
+
+
     }
+
+    .mainHeading {
+        display: flex;
+        justify-content: space-between;
+        width: 80vw;
+    }
+
+    .titlecontainer {
+        display: flex;
+        gap: var(--spacing-2);
+
+    }
+
 }
