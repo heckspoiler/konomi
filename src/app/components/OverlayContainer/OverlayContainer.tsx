@@ -39,7 +39,7 @@ export default function OverlayContainer({
         activeImage={activeImage}
         images={data.gallery}
       />{' '}
-      {data.gallery.length > 0 && (
+      {data.gallery.length > 1 && (
         <>
           <SkipArrow
             onClick={() =>

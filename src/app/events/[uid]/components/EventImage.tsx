@@ -40,7 +40,7 @@ export default function EventImage({
       </div>
 
       <div>
-        {images && images.length > 0 && (
+        {images && images.length > 1 && (
           <div>
             <div className={styles.arrowcontainer}>
               <SkipArrow

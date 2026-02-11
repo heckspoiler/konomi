@@ -33,6 +33,8 @@
 .event h4 {
     text-align: left;
     width: fit-content;
+
+
 }
 
 
@@ -52,5 +54,11 @@
     .event h2 {
         text-align: left;
         padding-left: 1rem;
+
+    }
+
+    .event h4 {
+        text-align: left;
+        width: 7.5rem;
     }
 }

@@ -59,7 +59,7 @@ export default function Events({ events }: { events: EventDocument[] }) {
               <h2>
                 {truncateText(
                   event.data?.event_title ? asText(event.data.event_title) : '',
-                  isMobile ? 60 : 100,
+                  isMobile ? 30 : 75,
                 )}
               </h2>
               <Link href={`/events/${event.uid}`}>
@@ -67,7 +67,7 @@ export default function Events({ events }: { events: EventDocument[] }) {
                   <h5>Mehr</h5>
                 </span>
                 <span>
-                  <Arrow />
+                  <Arrow height={isMobile ? '9' : '10'} />
                 </span>
               </Link>
             </div>

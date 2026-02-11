@@ -27,7 +27,7 @@ export default async function RootLayout({
 
   const events = await client.getAllByType('event');
 
-  const splashscreenVisible = true;
+  const splashscreenVisible = false;
 
   return (
     <html lang="en">
