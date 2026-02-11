@@ -71,7 +71,7 @@
     }
 
     .embla__container {
-        height: calc(5rem + 7vw);
+        height: calc(5rem + 8vw);
         gap: var(--spacing-2);
     }
 }
