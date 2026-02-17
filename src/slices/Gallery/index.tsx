@@ -41,6 +41,9 @@ const Gallery = ({
             field={item.image}
             key={index}
             onClick={() => context?.onClick?.(slice.primary.images, index)}
+            loading="lazy"
+            sizes="(max-width: 768px) 45vw, (max-width: 1280px) 30vw, 400px"
+            imgixParams={{ q: 65, w: 400 }}
           />
         ))}
       </div>

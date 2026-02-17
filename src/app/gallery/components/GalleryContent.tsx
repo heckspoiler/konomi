@@ -78,32 +78,32 @@ export default function GalleryContent({ page }: GalleryContentProps) {
           <div ref={sentinelRef} style={{ height: '1px' }} />
         )}
       </div>
-      <div
-        className={`${styles.overlayImageContainer} ${overlayIsOpen ? styles.isOpen : ''}`}
-      >
-        <Cross onClick={() => setOverlayIsOpen(false)} />
-        <OverlayImage activeImage={activeImage} images={activeImages} />
-        {activeImages.length > 0 && (
-          <>
-            <SkipArrow
-              onClick={() =>
-                activeImage > 0
-                  ? setActiveImage(activeImage - 1)
-                  : setActiveImage(activeImages.length - 1)
-              }
-              className={styles.arrowcontainerOne}
-            />
-            <SkipArrow
-              onClick={() =>
-                activeImage < activeImages.length - 1
-                  ? setActiveImage(activeImage + 1)
-                  : setActiveImage(0)
-              }
-              className={styles.arrowcontainerTwo}
-            />
-          </>
-        )}
-      </div>
+      {overlayIsOpen && (
+        <div className={`${styles.overlayImageContainer} ${styles.isOpen}`}>
+          <Cross onClick={() => setOverlayIsOpen(false)} />
+          <OverlayImage activeImage={activeImage} images={activeImages} />
+          {activeImages.length > 0 && (
+            <>
+              <SkipArrow
+                onClick={() =>
+                  activeImage > 0
+                    ? setActiveImage(activeImage - 1)
+                    : setActiveImage(activeImages.length - 1)
+                }
+                className={styles.arrowcontainerOne}
+              />
+              <SkipArrow
+                onClick={() =>
+                  activeImage < activeImages.length - 1
+                    ? setActiveImage(activeImage + 1)
+                    : setActiveImage(0)
+                }
+                className={styles.arrowcontainerTwo}
+              />
+            </>
+          )}
+        </div>
+      )}
     </PageContainer>
   );
 }
