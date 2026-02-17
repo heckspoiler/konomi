@@ -23,12 +23,19 @@ export default function Gallery({
     if (activeImage === undefined || !containerRef.current) return;
 
     const activeElement = imageRefs.current[activeImage];
-    if (!activeElement) return;
+    const container = containerRef.current;
+    if (!activeElement || !container) return;
 
-    activeElement.scrollIntoView({
+    const containerRect = container.getBoundingClientRect();
+    const elementRect = activeElement.getBoundingClientRect();
+    const scrollLeft =
+      container.scrollLeft +
+      (elementRect.left - containerRect.left) -
+      (containerRect.width - elementRect.width) / 2;
+
+    container.scrollTo({
+      left: scrollLeft,
       behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center',
     });
   }, [activeImage]);
 
@@ -44,7 +51,12 @@ export default function Gallery({
             onClick={() => setActiveImage && setActiveImage(index)}
             className={`${styles.galleryimage} ${activeImage === index ? styles.active : ''}`}
           >
-            <PrismicNextImage field={item.image} />
+            <PrismicNextImage
+              field={item.image}
+              loading="lazy"
+              sizes="(max-width: 768px) 45vw, (max-width: 1280px) 30vw, 400px"
+              imgixParams={{ q: 65, w: 400 }}
+            />
           </div>
         ))}
     </div>

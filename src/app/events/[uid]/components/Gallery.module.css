@@ -8,6 +8,8 @@
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
 }
 
 .gallerycontainer::-webkit-scrollbar {

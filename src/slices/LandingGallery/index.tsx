@@ -41,11 +41,21 @@ const LandingGallery: FC<LandingGalleryProps> = ({ slice }) => {
           <div key={index} className={`${styles.image} ${styles.embla__slide}`}>
             {isFilled.link(item.link) ? (
               <PrismicNextLink field={item.link}>
-                <PrismicNextImage field={item.item} />
+                <PrismicNextImage
+                  field={item.item}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 45vw, (max-width: 1280px) 30vw, 400px"
+                  imgixParams={{ q: 65, w: 400 }}
+                />
               </PrismicNextLink>
             ) : (
               <Link href="/gallery">
-                <PrismicNextImage field={item.item} />
+                <PrismicNextImage
+                  field={item.item}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 45vw, (max-width: 1280px) 30vw, 400px"
+                  imgixParams={{ q: 65, w: 400 }}
+                />
               </Link>
             )}
           </div>
