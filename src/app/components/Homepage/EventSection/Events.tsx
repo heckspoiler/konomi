@@ -45,33 +45,29 @@ export default function Events({ events }: { events: EventDocument[] }) {
           <h2>Wir sehen uns im 2026!</h2>
         </div>
       ) : (
-        sortedUpcomingEvents
-          .slice(0, 10)
-          .map((event: EventDocument, index: number) => (
-            <div key={event.id} className={styles.event}>
-              <h4>
-                {formatDate(
-                  event.data.event_start_date
-                    ? event.data.event_start_date
-                    : '',
-                )}
-              </h4>{' '}
-              <h2>
-                {truncateText(
-                  event.data?.event_title ? asText(event.data.event_title) : '',
-                  isMobile ? 30 : 75,
-                )}
-              </h2>
-              <Link href={`/events/${event.uid}`}>
-                <span>
-                  <h5>Mehr</h5>
-                </span>
-                <span>
-                  <Arrow height={isMobile ? '9' : '10'} />
-                </span>
-              </Link>
-            </div>
-          ))
+        sortedUpcomingEvents.slice(0, 10).map((event: EventDocument) => (
+          <div key={event.id} className={styles.event}>
+            <h4>
+              {formatDate(
+                event.data.event_start_date ? event.data.event_start_date : '',
+              )}
+            </h4>{' '}
+            <h2>
+              {truncateText(
+                event.data?.event_title ? asText(event.data.event_title) : '',
+                isMobile ? 30 : 75,
+              )}
+            </h2>
+            <Link href={`/events/${event.uid}`}>
+              <span>
+                <h5>Mehr</h5>
+              </span>
+              <span>
+                <Arrow height={isMobile ? '9' : '10'} />
+              </span>
+            </Link>
+          </div>
+        ))
       )}
     </div>
   );
