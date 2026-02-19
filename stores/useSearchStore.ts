@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type SearchbarStoreProps = {
+type SearchbarStoreProps = {
   query: string;
   setQuery: (query: string) => void;
 };

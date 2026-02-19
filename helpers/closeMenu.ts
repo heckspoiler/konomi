@@ -1,4 +1,4 @@
-export type CloseMenuProps = {
+type CloseMenuProps = {
   setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   time?: number;
 };

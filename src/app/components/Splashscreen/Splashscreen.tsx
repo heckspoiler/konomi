@@ -4,19 +4,19 @@ import React from 'react';
 import styles from './Splashscreen.module.css';
 
 export default function Splashscreen() {
-  const letters = 'Konomi'.split('');
+  const letters = 'Konomi'.split('').map((letter, i) => ({ letter, id: `${letter}-${i}`, cssIndex: i }));
 
   return (
     <div className={styles.main}>
       <div className={styles.letterContainer}>
         <div>
-          {letters.map((letter, index) => (
+          {letters.map((item) => (
             <h1
-              key={index}
+              key={item.id}
               className={styles.letter}
-              style={{ '--index': index } as React.CSSProperties}
+              style={{ '--index': item.cssIndex } as React.CSSProperties}
             >
-              {letter}
+              {item.letter}
             </h1>
           ))}
         </div>

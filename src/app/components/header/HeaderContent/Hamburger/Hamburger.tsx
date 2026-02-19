@@ -22,6 +22,18 @@ export default function Hamburger({
           setMenuIsOpen(true);
         }
       }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (menuIsOpen) {
+            closeMenu({ setMenuIsOpen, time: 200 });
+          } else {
+            setMenuIsOpen(true);
+          }
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={menuIsOpen ? 'Close menu' : 'Open menu'}
     >
       <div className={styles.hamburgerLine}></div>
       <div className={styles.hamburgerLine}></div>

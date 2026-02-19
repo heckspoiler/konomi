@@ -20,11 +20,14 @@ export default function EventType() {
         const isSelected = selectedEventType === eventType.value;
         return (
           <div
-            key={index}
+            key={eventType.value}
             className={`${styles.eventType} ${isSelected ? styles.selected : ''}`}
             onClick={() =>
               setSelectedEventType(isSelected ? '' : eventType.value)
             }
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedEventType(isSelected ? '' : eventType.value); }}
+            role="button"
+            tabIndex={0}
           >
             <p>{eventType.name}</p>
           </div>

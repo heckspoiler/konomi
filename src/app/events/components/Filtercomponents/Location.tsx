@@ -62,9 +62,12 @@ export default function Location({ events }: { events: EventDocument[] }) {
         const isSelected = selectedLocation === location;
         return (
           <div
-            key={index}
+            key={location}
             className={`${styles.eventType} ${isSelected ? styles.selected : ''}`}
             onClick={() => setSelectedLocation(isSelected ? '' : location)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedLocation(isSelected ? '' : location); }}
+            role="button"
+            tabIndex={0}
           >
             <p>{location}</p>
           </div>

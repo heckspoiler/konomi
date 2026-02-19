@@ -48,7 +48,7 @@ export default function Events({ events }: { events: EventDocument[] }) {
         sortedUpcomingEvents
           .slice(0, 10)
           .map((event: EventDocument, index: number) => (
-            <div key={index} className={styles.event}>
+            <div key={event.id} className={styles.event}>
               <h4>
                 {formatDate(
                   event.data.event_start_date

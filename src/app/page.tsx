@@ -20,12 +20,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Index() {
   const client = createClient();
-  const home = await client.getByUID('page', 'home');
-  const landingCategories = await client.getSingle('landing_categories');
-  const downloadBar = await client.getSingle('download_bar');
-  const newsFetch = await client.getAllByType('newsarticle', {
-    limit: 10,
-  });
+  const [home, landingCategories, downloadBar, newsFetch] = await Promise.all([
+    client.getByUID('page', 'home'),
+    client.getSingle('landing_categories'),
+    client.getSingle('download_bar'),
+    client.getAllByType('newsarticle', { limit: 10 }),
+  ]);
 
   const news = newsFetch.sort((a, b) => {
     return (

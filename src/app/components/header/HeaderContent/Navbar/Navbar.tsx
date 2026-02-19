@@ -56,14 +56,14 @@ export default function Navbar({
           {content.navigation_items.map(
             (
               item: Simplify<SettingsDocumentDataNavigationItemsItem>,
-              index: number,
             ) => (
               <li
-                key={index}
+                key={item.navigation_item.text}
                 className={`${styles.item} ${isActiveItem === item ? styles.active : ''}`}
                 onClick={() => {
                   closeMenu({ setMenuIsOpen });
                 }}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeMenu({ setMenuIsOpen }); }}
               >
                 <div className={styles.itemContent}>
                   <PrismicNextLink field={item.navigation_item} />
@@ -77,9 +77,8 @@ export default function Navbar({
           {content.navigation_social_icons.map(
             (
               item: Simplify<SettingsDocumentDataNavigationSocialIconsItem>,
-              index: number,
             ) => (
-              <div key={index} onClick={() => closeMenu({ setMenuIsOpen })}>
+              <div key={item.socials_icon.url} onClick={() => closeMenu({ setMenuIsOpen })} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeMenu({ setMenuIsOpen }); }} role="button" tabIndex={0}>
                 <Link
                   href={
                     ('url' in item.socials_link && item.socials_link.url) ||
@@ -98,9 +97,8 @@ export default function Navbar({
           {content.navigation_address.map(
             (
               item: Simplify<SettingsDocumentDataNavigationAddressItem>,
-              index: number,
             ) => (
-              <div key={index}>
+              <div key={JSON.stringify(item.address_line)}>
                 <PrismicRichText field={item.address_line} />
               </div>
             ),
@@ -111,6 +109,9 @@ export default function Navbar({
           onClick={() => {
             closeMenu({ setMenuIsOpen });
           }}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeMenu({ setMenuIsOpen }); }}
+          role="button"
+          tabIndex={0}
         >
           <div className={styles.impressumContent}>
             <PrismicNextLink field={content.impressum_link}>

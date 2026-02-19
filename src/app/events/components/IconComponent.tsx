@@ -48,7 +48,7 @@ export default function IconComponent({ event }: { event: EventDocument }) {
         const icon = renderIcon(prop.key, prop.value);
         return (
           icon && (
-            <div key={index} className={styles.icon}>
+            <div key={prop.key} className={styles.icon}>
               {icon}
             </div>
           )

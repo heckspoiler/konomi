@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react'; // Add useRef
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './HeaderContent.module.css';
 import Hamburger from './Hamburger/Hamburger';
 import Navbar from './Navbar/Navbar';
@@ -26,12 +26,8 @@ export default function HeaderContent({
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const { isMobile } = useMobile();
   const headerRef = useRef<HTMLDivElement>(null);
-  const [isHome, setIsHome] = useState<boolean>(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    setIsHome(pathname === '/');
-  }, [pathname]);
+  const isHome = pathname === '/';
 
   useEffect(() => {
     if (hero?.data?.hero_image?.url) {

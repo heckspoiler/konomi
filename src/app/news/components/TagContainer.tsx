@@ -9,7 +9,7 @@ export default function TagContainer({ article }: Props) {
   return (
     <div className={styles.tags}>
       {article.data.tags.map((tag, index) => (
-        <p key={index}>{tag.item}</p>
+        <p key={tag.item}>{tag.item}</p>
       ))}
     </div>
   );

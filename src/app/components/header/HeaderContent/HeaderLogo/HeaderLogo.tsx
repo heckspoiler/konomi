@@ -27,6 +27,9 @@ export default function HeaderLogo({
       onClick={() => {
         closeMenu({ setMenuIsOpen });
       }}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeMenu({ setMenuIsOpen }); }}
+      role="button"
+      tabIndex={0}
     >
       <Link href="/">
         <PrismicRichText field={content.page_title} />

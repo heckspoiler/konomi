@@ -17,11 +17,7 @@ import { PrismicRichText } from '@prismicio/react';
 export default function AboutContent({ page }: { page: AboutDocument }) {
   const data = page.data;
 
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  const handleMouseEnter = (index: number) => {
-    setHoveredIndex(index);
-  };
+  const [hoveredIndex, setHoveredIndex] = useState<string | null>(null);
 
   const handleMouseLeave = () => {
     setHoveredIndex(null);
@@ -36,16 +32,16 @@ export default function AboutContent({ page }: { page: AboutDocument }) {
 
       <div className={styles.membersContainer}>
         {data.konomi_member.map(
-          (item: AboutDocumentDataKonomiMemberItem, index: number) => (
+          (item: AboutDocumentDataKonomiMemberItem) => (
             <div
-              key={index}
+              key={item.konomi_member_link.text}
               className={styles.member}
-              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseEnter={() => setHoveredIndex(item.konomi_member_link.text ?? null)}
               onMouseLeave={handleMouseLeave}
             >
               <PrismicNextLink field={item.konomi_member_link} />
               <Arrow
-                fill={hoveredIndex === index ? 'var(--red)' : 'var(--beige)'}
+                fill={hoveredIndex === item.konomi_member_link.text ? 'var(--red)' : 'var(--beige)'}
               />
             </div>
           ),

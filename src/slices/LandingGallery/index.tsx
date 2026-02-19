@@ -38,7 +38,7 @@ const LandingGallery: FC<LandingGalleryProps> = ({ slice }) => {
     >
       <div className={styles.embla__container}>
         {slice.primary.gallery.map((item, index) => (
-          <div key={index} className={`${styles.image} ${styles.embla__slide}`}>
+          <div key={item.item.url || `slide-${index}`} className={`${styles.image} ${styles.embla__slide}`}>
             {isFilled.link(item.link) ? (
               <PrismicNextLink field={item.link}>
                 <PrismicNextImage

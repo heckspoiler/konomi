@@ -25,6 +25,9 @@ export default function Topfield({
       <div
         key="event"
         onClick={() => handleClick('event')}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick('event'); }}
+        role="button"
+        tabIndex={0}
         className={`${styles.category} ${fieldIsOpen === 'event' ? styles.open : ''} ${
           selectedEventType ? styles.hasFilter : ''
         }`}
@@ -38,6 +41,9 @@ export default function Topfield({
         <div
           key="date"
           onClick={() => handleClick('date')}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick('date'); }}
+          role="button"
+          tabIndex={0}
           className={`${styles.category} ${fieldIsOpen === 'date' ? styles.open : ''} ${
             selectedDate ? styles.hasFilter : ''
           }`}
@@ -51,6 +57,9 @@ export default function Topfield({
       <div
         key="location"
         onClick={() => handleClick('location')}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick('location'); }}
+        role="button"
+        tabIndex={0}
         className={`${styles.category} ${fieldIsOpen === 'location' ? styles.open : ''} ${
           selectedLocation ? styles.hasFilter : ''
         }`}

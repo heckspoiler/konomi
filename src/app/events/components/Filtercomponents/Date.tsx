@@ -50,11 +50,14 @@ export default function DateFilter({ events }: { events: EventDocument[] }) {
         const isSelected = selectedDate === date;
         return (
           <div
-            key={index}
+            key={date}
             className={`${styles.eventType} ${
               isSelected && isDesktop ? styles.selected : ''
             }`}
             onClick={() => setSelectedDate(isSelected ? '' : date)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedDate(isSelected ? '' : date); }}
+            role="button"
+            tabIndex={0}
           >
             <p>{date}</p>
           </div>

@@ -135,7 +135,7 @@ function EventsContentInner({
               );
             })
             .map((event: EventDocument, index: number) => (
-              <EventComponent key={index} event={event} />
+              <EventComponent key={event.id} event={event} />
             ))
         ) : upcomingEvents && upcomingEvents.length > 0 ? (
           filteredEvents
@@ -145,8 +145,8 @@ function EventsContentInner({
                 new Date(b.data.event_start_date ?? '').getTime()
               );
             })
-            .map((event: EventDocument, index: number) => (
-              <EventComponent key={index} event={event} />
+            .map((event: EventDocument) => (
+              <EventComponent key={event.id} event={event} />
             ))
         ) : (
           <h1>Wir sehen uns im 2026!</h1>

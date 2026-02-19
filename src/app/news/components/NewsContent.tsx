@@ -20,15 +20,15 @@ export default function NewsContent({ page, articles }: NewsContentProps) {
       <TitleContainer page={page} length={length} />
       <div className={styles.previewcontainer}>
         {articles.slice(0, 5).map((article, index) => (
-          <ArticlePreview article={article} key={index} />
+          <ArticlePreview article={article} key={article.id} />
         ))}
       </div>{' '}
       <div className={styles.newslettercontainer}>
         <NewsletterForm />
       </div>
       <div className={styles.previewcontainer}>
-        {articles.slice(5, articles.length).map((article, index) => (
-          <ArticlePreview article={article} key={index} />
+        {articles.slice(5, articles.length).map((article) => (
+          <ArticlePreview article={article} key={article.id} />
         ))}
       </div>{' '}
     </div>

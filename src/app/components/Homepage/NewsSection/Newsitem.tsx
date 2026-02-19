@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import styles from './Newsitem.module.css';
 
@@ -23,9 +23,7 @@ type Props = {
 export default function NewsItem({ item, newsSlicePrimary }: Props) {
   const { isMobile } = useMobile();
 
-  const height = useMemo(() => {
-    return isMobile ? '8.5' : '15';
-  }, [isMobile]);
+  const height = isMobile ? '8.5' : '15';
 
   return (
     <div className={styles.container}>

@@ -29,6 +29,9 @@ export default function EventImage({
       <div
         className={styles.imageContainer}
         onClick={() => setOverlayIsOpen && setOverlayIsOpen(true)}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setOverlayIsOpen?.(true); }}
+        role="button"
+        tabIndex={0}
       >
         <PrismicNextImage
           field={
@@ -45,17 +48,17 @@ export default function EventImage({
             <div className={styles.arrowcontainer}>
               <SkipArrow
                 onClick={() =>
-                  activeImage !== undefined && activeImage > 0
-                    ? setActiveImage && setActiveImage(activeImage - 1)
-                    : setActiveImage && setActiveImage(images.length - 1)
+                  setActiveImage?.((prev) =>
+                    prev > 0 ? prev - 1 : images.length - 1,
+                  )
                 }
                 className={styles.arrowcontainerOne}
               />
               <SkipArrow
                 onClick={() =>
-                  activeImage !== undefined && activeImage < images.length - 1
-                    ? setActiveImage && setActiveImage(activeImage + 1)
-                    : setActiveImage && setActiveImage(0)
+                  setActiveImage?.((prev) =>
+                    prev < images.length - 1 ? prev + 1 : 0,
+                  )
                 }
                 className={styles.arrowcontainerTwo}
               />

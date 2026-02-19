@@ -30,6 +30,9 @@ export default function FilterComponent({
         <div
           className={`${styles.filterItem} ${isFoldoutOpen ? styles.open : ''}`}
           onClick={() => setIsFoldoutOpen(!isFoldoutOpen)}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setIsFoldoutOpen(!isFoldoutOpen); }}
+          role="button"
+          tabIndex={0}
         >
           <p>{!isFoldoutOpen ? 'Filter' : 'Schliessen'}</p>
         </div>

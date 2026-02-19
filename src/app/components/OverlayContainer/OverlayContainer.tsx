@@ -43,18 +43,17 @@ export default function OverlayContainer({
         <>
           <SkipArrow
             onClick={() =>
-              activeImage !== undefined && activeImage > 0
-                ? setActiveImage && setActiveImage(activeImage - 1)
-                : setActiveImage && setActiveImage(page.data.gallery.length - 1)
+              setActiveImage((prev) =>
+                prev > 0 ? prev - 1 : page.data.gallery.length - 1,
+              )
             }
             className={styles.arrowcontainerOne}
           />
           <SkipArrow
             onClick={() =>
-              activeImage !== undefined &&
-              activeImage < page.data.gallery.length - 1
-                ? setActiveImage && setActiveImage(activeImage + 1)
-                : setActiveImage && setActiveImage(0)
+              setActiveImage((prev) =>
+                prev < page.data.gallery.length - 1 ? prev + 1 : 0,
+              )
             }
             className={styles.arrowcontainerTwo}
           />

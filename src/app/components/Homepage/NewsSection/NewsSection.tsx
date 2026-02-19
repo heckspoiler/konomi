@@ -41,7 +41,7 @@ export default function NewsSection({
           )
           .map((item, index) => (
             <NewsItem
-              key={index}
+              key={item.id}
               item={item}
               newsSlicePrimary={newsSlicePrimary}
             />

@@ -67,8 +67,8 @@ export default function EventSection({
         {downloadBar.data.is_downloadbar_visible && (
           <div className={styles.downloads}>
             <div className={styles.downloadbar}>
-              {downloadBar.data.download_bar.map((item, index) => (
-                <PrismicNextLink field={item.item} key={index} />
+              {downloadBar.data.download_bar.map((item) => (
+                <PrismicNextLink field={item.item} key={item.item.text} />
               ))}
             </div>
           </div>

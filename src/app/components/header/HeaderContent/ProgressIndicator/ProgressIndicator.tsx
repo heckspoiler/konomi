@@ -23,7 +23,7 @@ export default function ProgressIndicator({
       {landingCategories.data.categories.map((item, index) => (
         <button
           className={`${styles.link} ${activeSection === item.category_key ? styles.active : ''}`}
-          key={index}
+          key={item.category_key}
           onClick={() => scrollToSection(item.category_key ?? '')}
         >
           {item.category}

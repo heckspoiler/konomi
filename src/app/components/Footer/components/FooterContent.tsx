@@ -19,7 +19,9 @@ export default function FooterContent({ footer }: { footer: FooterDocument }) {
           <div
             className={styles.crossContainer}
             onClick={() => setNewsletterIsOpen(false)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setNewsletterIsOpen(false); }}
             role="button"
+            tabIndex={0}
             aria-label="Close newsletter"
           >
             <div></div>
@@ -47,12 +49,21 @@ export default function FooterContent({ footer }: { footer: FooterDocument }) {
               {footer.data.socials_links.map((item, index) => (
                 <div
                   className={styles.socialItem}
-                  key={index}
+                  key={item.socials_link.text || `social-${index}`}
                   onClick={() => {
                     if (item.socials_link.text === 'Newsletter') {
                       setNewsletterIsOpen(true);
                     }
                   }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      if (item.socials_link.text === 'Newsletter') {
+                        setNewsletterIsOpen(true);
+                      }
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
                 >
                   <PrismicNextLink field={item.socials_link}>
                     <p>{item.socials_link.text}</p>
@@ -69,7 +80,7 @@ export default function FooterContent({ footer }: { footer: FooterDocument }) {
             </div>
             <div className={styles.supportersLogos}>
               {footer.data.supporters.map((item, index) => (
-                <div key={index} className={styles.supporter}>
+                <div key={item.supporters_image.url || `supporter-${index}`} className={styles.supporter}>
                   <PrismicNextLink field={item.supporters_link}>
                     <PrismicNextImage field={item.supporters_image} />
                   </PrismicNextLink>

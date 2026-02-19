@@ -7,7 +7,7 @@ import { PrismicRichText } from '@prismicio/react';
 import Link from 'next/link';
 import TagContainer from './TagContainer';
 
-export type ArticlePreviewProps = { article: NewsarticleDocument };
+type ArticlePreviewProps = { article: NewsarticleDocument };
 
 export default function ArticlePreview({ article }: ArticlePreviewProps) {
   const date = article.data.publishing_date?.split('-').reverse().join('.');

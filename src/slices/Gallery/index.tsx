@@ -39,7 +39,7 @@ const Gallery = ({
         {slice.primary.images.map((item, index) => (
           <PrismicNextImage
             field={item.image}
-            key={index}
+            key={item.image.url || `gallery-${index}`}
             onClick={() => context?.onClick?.(slice.primary.images, index)}
             loading="lazy"
             sizes="(max-width: 768px) 45vw, (max-width: 1280px) 30vw, 400px"

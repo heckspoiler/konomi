@@ -86,17 +86,17 @@ export default function GalleryContent({ page }: GalleryContentProps) {
             <>
               <SkipArrow
                 onClick={() =>
-                  activeImage > 0
-                    ? setActiveImage(activeImage - 1)
-                    : setActiveImage(activeImages.length - 1)
+                  setActiveImage((prev) =>
+                    prev > 0 ? prev - 1 : activeImages.length - 1,
+                  )
                 }
                 className={styles.arrowcontainerOne}
               />
               <SkipArrow
                 onClick={() =>
-                  activeImage < activeImages.length - 1
-                    ? setActiveImage(activeImage + 1)
-                    : setActiveImage(0)
+                  setActiveImage((prev) =>
+                    prev < activeImages.length - 1 ? prev + 1 : 0,
+                  )
                 }
                 className={styles.arrowcontainerTwo}
               />

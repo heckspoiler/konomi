@@ -8,7 +8,7 @@ type Props = {
 
 export default function Cross({ onClick }: Props) {
   return (
-    <div onClick={onClick} className={styles.cross}>
+    <div onClick={onClick} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick(); }} role="button" tabIndex={0} className={styles.cross}>
       <div className={styles.crossContainer}>
         <div></div>
         <div></div>

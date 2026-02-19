@@ -44,11 +44,14 @@ export default function Gallery({
       {images &&
         images.map((item, index) => (
           <div
-            key={index}
+            key={item.image.url || `gallery-${index}`}
             ref={(el) => {
               imageRefs.current[index] = el;
             }}
             onClick={() => setActiveImage && setActiveImage(index)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveImage?.(index); }}
+            role="button"
+            tabIndex={0}
             className={`${styles.galleryimage} ${activeImage === index ? styles.active : ''}`}
           >
             <PrismicNextImage
