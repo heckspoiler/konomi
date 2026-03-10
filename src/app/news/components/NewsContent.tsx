@@ -19,7 +19,7 @@ export default function NewsContent({ page, articles }: NewsContentProps) {
     <div className={styles.container}>
       <TitleContainer page={page} length={length} />
       <div className={styles.previewcontainer}>
-        {articles.slice(0, 5).map((article, index) => (
+        {articles.slice(0, 5).map((article) => (
           <ArticlePreview article={article} key={article.id} />
         ))}
       </div>{' '}

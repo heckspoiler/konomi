@@ -20,7 +20,7 @@ export default function ProgressIndicator({
 
   return (
     <div className={styles.container}>
-      {landingCategories.data.categories.map((item, index) => (
+      {landingCategories.data.categories.map((item) => (
         <button
           className={`${styles.link} ${activeSection === item.category_key ? styles.active : ''}`}
           key={item.category_key}

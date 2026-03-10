@@ -58,14 +58,17 @@ export default function Location({ events }: { events: EventDocument[] }) {
 
   return (
     <FiltermappingContainer>
-      {locationsToShow.map((location: string, index: number) => {
+      {locationsToShow.map((location: string) => {
         const isSelected = selectedLocation === location;
         return (
           <div
             key={location}
             className={`${styles.eventType} ${isSelected ? styles.selected : ''}`}
             onClick={() => setSelectedLocation(isSelected ? '' : location)}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedLocation(isSelected ? '' : location); }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ')
+                setSelectedLocation(isSelected ? '' : location);
+            }}
             role="button"
             tabIndex={0}
           >

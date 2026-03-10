@@ -8,7 +8,7 @@ type Props = { article: NewsarticleDocument };
 export default function TagContainer({ article }: Props) {
   return (
     <div className={styles.tags}>
-      {article.data.tags.map((tag, index) => (
+      {article.data.tags.map((tag) => (
         <p key={tag.item}>{tag.item}</p>
       ))}
     </div>

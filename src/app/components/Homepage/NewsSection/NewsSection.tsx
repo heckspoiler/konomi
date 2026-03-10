@@ -39,7 +39,7 @@ export default function NewsSection({
               new Date(b.data.publishing_date as string).getTime() -
               new Date(a.data.publishing_date as string).getTime(),
           )
-          .map((item, index) => (
+          .map((item) => (
             <NewsItem
               key={item.id}
               item={item}

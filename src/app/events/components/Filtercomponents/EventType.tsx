@@ -16,7 +16,7 @@ export default function EventType() {
 
   return (
     <FiltermappingContainer>
-      {EventtypeArray.map((eventType: EventType, index: number) => {
+      {EventtypeArray.map((eventType: EventType) => {
         const isSelected = selectedEventType === eventType.value;
         return (
           <div
@@ -25,7 +25,10 @@ export default function EventType() {
             onClick={() =>
               setSelectedEventType(isSelected ? '' : eventType.value)
             }
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedEventType(isSelected ? '' : eventType.value); }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ')
+                setSelectedEventType(isSelected ? '' : eventType.value);
+            }}
             role="button"
             tabIndex={0}
           >

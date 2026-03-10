@@ -87,7 +87,10 @@ function EventsContentInner({
 
     // Check search query (normalize diacritics so e.g. ō matches o)
     const normalize = (s: string) =>
-      s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+      s
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
     const searchNorm = normalize(query);
     const matchesSearch =
       !query ||
@@ -134,7 +137,7 @@ function EventsContentInner({
                 new Date(b.data.event_start_date ?? '').getTime()
               );
             })
-            .map((event: EventDocument, index: number) => (
+            .map((event: EventDocument) => (
               <EventComponent key={event.id} event={event} />
             ))
         ) : upcomingEvents && upcomingEvents.length > 0 ? (

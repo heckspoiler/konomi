@@ -46,7 +46,7 @@ export default function DateFilter({ events }: { events: EventDocument[] }) {
 
   return (
     <FiltermappingContainer>
-      {datesSorted.map((date: string, index: number) => {
+      {datesSorted.map((date: string) => {
         const isSelected = selectedDate === date;
         return (
           <div
@@ -55,7 +55,10 @@ export default function DateFilter({ events }: { events: EventDocument[] }) {
               isSelected && isDesktop ? styles.selected : ''
             }`}
             onClick={() => setSelectedDate(isSelected ? '' : date)}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedDate(isSelected ? '' : date); }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ')
+                setSelectedDate(isSelected ? '' : date);
+            }}
             role="button"
             tabIndex={0}
           >

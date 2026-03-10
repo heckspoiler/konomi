@@ -44,7 +44,7 @@ export default function IconComponent({ event }: { event: EventDocument }) {
 
   return (
     <div className={styles.iconContainer}>
-      {iconProperties.map((prop, index) => {
+      {iconProperties.map((prop) => {
         const icon = renderIcon(prop.key, prop.value);
         return (
           icon && (
