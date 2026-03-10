@@ -27,7 +27,7 @@ export default async function RootLayout({
 
   const events = await client.getAllByType('event');
 
-  const splashscreenVisible = true;
+  const splashscreenVisible = process.env.NODE_ENV === 'production';
 
   return (
     <html lang="en">

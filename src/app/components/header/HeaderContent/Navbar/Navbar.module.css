@@ -3,12 +3,13 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    gap: 4rem;
-    padding-top: 25svh;
+
+    padding-top: 20svh;
     background-color: var(--beige);
     background: var(--hero-image);
     background-size: auto 100%;
     background-repeat: no-repeat;
+
 }
 
 .navbar * {
@@ -18,7 +19,9 @@
 .clickables {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
+
+
 }
 
 .list {
@@ -27,6 +30,8 @@
     flex-direction: column;
     padding-left: 2.5rem;
     width: fit-content;
+    gap: 1rem;
+
 }
 
 .itemContent {
@@ -45,14 +50,15 @@
     z-index: 1;
     font-variation-settings: var(--japanese-subtitle-weight);
     text-align: center;
-    padding: 1rem 0.5rem;
+    padding: 0;
     height: 100%;
     width: fit-content;
+
     color: var(--red);
     background-color: var(--beige);
-    height: 4rem;
-    pointer-events: all;
 
+    height: fit-content;
+    pointer-events: all;
     width: fit-content;
     transition: transform 0.2s var(--bezier), font-variation-settings 0.2s var(--bezier);
 }
@@ -108,7 +114,7 @@
     padding: 0.8rem;
     flex-direction: column;
     gap: 1rem;
-
+    padding-bottom: 4rem;
 }
 
 .lowerContainer * {
@@ -173,11 +179,12 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        gap: 4rem;
-        padding-top: 25svh;
+        gap: calc(1rem + 1vw);
+        padding-top: 20svh;
         background-color: var(--beige);
         background: var(--hero-image);
         background-size: auto 100%;
         background-repeat: no-repeat;
     }
+
 }
