@@ -193,8 +193,13 @@ p {
 
 }
 
+ul {
+    list-style-position: inside;
+}
+
 li {
     list-style-type: none;
+    list-style-position: inside;
 }
 
 a {
