@@ -18,7 +18,7 @@ export default function SearchContainer({ searchicon }: SearchIconProps) {
   return (
     <div className={styles.searchcontainer}>
       <input
-        placeholder="Stichwörter, Locations, Eventname usw."
+        placeholder="Locations oder Eventname"
         id="eventsearch"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
