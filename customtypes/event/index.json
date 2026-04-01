@@ -32,6 +32,29 @@
           "repeat": false
         }
       },
+      "has_eventfrog_link": {
+        "type": "Boolean",
+        "config": {
+          "label": "Has Eventfrog Link",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": true
+        }
+      },
+      "alternative_link_text": {
+        "type": "Text",
+        "config": {
+          "label": "Alternative Link Text",
+          "placeholder": ""
+        }
+      },
+      "event_start_date": {
+        "type": "Timestamp",
+        "config": {
+          "label": "Event Start Date",
+          "placeholder": ""
+        }
+      },
       "event_image": {
         "type": "Image",
         "config": {
@@ -55,13 +78,6 @@
               }
             }
           }
-        }
-      },
-      "event_start_date": {
-        "type": "Timestamp",
-        "config": {
-          "label": "Event Start Date",
-          "placeholder": ""
         }
       },
       "event_end_date": {

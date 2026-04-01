@@ -461,6 +461,40 @@ interface EventDocumentData {
   >;
 
   /**
+   * Has Eventfrog Link field in *Event*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: event.has_eventfrog_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  has_eventfrog_link: prismic.BooleanField;
+
+  /**
+   * Alternative Link Text field in *Event*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.alternative_link_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  alternative_link_text: prismic.KeyTextField;
+
+  /**
+   * Event Start Date field in *Event*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event.event_start_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/timestamp
+   */
+  event_start_date: prismic.TimestampField;
+
+  /**
    * Event Image field in *Event*
    *
    * - **Field Type**: Image
@@ -481,17 +515,6 @@ interface EventDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   gallery: prismic.GroupField<Simplify<EventDocumentDataGalleryItem>>;
-
-  /**
-   * Event Start Date field in *Event*
-   *
-   * - **Field Type**: Timestamp
-   * - **Placeholder**: *None*
-   * - **API ID Path**: event.event_start_date
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/timestamp
-   */
-  event_start_date: prismic.TimestampField;
 
   /**
    * Event End Date field in *Event*

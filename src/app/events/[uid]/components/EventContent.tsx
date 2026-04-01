@@ -77,7 +77,9 @@ export default function EventContent({
           <div className={styles.linkContainer}>
             {!buttonShow ? (
               <PrismicNextLink field={data.eventfrog_link}>
-                Tickets
+                {data?.has_eventfrog_link
+                  ? 'Tickets'
+                  : data.alternative_link_text}
               </PrismicNextLink>
             ) : (
               <Link href="/events">Events</Link>
