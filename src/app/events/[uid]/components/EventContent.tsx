@@ -24,7 +24,7 @@ import Link from 'next/link';
 import BackToComponent from '../../components/BackToComponent';
 
 import { EventDocument, EventsDocumentData, Simplify } from '@/prismicio-types';
-import { PrismicDocumentWithUID } from '@prismicio/client';
+import { asText, PrismicDocumentWithUID } from '@prismicio/client';
 
 import DescriptionContainer from '@/app/components/DescriptionContainer/DescriptionContainer';
 import OverlayContainer from '@/app/components/OverlayContainer/OverlayContainer';
@@ -43,6 +43,8 @@ export default function EventContent({
   const { isMobile } = useMobile();
   const pathname = usePathname();
   const [backComponent, setBackComponent] = useState<React.ReactNode>(null);
+
+  const eventLocation = asText(data.event_location);
 
   useEffect(() => {
     if (!buttonShow) {
@@ -100,14 +102,16 @@ export default function EventContent({
         <DescriptionContainer>
           <PrismicRichText field={data.event_description} />
         </DescriptionContainer>
-        <div className={styles.locationLink}>
-          <PrismicNextLink field={data.location_website}>
-            Über{' '}
-            {data.event_location[0] &&
-              'text' in data.event_location[0] &&
-              data.event_location[0].text}
-          </PrismicNextLink>
-        </div>
+        {eventLocation.includes('Konomibar') === false && (
+          <div className={styles.locationLink}>
+            <PrismicNextLink field={data.location_website}>
+              Über{' '}
+              {data.event_location[0] &&
+                'text' in data.event_location[0] &&
+                data.event_location[0].text}
+            </PrismicNextLink>
+          </div>
+        )}
       </div>
 
       {backComponent}

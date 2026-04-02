@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import styles from './EventsContent.module.css';
 import MainHeading from './MainHeading';
 import EventComponent from './EventComponent';
@@ -34,6 +34,7 @@ function EventsContentInner({
   const { selectedDate, selectedLocation, selectedEventType } = useFilter();
   const { query } = useSearchbarStore();
   const [isFoldoutOpen, setIsFoldoutOpen] = useState(false);
+  const foldoutRef = useRef<HTMLDivElement>(null);
   const [usedEvents, setUsedEvents] = useState<EventDocument[]>([]);
 
   const now = useMemo(() => new Date(), []);
@@ -65,6 +66,30 @@ function EventsContentInner({
       setUsedEvents(pastEvents);
     }
   }, [pathname, upcomingEvents, pastEvents]);
+
+  useEffect(() => {
+    if (!isFoldoutOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsFoldoutOpen(false);
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        foldoutRef.current &&
+        !foldoutRef.current.contains(e.target as Node)
+      ) {
+        setIsFoldoutOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isFoldoutOpen]);
 
   const filteredEvents = usedEvents?.filter((event: EventDocument) => {
     const matchesDate =
@@ -120,8 +145,13 @@ function EventsContentInner({
       <div className={styles.eventsContainer}>
         <div className={styles.filtercontainer}>
           <div className={styles.backLinkContainer}>{backComponent}</div>
-          <SearchContainer searchicon={searchicon} />
-          <div className={`${isFoldoutOpen && styles.foldoutOpen}`}>
+          <div className={styles.searchbar}>
+            <SearchContainer searchicon={searchicon} />
+          </div>
+          <div
+            ref={foldoutRef}
+            className={`${styles.filterbutton} ${isFoldoutOpen && styles.foldoutOpen}`}
+          >
             <FilterComponent
               events={events}
               isFoldoutOpen={isFoldoutOpen}

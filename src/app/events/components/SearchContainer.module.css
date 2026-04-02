@@ -1,6 +1,6 @@
 .searchcontainer {
     border: var(--border);
-    width: 60%;
+    width: 90%;
     height: 2rem;
     display: flex;
     justify-content: space-between;
@@ -8,6 +8,7 @@
     padding: 0 var(--spacing-2) 0 0;
     gap: var(--spacing-1);
     background-color: var(--beige);
+
 }
 
 .searchcontainer input {
@@ -29,5 +30,16 @@
 .searchcontainer img {
     height: 1.2rem;
     width: 1.2rem;
+
+}
+
+
+
+/* !!!! DESKTOP !!!!! */
+
+@media screen and (min-width: 1080px) {
+    .searchcontainer {
+        width: 75%;
+    }
 
 }

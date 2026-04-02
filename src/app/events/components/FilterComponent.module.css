@@ -13,15 +13,11 @@
     font-size: 0.75rem;
     font-variation-settings: var(--subtitle-weight);
     text-transform: uppercase;
-    width: fit-content;
     border: 1px solid var(--red);
     transition: all 0.2s var(--bezier);
-    width: 100%;
     text-align: center;
-    text-transform: uppercase;
     font-family: var(--title-font);
     cursor: pointer;
-    width: fit-content;
 }
 
 .filterContainer p:hover {
