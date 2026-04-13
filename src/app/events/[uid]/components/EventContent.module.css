@@ -26,12 +26,26 @@
 .infoContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
 }
+
+.locationContainer {
+    display: flex;
+
+    width: 100%;
+}
+
+.locationContainer a {
+    display: flex;
+    width: 100%;
+}
+
 
 .linkContainer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
 }
 
 .linkContainer a {
@@ -145,6 +159,7 @@
         margin-top: var(--header-height);
         padding: 0 1rem 1rem 1rem;
     }
+
 
     .eventContainer {
         padding: var(--spacing-6) 0;

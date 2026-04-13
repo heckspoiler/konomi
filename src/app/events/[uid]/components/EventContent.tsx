@@ -60,6 +60,9 @@ export default function EventContent({
     }
   }, [pathname, buttonShow]);
 
+  const showNoTicketsButton =
+    data.has_eventfrog_link === false && data.alternative_link_text === null;
+
   return (
     <div className={styles.container}>
       <MainHeading title={'Event'} page={events} buttonShow={buttonShow} />
@@ -70,19 +73,27 @@ export default function EventContent({
         </div>
         <IconComponent event={page} />
         <div className={styles.infoContainer}>
-          <PrismicNextLink field={data.google_location_link}>
-            <LocationComponent data={data} />
-          </PrismicNextLink>
+          <div className={styles.locationContainer}>
+            <PrismicNextLink field={data.google_location_link}>
+              <LocationComponent data={data} />
+            </PrismicNextLink>
+          </div>
 
           <DateComponent variant="event" data={data} />
 
           <div className={styles.linkContainer}>
             {!buttonShow ? (
-              <PrismicNextLink field={data.eventfrog_link}>
-                {data?.has_eventfrog_link
-                  ? 'Tickets'
-                  : data.alternative_link_text}
-              </PrismicNextLink>
+              <>
+                {showNoTicketsButton ? (
+                  <></>
+                ) : (
+                  <PrismicNextLink field={data.eventfrog_link}>
+                    {data?.has_eventfrog_link
+                      ? 'Tickets'
+                      : data.alternative_link_text}
+                  </PrismicNextLink>
+                )}
+              </>
             ) : (
               <Link href="/events">Events</Link>
             )}
