@@ -10,7 +10,6 @@
 .gallery {
     columns: 2;
     column-gap: var(--spacing-2);
-    background-color: red;
 }
 
 .gallery img {
