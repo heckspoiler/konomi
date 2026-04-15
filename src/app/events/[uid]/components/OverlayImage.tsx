@@ -37,7 +37,7 @@ export default function OverlayImage({
         <PrismicNextImage
           key={currentUrl}
           field={currentField}
-          onLoad={() => setIsLoading(true)}
+          onLoad={() => setIsLoading(false)}
           className={isLoading ? styles.imageLoading : styles.imageLoaded}
         />
         {isLoading && (
