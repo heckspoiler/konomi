@@ -42,7 +42,7 @@ export default function Events({ events }: { events: EventDocument[] }) {
     <div className={styles.scheduleContainer}>
       {sortedUpcomingEvents.length === 0 ? (
         <div className={styles.seeyou}>
-          <h2>Wir sehen uns im 2026!</h2>
+          <h2>Wir sehen uns im 2027!</h2>
         </div>
       ) : (
         sortedUpcomingEvents.slice(0, 10).map((event: EventDocument) => (

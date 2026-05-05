@@ -182,7 +182,7 @@ function EventsContentInner({
               <EventComponent key={event.id} event={event} />
             ))
         ) : (
-          <h1>Wir sehen uns im 2026!</h1>
+          <h1>Wir sehen uns im 2027!</h1>
         )}
       </div>
     </PageContainer>
