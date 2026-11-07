@@ -17,7 +17,7 @@ export default function Gallery({
   activeImage,
 }: GalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const imageRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
     if (activeImage === undefined || !containerRef.current) return;
@@ -43,26 +43,24 @@ export default function Gallery({
     <div className={styles.gallerycontainer} ref={containerRef}>
       {images &&
         images.map((item, index) => (
-          <div
+          <button
+            type="button"
             key={item.image.url || `gallery-${index}`}
             ref={(el) => {
               imageRefs.current[index] = el;
             }}
-            onClick={() => setActiveImage && setActiveImage(index)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') setActiveImage?.(index);
-            }}
-            role="button"
-            tabIndex={0}
-            className={`${styles.galleryimage} ${activeImage === index ? styles.active : ''}`}
+            onClick={() => setActiveImage?.(index)}
+            aria-label={`Bild ${index + 1} anzeigen`}
+            aria-pressed={activeImage === index}
+            className={`unstyled-button ${styles.galleryimage} ${activeImage === index ? styles.active : ''}`}
           >
             <PrismicNextImage
               field={item.image}
               loading="lazy"
-              sizes="(max-width: 768px) 45vw, (max-width: 1280px) 30vw, 400px"
+              sizes="(max-width: 768px) 45vw, (max-width: 1080px) 30vw, 400px"
               imgixParams={{ q: 65, w: 400 }}
             />
-          </div>
+          </button>
         ))}
     </div>
   );

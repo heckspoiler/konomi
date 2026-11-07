@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './ClickOverlay.module.css';
 
-import { closeMenu } from '../../../../../helpers/closeMenu';
+import { closeMenu } from '@helpers/closeMenu';
 
 export default function ClickOverlay({
   isMobile,
@@ -19,10 +19,7 @@ export default function ClickOverlay({
       onClick={() => {
         closeMenu({ setMenuIsOpen, time: 200 });
       }}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeMenu({ setMenuIsOpen, time: 200 }); }}
-      role="button"
-      tabIndex={0}
-      aria-label="Close menu"
+      aria-hidden="true"
     ></div>
   );
 }

@@ -41,6 +41,15 @@ export default function HeaderContent({
     };
   }, [hero?.data?.hero_image?.url]);
 
+  useEffect(() => {
+    if (!menuIsOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuIsOpen(false);
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [menuIsOpen]);
+
   return (
     <div
       ref={headerRef}
@@ -65,7 +74,7 @@ export default function HeaderContent({
         <div className={styles.heroImage}>
           <Image
             src={hero.data.hero_image.url as string}
-            alt={hero.data.hero_image.alt as string}
+            alt={hero.data.hero_image.alt ?? ''}
             width={4961 / 7}
             height={7016 / 7}
           />

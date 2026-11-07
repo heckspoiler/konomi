@@ -26,12 +26,11 @@ export default function EventImage({
 }) {
   return (
     <div className={styles.container}>
-      <div
-        className={styles.imageContainer}
-        onClick={() => setOverlayIsOpen && setOverlayIsOpen(true)}
-        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setOverlayIsOpen?.(true); }}
-        role="button"
-        tabIndex={0}
+      <button
+        type="button"
+        className={`unstyled-button ${styles.imageContainer}`}
+        onClick={() => setOverlayIsOpen?.(true)}
+        aria-label="Bild vergrössern"
       >
         <PrismicNextImage
           field={
@@ -40,7 +39,7 @@ export default function EventImage({
               : image
           }
         />
-      </div>
+      </button>
 
       <div>
         {images && images.length > 1 && (

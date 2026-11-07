@@ -44,7 +44,7 @@ const LandingGallery: FC<LandingGalleryProps> = ({ slice }) => {
                 <PrismicNextImage
                   field={item.item}
                   loading="lazy"
-                  sizes="(max-width: 768px) 45vw, (max-width: 1280px) 30vw, 400px"
+                  sizes="(max-width: 768px) 45vw, (max-width: 1080px) 30vw, 400px"
                   imgixParams={{ q: 65, w: 400 }}
                 />
               </PrismicNextLink>
@@ -53,7 +53,7 @@ const LandingGallery: FC<LandingGalleryProps> = ({ slice }) => {
                 <PrismicNextImage
                   field={item.item}
                   loading="lazy"
-                  sizes="(max-width: 768px) 45vw, (max-width: 1280px) 30vw, 400px"
+                  sizes="(max-width: 768px) 45vw, (max-width: 1080px) 30vw, 400px"
                   imgixParams={{ q: 65, w: 400 }}
                 />
               </Link>

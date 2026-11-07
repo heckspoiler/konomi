@@ -37,14 +37,20 @@ const Gallery = ({
       </div>
       <div className={styles.gallery}>
         {slice.primary.images.map((item, index) => (
-          <PrismicNextImage
-            field={item.image}
+          <button
+            type="button"
             key={item.image.url || `gallery-${index}`}
+            className={`unstyled-button ${styles.imageButton}`}
             onClick={() => context?.onClick?.(slice.primary.images, index)}
-            loading="lazy"
-            sizes="(max-width: 768px) 45vw, (max-width: 1280px) 30vw, 400px"
-            imgixParams={{ q: 65, w: 400 }}
-          />
+            aria-label={`Bild ${index + 1} vergrössern`}
+          >
+            <PrismicNextImage
+              field={item.image}
+              loading="lazy"
+              sizes="(max-width: 768px) 45vw, (max-width: 1080px) 30vw, 400px"
+              imgixParams={{ q: 65, w: 400 }}
+            />
+          </button>
         ))}
       </div>
     </section>

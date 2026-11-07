@@ -20,19 +20,15 @@ export default function Location({ events }: { events: EventDocument[] }) {
       {locations.map((location) => {
         const isSelected = selectedLocation === location;
         return (
-          <div
+          <button
+            type="button"
             key={location}
-            className={`${styles.eventType} ${isSelected ? styles.selected : ''}`}
+            className={`unstyled-button ${styles.eventType} ${isSelected ? styles.selected : ''}`}
             onClick={() => setSelectedLocation(isSelected ? '' : location)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ')
-                setSelectedLocation(isSelected ? '' : location);
-            }}
-            role="button"
-            tabIndex={0}
+            aria-pressed={isSelected}
           >
             <p>{location}</p>
-          </div>
+          </button>
         );
       })}
     </FiltermappingContainer>

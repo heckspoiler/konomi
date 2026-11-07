@@ -28,17 +28,17 @@ export default function FilterComponent({
     <div className={styles.filterContainer}>
       <div
         className={`${styles.indicator} ${hasActiveFilters && !isFoldoutOpen ? styles.indicatorVisible : ''}`}
+        aria-hidden="true"
       ></div>
       <div className={styles.filterHeader}>
-        <div
-          className={`${styles.filterItem} ${isFoldoutOpen ? styles.open : ''}`}
+        <button
+          type="button"
+          className={`unstyled-button ${styles.filterItem} ${isFoldoutOpen ? styles.open : ''}`}
           onClick={() => setIsFoldoutOpen(!isFoldoutOpen)}
-          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setIsFoldoutOpen(!isFoldoutOpen); }}
-          role="button"
-          tabIndex={0}
+          aria-expanded={isFoldoutOpen}
         >
           <p>{!isFoldoutOpen ? 'Filter' : 'Schliessen'}</p>
-        </div>
+        </button>
       </div>
       <div
         className={`${styles.foldoutContainer} ${isFoldoutOpen ? styles.open : ''}`}

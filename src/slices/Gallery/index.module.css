@@ -12,6 +12,12 @@
     column-gap: var(--spacing-2);
 }
 
+.imageButton {
+    display: block;
+    width: 100%;
+    break-inside: avoid;
+}
+
 .gallery img {
     width: 100%;
     height: auto;

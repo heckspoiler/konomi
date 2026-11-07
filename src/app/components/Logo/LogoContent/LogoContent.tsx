@@ -15,18 +15,13 @@ export default function LogoContent({ logo }: { logo: LogoDocument }) {
   };
 
   return (
-    <div
-      className={styles.logoContainer}
+    <button
+      type="button"
+      className={`unstyled-button ${styles.logoContainer}`}
       onClick={scrollToTop}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          scrollToTop();
-        }
-      }}
+      aria-label="Nach oben scrollen"
     >
-      <PrismicNextImage field={logo.data.logo_image} />
-    </div>
+      <PrismicNextImage field={logo.data.logo_image} alt="" />
+    </button>
   );
 }

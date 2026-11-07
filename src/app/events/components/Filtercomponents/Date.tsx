@@ -20,21 +20,17 @@ export default function DateFilter({ events }: { events: EventDocument[] }) {
       {dates.map((date) => {
         const isSelected = selectedDate === date;
         return (
-          <div
+          <button
+            type="button"
             key={date}
-            className={`${styles.eventType} ${
+            className={`unstyled-button ${styles.eventType} ${
               isSelected && isDesktop ? styles.selected : ''
             }`}
             onClick={() => setSelectedDate(isSelected ? '' : date)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ')
-                setSelectedDate(isSelected ? '' : date);
-            }}
-            role="button"
-            tabIndex={0}
+            aria-pressed={isSelected}
           >
             <p>{date}</p>
-          </div>
+          </button>
         );
       })}
     </FiltermappingContainer>

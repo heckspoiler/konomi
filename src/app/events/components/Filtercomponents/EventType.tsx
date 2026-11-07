@@ -19,21 +19,17 @@ export default function EventType() {
       {EventtypeArray.map((eventType: EventType) => {
         const isSelected = selectedEventType === eventType.value;
         return (
-          <div
+          <button
+            type="button"
             key={eventType.value}
-            className={`${styles.eventType} ${isSelected ? styles.selected : ''}`}
+            className={`unstyled-button ${styles.eventType} ${isSelected ? styles.selected : ''}`}
             onClick={() =>
               setSelectedEventType(isSelected ? '' : eventType.value)
             }
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ')
-                setSelectedEventType(isSelected ? '' : eventType.value);
-            }}
-            role="button"
-            tabIndex={0}
+            aria-pressed={isSelected}
           >
             <p>{eventType.name}</p>
-          </div>
+          </button>
         );
       })}
     </FiltermappingContainer>

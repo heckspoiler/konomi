@@ -8,11 +8,16 @@ type Props = {
 
 export default function Cross({ onClick }: Props) {
   return (
-    <div onClick={onClick} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick(); }} role="button" tabIndex={0} className={styles.cross}>
-      <div className={styles.crossContainer}>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`unstyled-button ${styles.cross}`}
+      aria-label="Schliessen"
+    >
+      <span className={styles.crossContainer} aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
+    </button>
   );
 }

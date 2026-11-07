@@ -6,7 +6,7 @@ import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
 
 import Link from 'next/link';
 
-import { closeMenu } from '../../../../../../helpers/closeMenu';
+import { closeMenu } from '@helpers/closeMenu';
 
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
@@ -42,7 +42,7 @@ export default function Navbar({
   return (
     <nav className={`${styles.navbar} ${menuIsOpen ? styles.open : ''}`}>
       <div className={styles.clickables}>
-        <div className={styles.list}>
+        <ul className={styles.list}>
           {content.navigation_items.map(
             (
               item: Simplify<SettingsDocumentDataNavigationItemsItem>,
@@ -53,7 +53,6 @@ export default function Navbar({
                 onClick={() => {
                   closeMenu({ setMenuIsOpen });
                 }}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeMenu({ setMenuIsOpen }); }}
               >
                 <div className={styles.itemContent}>
                   <PrismicNextLink field={item.navigation_item} />
@@ -62,13 +61,13 @@ export default function Navbar({
               </li>
             ),
           )}
-        </div>
+        </ul>
         <div className={styles.socials}>
           {content.navigation_social_icons.map(
             (
               item: Simplify<SettingsDocumentDataNavigationSocialIconsItem>,
             ) => (
-              <div key={item.socials_icon.url} onClick={() => closeMenu({ setMenuIsOpen })} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeMenu({ setMenuIsOpen }); }} role="button" tabIndex={0}>
+              <div key={item.socials_icon.url} onClick={() => closeMenu({ setMenuIsOpen })}>
                 <Link
                   href={
                     ('url' in item.socials_link && item.socials_link.url) ||
@@ -99,9 +98,6 @@ export default function Navbar({
           onClick={() => {
             closeMenu({ setMenuIsOpen });
           }}
-          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeMenu({ setMenuIsOpen }); }}
-          role="button"
-          tabIndex={0}
         >
           <div className={styles.impressumContent}>
             <PrismicNextLink field={content.impressum_link}>

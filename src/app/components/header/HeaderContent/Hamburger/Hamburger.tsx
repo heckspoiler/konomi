@@ -3,7 +3,7 @@
 import React from 'react';
 
 import styles from './Hamburger.module.css';
-import { closeMenu } from '../../../../../../helpers/closeMenu';
+import { closeMenu } from '@helpers/closeMenu';
 
 export default function Hamburger({
   setMenuIsOpen,
@@ -13,8 +13,9 @@ export default function Hamburger({
   menuIsOpen: boolean;
 }) {
   return (
-    <div
-      className={`${styles.hamburger} ${menuIsOpen ? styles.open : ''}`}
+    <button
+      type="button"
+      className={`unstyled-button ${styles.hamburger} ${menuIsOpen ? styles.open : ''}`}
       onClick={() => {
         if (menuIsOpen) {
           closeMenu({ setMenuIsOpen, time: 200 });
@@ -22,23 +23,13 @@ export default function Hamburger({
           setMenuIsOpen(true);
         }
       }}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          if (menuIsOpen) {
-            closeMenu({ setMenuIsOpen, time: 200 });
-          } else {
-            setMenuIsOpen(true);
-          }
-        }
-      }}
-      role="button"
-      tabIndex={0}
-      aria-label={menuIsOpen ? 'Close menu' : 'Open menu'}
+      aria-label={menuIsOpen ? 'Menü schliessen' : 'Menü öffnen'}
+      aria-expanded={menuIsOpen}
     >
-      <div className={styles.hamburgerLine}></div>
-      <div className={styles.hamburgerLine}></div>
-      <div className={styles.hamburgerLine}></div>
-      <div className={styles.backgroundCircle}></div>
-    </div>
+      <span className={styles.hamburgerLine} aria-hidden="true"></span>
+      <span className={styles.hamburgerLine} aria-hidden="true"></span>
+      <span className={styles.hamburgerLine} aria-hidden="true"></span>
+      <span className={styles.backgroundCircle} aria-hidden="true"></span>
+    </button>
   );
 }

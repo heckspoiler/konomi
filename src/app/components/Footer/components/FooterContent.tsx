@@ -9,24 +9,28 @@ import Heart from '../../heart/Heart';
 import NewsletterForm from '../../Homepage/AboutSection/NewsletterForm';
 import { FooterDocument } from '@/prismicio-types';
 
+const NEWSLETTER_LABEL = 'Newsletter';
+
 export default function FooterContent({ footer }: { footer: FooterDocument }) {
   const [newsletterIsOpen, setNewsletterIsOpen] = useState(false);
 
   return (
     <>
       {newsletterIsOpen && (
-        <div className={styles.newsletterOverlay}>
-          <div
-            className={styles.crossContainer}
+        <div
+          className={styles.newsletterOverlay}
+          role="dialog"
+          aria-label="Newsletter"
+        >
+          <button
+            type="button"
+            className={`unstyled-button ${styles.crossContainer}`}
             onClick={() => setNewsletterIsOpen(false)}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setNewsletterIsOpen(false); }}
-            role="button"
-            tabIndex={0}
-            aria-label="Close newsletter"
+            aria-label="Newsletter schliessen"
           >
-            <div></div>
-            <div></div>
-          </div>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
           <NewsletterForm stylesprops={styles} />
         </div>
       )}
@@ -50,25 +54,30 @@ export default function FooterContent({ footer }: { footer: FooterDocument }) {
                 <div
                   className={styles.socialItem}
                   key={item.socials_link.text || `social-${index}`}
-                  onClick={() => {
-                    if (item.socials_link.text === 'Newsletter') {
-                      setNewsletterIsOpen(true);
-                    }
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      if (item.socials_link.text === 'Newsletter') {
-                        setNewsletterIsOpen(true);
-                      }
-                    }
-                  }}
-                  role="button"
-                  tabIndex={0}
                 >
-                  <PrismicNextLink field={item.socials_link}>
-                    <p>{item.socials_link.text}</p>
-                    <PrismicNextImage field={item.socials_icon} />
-                  </PrismicNextLink>
+                  {item.socials_link.text === NEWSLETTER_LABEL ? (
+                    <button
+                      type="button"
+                      className={`unstyled-button ${styles.socialLink}`}
+                      onClick={() => setNewsletterIsOpen(true)}
+                      aria-haspopup="dialog"
+                    >
+                      <span className={styles.socialLabel}>
+                        {item.socials_link.text}
+                      </span>
+                      <PrismicNextImage field={item.socials_icon} alt="" />
+                    </button>
+                  ) : (
+                    <PrismicNextLink
+                      field={item.socials_link}
+                      className={styles.socialLink}
+                    >
+                      <span className={styles.socialLabel}>
+                        {item.socials_link.text}
+                      </span>
+                      <PrismicNextImage field={item.socials_icon} alt="" />
+                    </PrismicNextLink>
+                  )}
                 </div>
               ))}
             </div>
