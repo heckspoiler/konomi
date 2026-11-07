@@ -89,3 +89,13 @@
         z-index: 2;
     }
 }
+/* Wrapper for click handling only; children lay out as before. */
+.list {
+    display: contents;
+}
+
+/* Scrolling this into view loads the next archive batch. */
+.sentinel {
+    width: 100%;
+    height: 1px;
+}

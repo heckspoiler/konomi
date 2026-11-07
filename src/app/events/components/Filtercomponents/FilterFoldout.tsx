@@ -7,7 +7,7 @@ import styles from './FilterFoldout.module.css';
 import Topfield from './Topfield';
 import Bottomfield from './Bottomfield';
 import { useFilter } from '@contexts/FilterContext';
-import { EventDocument } from '@/prismicio-types';
+import { EventSummary } from '@helpers/events';
 import type { EventsVariant } from '../EventsContent';
 
 export default function FilterFoldout({
@@ -16,7 +16,7 @@ export default function FilterFoldout({
   isFoldoutOpen,
   setIsFoldoutOpen,
 }: {
-  events: EventDocument[];
+  events: EventSummary[];
   variant: EventsVariant;
   isFoldoutOpen: boolean;
   setIsFoldoutOpen: Dispatch<SetStateAction<boolean>>;

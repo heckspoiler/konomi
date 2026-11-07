@@ -9,7 +9,7 @@ import Drink from '@public/svg/drinks_red.svg';
 import Food from '@public/svg/food_red.svg';
 import Craft from '@public/svg/hammer_red.svg';
 import Art from '@public/svg/brush_red.svg';
-import { EventDocument } from '@/prismicio-types';
+import { EventSummary } from '@helpers/events';
 
 function renderIcon(property: string, value: boolean) {
   if (!value) return null;
@@ -32,7 +32,7 @@ function renderIcon(property: string, value: boolean) {
   }
 }
 
-export default function IconComponent({ event }: { event: EventDocument }) {
+export default function IconComponent({ event }: { event: EventSummary }) {
   const iconProperties = [
     { key: 'is_drinks', value: event.data.is_drinks },
     { key: 'is_food', value: event.data.is_food },

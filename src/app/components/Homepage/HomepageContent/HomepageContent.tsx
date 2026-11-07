@@ -15,19 +15,20 @@ import MainSection from './MainSection/MainSection';
 
 import {
   DownloadBarDocument,
-  EventDocument,
   LandingCategoriesDocument,
   NewsarticleDocument,
   PageDocumentDataSlicesSlice,
 } from '@/prismicio-types';
 import NewsSection from '../NewsSection/NewsSection';
+import { EventSummary } from '@helpers/events';
 
 interface HomepageContentProps {
   defaultVariationSlice: PageDocumentDataSlicesSlice[];
   scheduleSlice: PageDocumentDataSlicesSlice[];
   newsSlice: PageDocumentDataSlicesSlice[];
   news: NewsarticleDocument[];
-  events: EventDocument[];
+  upcomingEvents: EventSummary[];
+  nextYear: number;
   landingCategories: LandingCategoriesDocument;
   downloadBar: DownloadBarDocument;
   galleryDefaultSlice: PageDocumentDataSlicesSlice[];
@@ -50,7 +51,8 @@ export default function HomepageContent({
   landingCategories,
   downloadBar,
   news,
-  events,
+  upcomingEvents,
+  nextYear,
 }: HomepageContentProps) {
   const [activeSection, setActiveSection] = useState<SectionId>('');
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -126,7 +128,8 @@ export default function HomepageContent({
           scheduleSlice={scheduleSlice}
           components={components}
           downloadBar={downloadBar}
-          events={events}
+          upcomingEvents={upcomingEvents}
+          nextYear={nextYear}
         />
       ),
     },

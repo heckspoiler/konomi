@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { asImageSrc } from '@prismicio/client';
-import { createClient, getAllEvents } from '@/prismicio';
+import { createClient, getEventLists } from '@/prismicio';
 
 import HomepageContent from './components/Homepage/HomepageContent/HomepageContent';
 
@@ -18,9 +18,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+/** Re-split upcoming/past events at least hourly, even without a publish. */
+export const revalidate = 3600;
+
 export default async function Index() {
   const client = createClient();
-  const [home, landingCategories, downloadBar, news, events] =
+  const [home, landingCategories, downloadBar, news, eventLists] =
     await Promise.all([
       client.getByUID('page', 'home'),
       client.getSingle('landing_categories'),
@@ -31,7 +34,7 @@ export default async function Index() {
           { field: 'my.newsarticle.publishing_date', direction: 'desc' },
         ],
       }),
-      getAllEvents(),
+      getEventLists(),
     ]);
 
   const slices = home.data.slices;
@@ -52,7 +55,9 @@ export default async function Index() {
       landingCategories={landingCategories}
       downloadBar={downloadBar}
       news={news}
-      events={events}
+      // A few extra in case some end before the next revalidation.
+      upcomingEvents={eventLists.upcoming.slice(0, 15)}
+      nextYear={eventLists.nextYear}
     />
   );
 }

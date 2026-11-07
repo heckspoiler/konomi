@@ -12,10 +12,10 @@ import { useMobile } from '@contexts/MobileContext';
 import LocationIcon from '../[uid]/components/LocationIcon';
 import CalendarIcon from '../[uid]/components/CalendarIcon';
 import { asText } from '@prismicio/client';
-import { EventDocument } from '@/prismicio-types';
+import { EventSummary } from '@helpers/events';
 
 interface EventProps {
-  event: EventDocument;
+  event: EventSummary;
   showDate?: boolean;
 }
 

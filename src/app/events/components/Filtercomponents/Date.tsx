@@ -4,10 +4,10 @@ import FiltermappingContainer from './FiltermappingContainer';
 import { formatDate } from '@helpers/formatDate';
 import { useFilter } from '@contexts/FilterContext';
 import { useMobile } from '@contexts/MobileContext';
-import { EventDocument } from '@/prismicio-types';
+import { EventSummary } from '@helpers/events';
 
 /** `events` arrive already scoped and sorted by start date. */
-export default function DateFilter({ events }: { events: EventDocument[] }) {
+export default function DateFilter({ events }: { events: EventSummary[] }) {
   const { selectedDate, setSelectedDate } = useFilter();
   const { isDesktop } = useMobile();
 

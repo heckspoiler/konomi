@@ -4,9 +4,9 @@ import React from 'react';
 import styles from './LeftContainer.module.css';
 import Link from 'next/link';
 import IconComponent from './IconComponent';
-import { EventDocument } from '@/prismicio-types';
+import { EventSummary } from '@helpers/events';
 
-export default function LeftContainer({ event }: { event: EventDocument }) {
+export default function LeftContainer({ event }: { event: EventSummary }) {
   return (
     <div className={styles.leftContainer}>
       <IconComponent event={event} />

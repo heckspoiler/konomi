@@ -1,6 +1,14 @@
 import * as prismic from '@prismicio/client';
 import * as prismicNext from '@prismicio/next';
 import sm from '../slicemachine.config.json';
+import {
+  EVENT_SUMMARY_FIELDS,
+  isPast,
+  isUpcoming,
+  nextEditionYear,
+  sortByStart,
+  toEventSummary,
+} from '@helpers/events';
 
 /**
  * The project's Prismic repository name.
@@ -44,8 +52,29 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
   return client;
 };
 
-/** All events, oldest first. */
-export const getAllEvents = () =>
-  createClient().getAllByType('event', {
+/**
+ * Events split into upcoming (soonest first) and past (newest first), as slim
+ * summaries for client components. Only the summary fields are requested from
+ * Prismic.
+ *
+ * "Now" is the render time; pages using this revalidate hourly, and the client
+ * re-checks against the real clock so nothing ended stays listed as upcoming.
+ */
+export const getEventLists = async () => {
+  const events = await createClient().getAllByType('event', {
+    fetch: EVENT_SUMMARY_FIELDS.map((field) => `event.${field}`),
     orderings: [{ field: 'my.event.event_start_date', direction: 'asc' }],
   });
+
+  const now = Date.now();
+  const summaries = events.map(toEventSummary);
+
+  return {
+    upcoming: summaries.filter((event) => isUpcoming(event, now)),
+    past: sortByStart(
+      summaries.filter((event) => isPast(event, now)),
+      'desc',
+    ),
+    nextYear: nextEditionYear(summaries),
+  };
+};

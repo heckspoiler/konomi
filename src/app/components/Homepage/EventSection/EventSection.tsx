@@ -13,28 +13,32 @@ import { isUpcoming } from '@helpers/events';
 import {
   BasicSliceSliceSchedulePrimary,
   DownloadBarDocument,
-  EventDocument,
   PageDocumentDataSlicesSlice,
 } from '@/prismicio-types';
 
 import type { components as SliceComponents } from '@/slices';
+import { EventSummary } from '@helpers/events';
 
 export default function EventSection({
   scheduleSlice,
   components,
   downloadBar,
-  events,
+  upcomingEvents,
+  nextYear,
 }: {
   scheduleSlice: PageDocumentDataSlicesSlice[];
   components: typeof SliceComponents;
   downloadBar: DownloadBarDocument;
-  events: EventDocument[];
+  upcomingEvents: EventSummary[];
+  nextYear: number;
 }) {
   const now = useNow();
   const schedulePrimary = scheduleSlice[0]
     .primary as BasicSliceSliceSchedulePrimary;
 
-  const hasUpcomingEvents = events.some((event) => isUpcoming(event, now));
+  const hasUpcomingEvents = upcomingEvents.some((event) =>
+    isUpcoming(event, now),
+  );
 
   return (
     <SectionContainer>
@@ -43,7 +47,7 @@ export default function EventSection({
         <div className={styles.programText}>
           <PrismicRichText field={schedulePrimary.program_text} />
         </div>
-        <Events events={events} />
+        <Events upcomingEvents={upcomingEvents} nextYear={nextYear} />
         <div className={styles.moreEventsLink}>
           {!hasUpcomingEvents ? (
             <Link href="/archive">

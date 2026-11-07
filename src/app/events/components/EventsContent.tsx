@@ -9,11 +9,11 @@ import FilterComponent from './FilterComponent';
 import { FilterProvider, useFilter } from '@contexts/FilterContext';
 import { useNow } from '@contexts/NowContext';
 import { formatDate } from '@helpers/formatDate';
-import { isPast, isUpcoming, sortByStart } from '@helpers/events';
+import { EventSummary, isUpcoming } from '@helpers/events';
+import { useInfiniteList } from '@helpers/useInfiniteList';
 import { asText } from '@prismicio/client';
 import {
   ArchiveDocument,
-  EventDocument,
   EventsDocument,
   SearchIconDocument,
 } from '@/prismicio-types';
@@ -26,16 +26,21 @@ export type EventsVariant = 'upcoming' | 'archive';
 
 type EventsContentProps = {
   page: EventsDocument | ArchiveDocument;
-  events: EventDocument[];
+  /** Already scoped to the variant and sorted by the server. */
+  events: EventSummary[];
+  /** For "Wir sehen uns im …" when nothing is upcoming. */
+  nextYear: number;
   searchicon: SearchIconDocument;
   variant: EventsVariant;
 };
+
+const ARCHIVE_BATCH_SIZE = 20;
 
 /** Strip diacritics so e.g. "ō" matches "o". */
 const normalize = (s: string) =>
   s
     .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase();
 
 const EVENT_TYPE_FLAGS = {
@@ -50,6 +55,7 @@ const EVENT_TYPE_FLAGS = {
 function EventsContentInner({
   page,
   events,
+  nextYear,
   searchicon,
   variant,
 }: EventsContentProps) {
@@ -59,11 +65,11 @@ function EventsContentInner({
   const foldoutRef = useRef<HTMLDivElement>(null);
   const now = useNow();
 
-  const scopedEvents = sortByStart(
-    events.filter((event) =>
-      variant === 'archive' ? isPast(event, now) : isUpcoming(event, now),
-    ),
-  );
+  // The server split events at render time; drop any that have ended since.
+  const scopedEvents =
+    variant === 'upcoming'
+      ? events.filter((event) => isUpcoming(event, now))
+      : events;
 
   useEffect(() => {
     if (!isFoldoutOpen) return;
@@ -115,6 +121,25 @@ function EventsContentInner({
 
   const showSeeYou = variant === 'upcoming' && scopedEvents.length === 0;
 
+  // The archive grows every year: render it in batches as you scroll.
+  // The upcoming list is short, so it renders in full.
+  const isArchive = variant === 'archive';
+  const { visibleItems, hasMore, sentinelRef, saveState } = useInfiniteList(
+    filteredEvents,
+    {
+      batchSize: isArchive ? ARCHIVE_BATCH_SIZE : Infinity,
+      storageKey: isArchive ? 'archive-list' : undefined,
+      resetKey: [selectedDate, selectedLocation, selectedEventType, query].join(
+        '|',
+      ),
+    },
+  );
+
+  // Remember the list position when opening an event, so "back" returns here.
+  const handleListClick = (e: React.MouseEvent) => {
+    if ((e.target as Element).closest('a[href^="/events/"]')) saveState();
+  };
+
   return (
     <PageContainer>
       <MainHeading page={page} />
@@ -145,15 +170,20 @@ function EventsContentInner({
           </div>
         </div>
         {showSeeYou ? (
-          <SeeYouNextYear events={events} as="h1" />
+          <SeeYouNextYear year={nextYear} as="h1" />
         ) : (
-          filteredEvents.map((event) => (
-            <EventComponent
-              key={event.id}
-              event={event}
-              showDate={variant === 'upcoming'}
-            />
-          ))
+          <div className={styles.list} onClick={handleListClick}>
+            {visibleItems.map((event) => (
+              <EventComponent
+                key={event.id}
+                event={event}
+                showDate={!isArchive}
+              />
+            ))}
+            {hasMore && (
+              <div ref={sentinelRef} className={styles.sentinel} aria-hidden />
+            )}
+          </div>
         )}
       </div>
     </PageContainer>

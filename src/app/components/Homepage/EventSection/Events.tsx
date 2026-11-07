@@ -7,7 +7,7 @@ import Arrow from '../../arrow/Arrow';
 import { truncateText } from '@helpers/truncateText';
 import { formatDate } from '@helpers/formatDate';
 import { isUpcoming } from '@helpers/events';
-import { EventDocument } from '@/prismicio-types';
+import { EventSummary } from '@helpers/events';
 import { asText } from '@prismicio/client';
 import { useMobile } from '@contexts/MobileContext';
 import { useNow } from '@contexts/NowContext';
@@ -15,12 +15,18 @@ import SeeYouNextYear from '../../SeeYouNextYear/SeeYouNextYear';
 
 const MAX_EVENTS = 10;
 
-/** `events` arrive sorted by start date. */
-export default function Events({ events }: { events: EventDocument[] }) {
+/** `upcomingEvents` arrive sorted by start date. */
+export default function Events({
+  upcomingEvents: candidates,
+  nextYear,
+}: {
+  upcomingEvents: EventSummary[];
+  nextYear: number;
+}) {
   const { isDesktop } = useMobile();
   const now = useNow();
 
-  const upcomingEvents = events
+  const upcomingEvents = candidates
     .filter((event) => isUpcoming(event, now))
     .slice(0, MAX_EVENTS);
 
@@ -28,7 +34,7 @@ export default function Events({ events }: { events: EventDocument[] }) {
     <div className={styles.scheduleContainer}>
       {upcomingEvents.length === 0 ? (
         <div className={styles.seeyou}>
-          <SeeYouNextYear events={events} />
+          <SeeYouNextYear year={nextYear} />
         </div>
       ) : (
         upcomingEvents.map((event) => (

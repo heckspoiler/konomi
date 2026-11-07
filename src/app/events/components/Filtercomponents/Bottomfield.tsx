@@ -7,13 +7,13 @@ import styles from './Bottomfield.module.css';
 import EventType from './EventType';
 import Location from './Location';
 import Date from './Date';
-import { EventDocument } from '@/prismicio-types';
+import { EventSummary } from '@helpers/events';
 
 export default function Bottomfield({
   events,
   fieldIsOpen,
 }: {
-  events: EventDocument[];
+  events: EventSummary[];
   fieldIsOpen: string;
 }) {
   return (

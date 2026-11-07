@@ -2,11 +2,11 @@ import React from 'react';
 import styles from './LowerContent.module.css';
 import FiltermappingContainer from './FiltermappingContainer';
 import { useFilter } from '@contexts/FilterContext';
-import { EventDocument } from '@/prismicio-types';
+import { EventSummary } from '@helpers/events';
 import { asText } from '@prismicio/client';
 
 /** `events` arrive already scoped to the current view (upcoming or archive). */
-export default function Location({ events }: { events: EventDocument[] }) {
+export default function Location({ events }: { events: EventSummary[] }) {
   const { selectedLocation, setSelectedLocation } = useFilter();
 
   const locations = [

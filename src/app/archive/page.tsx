@@ -1,16 +1,19 @@
 import { Metadata } from 'next';
 
-import { createClient, getAllEvents } from '@/prismicio';
+import { createClient, getEventLists } from '@/prismicio';
 
 import EventsContent from '../events/components/EventsContent';
 import MainContainer from '../components/MainContainer/MainContainer';
 
+/** Re-split upcoming/past events at least hourly, even without a publish. */
+export const revalidate = 3600;
+
 export default async function Page() {
   const client = createClient();
-  const [page, searchicon, events] = await Promise.all([
+  const [page, searchicon, eventLists] = await Promise.all([
     client.getSingle('archive'),
     client.getSingle('search_icon'),
-    getAllEvents(),
+    getEventLists(),
   ]);
 
   return (
@@ -18,7 +21,8 @@ export default async function Page() {
       <EventsContent
         page={page}
         searchicon={searchicon}
-        events={events}
+        events={eventLists.past}
+        nextYear={eventLists.nextYear}
         variant="archive"
       />
     </MainContainer>
