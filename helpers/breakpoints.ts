@@ -3,7 +3,7 @@
  * (see the design-system header in src/app/globals.css).
  *
  *   mobile   < 768px
- *   tablet   768px – 1079px
+ *   tablet   768px – 1079px  (CSS tablet rules run to 1279px, see globals.css)
  *   desktop  ≥ 1080px
  */
 export const BREAKPOINTS = {

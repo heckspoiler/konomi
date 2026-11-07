@@ -34,9 +34,12 @@ All design tokens live at the top of [`src/app/globals.css`](src/app/globals.css
 | Name | Range | Media query |
 | --- | --- | --- |
 | mobile | < 768px | *(default)* |
-| tablet | 768–1079px | `@media screen and (min-width: 768px) and (max-width: 1079px)` |
+| tablet | 768–1279px | `@media screen and (min-width: 768px) and (max-width: 1279px)` |
 | desktop | ≥ 1080px | `@media screen and (min-width: 1080px)` |
+| wide | ≥ 1280px | `@media screen and (min-width: 1280px)` |
+
+Laptops (1080–1279px) get both desktop and tablet rules; put the tablet block after the desktop block so it wins there.
 
 JavaScript uses the same values from [`helpers/breakpoints.ts`](helpers/breakpoints.ts) (via `useMobile()`).
 
-`rem` is fluid on mobile (14px at 375px wide), 16px on tablet and 18px on desktop.
+`rem` is fluid on mobile (14px at 375px wide), 16px on tablet/laptop and 18px from 1280px.

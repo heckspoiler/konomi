@@ -8,12 +8,18 @@
    BREAKPOINTS (custom properties can't be used in media queries, so these
    literals are the contract; JS mirrors them in helpers/breakpoints.ts):
      mobile    < 768px                        (default, no media query)
-     tablet    768px – 1079px   @media screen and (min-width: 768px) and (max-width: 1079px)
+     tablet    768px – 1279px   @media screen and (min-width: 768px) and (max-width: 1279px)
      desktop   ≥ 1080px         @media screen and (min-width: 1080px)
+     wide      ≥ 1280px         @media screen and (min-width: 1280px)
+
+   LAPTOP (1080px – 1279px) is where tablet and desktop overlap: desktop
+   layout rules apply, and tablet rules refine them (narrower containers,
+   smaller type). In a module, always put the tablet block AFTER the
+   desktop block so it wins in that range.
 
    REM IS FLUID ON MOBILE: the root font-size scales with the viewport
-   (14px at 375px wide), is 16px on tablet and 18px on desktop. All tokens
-   are in rem, so the whole layout scales together.
+   (14px at 375px wide), is 16px on tablet/laptop and 18px from 1280px.
+   All tokens are in rem, so the whole layout scales together.
    ========================================================================= */
 
 :root {
@@ -265,10 +271,10 @@ button:hover:where(:not(.unstyled-button)) {
 
 
 /* =========================================================================
-   TABLET  768px – 1079px
+   TABLET + LAPTOP  768px – 1279px
    ========================================================================= */
 
-@media screen and (min-width: 768px) and (max-width: 1079px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
     :root {
         font-size: 16px;
     }
@@ -291,11 +297,18 @@ button:hover:where(:not(.unstyled-button)) {
    ========================================================================= */
 
 @media screen and (min-width: 1080px) {
-    :root {
-        font-size: 18px;
-    }
-
     p {
         text-wrap: pretty;
+    }
+}
+
+
+/* =========================================================================
+   WIDE  ≥ 1280px
+   ========================================================================= */
+
+@media screen and (min-width: 1280px) {
+    :root {
+        font-size: 18px;
     }
 }
