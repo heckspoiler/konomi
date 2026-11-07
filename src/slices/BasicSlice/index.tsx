@@ -16,7 +16,7 @@ export type BasicSliceProps = SliceComponentProps<Content.BasicSliceSlice>;
 /**
  * Component for "BasicSlice" Slices.
  */
-const BasicSlice = ({ slice }: BasicSliceProps): JSX.Element => {
+const BasicSlice = ({ slice }: BasicSliceProps) => {
   return (
     <>
       {slice.variation === 'default' && (

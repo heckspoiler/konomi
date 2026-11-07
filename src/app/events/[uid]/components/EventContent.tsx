@@ -1,8 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-
-import { usePathname } from 'next/navigation';
+import React, { useState } from 'react';
 
 import MainHeading from '../../components/MainHeading';
 
@@ -41,24 +39,8 @@ export default function EventContent({
   const buttonShow = page.tags.includes('archived');
   const [activeImage, setActiveImage] = useState<number>(0);
   const { isMobile } = useMobile();
-  const pathname = usePathname();
-  const [backComponent, setBackComponent] = useState<React.ReactNode>(null);
 
   const eventLocation = asText(data.event_location);
-
-  useEffect(() => {
-    if (!buttonShow) {
-      setBackComponent(
-        <div className={styles.backToContainer}>
-          <BackToComponent text="Mehr Events" url="/events" />
-        </div>,
-      );
-    } else if (buttonShow) {
-      setBackComponent(
-        <BackToComponent text="Zurück zum Archiv" url="/archive" />,
-      );
-    }
-  }, [pathname, buttonShow]);
 
   const showNoTicketsButton =
     data.has_eventfrog_link === false && data.alternative_link_text === null;
@@ -125,7 +107,13 @@ export default function EventContent({
         )}
       </div>
 
-      {backComponent}
+      {buttonShow ? (
+        <BackToComponent text="Zurück zum Archiv" url="/archive" />
+      ) : (
+        <div className={styles.backToContainer}>
+          <BackToComponent text="Mehr Events" url="/events" />
+        </div>
+      )}
       <OverlayContainer
         overlayIsOpen={overlayIsOpen}
         setOverlayIsOpen={setOverlayIsOpen}

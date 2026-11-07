@@ -1,6 +1,7 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { Breakpoint, getBreakpoint } from '@helpers/breakpoints';
 
 interface MobileContextType {
   isMobile: boolean;
@@ -8,37 +9,34 @@ interface MobileContextType {
   isDesktop: boolean;
 }
 
-const MobileContext = createContext<MobileContextType>({
-  isMobile: false,
-  isTablet: false,
-  isDesktop: true,
-});
+const MobileContext = createContext<MobileContextType | undefined>(undefined);
 
 export function MobileProvider({ children }: { children: React.ReactNode }) {
-  const [width, setWidth] = useState(1024);
+  // Server render assumes desktop; corrected right after mount.
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>('desktop');
 
   useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    // Only the category is stored, so resizing within a range doesn't re-render.
+    const update = () => setBreakpoint(getBreakpoint(window.innerWidth));
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
   }, []);
 
-  const isMobile = width < 768;
-  const isTablet = width >= 768 && width < 1024;
-  const isDesktop = width >= 1024;
+  const value = useMemo(
+    () => ({
+      isMobile: breakpoint === 'mobile',
+      isTablet: breakpoint === 'tablet',
+      isDesktop: breakpoint === 'desktop',
+    }),
+    [breakpoint],
+  );
 
   return (
-    <MobileContext.Provider value={{ isMobile, isTablet, isDesktop }}>
-      {children}
-    </MobileContext.Provider>
+    <MobileContext.Provider value={value}>{children}</MobileContext.Provider>
   );
 }
 
-// Custom hook to use the mobile context
 export function useMobile() {
   const context = useContext(MobileContext);
   if (context === undefined) {

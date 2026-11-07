@@ -13,24 +13,24 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@prismicio/client": "^7.13.1",
+    "@prismicio/client": "^7.23.0",
     "@prismicio/next": "^1.7.1",
     "@prismicio/react": "^2.9.1",
     "embla-carousel-react": "^8.6.0",
-    "next": "^15.5.10",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "next": "^15.5.29",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
     "@slicemachine/adapter-next": "^0.3.61",
     "@types/node": "^22.8.6",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "concurrently": "^9.0.1",
     "eslint": "^9.13.0",
-    "eslint-config-next": "^15.0.2",
+    "eslint-config-next": "^15.5.29",
     "slice-machine-ui": "^2.11.1",
     "typescript": "^5.6.3"
   }

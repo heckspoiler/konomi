@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
 
@@ -29,25 +29,15 @@ export default function Navbar({
   menuIsOpen: boolean;
   setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const [isActiveItem, setIsActiveItem] =
-    useState<Simplify<SettingsDocumentDataNavigationItemsItem>>();
-
   const pathname = usePathname();
 
-  useEffect(() => {
-    content.navigation_items.forEach(
-      (item: Simplify<SettingsDocumentDataNavigationItemsItem>) => {
-        if (
-          'url' in item.navigation_item &&
-          item.navigation_item.url &&
-          pathname &&
-          pathname.startsWith(item.navigation_item.url)
-        ) {
-          setIsActiveItem(item);
-        }
-      },
-    );
-  }, [pathname, content.navigation_items]);
+  // Last match wins, as before (e.g. "/" then "/events" for /events/x).
+  const isActiveItem = content.navigation_items.findLast(
+    (item) =>
+      'url' in item.navigation_item &&
+      !!item.navigation_item.url &&
+      pathname.startsWith(item.navigation_item.url),
+  );
 
   return (
     <nav className={`${styles.navbar} ${menuIsOpen ? styles.open : ''}`}>
