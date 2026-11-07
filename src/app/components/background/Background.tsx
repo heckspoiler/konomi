@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import styles from './Background.module.css';
 
 const BackgroundCanvas = dynamic(
-  () => import('./BackgroundCanvas/BackgrounCanvas'),
+  () => import('./BackgroundCanvas/BackgroundCanvas'),
   { ssr: false }
 );
 

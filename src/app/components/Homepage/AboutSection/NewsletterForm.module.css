@@ -71,3 +71,7 @@
         width: 65%;
     }
 }
+.error {
+    color: var(--red);
+    font-variation-settings: var(--title-weight);
+}

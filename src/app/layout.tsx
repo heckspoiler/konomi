@@ -30,7 +30,7 @@ export default async function RootLayout({
   const splashscreenVisible = process.env.NODE_ENV === 'production';
 
   return (
-    <html lang="en">
+    <html lang="de-CH">
       <body>
         <Providers events={events}>
           <Background />

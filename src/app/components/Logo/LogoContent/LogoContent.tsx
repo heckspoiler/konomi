@@ -16,7 +16,7 @@ export default function LogoContent({ logo }: { logo: LogoDocument }) {
 
   return (
     <div
-      className={`${styles.logoContainer} cursor-pointer`}
+      className={styles.logoContainer}
       onClick={scrollToTop}
       role="button"
       tabIndex={0}

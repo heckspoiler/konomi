@@ -20,7 +20,6 @@ export default function NewsletterForm({
 
   const styles = stylesprops || cssStyles;
 
-  console.log(error);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,7 +51,6 @@ export default function NewsletterForm({
     } catch (error) {
       setError(error instanceof Error ? error.message : 'Failed to subscribe');
       console.error('Newsletter signup failed:', error);
-      console.log(error);
     }
   };
 
@@ -129,6 +127,11 @@ export default function NewsletterForm({
               Daten zu Marketingzwecken zu.
             </label>
           </div>
+          {error && (
+            <p className={styles.error} role="alert">
+              {error}
+            </p>
+          )}
           <div className={styles.buttonContainer}>
             <button type="submit" className={styles.submitButton}>
               <span>ANMELDEN</span>

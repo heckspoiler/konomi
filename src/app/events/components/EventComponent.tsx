@@ -4,7 +4,7 @@ import styles from './EventComponent.module.css';
 import { PrismicRichText } from '@prismicio/react';
 import { PrismicNextLink } from '@prismicio/next';
 import { truncateText } from '@helpers/truncateText';
-import { formatDateTime } from '@helpers/formateDateTime';
+import { formatDateTime } from '@helpers/formatDateTime';
 import LeftContainer from './LeftContainer';
 
 import { useMobile } from '@contexts/MobileContext';

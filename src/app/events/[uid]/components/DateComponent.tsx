@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { formatDateTime } from '@helpers/formateDateTime';
+import { formatDateTime } from '@helpers/formatDateTime';
 
 import styles from './DateComponent.module.css';
 import CalendarIcon from './CalendarIcon';
