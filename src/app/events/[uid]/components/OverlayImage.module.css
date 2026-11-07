@@ -14,7 +14,7 @@
     object-fit: contain;
     height: 100%;
     width: 100%;
-    transition: opacity 0.25s ease;
+    transition: opacity var(--duration-fast) var(--bezier);
 }
 
 .imageLoading {
@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    gap: 0.5rem;
+    gap: var(--spacing-2);
 }
 
 .spinner {

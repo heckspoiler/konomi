@@ -1,4 +1,4 @@
 .container {
     overflow-y: scroll;
-    padding: 1rem;
+    padding: var(--spacing-4);
 }

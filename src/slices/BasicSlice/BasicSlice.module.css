@@ -1,7 +1,7 @@
 .sliceContainer {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--spacing-8);
 
 }
 
@@ -12,7 +12,7 @@
 .upperContainer {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--spacing-4);
 }
 
 .headingContainer {
@@ -22,19 +22,19 @@
 }
 
 .subtitleContainer h4 {
-    font-size: 0.7rem;
+    font-size: var(--font-size-xs);
 }
 
 
 .writtenlinkContainer {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--spacing-2);
 }
 
 
 .writtenlinkContainer a {
-    font-variation-settings: var(--title-weight);
+    font-variation-settings: var(--weight-semibold);
     text-transform: uppercase;
 }
 
@@ -46,7 +46,7 @@
 
 @media screen and (min-width: 1080px) {
     .basicSlice {
-        padding: 3.8rem 0.7rem;
+        padding: var(--spacing-16) var(--main-container-padding);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -55,7 +55,7 @@
     .sliceContainer {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: var(--spacing-8);
     }
 
     .headingContainer {
@@ -65,7 +65,7 @@
     }
 
     .subtitleContainer h4 {
-        font-size: 0.7rem;
+        font-size: var(--font-size-xs);
     }
 
     .sliceContainer p {

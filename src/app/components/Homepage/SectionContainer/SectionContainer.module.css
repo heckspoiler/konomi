@@ -1,8 +1,8 @@
 .container {
-    padding: 1rem 0.7rem;
+    padding: var(--spacing-4) var(--main-container-padding);
     display: flex;
     flex-direction: column;
-    gap: 4.2rem;
+    gap: var(--spacing-16);
     background-color: transparent;
 }
 
@@ -10,8 +10,8 @@
 @media screen and (min-width: 1080px) {
     .container {
         width: 55vw;
-        gap: 4.2rem;
-        padding: 2rem;
+        gap: var(--spacing-16);
+        padding: var(--spacing-8);
 
     }
 

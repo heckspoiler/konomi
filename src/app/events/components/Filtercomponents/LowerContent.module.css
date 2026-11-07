@@ -12,7 +12,7 @@
 
 .eventType p {
     color: var(--red);
-    transition: all 0.2s var(--bezier);
+    transition: all var(--duration-fast) var(--bezier);
     width: 100%;
     border: none;
 }
@@ -29,4 +29,3 @@
 }
 
 /* Only for non-touch devices */
-@media (hover: hover) {}

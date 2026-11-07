@@ -8,7 +8,7 @@
     background-color: var(--beige);
     border: var(--border);
     padding: var(--spacing-1) var(--spacing-2);
-    font-size: 0.6rem;
+    font-size: var(--font-size-2xs);
     line-height: 100%;
     height: fit-content;
 }

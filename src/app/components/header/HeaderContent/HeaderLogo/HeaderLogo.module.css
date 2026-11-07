@@ -7,16 +7,16 @@
     width: fit-content;
     z-index: 14;
     background-color: var(--red);
-    padding: 0.2rem;
+    padding: var(--spacing-1);
     transform-origin: center left;
-    transition: all 0.4s var(--bezier);
+    transition: all var(--duration-base) var(--bezier);
     transform: scale(0.9) rotateY(0deg);
 
 }
 
 .logoContainer * {
     color: var(--beige);
-    padding: 0.1rem;
+    padding: var(--spacing-0-5);
 }
 
 .notHomepage {
@@ -25,15 +25,15 @@
 
 .logoContainer h1 {
     transform: translateY(0.3rem);
-    font-size: 2.3rem;
-    transition: all 0.4s var(--bezier);
-    font-variation-settings: var(--logo-weight);
+    font-size: var(--font-size-4xl);
+    transition: all var(--duration-base) var(--bezier);
+    font-variation-settings: var(--weight-bold);
 }
 
 .logoContainer h3 {
     transform: translateY(-0.2rem);
     width: fit-content;
-    transition: all 0.2s var(--bezier)
+    transition: all var(--duration-fast) var(--bezier)
 }
 
 .open {
@@ -46,4 +46,3 @@
 
 
 /* !!!! DESKTOP !!!!! */
-@media (min-width: 1080px) {}

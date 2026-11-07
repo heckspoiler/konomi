@@ -13,12 +13,12 @@
 
 .linkContainer a {
     background-color: var(--red);
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-    font-variation-settings: var(--subtitle-weight);
+    padding: var(--spacing-1) var(--spacing-2);
+    font-size: var(--font-size-sm);
+    font-variation-settings: var(--weight-regular);
     color: var(--beige);
     border: 1px solid var(--red);
-    transition: all 0.2s var(--bezier);
+    transition: all var(--duration-fast) var(--bezier);
     text-transform: uppercase;
 }
 
@@ -52,7 +52,7 @@
     }
 
     .linkContainer a {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.8rem;
+        padding: var(--spacing-2) var(--spacing-3);
+        font-size: var(--font-size-sm);
     }
 }

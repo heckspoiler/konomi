@@ -17,7 +17,7 @@
     height: 100%;
     width: 100%;
     padding: 0 var(--spacing-2);
-    border-radius: none;
+    border-radius: 0;
 }
 
 .searchcontainer input:focus {

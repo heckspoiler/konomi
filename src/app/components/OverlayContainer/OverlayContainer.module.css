@@ -6,7 +6,7 @@
     height: 100svh;
     width: 100svw;
     display: none;
-    z-index: 1000;
+    z-index: var(--z-overlay);
 }
 
 .isOpen {
@@ -18,8 +18,8 @@
     position: fixed;
     top: 80%;
     cursor: pointer;
-    z-index: 1001;
-    padding: 1rem;
+    z-index: var(--z-overlay-controls);
+    padding: var(--spacing-4);
 }
 
 .arrowcontainerOne {

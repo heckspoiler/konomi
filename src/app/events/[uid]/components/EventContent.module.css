@@ -20,7 +20,7 @@
 
 .eventContainer h2 {
     width: fit-content;
-    font-size: 1.4rem;
+    font-size: var(--font-size-xl);
 }
 
 .infoContainer {
@@ -51,13 +51,13 @@
 .linkContainer a {
     color: var(--beige);
     background-color: var(--red);
-    padding: 0.5rem;
-    font-size: 0.9rem;
-    font-variation-settings: var(--subtitle-weight);
+    padding: var(--spacing-2);
+    font-size: var(--font-size-md);
+    font-variation-settings: var(--weight-regular);
     text-transform: uppercase;
     width: fit-content;
     border: 1px solid var(--red);
-    transition: all 0.2s var(--bezier);
+    transition: all var(--duration-fast) var(--bezier);
     text-transform: uppercase;
 }
 
@@ -69,7 +69,7 @@
 .locationLink {
     width: fit-content;
     background-color: var(--red);
-    transition: background-color 0.2s var(--bezier);
+    transition: background-color var(--duration-fast) var(--bezier);
     border: 1px solid var(--red)
 }
 
@@ -78,17 +78,17 @@
 }
 
 .locationLink a {
-    padding: 0.5rem;
+    padding: var(--spacing-2);
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: var(--spacing-4);
     text-transform: uppercase;
     transform: translateY(1px);
     color: var(--beige);
-    font-size: 0.8rem;
+    font-size: var(--font-size-sm);
     font-family: var(--title-font);
-    font-variation-settings: var(--subtitle-weight);
-    transition: color 0.2s var(--bezier);
+    font-variation-settings: var(--weight-regular);
+    transition: color var(--duration-fast) var(--bezier);
 
 
 }
@@ -106,7 +106,7 @@
     height: 100svh;
     width: 100svw;
     display: none;
-    z-index: 1000;
+    z-index: var(--z-overlay);
 }
 
 .isOpen {
@@ -121,7 +121,7 @@
 }
 
 .descriptionContainer * {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     font-family: var(--text-font)
 }
 
@@ -130,8 +130,8 @@
     position: fixed;
     top: 80%;
     cursor: pointer;
-    z-index: 1001;
-    padding: 1rem;
+    z-index: var(--z-overlay-controls);
+    padding: var(--spacing-4);
 }
 
 .arrowcontainerOne {
@@ -157,7 +157,7 @@
     .container {
         width: 55vw;
         margin-top: var(--header-height);
-        padding: 0 1rem 1rem 1rem;
+        padding: 0 var(--spacing-4) var(--spacing-4) var(--spacing-4);
     }
 
 
@@ -176,8 +176,8 @@
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
-        z-index: 1001;
-        padding: 1rem;
+        z-index: var(--z-overlay-controls);
+        padding: var(--spacing-4);
     }
 
     .arrowcontainerOne {
@@ -193,7 +193,7 @@
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) and (max-width: 1079px) {
     .container {
         width: 80vw;
         margin-top: var(--header-height);

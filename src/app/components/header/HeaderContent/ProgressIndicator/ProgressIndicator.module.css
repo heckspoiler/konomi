@@ -6,7 +6,7 @@
     padding: var(--spacing-2);
     top: calc(var(--header-height) - var(--spacing-2));
     background-color: var(--beige);
-    gap: 0.5rem;
+    gap: var(--spacing-2);
     border-bottom: var(--border);
     width: 100%;
     justify-content: space-evenly;
@@ -20,11 +20,11 @@
     height: 100%;
     width: 100%;
     padding: var(--spacing-1-5) var(--spacing-1);
-    font-size: var(--spacing-2-5);
+    font-size: var(--font-size-2xs);
     text-transform: uppercase;
-    font-variation-settings: var(--title-weight);
+    font-variation-settings: var(--weight-semibold);
     text-align: center;
-    transition: color 0.2s var(--bezier), background-color 0.2s var(--bezier);
+    transition: color var(--duration-fast) var(--bezier), background-color var(--duration-fast) var(--bezier);
     background: none;
     cursor: pointer;
     color: var(--red);
@@ -51,8 +51,8 @@
     }
 
     .link {
-        padding: 0.35rem;
-        font-size: 0.7rem;
+        padding: var(--spacing-1-5);
+        font-size: var(--font-size-xs);
     }
 
 

@@ -6,7 +6,7 @@
     width: 100svw;
     height: fit-content;
 
-    z-index: 1000;
+    z-index: var(--z-header);
     top: 0;
     left: 0;
 }

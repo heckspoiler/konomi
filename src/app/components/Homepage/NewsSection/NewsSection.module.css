@@ -5,7 +5,7 @@
 }
 
 .linkcontainer a {
-    font-variation-settings: var(--title-weight);
+    font-variation-settings: var(--weight-semibold);
     text-transform: uppercase;
     display: flex;
     align-items: center;

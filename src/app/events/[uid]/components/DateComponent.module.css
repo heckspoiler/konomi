@@ -1,7 +1,7 @@
 .dateContainer {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--spacing-2);
     justify-content: center;
 
 }
@@ -9,14 +9,14 @@
 .textContainer p {
     color: var(--red);
     font-family: var(--title-font);
-    font-variation-settings: var(--subtitle-weight);
-    font-size: 0.7rem;
+    font-variation-settings: var(--weight-regular);
+    font-size: var(--font-size-xs);
     width: fit-content;
     display: flex;
 }
 
 .textContainer p span {
 
-    font-variation-settings: var(--title-weight);
+    font-variation-settings: var(--weight-semibold);
 
 }

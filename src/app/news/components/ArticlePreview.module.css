@@ -22,8 +22,8 @@
 
 .titlecontainer h3 {
     width: fit-content;
-    font-size: 1.25rem;
-    font-variation-settings: var(--title-weight);
+    font-size: var(--font-size-lg);
+    font-variation-settings: var(--weight-semibold);
     text-transform: uppercase;
 }
 
@@ -38,9 +38,9 @@
 
 .date p {
     font-family: var(--title-font);
-    font-variation-settings: var(--title-weight);
+    font-variation-settings: var(--weight-semibold);
     color: var(--red);
-    font-size: 0.6rem
+    font-size: var(--font-size-2xs)
 }
 
 
@@ -67,12 +67,12 @@
 
 .link a {
     text-transform: uppercase;
-    font-variation-settings: var(--subtitle-weight);
+    font-variation-settings: var(--weight-regular);
     padding: var(--spacing-2) var(--spacing-4);
     color: var(--beige);
     background-color: var(--red);
-    font-size: 0.75rem;
-    transition: all 0.2s var(--bezier);
+    font-size: var(--font-size-sm);
+    transition: all var(--duration-fast) var(--bezier);
     border: var(--border);
 }
 

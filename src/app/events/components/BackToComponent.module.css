@@ -1,22 +1,22 @@
 .backToContainer {
     display: flex;
-    padding: 0.5rem 0;
+    padding: var(--spacing-2) 0;
     width: fit-content;
     position: relative;
-    z-index: 100;
+    z-index: var(--z-dropdown);
 }
 
 
 .backToContainer a {
     color: var(--beige);
     background-color: var(--red);
-    padding: 0.5rem 0.75rem;
-    font-size: 0.75rem;
-    font-variation-settings: var(--subtitle-weight);
+    padding: var(--spacing-2) var(--spacing-3);
+    font-size: var(--font-size-sm);
+    font-variation-settings: var(--weight-regular);
     text-transform: uppercase;
     width: fit-content;
     border: 1px solid var(--red);
-    transition: all 0.2s var(--bezier);
+    transition: all var(--duration-fast) var(--bezier);
     width: 100%;
     text-align: center;
     text-transform: uppercase;

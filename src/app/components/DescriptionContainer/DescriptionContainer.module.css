@@ -5,7 +5,7 @@
 }
 
 .descriptioncontainer * {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     font-family: var(--text-font)
 }
 

@@ -1,18 +1,18 @@
 .programContainer {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--spacing-4);
 }
 
 
 .moreEventsLink {
     width: fit-content;
-    padding-top: 1rem;
+    padding-top: var(--spacing-4);
 
 }
 
 .moreEventsLink a {
-    font-variation-settings: var(--title-weight);
+    font-variation-settings: var(--weight-semibold);
     text-transform: uppercase;
     display: flex;
     align-items: center;
@@ -33,9 +33,9 @@
 }
 
 .downloads h3 {
-    font-size: 1.2rem;
+    font-size: var(--font-size-lg);
     text-transform: uppercase;
-    font-variation-settings: var(--title-weight);
+    font-variation-settings: var(--weight-semibold);
 }
 
 .downloadbar {
@@ -45,14 +45,14 @@
 }
 
 .downloadbar a {
-    font-size: 0.75rem;
+    font-size: var(--font-size-sm);
     padding: var(--spacing-2) var(--spacing-4);
     border: var(--border);
     color: var(--beige);
     background-color: var(--red);
-    transition: all 0.2s var(--bezier);
+    transition: all var(--duration-fast) var(--bezier);
     text-transform: uppercase;
-    font-variation-settings: var(--subtitle-weight);
+    font-variation-settings: var(--weight-regular);
     font-family: var(--title-font);
 }
 

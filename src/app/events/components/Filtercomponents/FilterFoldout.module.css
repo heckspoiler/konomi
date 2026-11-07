@@ -5,5 +5,5 @@
 }
 
 .resetButton {
-    padding: 1rem 0;
+    padding: var(--spacing-4) 0;
 }

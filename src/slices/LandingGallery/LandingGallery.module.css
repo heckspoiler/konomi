@@ -54,7 +54,7 @@
 
 /* !!!! DESKTOP !!!!! */
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1080px) {
     .embla__viewport {
         --container-width: 78vw;
         overflow: hidden;
@@ -79,5 +79,3 @@
 
 
 /* !!!! TABLET !!!!! */
-
-@media screen and (min-width: 768px) and (max-width: 1279px) {}

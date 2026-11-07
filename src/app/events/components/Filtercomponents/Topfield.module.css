@@ -10,8 +10,8 @@
     border-bottom: 1px solid var(--red);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0 1rem;
-    gap: 1rem;
+    padding: 0 var(--spacing-4);
+    gap: var(--spacing-4);
     align-items: center;
     justify-content: space-between;
     background-color: var(--red);
@@ -23,11 +23,11 @@
 
 .container h5,
 .containerArchived h5 {
-    font-variation-settings: var(--subtitle-weight);
-    padding: 0.5rem 0.75rem;
+    font-variation-settings: var(--weight-regular);
+    padding: var(--spacing-2) var(--spacing-3);
     border: 1px solid var(--red);
     cursor: pointer;
-    transition: all 0.2s var(--bezier);
+    transition: all var(--duration-fast) var(--bezier);
     z-index: 20;
     background-color: var(--beige);
     text-align: center;
@@ -47,7 +47,7 @@
     position: absolute;
     top: -4px;
     right: -4px;
-    transition: background-color 0.2s var(--bezier), border-color 0.2s var(--bezier);
+    transition: background-color var(--duration-fast) var(--bezier), border-color var(--duration-fast) var(--bezier);
     border: 1px solid transparent;
     z-index: 0;
 }

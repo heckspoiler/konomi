@@ -17,7 +17,7 @@
 
 .event h2 {
     text-decoration: underline;
-    font-size: 1.1rem;
+    font-size: var(--font-size-lg);
 }
 
 
@@ -30,20 +30,20 @@
 
 .addressContainer {
     display: flex;
-    gap: 1rem;
+    gap: var(--spacing-4);
     align-items: center;
 }
 
 .addressContainer h5 {
-    font-variation-settings: var(--title-weight);
+    font-variation-settings: var(--weight-semibold);
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: var(--font-size-sm);
 }
 
 .addressContainer p {
     font-family: var(--title-font);
-    font-size: 0.8rem;
-    font-variation-settings: var(--subtitle-weight)
+    font-size: var(--font-size-sm);
+    font-variation-settings: var(--weight-regular)
 }
 
 .lowerRightContainer {
@@ -55,7 +55,7 @@
 .dateContainer {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: var(--spacing-4);
 }
 
 .dayDate {
@@ -70,13 +70,13 @@
 
 .date {
     font-size: clamp(0.7rem, 1vw, 0.9rem);
-    font-variation-settings: var(--title-weight);
+    font-variation-settings: var(--weight-semibold);
 
 }
 
 .time {
-    font-size: 0.55rem;
-    font-variation-settings: var(--subtitle-weight);
+    font-size: var(--font-size-2xs);
+    font-variation-settings: var(--weight-regular);
     display: flex;
     width: fit-content;
 }
@@ -97,39 +97,39 @@
 
     .event h2 {
         text-decoration: underline;
-        font-size: 1.4rem;
+        font-size: var(--font-size-xl);
     }
 
     .middleContainer {
         display: flex;
         justify-content: space-between;
-        gap: 4rem;
+        gap: var(--spacing-16);
 
     }
 
     .addressContainer {
         display: flex;
-        gap: 1rem;
+        gap: var(--spacing-4);
         align-items: center;
 
     }
 
     .addressContainer h5 {
-        font-size: 0.8rem;
+        font-size: var(--font-size-sm);
     }
 
     .addressContainer p {
 
-        font-size: 0.7rem;
+        font-size: var(--font-size-xs);
 
     }
 
     .date {
-        font-size: 0.9rem;
+        font-size: var(--font-size-md);
     }
 
     .time {
-        font-size: 0.8rem;
+        font-size: var(--font-size-sm);
     }
 
 

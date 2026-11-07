@@ -8,7 +8,7 @@
 
 
 .aboutContainer {
-    padding: 2rem 0;
+    padding: var(--spacing-8) 0;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-2);
@@ -19,21 +19,21 @@
 .membersContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    gap: var(--spacing-2);
 }
 
 .member {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: var(--spacing-2);
     border: 1px solid var(--red);
     background-color: var(--red);
 }
 
 .member,
 .member * {
-    transition: all 0.2s var(--bezier)
+    transition: all var(--duration-fast) var(--bezier)
 }
 
 .member:hover {
@@ -42,10 +42,10 @@
 }
 
 .member a {
-    font-variation-settings: var(--title-weight);
-    font-size: 0.9rem;
+    font-variation-settings: var(--weight-semibold);
+    font-size: var(--font-size-md);
     color: var(--beige);
-    padding: 0.75rem;
+    padding: var(--spacing-3);
 
 }
 
@@ -76,8 +76,8 @@
     }
 
     .member a {
-        font-variation-settings: var(--title-weight);
-        font-size: 1rem;
+        font-variation-settings: var(--weight-semibold);
+        font-size: var(--font-size-base);
         color: var(--beige);
         padding: var(--spacing-4);
 
@@ -92,7 +92,7 @@
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) and (max-width: 1079px) {
     .container {
         width: 80vw;
     }

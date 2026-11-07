@@ -1,6 +1,6 @@
 .iconContainer {
     display: flex;
-    gap: 2.5rem;
+    gap: var(--spacing-10);
     align-items: center;
     justify-content: flex-start;
     width: 60%;
@@ -27,7 +27,7 @@
 
     .iconContainer {
         width: fit-content;
-        gap: 1rem;
+        gap: var(--spacing-4);
     }
 
     .icon {
