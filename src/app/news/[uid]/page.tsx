@@ -12,11 +12,10 @@ type Params = { uid: string };
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
   const client = createClient();
-  const page = await client
-    .getByUID('newsarticle', uid)
-    .catch(() => notFound());
-
-  const newsPage = await client.getSingle('news');
+  const [page, newsPage] = await Promise.all([
+    client.getByUID('newsarticle', uid).catch(() => notFound()),
+    client.getSingle('news'),
+  ]);
 
   return (
     <MainContainer>

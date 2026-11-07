@@ -8,8 +8,7 @@ import desktopBackground from '@public/images/background-desktop_bgw_test.png';
 import tabletBackground from '@public/images/background-tablet-new.png';
 import tabletPortraitBackground from '@public/images/background-tablet-new-portrait.png';
 
-const MOBILE_BREAKPOINT = 768;
-const TABLET_BREAKPOINT = 1024;
+import { getBreakpoint } from '@helpers/breakpoints';
 
 const vertexShaderSource = `
   attribute vec2 a_position;
@@ -54,15 +53,20 @@ const fragmentShaderSource = `
   }
 `;
 
-function getBackgroundForSize(width: number, height: number): string {
-  const isPortrait = height > width;
+/** Velocity multiplier applied every frame; below the threshold we stop. */
+const VELOCITY_DECAY = 0.95;
+const VELOCITY_THRESHOLD = 0.001;
 
-  if (width < MOBILE_BREAKPOINT) {
-    return mobileBackground.src;
-  } else if (width < TABLET_BREAKPOINT && width >= MOBILE_BREAKPOINT) {
-    return isPortrait ? tabletPortraitBackground.src : tabletBackground.src;
-  } else {
-    return desktopBackground.src;
+function getBackgroundForSize(width: number, height: number): string {
+  switch (getBreakpoint(width)) {
+    case 'mobile':
+      return mobileBackground.src;
+    case 'tablet':
+      return height > width
+        ? tabletPortraitBackground.src
+        : tabletBackground.src;
+    default:
+      return desktopBackground.src;
   }
 }
 
@@ -109,47 +113,33 @@ function createProgram(
 
 export default function BackgroundCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const glRef = useRef<WebGLRenderingContext | null>(null);
-  const programRef = useRef<WebGLProgram | null>(null);
-  const scrollVelocityRef = useRef<number>(0);
-  const animationIdRef = useRef<number>(0);
+  const scrollVelocityRef = useRef(0);
+  /** Schedules a frame; set by the WebGL effect, called by scroll/resize. */
+  const requestRenderRef = useRef<() => void>(() => {});
 
-  const [background, setBackground] = useState<string>('');
-  const [isPortrait, setIsPortrait] = useState<boolean>(false);
+  const [background, setBackground] = useState('');
 
   const pathname = usePathname();
 
-  // Reset scroll on route change
+  // Reset the effect on route change.
   useEffect(() => {
     scrollVelocityRef.current = 0;
+    requestRenderRef.current();
   }, [pathname]);
 
-  // Handle orientation changes
+  // Pick the background for the viewport; setState bails out if unchanged.
   useEffect(() => {
-    setIsPortrait(window.innerHeight > window.innerWidth);
-
-    const handleOrientationChange = () => {
-      setIsPortrait(window.innerHeight > window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleOrientationChange);
-    return () => window.removeEventListener('resize', handleOrientationChange);
-  }, []);
-
-  // Update background based on screen size
-  useEffect(() => {
-    const updateBackground = () => {
+    const update = () =>
       setBackground(
         getBackgroundForSize(window.innerWidth, window.innerHeight),
       );
-    };
 
-    updateBackground();
-    window.addEventListener('resize', updateBackground);
-    return () => window.removeEventListener('resize', updateBackground);
-  }, [isPortrait]);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
 
-  // Scroll handling
+  // Scroll drives the chromatic-aberration effect.
   useEffect(() => {
     let lastScrollY = window.scrollY;
 
@@ -160,28 +150,27 @@ export default function BackgroundCanvas() {
         scrollVelocityRef.current + scrollDelta * 0.01,
         1,
       );
+      requestRenderRef.current();
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Main WebGL setup
+  // WebGL setup – rebuilt when the background image changes.
   useEffect(() => {
-    if (!canvasRef.current || !background) return;
+    const canvas = canvasRef.current;
+    if (!canvas || !background) return;
 
     let isMounted = true;
+    let frameId = 0;
 
-    const canvas = canvasRef.current;
     const gl = canvas.getContext('webgl', { alpha: true, antialias: true });
     if (!gl) {
       console.error('WebGL not supported');
       return;
     }
 
-    glRef.current = gl;
-
-    // Create shaders
     const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
     const fragmentShader = createShader(
       gl,
@@ -190,17 +179,14 @@ export default function BackgroundCanvas() {
     );
     if (!vertexShader || !fragmentShader) return;
 
-    // Create program
     const program = createProgram(gl, vertexShader, fragmentShader);
     if (!program) return;
 
-    programRef.current = program;
     gl.useProgram(program);
 
-    // Fullscreen quad vertices (position + texCoord)
-    // Note: Y texCoords flipped (1->0, 0->1) because WebGL has origin at bottom-left
+    // Fullscreen quad (position + texCoord). Y texCoords are flipped because
+    // WebGL's origin is bottom-left.
     const vertices = new Float32Array([
-      // position    // texCoord
       -1, -1, 0, 1, 1, -1, 1, 1, -1, 1, 0, 0, 1, 1, 1, 0,
     ]);
 
@@ -217,11 +203,10 @@ export default function BackgroundCanvas() {
     gl.enableVertexAttribArray(texCoordLoc);
     gl.vertexAttribPointer(texCoordLoc, 2, gl.FLOAT, false, 16, 8);
 
-    // Load texture
     const texture = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, texture);
 
-    // Placeholder pixel while image loads
+    // Transparent placeholder pixel while the image loads.
     gl.texImage2D(
       gl.TEXTURE_2D,
       0,
@@ -233,6 +218,39 @@ export default function BackgroundCanvas() {
       gl.UNSIGNED_BYTE,
       new Uint8Array([0, 0, 0, 0]),
     );
+
+    const scrollVelocityLoc = gl.getUniformLocation(
+      program,
+      'u_scrollVelocity',
+    );
+
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+    const draw = () => {
+      gl.clearColor(0, 0, 0, 0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.uniform1f(scrollVelocityLoc, scrollVelocityRef.current);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    };
+
+    // Only animate while the scroll effect is decaying; otherwise stay idle.
+    const tick = () => {
+      frameId = 0;
+      scrollVelocityRef.current *= VELOCITY_DECAY;
+      if (scrollVelocityRef.current < VELOCITY_THRESHOLD) {
+        scrollVelocityRef.current = 0;
+      }
+      draw();
+      if (scrollVelocityRef.current > 0) {
+        frameId = requestAnimationFrame(tick);
+      }
+    };
+
+    const requestRender = () => {
+      if (!frameId && isMounted) frameId = requestAnimationFrame(tick);
+    };
+    requestRenderRef.current = requestRender;
 
     const image = new Image();
     image.crossOrigin = 'anonymous';
@@ -251,52 +269,26 @@ export default function BackgroundCanvas() {
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      requestRender();
     };
     image.src = background;
 
-    // Get uniform locations
-    const scrollVelocityLoc = gl.getUniformLocation(
-      program,
-      'u_scrollVelocity',
-    );
-
-    // Enable blending for transparency
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-
-    // Resize handler
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio, 2);
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       gl.viewport(0, 0, canvas.width, canvas.height);
+      requestRender();
     };
 
     resize();
     window.addEventListener('resize', resize);
 
-    // Render loop
-    const render = () => {
-      // Decay velocity
-      scrollVelocityRef.current *= 0.95;
-      if (scrollVelocityRef.current < 0.001) scrollVelocityRef.current = 0;
-
-      gl.clearColor(0, 0, 0, 0);
-      gl.clear(gl.COLOR_BUFFER_BIT);
-
-      gl.uniform1f(scrollVelocityLoc, scrollVelocityRef.current);
-
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-
-      animationIdRef.current = requestAnimationFrame(render);
-    };
-
-    render();
-
     return () => {
       isMounted = false;
+      requestRenderRef.current = () => {};
       window.removeEventListener('resize', resize);
-      cancelAnimationFrame(animationIdRef.current);
+      cancelAnimationFrame(frameId);
       gl.deleteProgram(program);
       gl.deleteShader(vertexShader);
       gl.deleteShader(fragmentShader);

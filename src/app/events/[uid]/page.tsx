@@ -12,8 +12,10 @@ type Params = { uid: string };
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
   const client = createClient();
-  const page = await client.getByUID('event', uid).catch(() => notFound());
-  const events = await client.getSingle('events');
+  const [page, events] = await Promise.all([
+    client.getByUID('event', uid).catch(() => notFound()),
+    client.getSingle('events'),
+  ]);
 
   return (
     <MainContainer>
