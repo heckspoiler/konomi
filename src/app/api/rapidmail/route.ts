@@ -1,7 +1,36 @@
-// app/api/rapidmail/route.ts
 import { NextResponse } from 'next/server';
 
 const RAPIDMAIL_API_URL = 'https://apiv3.emailsys.net/v1';
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_FIELD_LENGTH = 100;
+
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+
+const MESSAGES = {
+  invalidEmail: 'Bitte gib eine gültige E-Mail-Adresse an.',
+  missingName: 'Bitte gib deinen Vor- und Nachnamen an.',
+  missingConsent: 'Bitte bestätige die Einwilligung.',
+  tooMany: 'Zu viele Versuche. Bitte versuche es später nochmal.',
+  failed: 'Die Anmeldung hat leider nicht geklappt. Bitte versuche es später nochmal.',
+};
+
+/**
+ * Best-effort, per-instance limiter. Function instances are reused across
+ * requests, so this stops simple scripted floods without extra infrastructure.
+ */
+const attempts = new Map<string, number[]>();
+
+function isRateLimited(ip: string) {
+  const now = Date.now();
+  const recent = (attempts.get(ip) ?? []).filter(
+    (time) => now - time < RATE_LIMIT_WINDOW_MS,
+  );
+  recent.push(now);
+  attempts.set(ip, recent);
+  return recent.length > RATE_LIMIT_MAX;
+}
 
 const getAuthHeader = () => {
   const username = process.env.RAPIDMAIL_API_USERNAME;
@@ -10,15 +39,37 @@ const getAuthHeader = () => {
   return `Basic ${auth}`;
 };
 
+const clean = (value: unknown) =>
+  typeof value === 'string' ? value.trim().slice(0, MAX_FIELD_LENGTH) : '';
+
+const badRequest = (error: string) =>
+  NextResponse.json({ error }, { status: 400 });
+
 export async function POST(request: Request) {
+  const ip =
+    request.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown';
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json({ error: MESSAGES.tooMany }, { status: 429 });
+  }
+
+  const body = await request.json().catch(() => null);
+  if (!body || typeof body !== 'object') return badRequest(MESSAGES.failed);
+
+  // Honeypot: hidden from people, filled in by bots. Pretend it worked.
+  if (clean(body.website)) {
+    return NextResponse.json({ success: true });
+  }
+
+  const email = clean(body.email).toLowerCase();
+  const firstName = clean(body.firstName);
+  const lastName = clean(body.lastName);
+
+  if (!EMAIL_PATTERN.test(email)) return badRequest(MESSAGES.invalidEmail);
+  if (!firstName || !lastName) return badRequest(MESSAGES.missingName);
+  if (body.consent !== true) return badRequest(MESSAGES.missingConsent);
+
   try {
-    const body = await request.json();
-
-    // Add validation for required fields
-    if (!body.email) {
-      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
-    }
-
     const response = await fetch(`${RAPIDMAIL_API_URL}/recipients`, {
       method: 'POST',
       headers: {
@@ -28,48 +79,25 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         recipientlist_id: process.env.RAPIDMAIL_LIST_ID,
-        email: body.email,
-        firstname: body.firstName || '',
-        lastname: body.lastName || '',
+        email,
+        firstname: firstName,
+        lastname: lastName,
         status: 'active',
       }),
     });
 
-    // Get the response as text first
-    const responseText = await response.text();
-
-    // Try to parse it as JSON
-    let data;
-    try {
-      data = JSON.parse(responseText);
-    } catch (e) {
-      console.error('Failed to parse response:', responseText, e);
-      return NextResponse.json(
-        { error: 'Invalid response from RapidMail API', e },
-        { status: 500 },
-      );
-    }
-
     if (!response.ok) {
-      console.error('RapidMail error response:', data);
-      return NextResponse.json(
-        {
-          error: data.message || 'Failed to subscribe',
-          details: data,
-        },
-        { status: response.status },
+      console.error(
+        'RapidMail error response:',
+        response.status,
+        await response.text(),
       );
+      return NextResponse.json({ error: MESSAGES.failed }, { status: 502 });
     }
 
-    return NextResponse.json({
-      success: true,
-      message: 'Successfully subscribed to newsletter',
-    });
+    return NextResponse.json({ success: true });
   } catch (error) {
     console.error('RapidMail API error:', error);
-    return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Failed to subscribe' },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: MESSAGES.failed }, { status: 500 });
   }
 }

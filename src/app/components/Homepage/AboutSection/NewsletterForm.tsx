@@ -1,8 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 import cssStyles from './NewsletterForm.module.css';
+
+const EMPTY_FORM = {
+  email: '',
+  firstName: '',
+  lastName: '',
+  consent: false,
+  website: '',
+};
+
+const FALLBACK_ERROR =
+  'Die Anmeldung hat leider nicht geklappt. Bitte versuche es später nochmal.';
 
 export default function NewsletterForm({
   stylesprops,
@@ -11,19 +22,17 @@ export default function NewsletterForm({
 }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
-  const [formData, setFormData] = useState({
-    email: '',
-    firstName: '',
-    lastName: '',
-    consent: false,
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState(EMPTY_FORM);
+  const id = useId();
 
   const styles = stylesprops || cssStyles;
 
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setError('');
+    setIsSubmitting(true);
 
     try {
       const response = await fetch('/api/rapidmail', {
@@ -37,20 +46,17 @@ export default function NewsletterForm({
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Something went wrong');
+        throw new Error(data.error || FALLBACK_ERROR);
       }
 
       setIsSuccess(true);
 
-      setFormData({
-        email: '',
-        firstName: '',
-        lastName: '',
-        consent: false,
-      });
+      setFormData(EMPTY_FORM);
     } catch (error) {
-      setError(error instanceof Error ? error.message : 'Failed to subscribe');
+      setError(error instanceof Error ? error.message : FALLBACK_ERROR);
       console.error('Newsletter signup failed:', error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -77,7 +83,9 @@ export default function NewsletterForm({
               <div>
                 <input
                   type="email"
-                  id="email"
+                  id={`${id}-email`}
+                  aria-label="E-Mail-Adresse"
+                  autoComplete="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
@@ -91,7 +99,9 @@ export default function NewsletterForm({
               <div>
                 <input
                   type="text"
-                  id="firstName"
+                  id={`${id}-firstName`}
+                  aria-label="Vorname"
+                  autoComplete="given-name"
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
@@ -103,7 +113,9 @@ export default function NewsletterForm({
               <div>
                 <input
                   type="text"
-                  id="lastName"
+                  id={`${id}-lastName`}
+                  aria-label="Nachname"
+                  autoComplete="family-name"
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
@@ -114,6 +126,17 @@ export default function NewsletterForm({
             </div>
           </div>
 
+          {/* Honeypot: invisible to people, bots fill it in. */}
+          <input
+            type="text"
+            name="website"
+            value={formData.website}
+            onChange={handleChange}
+            className="visually-hidden"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
           <div className={styles.consentContainer}>
             <label>
               <input
@@ -133,7 +156,11 @@ export default function NewsletterForm({
             </p>
           )}
           <div className={styles.buttonContainer}>
-            <button type="submit" className={styles.submitButton}>
+            <button
+              type="submit"
+              className={styles.submitButton}
+              disabled={isSubmitting}
+            >
               <span>ANMELDEN</span>
             </button>
           </div>
