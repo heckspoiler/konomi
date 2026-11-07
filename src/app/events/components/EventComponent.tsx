@@ -14,19 +14,20 @@ import CalendarIcon from '../[uid]/components/CalendarIcon';
 import { asText } from '@prismicio/client';
 import { EventDocument } from '@/prismicio-types';
 
-import { usePathname } from 'next/navigation';
-
 interface EventProps {
   event: EventDocument;
+  showDate?: boolean;
 }
 
-export default function EventComponent({ event }: EventProps) {
+export default function EventComponent({
+  event,
+  showDate = true,
+}: EventProps) {
   const startDateTime = formatDateTime(event.data.event_start_date);
   const endDateTime = formatDateTime(event.data.event_end_date);
 
   const { isMobile } = useMobile();
 
-  const pathname = usePathname();
   return (
     <div className={styles.event}>
       <PrismicRichText field={event.data.event_title} />
@@ -48,7 +49,7 @@ export default function EventComponent({ event }: EventProps) {
         </PrismicNextLink>
         <div className={styles.lowerRightContainer}>
           {' '}
-          {!pathname.includes('/archive') && (
+          {showDate && (
             <div className={styles.dateContainer}>
               <div className={styles.iconContainer}>
                 <CalendarIcon />

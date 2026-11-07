@@ -1,4 +1,3 @@
-import React, { useMemo } from 'react';
 
 import SectionContainer from '../SectionContainer/SectionContainer';
 
@@ -9,7 +8,8 @@ import Events from './Events';
 import Link from 'next/link';
 import Arrow from '../../arrow/Arrow';
 import { PrismicNextLink } from '@prismicio/next';
-import { useEvents } from '@contexts/EventsContext';
+import { useNow } from '@contexts/NowContext';
+import { isUpcoming } from '@helpers/events';
 import {
   BasicSliceSliceSchedulePrimary,
   DownloadBarDocument,
@@ -23,26 +23,18 @@ export default function EventSection({
   scheduleSlice,
   components,
   downloadBar,
+  events,
 }: {
   scheduleSlice: PageDocumentDataSlicesSlice[];
   components: typeof SliceComponents;
   downloadBar: DownloadBarDocument;
+  events: EventDocument[];
 }) {
-  const { events } = useEvents();
+  const now = useNow();
   const schedulePrimary = scheduleSlice[0]
     .primary as BasicSliceSliceSchedulePrimary;
 
-  const now = useMemo(() => new Date(), []);
-
-  const upcomingEvents = useMemo(
-    () =>
-      events?.filter(
-        (event: EventDocument) =>
-          new Date(event.data.event_end_date as string).getTime() >
-          now.getTime(),
-      ) ?? [],
-    [events, now],
-  );
+  const hasUpcomingEvents = events.some((event) => isUpcoming(event, now));
 
   return (
     <SectionContainer>
@@ -53,7 +45,7 @@ export default function EventSection({
         </div>
         <Events events={events} />
         <div className={styles.moreEventsLink}>
-          {upcomingEvents.length === 0 ? (
+          {!hasUpcomingEvents ? (
             <Link href="/archive">
               Zum Archiv <Arrow height={'12'} width={'12'} />
             </Link>

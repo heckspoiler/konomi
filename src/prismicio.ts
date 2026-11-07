@@ -43,3 +43,9 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
 
   return client;
 };
+
+/** All events, oldest first. */
+export const getAllEvents = () =>
+  createClient().getAllByType('event', {
+    orderings: [{ field: 'my.event.event_start_date', direction: 'asc' }],
+  });

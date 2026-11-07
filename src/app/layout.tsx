@@ -4,8 +4,6 @@ import Script from 'next/script';
 
 import { Providers } from './components/Providers/Providers';
 
-import { createClient } from '@/prismicio';
-
 import Background from './components/background/Background';
 
 import Header from './components/header/Header';
@@ -18,21 +16,17 @@ import typeface from '../../helpers/typeface';
 import Footer from './components/Footer/Footer';
 import Splashscreen from './components/Splashscreen/Splashscreen';
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const client = createClient();
-
-  const events = await client.getAllByType('event');
-
   const splashscreenVisible = process.env.NODE_ENV === 'production';
 
   return (
     <html lang="de-CH">
       <body>
-        <Providers events={events}>
+        <Providers renderedAt={Date.now()}>
           <Background />
           <Header /> <Logo />
           {children}

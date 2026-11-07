@@ -15,6 +15,7 @@ import MainSection from './MainSection/MainSection';
 
 import {
   DownloadBarDocument,
+  EventDocument,
   LandingCategoriesDocument,
   NewsarticleDocument,
   PageDocumentDataSlicesSlice,
@@ -24,9 +25,9 @@ import NewsSection from '../NewsSection/NewsSection';
 interface HomepageContentProps {
   defaultVariationSlice: PageDocumentDataSlicesSlice[];
   scheduleSlice: PageDocumentDataSlicesSlice[];
-  konomiSlice: PageDocumentDataSlicesSlice[];
   newsSlice: PageDocumentDataSlicesSlice[];
   news: NewsarticleDocument[];
+  events: EventDocument[];
   landingCategories: LandingCategoriesDocument;
   downloadBar: DownloadBarDocument;
   galleryDefaultSlice: PageDocumentDataSlicesSlice[];
@@ -49,6 +50,7 @@ export default function HomepageContent({
   landingCategories,
   downloadBar,
   news,
+  events,
 }: HomepageContentProps) {
   const [activeSection, setActiveSection] = useState<SectionId>('');
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -124,6 +126,7 @@ export default function HomepageContent({
           scheduleSlice={scheduleSlice}
           components={components}
           downloadBar={downloadBar}
+          events={events}
         />
       ),
     },

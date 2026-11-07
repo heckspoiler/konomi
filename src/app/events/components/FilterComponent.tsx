@@ -6,13 +6,16 @@ import FilterFoldout from './Filtercomponents/FilterFoldout';
 
 import { useFilter } from '@contexts/FilterContext';
 import { EventDocument } from '@/prismicio-types';
+import type { EventsVariant } from './EventsContent';
 
 export default function FilterComponent({
   events,
+  variant,
   setIsFoldoutOpen,
   isFoldoutOpen,
 }: {
   events: EventDocument[];
+  variant: EventsVariant;
   isFoldoutOpen: boolean;
   setIsFoldoutOpen: Dispatch<SetStateAction<boolean>>;
 }) {
@@ -42,6 +45,7 @@ export default function FilterComponent({
       >
         <FilterFoldout
           events={events}
+          variant={variant}
           isFoldoutOpen={isFoldoutOpen}
           setIsFoldoutOpen={setIsFoldoutOpen}
         />

@@ -33,19 +33,13 @@ export default function NewsSection({
         <SliceZone slices={newsSlice} components={components} />
       </div>
       <div className={styles.newspreviews}>
-        {news
-          .sort(
-            (a, b) =>
-              new Date(b.data.publishing_date as string).getTime() -
-              new Date(a.data.publishing_date as string).getTime(),
-          )
-          .map((item) => (
-            <NewsItem
-              key={item.id}
-              item={item}
-              newsSlicePrimary={newsSlicePrimary}
-            />
-          ))}
+        {news.map((item) => (
+          <NewsItem
+            key={item.id}
+            item={item}
+            newsSlicePrimary={newsSlicePrimary}
+          />
+        ))}
       </div>
       <div className={styles.linkcontainer}>
         <PrismicNextLink field={newsSlicePrimary.more_news_link}>

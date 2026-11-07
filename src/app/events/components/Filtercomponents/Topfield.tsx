@@ -3,24 +3,25 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import styles from './Topfield.module.css';
 import { useFilter } from '@contexts/FilterContext';
-import { usePathname } from 'next/navigation';
+import type { EventsVariant } from '../EventsContent';
 
 export default function Topfield({
+  variant,
   fieldIsOpen,
   setIsFieldOpen,
 }: {
+  variant: EventsVariant;
   fieldIsOpen: string;
   setIsFieldOpen: Dispatch<SetStateAction<string>>;
 }) {
   const { selectedEventType, selectedDate, selectedLocation } = useFilter();
-  const pathname = usePathname();
   const handleClick = (key: string) => {
     setIsFieldOpen(fieldIsOpen === key ? '' : key);
   };
 
   return (
     <div
-      className={`${pathname === '/archive' ? styles.containerArchived : styles.container}`}
+      className={`${variant === 'archive' ? styles.containerArchived : styles.container}`}
     >
       <div
         key="event"
@@ -37,7 +38,7 @@ export default function Topfield({
         ></div>{' '}
         <h5>Eventart</h5>
       </div>
-      {pathname === '/archive' ? null : (
+      {variant === 'archive' ? null : (
         <div
           key="date"
           onClick={() => handleClick('date')}

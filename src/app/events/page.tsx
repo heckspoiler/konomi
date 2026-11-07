@@ -1,17 +1,26 @@
 import { Metadata } from 'next';
 
-import { createClient } from '@/prismicio';
+import { createClient, getAllEvents } from '@/prismicio';
 
 import EventsContent from './components/EventsContent';
 import MainContainer from '../components/MainContainer/MainContainer';
 
 export default async function Page() {
   const client = createClient();
-  const page = await client.getSingle('events');
-  const searchicon = await client.getSingle('search_icon');
+  const [page, searchicon, events] = await Promise.all([
+    client.getSingle('events'),
+    client.getSingle('search_icon'),
+    getAllEvents(),
+  ]);
+
   return (
     <MainContainer>
-      <EventsContent page={page} searchicon={searchicon} />
+      <EventsContent
+        page={page}
+        searchicon={searchicon}
+        events={events}
+        variant="upcoming"
+      />
     </MainContainer>
   );
 }

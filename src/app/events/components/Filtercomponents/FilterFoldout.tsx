@@ -8,13 +8,16 @@ import Topfield from './Topfield';
 import Bottomfield from './Bottomfield';
 import { useFilter } from '@contexts/FilterContext';
 import { EventDocument } from '@/prismicio-types';
+import type { EventsVariant } from '../EventsContent';
 
 export default function FilterFoldout({
   events,
+  variant,
   isFoldoutOpen,
   setIsFoldoutOpen,
 }: {
   events: EventDocument[];
+  variant: EventsVariant;
   isFoldoutOpen: boolean;
   setIsFoldoutOpen: Dispatch<SetStateAction<boolean>>;
 }) {
@@ -41,7 +44,11 @@ export default function FilterFoldout({
   };
   return (
     <div className={styles.foldout}>
-      <Topfield fieldIsOpen={fieldIsOpen} setIsFieldOpen={setIsFieldOpen} />
+      <Topfield
+        variant={variant}
+        fieldIsOpen={fieldIsOpen}
+        setIsFieldOpen={setIsFieldOpen}
+      />
       <Bottomfield events={events} fieldIsOpen={fieldIsOpen} />
       <button onClick={resetFilters} className={styles.resetButton}>
         <span>

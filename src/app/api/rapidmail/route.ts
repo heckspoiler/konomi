@@ -29,8 +29,8 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         recipientlist_id: process.env.RAPIDMAIL_LIST_ID,
         email: body.email,
-        firstname: body.firstname || '',
-        lastname: body.lastname || '',
+        firstname: body.firstName || '',
+        lastname: body.lastName || '',
         status: 'active',
       }),
     });

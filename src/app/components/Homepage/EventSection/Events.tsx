@@ -1,69 +1,48 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+
+import React from 'react';
 import styles from './Events.module.css';
 import Link from 'next/link';
 import Arrow from '../../arrow/Arrow';
 import { truncateText } from '@helpers/truncateText';
 import { formatDate } from '@helpers/formatDate';
+import { isUpcoming } from '@helpers/events';
 import { EventDocument } from '@/prismicio-types';
 import { asText } from '@prismicio/client';
+import { useMobile } from '@contexts/MobileContext';
+import { useNow } from '@contexts/NowContext';
+import SeeYouNextYear from '../../SeeYouNextYear/SeeYouNextYear';
 
+const MAX_EVENTS = 10;
+
+/** `events` arrive sorted by start date. */
 export default function Events({ events }: { events: EventDocument[] }) {
-  const [isMobile, setIsMobile] = useState(false);
+  const { isDesktop } = useMobile();
+  const now = useNow();
 
-  useEffect(() => {
-    const updateBackground = () => {
-      setIsMobile(window.innerWidth < 1020);
-    };
-
-    updateBackground();
-    window.addEventListener('resize', updateBackground);
-    return () => window.removeEventListener('resize', updateBackground);
-  }, []);
-
-  const currentDate = new Date();
-
-  const sortedUpcomingEvents = events
-    .filter((event: EventDocument) => {
-      const eventDate = new Date(
-        event.data.event_end_date ? event.data.event_end_date : '',
-      );
-      const bufferDate = new Date(currentDate.getTime() - 60 * 60 * 1000);
-      return eventDate >= bufferDate && !event.tags.includes('archived');
-    })
-    .sort((a: EventDocument, b: EventDocument) => {
-      return (
-        new Date(a.data.event_start_date as string).getTime() -
-        new Date(b.data.event_start_date as string).getTime()
-      );
-    });
+  const upcomingEvents = events
+    .filter((event) => isUpcoming(event, now))
+    .slice(0, MAX_EVENTS);
 
   return (
     <div className={styles.scheduleContainer}>
-      {sortedUpcomingEvents.length === 0 ? (
+      {upcomingEvents.length === 0 ? (
         <div className={styles.seeyou}>
-          <h2>Wir sehen uns im 2027!</h2>
+          <SeeYouNextYear events={events} />
         </div>
       ) : (
-        sortedUpcomingEvents.slice(0, 10).map((event: EventDocument) => (
+        upcomingEvents.map((event) => (
           <div key={event.id} className={styles.event}>
-            <h4>
-              {formatDate(
-                event.data.event_start_date ? event.data.event_start_date : '',
-              )}
-            </h4>{' '}
+            <h4>{formatDate(event.data.event_start_date)}</h4>{' '}
             <h2>
-              {truncateText(
-                event.data?.event_title ? asText(event.data.event_title) : '',
-                isMobile ? 30 : 75,
-              )}
+              {truncateText(asText(event.data.event_title), isDesktop ? 75 : 30)}
             </h2>
             <Link href={`/events/${event.uid}`}>
               <span>
                 <h5>Mehr</h5>
               </span>
               <span>
-                <Arrow height={isMobile ? '9' : '10'} />
+                <Arrow height={isDesktop ? '10' : '9'} />
               </span>
             </Link>
           </div>

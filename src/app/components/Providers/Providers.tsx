@@ -1,19 +1,18 @@
 'use client';
 
-import { EventsProvider } from '@contexts/EventsContext';
 import { MobileProvider } from '@contexts/MobileContext';
-import { EventDocument } from '@/prismicio-types';
+import { NowProvider } from '@contexts/NowContext';
 
 export function Providers({
   children,
-  events,
+  renderedAt,
 }: {
   children: React.ReactNode;
-  events: EventDocument[];
+  renderedAt: number;
 }) {
   return (
-    <EventsProvider events={events}>
+    <NowProvider renderedAt={renderedAt}>
       <MobileProvider>{children}</MobileProvider>
-    </EventsProvider>
+    </NowProvider>
   );
 }
