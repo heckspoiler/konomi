@@ -297,6 +297,5 @@ button:hover:where(:not(.unstyled-button)) {
 
     p {
         text-wrap: pretty;
-        text-align: start;
     }
 }
