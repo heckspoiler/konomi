@@ -1,6 +1,12 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
 type Options = {
   /** Items rendered initially and added per batch. */
@@ -20,6 +26,15 @@ type SavedState = { count: number; scrollY: number; savedAt: number };
 
 /** Saved positions older than this are ignored. */
 const RESTORE_WINDOW_MS = 30 * 60 * 1000;
+
+/**
+ * The site uses `scroll-behavior: smooth`. While a restore is pending, the
+ * browser's own back-navigation scroll and ours must be instant, otherwise
+ * they animate against each other.
+ */
+const setInstantScroll = (instant: boolean) => {
+  document.documentElement.style.scrollBehavior = instant ? 'auto' : '';
+};
 
 const readState = (key: string): SavedState | null => {
   try {
@@ -53,18 +68,26 @@ export function useInfiniteList<T>(
   const hasMore = count < items.length;
 
   // Restore after "back": expand the list first, then scroll once rendered.
-  useEffect(() => {
+  // A layout effect, so the expanded list renders before the first paint.
+  useLayoutEffect(() => {
     if (!storageKey) return;
     const saved = readState(storageKey);
-    if (!saved) return;
+    if (!saved) {
+      setInstantScroll(false);
+      return;
+    }
     setCount(saved.count);
     pendingScroll.current = saved.scrollY;
   }, [storageKey]);
 
-  useEffect(() => {
+  // Runs before paint so the restored position shows without a visible jump.
+  useLayoutEffect(() => {
     if (pendingScroll.current === null) return;
-    window.scrollTo({ top: pendingScroll.current, behavior: 'instant' });
+    window.scrollTo(0, pendingScroll.current);
     pendingScroll.current = null;
+    // Re-enable smooth scrolling once the browser has settled. Not cancelled
+    // on re-render: the next batch often loads right after restoring.
+    requestAnimationFrame(() => setInstantScroll(false));
   }, [count]);
 
   // New filters/search start from the top of the list again.
@@ -103,6 +126,7 @@ export function useInfiniteList<T>(
         savedAt: Date.now(),
       };
       sessionStorage.setItem(storageKey, JSON.stringify(state));
+      setInstantScroll(true);
     } catch {
       // Storage unavailable (private mode etc.) – restoring is optional.
     }
