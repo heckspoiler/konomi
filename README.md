@@ -16,7 +16,7 @@ npm run build
 | Variable | Purpose |
 | --- | --- |
 | `RAPIDMAIL_API_USERNAME`, `RAPIDMAIL_API_PASSWORD`, `RAPIDMAIL_LIST_ID` | Newsletter signups (`/api/rapidmail`) |
-| `REVALIDATE_SECRET` | Must match the secret configured on the Prismic webhook that calls `/api/revalidate` |
+| `REVALIDATE_SECRET` | Optional. If set, must match the secret on the Prismic webhook that calls `/api/revalidate` |
 
 ## Design system
 

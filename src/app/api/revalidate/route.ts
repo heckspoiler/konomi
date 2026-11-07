@@ -2,21 +2,20 @@ import { NextResponse } from 'next/server';
 import { revalidateTag } from 'next/cache';
 
 /**
- * Called by the Prismic webhook on publish. Prismic sends the webhook's
- * secret in the JSON body; it must match REVALIDATE_SECRET.
+ * Called by the Prismic webhook on publish.
+ *
+ * Optional protection: if REVALIDATE_SECRET is set, the webhook's secret
+ * (sent by Prismic in the JSON body) must match it. Without it, any POST
+ * clears the Prismic cache – harmless, it only triggers a refetch.
  */
 export async function POST(request: Request) {
   const expected = process.env.REVALIDATE_SECRET;
 
-  if (!expected) {
-    console.error('REVALIDATE_SECRET is not set; refusing to revalidate.');
-    return NextResponse.json({ error: 'Not configured' }, { status: 500 });
-  }
-
-  const body = await request.json().catch(() => null);
-
-  if (body?.secret !== expected) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (expected) {
+    const body = await request.json().catch(() => null);
+    if (body?.secret !== expected) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
   }
 
   revalidateTag('prismic');
